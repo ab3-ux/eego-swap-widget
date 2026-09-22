@@ -1,0 +1,475 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"text-primary":"#0A0A0A","surface-container":"#eeedf7","surface-card":"#FFFFFF","on-tertiary-container":"#848484","on-surface":"#1a1b22","on-tertiary-fixed-variant":"#474747","on-secondary-fixed":"#021a42","secondary":"#4b5e89","secondary-container":"#b8cbfe","on-error-container":"#93000a","surface-bright":"#fbf8ff","error":"#ba1a1a","outline":"#7e7576","on-primary":"#ffffff","button-neutral-hover":"#E5E7EB","primary-fixed-dim":"#c6c6c6","on-background":"#1a1b22","inverse-primary":"#c6c6c6","tertiary-fixed":"#e2e2e2","tertiary":"#000000","on-secondary":"#ffffff","secondary-fixed":"#d9e2ff","text-muted":"#666666","on-tertiary":"#ffffff","surface":"#fbf8ff","on-secondary-fixed-variant":"#334670","button-neutral-bg":"#F2F3F5","primary":"#000000","surface-container-lowest":"#ffffff","primary-fixed":"#e2e2e2","surface-container-highest":"#e3e1ec","background":"#fbf8ff","on-primary-fixed-variant":"#474747","surface-dim":"#dad9e3","inverse-on-surface":"#f1effa","outline-variant":"#cfc4c5","on-secondary-container":"#435581","on-tertiary-fixed":"#1b1b1b","accent-glow":"rgba(180, 199, 249, 0.35)","border-subtle":"rgba(0, 0, 0, 0.06)","canvas-base":"#FAFBFD","on-surface-variant":"#4c4546","primary-container":"#1b1b1b","inverse-surface":"#2f3038","surface-container-low":"#f4f2fd","border-focus":"rgba(0, 0, 0, 0.24)","on-primary-fixed":"#1b1b1b","surface-container-high":"#e8e7f1","surface-tint":"#5e5e5e","tertiary-container":"#1b1b1b","on-primary-container":"#848484","tertiary-fixed-dim":"#c6c6c6","surface-variant":"#e3e1ec","on-error":"#ffffff","error-container":"#ffdad6","secondary-fixed-dim":"#b3c6f8"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-desktop":"2rem","space-xl":"2.5rem","margin":"1.5rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","space-sm":"0.5rem","gutter":"1.5rem","margin-desktop":"3rem"},"fontFamily":{"body-sm":["Geist"],"code-address":["JetBrains Mono"],"headline-lg":["Geist"],"headline-md":["Geist"],"display-hero-mobile":["Geist"],"label-badge":["JetBrains Mono"],"display-hero":["Geist"],"label-pill":["Geist"],"headline-sm":["Geist"],"body-lg":["Geist"],"body-md":["Geist"]},"fontSize":{"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}],"code-address":["13px",{"lineHeight":"18px","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-lg":["32px",{"lineHeight":"38px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"30px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-hero-mobile":["36px",{"lineHeight":"40px","letterSpacing":"-0.03em","fontWeight":"600"}],"label-badge":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"display-hero":["56px",{"lineHeight":"60px","letterSpacing":"-0.04em","fontWeight":"600"}],"label-pill":["12px",{"lineHeight":"16px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"500"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm group" data-path="overview" href="#"><div class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-code-address text-code-address font-semibold">W</div><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight font-semibold">Widget Starter</span></a><div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-badge text-label-badge"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="">once ui | An ecosystem, not a UI kit</span></div></div><nav class="hidden md:flex items-center gap-1 p-1 bg-surface-container-low rounded-full" data-active-classes="bg-surface-container-high text-on-surface font-medium rounded-full"><a aria-current="page" class="px-4 py-1.5 transition-colors bg-surface-container-high text-on-surface font-medium rounded-full" data-path="overview" href="#">Widgets</a><a class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" data-path="contracts" href="#">Smart Contracts</a><a class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" data-path="tokens" href="#">Design Tokens</a><a class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" data-path="analytics" href="#">Transfers</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface font-label-badge text-label-badge"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="text-on-surface-variant">Ethereum</span><span class="text-on-surface font-medium">Mainnet</span></div><button class="px-4 py-2 rounded-full bg-primary text-on-primary hover:bg-primary-container font-label-pill text-label-pill transition-colors flex items-center gap-2" type="button"><span class="">Connecter un portefeuille</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full relative overflow-hidden items-center justify-start">
+<!-- Ethereal ambient top aura matching Once UI palette -->
+<div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[980px] h-[520px] rounded-full bg-secondary-container/40 blur-[130px] -z-10"></div>
+<section class="w-full max-w-4xl mx-auto px-6 py-12 lg:py-20 flex flex-col items-center text-center">
+<!-- Ecosystem pill badge -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-card shadow-sm hover:shadow transition-all duration-300 mb-8 cursor-default">
+<span class="font-body-sm text-body-sm font-semibold text-text-primary tracking-tight">once ui</span>
+<span class="w-1 h-3 rounded-full bg-surface-container-highest"></span>
+<span class="font-label-badge text-label-badge text-text-muted">An ecosystem, not a UI kit</span>
+</div>
+<!-- Hero Title -->
+<h1 class="font-display-hero text-display-hero text-text-primary tracking-tight max-w-3xl mx-auto leading-none mb-6">
+      Presence that doesn't beg for attention
+    </h1>
+<p class="font-body-lg text-body-lg text-text-muted max-w-xl mx-auto mb-14">
+      Pure smart contract instrumentation. Minimal surface friction, deliberate typography, and atomic Web3 primitives.
+    </p>
+<!-- Main Widget Container -->
+<div class="w-full max-w-[560px] flex flex-col gap-8 text-left">
+<!-- Card 1: Contrat ERC-20 -->
+<div class="w-full bg-surface-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-7 sm:p-9 flex flex-col">
+<!-- Token Switcher & Status -->
+<div class="flex items-center justify-between gap-4 mb-6">
+<div class="inline-flex items-center p-1 rounded-full bg-surface-container-low" id="tokenSwitcher">
+<button class="px-4 py-1.5 rounded-full font-label-pill text-label-pill bg-surface-card text-text-primary shadow-xs transition-all" data-token="eego" type="button">Eego</button>
+<button class="px-4 py-1.5 rounded-full font-label-pill text-label-pill text-text-muted hover:text-text-primary transition-all" data-token="ego" type="button">Ego</button>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest text-text-muted shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-badge text-label-badge">ERC-20 • Verified</span>
+</div>
+</div>
+<!-- Section Title -->
+<div class="text-center mb-6">
+<h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight font-semibold" id="contractHeading">
+            Contrat ERC-20
+          </h2>
+<span class="font-body-sm text-body-sm text-text-muted mt-1 block" id="tokenSymbolLabel">Standard Token Protocol ($EEGO)</span>
+</div>
+<!-- Address Bar with Copy -->
+<div class="w-full bg-surface-container-low rounded-xl p-3 sm:px-4 flex items-center justify-between gap-2 mb-6 group transition-colors hover:bg-surface-container">
+<div class="flex flex-col min-w-0">
+<span class="font-label-badge text-label-badge text-text-muted">Adresse du contrat</span>
+<span class="font-code-address text-code-address text-text-primary truncate" id="contractAddrText">
+              0x2b576C83E722e8E7A07836353b51cB3FC31408ce
+            </span>
+</div>
+<button class="shrink-0 p-2 rounded-lg bg-surface-card text-on-surface hover:text-text-primary shadow-xs hover:shadow transition-all active:scale-95 flex items-center justify-center" id="copyContractBtn" title="Copier l'adresse" type="button">
+<span class="material-symbols-outlined text-[18px]" id="copyContractIcon">content_copy</span>
+</button>
+</div>
+<!-- Key Metrics Grid -->
+<div class="grid grid-cols-2 gap-3 pt-2">
+<div class="bg-surface-container-lowest rounded-xl p-3.5 flex flex-col justify-between shadow-xs">
+<span class="font-body-sm text-body-sm text-text-muted">Décimales</span>
+<span class="font-headline-md text-headline-md text-text-primary font-semibold mt-1">18</span>
+<span class="font-label-badge text-label-badge text-text-muted mt-1">10<sup>18</sup> wei / unit</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-3.5 flex flex-col justify-between shadow-xs">
+<span class="font-body-sm text-body-sm text-text-muted">Total Supply</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-md text-headline-md text-text-primary font-semibold" id="supplyDisplay">1 000 000 000</span>
+</div>
+<span class="font-label-badge text-label-badge text-text-muted mt-1">1 Milliard jetons max</span>
+</div>
+</div>
+<!-- Micro Progress / Distribution Bar -->
+<div class="mt-4 pt-3 flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-badge text-label-badge text-text-muted">
+<span class="">Circulation active</span>
+<span class="font-semibold text-text-primary">84.2%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-text-primary rounded-full transition-all duration-700 w-[84.2%]"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: Transfert ERC-20 -->
+<div class="w-full bg-surface-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-7 sm:p-9 flex flex-col">
+<div class="text-center mb-6">
+<h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight font-semibold">
+            Transfert ERC-20
+          </h2>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">Exécutez un envoi sécurisé sans commission intermédiaire</p>
+</div>
+<form class="flex flex-col gap-4" id="transferForm" onsubmit="event.preventDefault();">
+<!-- Recipient Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm text-text-muted flex items-center justify-between" for="recipientAddress">
+<span class="">Adresse destinataire</span>
+<span class="font-label-badge text-label-badge text-text-muted" id="recipientValidationNotice">Format EVM 0x...</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full h-12 px-4 rounded-xl bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none" id="recipientAddress" placeholder="0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97" type="text">
+<button class="absolute right-2 px-2.5 py-1 rounded-lg bg-surface-card font-label-badge text-label-badge text-text-muted hover:text-text-primary shadow-xs transition-colors" id="pasteRecipientBtn" title="Coller" type="button">
+                Coller
+              </button>
+</div>
+</div>
+<!-- Amount Field -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-body-sm text-body-sm text-text-muted">
+<label for="tokenAmount" class="">Montant (unités minimales)</label>
+<div class="flex items-center gap-1 font-label-badge text-label-badge">
+<span class="">Dispo:</span>
+<span class="text-text-primary font-medium" id="senderBalancePreview">4 250.00</span>
+<button class="ml-1 px-1.5 py-0.5 rounded bg-surface-container-high text-text-primary hover:bg-surface-container font-semibold transition-colors" id="maxAmountBtn" type="button">MAX</button>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-12 pl-4 pr-24 rounded-xl bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none" id="tokenAmount" min="0" placeholder="1000000000000000000" step="any" type="number">
+<div class="absolute right-3 flex items-center gap-1.5 pointer-events-none">
+<span class="font-label-badge text-label-badge text-text-muted bg-surface-card px-2 py-1 rounded-md shadow-xs" id="currencyTicker">EEGO (wei)</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-1 text-text-muted">
+<span class="font-body-sm text-body-sm">≈ Équivalent standard</span>
+<span class="font-code-address text-code-address text-text-primary" id="standardEquivalent">0.000000 EEGO</span>
+</div>
+</div>
+<!-- Network gas preview pill -->
+<div class="p-3 rounded-xl bg-surface-container-lowest flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-text-muted">local_gas_station</span>
+<span class="font-body-sm text-body-sm text-text-muted">Frais estimés (Gas)</span>
+</div>
+<span class="font-label-badge text-label-badge text-text-primary font-semibold">~0.00084 ETH ($2.64)</span>
+</div>
+<!-- Submit Button -->
+<div class="pt-2">
+<button class="w-full h-12 rounded-xl bg-button-neutral-bg hover:bg-button-neutral-hover active:scale-[0.99] text-text-primary font-headline-sm text-headline-sm font-medium transition-all shadow-xs flex items-center justify-center gap-2" id="sendTransactionBtn" type="button">
+<span class="">Envoyer</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="hidden rounded-xl p-3 text-center font-body-sm text-body-sm transition-all duration-300" id="transferFeedback"></div>
+</form>
+</div><!-- Card 3: Échange EEGO ⇄ ETH (Swap DEX) -->
+<div class="w-full bg-surface-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-7 sm:p-9 flex flex-col" id="swapWidgetCard">
+  <!-- Header with settings toggle -->
+  <div class="flex items-center justify-between gap-4 mb-4">
+    <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-text-muted shadow-xs">
+      <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+      <span class="font-label-badge text-label-badge">Uniswap V2/V3 Router</span>
+    </div>
+    <button class="px-2.5 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-text-muted hover:text-text-primary transition-colors flex items-center gap-1 font-label-badge text-label-badge shadow-xs" id="toggleRouterConfigBtn" title="Configurer le routeur DEX" type="button">
+      <span class="material-symbols-outlined text-[16px]">tune</span>
+      <span class="">Routeur DEX</span>
+    </button>
+  </div>
+
+  <div class="text-center mb-6">
+    <h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight font-semibold">
+      Swap EEGO ⇄ ETH
+    </h2>
+    <p class="font-body-sm text-body-sm text-text-muted mt-1">Échange instantané sur liquidity pool avec routeur personnalisable</p>
+  </div>
+
+  <!-- Router & Slippage Configuration Block -->
+  <div class="w-full bg-surface-container-low rounded-xl p-4 flex flex-col gap-3 mb-6 transition-all" id="routerConfigPanel">
+    <div class="flex items-center justify-between">
+      <span class="font-label-badge text-label-badge text-text-muted">Configuration du routeur DEX</span>
+      <span class="flex items-center gap-1 text-[11px] font-label-badge text-secondary font-medium">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Routeur actif
+      </span>
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-body-sm text-body-sm text-text-muted" for="dexRouterAddress">Adresse du contrat Routeur</label>
+      <div class="relative flex items-center">
+        <input class="w-full h-10 px-3 pr-20 rounded-lg bg-surface-card font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 outline-none transition-all shadow-xs focus:shadow-md" id="dexRouterAddress" type="text" value="0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D">
+        <div class="absolute right-1.5 flex items-center gap-1">
+          <button class="px-2 py-1 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors" id="copyRouterBtn" title="Copier l'adresse" type="button">
+            Copier
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-between pt-1">
+      <span class="font-body-sm text-body-sm text-text-muted">Tolérance de slippage</span>
+      <div class="flex items-center gap-1.5" id="slippageGroup">
+        <button class="px-2 py-0.5 rounded-full bg-surface-card font-label-badge text-label-badge text-text-primary shadow-xs transition-all" type="button">0.1%</button>
+        <button class="px-2 py-0.5 rounded-full bg-surface-card font-label-badge text-label-badge text-text-primary shadow-xs transition-all font-semibold" type="button">0.5%</button>
+        <button class="px-2 py-0.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest font-label-badge text-label-badge text-text-muted hover:text-text-primary transition-all" type="button">1.0%</button>
+        <button class="px-2 py-0.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest font-label-badge text-label-badge text-text-muted hover:text-text-primary transition-all" type="button">Auto</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swap Form Inputs -->
+  <form class="flex flex-col gap-3" id="swapForm" onsubmit="event.preventDefault();">
+    <!-- Pay Field -->
+    <div class="flex flex-col gap-1.5 p-3.5 rounded-xl bg-surface-container-low transition-colors">
+      <div class="flex items-center justify-between font-body-sm text-body-sm text-text-muted">
+        <span class="">Vous payez</span>
+        <div class="flex items-center gap-1 font-label-badge text-label-badge">
+          <span class="">Dispo:</span>
+          <span class="text-text-primary font-medium" id="swapAvailableBalance">4 250.00 EEGO</span>
+          <button class="ml-1 px-1.5 py-0.5 rounded bg-surface-container-high text-text-primary hover:bg-surface-container font-semibold transition-colors" id="swapMaxBtn" type="button">MAX</button>
+        </div>
+      </div>
+      <div class="relative flex items-center justify-between gap-3">
+        <input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary outline-none placeholder:text-text-muted/60" id="swapPayAmount" min="0" placeholder="1000" step="any" type="number" value="1000">
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0">
+          <span class="w-2 h-2 rounded-full bg-primary"></span>
+          <span class="font-label-badge text-label-badge font-semibold text-text-primary">EEGO</span>
+        </div>
+      </div>
+      <div class="text-right font-label-badge text-label-badge text-text-muted">
+        ≈ $100.75 USD
+      </div>
+    </div>
+
+    <!-- Invert / Switch Tokens Button -->
+    <div class="relative flex items-center justify-center -my-1 z-10">
+      <button class="w-9 h-9 rounded-full bg-surface-card hover:bg-surface-container-high shadow-xs hover:shadow transition-all flex items-center justify-center active:scale-95 text-text-primary" id="invertSwapTokensBtn" title="Inverser les tokens" type="button">
+        <span class="material-symbols-outlined text-[18px]">swap_vert</span>
+      </button>
+    </div>
+
+    <!-- Receive Field -->
+    <div class="flex flex-col gap-1.5 p-3.5 rounded-xl bg-surface-container-low transition-colors">
+      <div class="flex items-center justify-between font-body-sm text-body-sm text-text-muted">
+        <span class="">Vous recevez (estimé)</span>
+        <span class="font-label-badge text-label-badge text-text-muted">Garanti min: 0.099 ETH</span>
+      </div>
+      <div class="relative flex items-center justify-between gap-3">
+        <input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary outline-none placeholder:text-text-muted/60" id="swapReceiveAmount" readonly="" type="text" value="0.1008">
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0">
+          <span class="w-2 h-2 rounded-full bg-secondary"></span>
+          <span class="font-label-badge text-label-badge font-semibold text-text-primary">ETH</span>
+        </div>
+      </div>
+      <div class="text-right font-label-badge text-label-badge text-text-muted">
+        ≈ $314.50 USD
+      </div>
+    </div>
+
+    <!-- Swap Details & Rate Box -->
+    <div class="flex flex-col gap-2 p-3.5 rounded-xl bg-surface-container-lowest shadow-xs text-body-sm text-body-sm">
+      <div class="flex items-center justify-between text-text-muted">
+        <span class="">Taux de conversion</span>
+        <span class="font-code-address text-code-address font-medium text-text-primary">1 ETH ≈ 9 925 EEGO</span>
+      </div>
+      <div class="flex items-center justify-between text-text-muted">
+        <span class="">Impact sur le prix</span>
+        <span class="font-label-badge text-label-badge text-text-primary font-semibold">&lt; 0.15%</span>
+      </div>
+      <div class="flex items-center justify-between text-text-muted">
+        <div class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">local_gas_station</span>
+          <span class="">Frais réseau estimés (Gas)</span>
+        </div>
+        <span class="font-label-badge text-label-badge text-text-primary font-semibold">~0.0018 ETH ($3.95)</span>
+      </div>
+      <div class="flex items-center justify-between text-text-muted pt-1 border-t border-subtle">
+        <span class="">Route DEX optimale</span>
+        <span class="font-label-badge text-label-badge text-text-muted">EEGO → WETH → ETH</span>
+      </div>
+    </div>
+
+    <!-- Main Swap Action Button -->
+    <div class="pt-2">
+      <button class="w-full h-12 rounded-xl bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] font-headline-sm text-headline-sm font-medium transition-all shadow-xs flex items-center justify-center gap-2" id="executeSwapBtn" type="button">
+        <span class="">Échanger les tokens</span>
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </button>
+    </div>
+    <div class="hidden rounded-xl p-3 text-center font-body-sm text-body-sm transition-all duration-300" id="swapFeedback"></div>
+  </form>
+</div>
+<!-- Quick Balance Inquiry Section -->
+<div class="w-full flex flex-col items-center gap-3 pt-2">
+<div class="w-full flex flex-col sm:flex-row items-center justify-center gap-2">
+<div class="relative w-full sm:w-72">
+<input class="w-full h-9 px-3 rounded-lg bg-surface-card font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 shadow-xs focus:shadow-md outline-none transition-all" id="lookupAddressInput" placeholder="Adresse Ethereum (0x...)" type="text">
+</div>
+<button class="w-full sm:w-auto px-4 h-9 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-text-muted hover:text-text-primary font-body-sm text-body-sm transition-all shadow-xs flex items-center justify-center gap-1.5" id="checkBalanceBtn" type="button">
+<span class="">Voir le solde</span>
+</button>
+</div>
+<!-- Calculated Balance Display Result -->
+<div class="hidden px-4 py-2 rounded-xl bg-surface-card shadow-xs items-center gap-3" id="balanceResultBox">
+<span class="font-body-sm text-body-sm text-text-muted">Solde disponible :</span>
+<span class="font-code-address text-code-address font-semibold text-text-primary" id="balanceValueText">12,450.00 EEGO</span>
+</div>
+</div>
+<!-- Footer Callout & Docs Link matching reference design -->
+<div class="flex flex-col items-center text-center gap-6 mt-6 pb-12">
+<p class="font-body-lg text-body-lg text-text-muted">
+          Build with clarity, speed, and quiet confidence
+        </p>
+<a class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-primary text-on-primary font-label-pill text-label-pill hover:bg-primary-container shadow-sm hover:shadow transition-all group" href="https://docs.once-ui.com/once-ui/quick-start" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px] text-on-primary">menu_book</span>
+<span class="">Explore docs</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+<script>
+  (function initWidgetStarter() {
+    const contractData = {
+      eego: {
+        symbol: 'EEGO',
+        label: 'Standard Token Protocol ($EEGO)',
+        address: '0x2b576C83E722e8E7A07836353b51cB3FC31408ce',
+        decimals: 18,
+        supply: '1 000 000 000',
+        userBalance: '4 250.00'
+      },
+      ego: {
+        symbol: 'EGO',
+        label: 'Governance & Utility Reserve ($EGO)',
+        address: '0x71C67Ed3855a35E0d38B7D0f848970C43B20eB1A',
+        decimals: 18,
+        supply: '250 000 000',
+        userBalance: '880.50'
+      }
+    };
+
+    let activeToken = 'eego';
+
+    const tokenSwitcher = document.getElementById('tokenSwitcher');
+    const tokenSymbolLabel = document.getElementById('tokenSymbolLabel');
+    const contractAddrText = document.getElementById('contractAddrText');
+    const supplyDisplay = document.getElementById('supplyDisplay');
+    const senderBalancePreview = document.getElementById('senderBalancePreview');
+    const currencyTicker = document.getElementById('currencyTicker');
+    const standardEquivalent = document.getElementById('standardEquivalent');
+    const tokenAmountInput = document.getElementById('tokenAmount');
+    const copyContractBtn = document.getElementById('copyContractBtn');
+    const copyContractIcon = document.getElementById('copyContractIcon');
+    const maxAmountBtn = document.getElementById('maxAmountBtn');
+    const pasteRecipientBtn = document.getElementById('pasteRecipientBtn');
+    const recipientAddress = document.getElementById('recipientAddress');
+    const sendTransactionBtn = document.getElementById('sendTransactionBtn');
+    const transferFeedback = document.getElementById('transferFeedback');
+    const checkBalanceBtn = document.getElementById('checkBalanceBtn');
+    const lookupAddressInput = document.getElementById('lookupAddressInput');
+    const balanceResultBox = document.getElementById('balanceResultBox');
+    const balanceValueText = document.getElementById('balanceValueText');
+
+    if (tokenSwitcher) {
+      tokenSwitcher.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const target = btn.getAttribute('data-token');
+        if (target && contractData[target]) {
+          activeToken = target;
+          Array.from(tokenSwitcher.querySelectorAll('button')).forEach(b => {
+            b.className = 'px-4 py-1.5 rounded-full font-label-pill text-label-pill text-text-muted hover:text-text-primary transition-all';
+          });
+          btn.className = 'px-4 py-1.5 rounded-full font-label-pill text-label-pill bg-surface-card text-text-primary shadow-xs transition-all';
+
+          const data = contractData[target];
+          tokenSymbolLabel.textContent = data.label;
+          contractAddrText.textContent = data.address;
+          supplyDisplay.textContent = data.supply;
+          senderBalancePreview.textContent = data.userBalance;
+          currencyTicker.textContent = data.symbol + ' (wei)';
+          updateEquivalent();
+        }
+      });
+    }
+
+    if (copyContractBtn && contractAddrText) {
+      copyContractBtn.addEventListener('click', () => {
+        const textToCopy = contractAddrText.textContent.trim();
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          copyContractIcon.textContent = 'check';
+          copyContractBtn.classList.add('bg-surface-container-high');
+          setTimeout(() => {
+            copyContractIcon.textContent = 'content_copy';
+            copyContractBtn.classList.remove('bg-surface-container-high');
+          }, 1500);
+        }).catch(() => {});
+      });
+    }
+
+    function updateEquivalent() {
+      if (!tokenAmountInput || !standardEquivalent) return;
+      const val = parseFloat(tokenAmountInput.value);
+      if (isNaN(val) || val <= 0) {
+        standardEquivalent.textContent = '0.000000 ' + contractData[activeToken].symbol;
+      } else {
+        const standardVal = val / 1e18;
+        standardEquivalent.textContent = standardVal.toFixed(6) + ' ' + contractData[activeToken].symbol;
+      }
+    }
+
+    if (tokenAmountInput) {
+      tokenAmountInput.addEventListener('input', updateEquivalent);
+    }
+
+    if (maxAmountBtn && tokenAmountInput) {
+      maxAmountBtn.addEventListener('click', () => {
+        const currentData = contractData[activeToken];
+        const rawWei = (parseFloat(currentData.userBalance.replace(',', '')) * 1e18).toLocaleString('fullwide', {useGrouping: false});
+        tokenAmountInput.value = rawWei;
+        updateEquivalent();
+      });
+    }
+
+    if (pasteRecipientBtn && recipientAddress) {
+      pasteRecipientBtn.addEventListener('click', async () => {
+        try {
+          const clip = await navigator.clipboard.readText();
+          if (clip) recipientAddress.value = clip.trim();
+        } catch(e) {
+          recipientAddress.focus();
+        }
+      });
+    }
+
+    if (sendTransactionBtn && transferFeedback) {
+      sendTransactionBtn.addEventListener('click', () => {
+        const to = recipientAddress.value.trim();
+        const amt = tokenAmountInput.value.trim();
+
+        if (!to || !to.startsWith('0x') || to.length < 10) {
+          showFeedback('Veuillez renseigner une adresse Ethereum valide (0x...).', 'bg-error-container text-on-error-container');
+          return;
+        }
+
+        if (!amt || parseFloat(amt) <= 0) {
+          showFeedback('Veuillez saisir un montant supérieur à 0.', 'bg-error-container text-on-error-container');
+          return;
+        }
+
+        sendTransactionBtn.disabled = true;
+        sendTransactionBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Transaction en cours...</span>';
+
+        setTimeout(() => {
+          sendTransactionBtn.disabled = false;
+          sendTransactionBtn.innerHTML = '<span>Envoyer</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span>';
+          showFeedback('Transaction soumise avec succès au réseau Ethereum !', 'bg-surface-container-high text-text-primary');
+          recipientAddress.value = '';
+          tokenAmountInput.value = '';
+          updateEquivalent();
+        }, 1200);
+      });
+    }
+
+    function showFeedback(msg, styleClass) {
+      transferFeedback.className = 'rounded-xl p-3 text-center font-body-sm text-body-sm transition-all duration-300 ' + styleClass;
+      transferFeedback.textContent = msg;
+      transferFeedback.classList.remove('hidden');
+      setTimeout(() => {
+        transferFeedback.classList.add('hidden');
+      }, 5000);
+    }
+
+    if (checkBalanceBtn && lookupAddressInput && balanceResultBox && balanceValueText) {
+      checkBalanceBtn.addEventListener('click', () => {
+        const addr = lookupAddressInput.value.trim();
+        if (!addr || !addr.startsWith('0x')) {
+          balanceResultBox.classList.remove('hidden', 'flex');
+          balanceResultBox.classList.add('flex');
+          balanceValueText.textContent = 'Adresse invalide';
+          return;
+        }
+
+        balanceResultBox.classList.remove('hidden');
+        balanceResultBox.classList.add('flex');
+        const hashSeed = addr.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+        const pseudoBal = ((hashSeed % 9900) + 120.45).toFixed(2);
+        balanceValueText.textContent = pseudoBal + ' ' + contractData[activeToken].symbol;
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-10"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-space-md text-center md:text-left"><div class="flex flex-col gap-1"><p class="font-body-md text-body-md text-text-primary font-medium tracking-tight">Widget Starter</p><p class="font-body-sm text-body-sm text-text-muted">Build with clarity, speed, and quiet confidence</p></div><div class="flex items-center gap-space-lg"><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors flex items-center gap-1.5" data-path="documentation" href="#"><span class="">Explore docs</span><span class="material-symbols-outlined text-[16px]">arrow_outward</span></a><span class="font-label-badge text-label-badge text-text-muted">© 2025 Once UI Ecosystem</span></div></div></footer>
+
+</body></html>
