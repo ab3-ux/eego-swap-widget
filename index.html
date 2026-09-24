@@ -1,1170 +1,388 @@
-<!DOCTYPE html><html lang="fr" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
-<!-- Ethers.js v6 CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.11.1/ethers.umd.min.js"></script>
-<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"text-primary":"#0A0A0A","surface-container":"#eeedf7","surface-card":"#FFFFFF","on-tertiary-container":"#848484","on-surface":"#1a1b22","on-tertiary-fixed-variant":"#474747","on-secondary-fixed":"#021a42","secondary":"#0052FF","secondary-container":"#d6e4ff","on-error-container":"#93000a","surface-bright":"#fbf8ff","error":"#ba1a1a","outline":"#7e7576","on-primary":"#ffffff","button-neutral-hover":"#E5E7EB","primary-fixed-dim":"#c6c6c6","on-background":"#1a1b22","inverse-primary":"#c6c6c6","tertiary-fixed":"#e2e2e2","tertiary":"#000000","on-secondary":"#ffffff","secondary-fixed":"#d9e2ff","text-muted":"#666666","on-tertiary":"#ffffff","surface":"#fbf8ff","on-secondary-fixed-variant":"#334670","button-neutral-bg":"#F2F3F5","primary":"#000000","surface-container-lowest":"#ffffff","primary-fixed":"#e2e2e2","surface-container-highest":"#e3e1ec","background":"#fbf8ff","on-primary-fixed-variant":"#474747","surface-dim":"#dad9e3","inverse-on-surface":"#f1effa","outline-variant":"#cfc4c5","on-secondary-container":"#003ecb","on-tertiary-fixed":"#1b1b1b","accent-glow":"rgba(0, 82, 255, 0.18)","border-subtle":"rgba(0, 0, 0, 0.06)","canvas-base":"#FAFBFD","on-surface-variant":"#4c4546","primary-container":"#1b1b1b","inverse-surface":"#2f3038","surface-container-low":"#f4f2fd","border-focus":"rgba(0, 0, 0, 0.24)","on-primary-fixed":"#1b1b1b","surface-container-high":"#e8e7f1","surface-tint":"#5e5e5e","tertiary-container":"#1b1b1b","on-primary-container":"#848484","tertiary-fixed-dim":"#c6c6c6","surface-variant":"#e3e1ec","on-error":"#ffffff","error-container":"#ffdad6","secondary-fixed-dim":"#b3c6f8"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-desktop":"2rem","space-xl":"2.5rem","margin":"1.5rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","space-sm":"0.5rem","gutter":"1.5rem","margin-desktop":"3rem"},"fontFamily":{"body-sm":["Geist"],"code-address":["JetBrains Mono"],"headline-lg":["Geist"],"headline-md":["Geist"],"display-hero-mobile":["Geist"],"label-badge":["JetBrains Mono"],"display-hero":["Geist"],"label-pill":["Geist"],"headline-sm":["Geist"],"body-lg":["Geist"],"body-md":["Geist"]},"fontSize":{"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}],"code-address":["13px",{"lineHeight":"18px","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-lg":["32px",{"lineHeight":"38px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"30px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-hero-mobile":["36px",{"lineHeight":"40px","letterSpacing":"-0.03em","fontWeight":"600"}],"label-badge":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"display-hero":["56px",{"lineHeight":"60px","letterSpacing":"-0.04em","fontWeight":"600"}],"label-pill":["12px",{"lineHeight":"16px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"500"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm group" data-path="overview" href="#"><div class="w-7 h-7 rounded-lg bg-primary text-on-primary flex items-center justify-center font-code-address text-code-address font-semibold">W</div><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight font-semibold">Widget Starter</span></a><div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-badge text-label-badge"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]"></span><span class="">Propulsé par Reown AppKit • Base Mainnet</span></div></div><nav class="hidden md:flex items-center gap-1 p-1 bg-surface-container-low rounded-full" data-active-classes="bg-surface-container-high text-on-surface font-medium rounded-full"><a aria-current="page" class="px-4 py-1.5 transition-colors bg-surface-container-high text-on-surface font-medium rounded-full" data-path="overview" href="#">Widgets</a><a class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" data-path="contracts" href="#">Smart Contracts</a><a class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" data-path="tokens" href="#">Design Tokens</a><a class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md" data-path="analytics" href="#">Transfers</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface font-label-badge text-label-badge" id="networkPill"><span class="w-2 h-2 rounded-full bg-[#0052FF] shadow-[0_0_8px_rgba(0,82,255,0.6)]" id="networkStatusDot"></span><span class="text-on-surface-variant" id="networkChainName">Base</span><span class="text-on-surface font-medium" id="networkTypeName">Mainnet</span></div><!-- Reown AppKit Button Container / Native Trigger --><div class="flex items-center gap-2"><button class="hidden sm:flex px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-text-primary border border-subtle font-label-pill text-label-pill transition-all items-center gap-1.5 shadow-xs active:scale-95 group" id="headerOnRampBtn" title="Acheter de la crypto par Carte ou Apple Pay via Reown On-Ramp" type="button"><span class="material-symbols-outlined text-[16px] text-[#0052FF] group-hover:scale-110 transition-transform">credit_card</span><span class="">Acheter Crypto</span><span class="px-1.5 py-0.2 rounded-full bg-[#0052FF]/10 text-[#0052FF] text-[10px] font-semibold">On-Ramp</span></button><button class="px-4 py-2 rounded-full bg-primary text-on-primary hover:bg-primary-container font-label-pill text-label-pill transition-all flex items-center gap-2 shadow-xs group active:scale-95" id="connectWalletBtn" title="Connecter avec Reown AppKit" type="button"><svg class="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path d="M5.5 8.5C5.5 6.567 7.067 5 9 5h6c1.933 0 3.5 1.567 3.5 3.5v7c0 1.933-1.567 3.5-3.5 3.5H9c-1.933 0-3.5-1.567-3.5-3.5v-7zm7.5 1a1 1 0 100 2 1 1 0 000-2zm-3.5 4a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm5.5 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"></path></svg><span class="w-2 h-2 rounded-full bg-amber-400" id="walletStatusDot"></span><span id="connectWalletBtnText" class="">Connecter avec Reown</span></button><div class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container border border-subtle flex items-center justify-center cursor-pointer transition-transform hover:scale-105" id="userAvatarBtn" title="Statut Reown AppKit"><span class="material-symbols-outlined text-text-primary text-[18px]">account_balance_wallet</span></div></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full relative overflow-hidden items-center justify-start">
-<!-- Ethereal ambient top aura matching Base palette (#0052FF) -->
-<div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[980px] h-[520px] rounded-full bg-[#0052FF]/10 blur-[130px] -z-10"></div>
-<section class="w-full max-w-7xl mx-auto px-6 py-12 lg:py-16 flex flex-col items-center text-center"><div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-card shadow-sm hover:shadow transition-all duration-300 mb-8 cursor-default"><span class="w-2 h-2 rounded-full bg-[#0052FF]"></span><span class="font-body-sm text-body-sm font-semibold text-text-primary tracking-tight">Base Mainnet</span><span class="w-1 h-3 rounded-full bg-surface-container-highest"></span><span class="font-label-badge text-label-badge text-text-muted">Reown AppKit ID : 12f654a2... • Chain ID 8453</span></div><h1 class="font-display-hero text-display-hero text-text-primary tracking-tight max-w-3xl mx-auto leading-none mb-4">Presence that doesn't beg for attention</h1><p class="font-body-lg text-body-lg text-text-muted max-w-xl mx-auto mb-8">Pure smart contract instrumentation on Base L2. Ultra-low gas latency, deliberate typography, and atomic Web3 primitives.</p><div class="w-full max-w-5xl grid grid-cols-2 sm:grid-cols-4 gap-3 p-2 bg-surface-card rounded-2xl border border-subtle shadow-xs mb-10 text-left"><div class="p-3 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[11px] font-label-badge text-text-muted">Réseau &amp; Statut</span><div class="flex items-center gap-1.5 mt-1"><span class="w-2 h-2 rounded-full bg-[#0052FF]"></span><span class="font-headline-sm text-[15px] font-semibold text-text-primary">Base Mainnet (8453)</span></div><span class="text-[11px] font-label-badge text-emerald-600 mt-0.5">Frais L2 ultra-bas</span></div><div class="p-3 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[11px] font-label-badge text-text-muted">Jeton Actif</span><div class="flex items-center gap-1.5 mt-1"><span class="font-headline-sm text-[15px] font-semibold text-text-primary">$EEGO (ERC-20)</span></div><span class="text-[11px] font-label-badge text-text-muted mt-0.5">18 Décimales • Standard</span></div><div class="p-3 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[11px] font-label-badge text-text-muted">Solde Portefeuille</span><div class="flex items-center gap-1.5 mt-1"><span class="font-headline-sm text-[15px] font-semibold text-text-primary" id="kpiUserBalance">4 250.00 EEGO</span></div><span class="text-[11px] font-label-badge text-text-muted mt-0.5">≈ $428.19 USD</span></div><div class="p-3 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[11px] font-label-badge text-text-muted">Total Supply</span><div class="flex items-center gap-1.5 mt-1"><span class="font-headline-sm text-[15px] font-semibold text-text-primary">1 000 000 000</span></div><span class="text-[11px] font-label-badge text-text-muted mt-0.5">84.2% en circulation</span></div></div><div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 text-left items-start"><div class="lg:col-span-5 flex flex-col gap-6"><div class="w-full bg-surface-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-6 sm:p-7 flex flex-col"><div class="flex items-center justify-between gap-4 mb-5"><div class="inline-flex items-center p-1 rounded-full bg-surface-container-low" id="tokenSwitcher"><button class="px-4 py-1.5 rounded-full font-label-pill text-label-pill bg-surface-card text-text-primary shadow-xs transition-all" data-token="eego" type="button">Eego</button><button class="px-4 py-1.5 rounded-full font-label-pill text-label-pill text-text-muted hover:text-text-primary transition-all" data-token="ego" type="button">Ego</button></div><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]"></span><span class="font-label-badge text-label-badge font-medium">Base • ERC-20</span></div></div><div class="mb-5"><h2 class="font-headline-lg text-[22px] text-text-primary tracking-tight font-semibold" id="contractHeading">Contrat ERC-20</h2><span class="font-body-sm text-body-sm text-text-muted mt-1 block" id="tokenSymbolLabel">Réseau Base (Chain ID 8453) • Standard Protocol ($EEGO)</span></div><div class="w-full bg-surface-container-low rounded-xl p-3 sm:px-4 flex items-center justify-between gap-2 mb-5 group transition-colors hover:bg-surface-container"><div class="flex flex-col min-w-0"><span class="font-label-badge text-label-badge text-text-muted">Adresse du contrat sur Base</span><span class="font-code-address text-code-address text-text-primary truncate" id="contractAddrText">0x2b576C83E722e8E7A07836353b51cB3FC31408ce</span></div><div class="flex items-center gap-1 shrink-0"><a class="p-2 rounded-lg bg-surface-card text-on-surface hover:text-[#0052FF] shadow-xs hover:shadow transition-all active:scale-95 flex items-center justify-center" href="https://basescan.org/token/0x2b576C83E722e8E7A07836353b51cB3FC31408ce" id="basescanLink" rel="noopener noreferrer" target="_blank" title="Voir sur BaseScan"><span class="material-symbols-outlined text-[18px]">open_in_new</span></a><button class="p-2 rounded-lg bg-surface-card text-on-surface hover:text-text-primary shadow-xs hover:shadow transition-all active:scale-95 flex items-center justify-center" id="copyContractBtn" title="Copier l'adresse" type="button"><span class="material-symbols-outlined text-[18px]" id="copyContractIcon">content_copy</span></button></div></div><div class="grid grid-cols-2 gap-3 pt-1"><div class="bg-surface-container-lowest rounded-xl p-3.5 flex flex-col justify-between shadow-xs"><span class="font-body-sm text-body-sm text-text-muted">Décimales</span><span class="font-headline-md text-headline-md text-text-primary font-semibold mt-1">18</span><span class="font-label-badge text-label-badge text-text-muted mt-1">10<sup>18</sup> wei / unit</span></div><div class="bg-surface-container-lowest rounded-xl p-3.5 flex flex-col justify-between shadow-xs"><span class="font-body-sm text-body-sm text-text-muted">Total Supply</span><div class="flex items-baseline gap-1 mt-1"><span class="font-headline-md text-headline-md text-text-primary font-semibold" id="supplyDisplay">1 000 000 000</span></div><span class="font-label-badge text-label-badge text-text-muted mt-1">1 Milliard jetons max</span></div></div><div class="mt-4 pt-3 flex flex-col gap-1.5"><div class="flex items-center justify-between font-label-badge text-label-badge text-text-muted"><span class="">Circulation active (Base)</span><span class="font-semibold text-text-primary">84.2%</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden"><div class="h-full bg-text-primary rounded-full transition-all duration-700 w-[84.2%]"></div></div></div></div><div class="w-full bg-surface-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col gap-3"><div class="flex items-center justify-between"><span class="font-headline-sm text-[16px] font-semibold text-text-primary">Consulter un solde</span><span class="font-label-badge text-label-badge text-[#0052FF]">RPC Base L2</span></div><p class="font-body-sm text-body-sm text-text-muted">Vérifiez instantanément le solde de n'importe quelle adresse sur le contrat Base.</p><div class="flex flex-col sm:flex-row items-center gap-2"><div class="relative w-full"><input class="w-full h-10 px-3 rounded-lg bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 shadow-xs focus:shadow-md outline-none transition-all" id="lookupAddressInput" placeholder="Adresse Base (0x...)" type="text"></div><button class="w-full sm:w-auto px-4 h-10 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-text-primary font-body-sm text-body-sm transition-all shadow-xs flex items-center justify-center shrink-0" id="checkBalanceBtn" type="button"><span class="">Vérifier</span></button></div><div class="hidden px-3.5 py-2.5 rounded-xl bg-surface-container-low items-center justify-between gap-3" id="balanceResultBox"><span class="font-body-sm text-body-sm text-text-muted">Solde vérifié :</span><span class="font-code-address text-code-address font-semibold text-text-primary" id="balanceValueText">12,450.00 EEGO</span></div></div><div class="p-4 rounded-2xl bg-surface-card border border-subtle flex items-center justify-between gap-3 shadow-xs"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl bg-[#0052FF]/10 text-[#0052FF] flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">verified</span></div><div class="flex flex-col"><span class="text-[13px] font-semibold text-text-primary">Contrat Déployé sur Base</span><span class="text-[11px] font-label-badge text-text-muted">Audité &amp; Non-Custodial</span></div></div><a class="font-label-badge text-[12px] text-[#0052FF] hover:underline flex items-center gap-0.5" href="https://basescan.org" rel="noopener noreferrer" target="_blank">BaseScan <span class="material-symbols-outlined text-[13px]">open_in_new</span></a></div></div><div class="lg:col-span-7 flex flex-col gap-4"><div class="w-full p-1.5 rounded-2xl bg-surface-card border border-subtle shadow-xs flex items-center justify-between gap-1" id="actionTabNav"><button class="flex-1 py-2.5 px-3 rounded-xl bg-primary text-on-primary font-headline-sm text-[14px] font-medium transition-all flex items-center justify-center gap-2 shadow-xs" data-tab="swap" id="tabBtnSwap" type="button"><span class="material-symbols-outlined text-[18px]">swap_vert</span><span class="">Swap DEX</span></button><button class="flex-1 py-2.5 px-3 rounded-xl text-text-muted hover:text-text-primary font-headline-sm text-[14px] font-medium transition-all flex items-center justify-center gap-2" data-tab="transfer" id="tabBtnTransfer" type="button"><span class="material-symbols-outlined text-[18px]">send</span><span class="">Transfert</span></button><button class="flex-1 py-2.5 px-3 rounded-xl text-text-muted hover:text-text-primary font-headline-sm text-[14px] font-medium transition-all flex items-center justify-center gap-2" data-tab="onramp" id="tabBtnOnRamp" type="button"><span class="material-symbols-outlined text-[18px]">credit_card</span><span class="">Acheter Crypto</span><span class="px-1.5 py-0.2 rounded-full bg-[#0052FF]/10 text-[#0052FF] text-[10px] font-semibold">On-Ramp</span></button></div><div class="w-full bg-surface-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-6 sm:p-8 flex flex-col" id="swapWidgetCard"><div class="flex items-center justify-between gap-4 mb-4"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]"></span><span class="font-label-badge text-label-badge font-medium">Routeur DEX (Base Mainnet)</span></div><button class="px-2.5 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-text-muted hover:text-text-primary transition-colors flex items-center gap-1 font-label-badge text-label-badge shadow-xs" id="toggleRouterConfigBtn" title="Configurer le routeur DEX sur Base" type="button"><span class="material-symbols-outlined text-[16px]">tune</span><span class="">Routeur Base</span></button></div><div class="text-left mb-6"><h2 class="font-headline-lg text-[24px] text-text-primary tracking-tight font-semibold">Swap EEGO ⇄ ETH</h2><p class="font-body-sm text-body-sm text-text-muted mt-1">Échange instantané sur liquidity pool Base (Uniswap V3 / Aerodrome)</p></div><div class="w-full bg-surface-container-low rounded-xl p-4 flex flex-col gap-3 mb-6 transition-all hidden" id="routerConfigPanel"><div class="flex items-center justify-between"><span class="font-label-badge text-label-badge text-text-muted">Routeur DEX Base (SwapRouter02)</span><span class="flex items-center gap-1 text-[11px] font-label-badge text-[#0052FF] font-medium"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]"></span> Base L2 Actif</span></div><div class="flex flex-col gap-1"><label class="font-body-sm text-body-sm text-text-muted" for="dexRouterAddress">Adresse du routeur (Base SwapRouter02 / Aerodrome)</label><div class="relative flex items-center"><input class="w-full h-10 px-3 pr-24 rounded-lg bg-surface-card font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 outline-none transition-all shadow-xs focus:shadow-md" id="dexRouterAddress" type="text" value="0x2626664c2603336E57B271c5C0b26F421741e481"><div class="absolute right-1.5 flex items-center gap-1"><button class="px-2 py-1 rounded-md bg-surface-container-high hover:bg-surface-container-highest text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors flex items-center gap-1" id="copyRouterBtn" title="Copier l'adresse" type="button"><span class="material-symbols-outlined text-[14px]" id="copyRouterIcon">content_copy</span><span id="copyRouterText" class="">Copier</span></button></div></div></div><div class="flex items-center justify-between pt-1"><span class="font-body-sm text-body-sm text-text-muted">Tolérance de slippage</span><div class="flex items-center gap-1.5" id="slippageGroup"><button class="slippage-btn px-2 py-0.5 rounded-full bg-surface-card font-label-badge text-label-badge text-text-muted shadow-xs transition-all hover:text-text-primary" data-slippage="0.1" type="button">0.1%</button><button class="slippage-btn px-2 py-0.5 rounded-full bg-surface-card font-label-badge text-label-badge text-text-primary font-semibold shadow-xs ring-1 ring-primary/20 transition-all" data-slippage="0.5" type="button">0.5%</button><button class="slippage-btn px-2 py-0.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest font-label-badge text-label-badge text-text-muted hover:text-text-primary transition-all" data-slippage="1.0" type="button">1.0%</button><button class="slippage-btn px-2 py-0.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest font-label-badge text-label-badge text-text-muted hover:text-text-primary transition-all" data-slippage="auto" type="button">Auto</button></div></div></div><form class="flex flex-col gap-3" id="swapForm" onsubmit="event.preventDefault();"><div class="flex flex-col gap-1.5 p-3.5 rounded-xl bg-surface-container-low transition-colors"><div class="flex items-center justify-between font-body-sm text-body-sm text-text-muted"><span id="payLabel" class="">Vous payez</span><div class="flex items-center gap-1 font-label-badge text-label-badge"><span class="">Dispo Base:</span><span class="text-text-primary font-medium" id="swapAvailableBalance">4 250.00 EEGO</span><button class="ml-1 px-1.5 py-0.5 rounded bg-surface-container-high text-text-primary hover:bg-surface-container font-semibold transition-colors" id="swapMaxBtn" type="button">MAX</button></div></div><div class="relative flex items-center justify-between gap-3"><input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary outline-none placeholder:text-text-muted/60" id="swapPayAmount" min="0" placeholder="1000" step="any" type="number" value="1000"><div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0" id="payTokenBadge"><span class="w-2 h-2 rounded-full bg-primary" id="payTokenDot"></span><span class="font-label-badge text-label-badge font-semibold text-text-primary" id="payTokenSymbol">EEGO</span></div></div><div class="text-right font-label-badge text-label-badge text-text-muted" id="payUsdEquivalent">≈ $100.75 USD</div></div><div class="relative flex items-center justify-center -my-1 z-10"><button class="w-9 h-9 rounded-full bg-surface-card hover:bg-surface-container-high shadow-xs hover:shadow transition-all flex items-center justify-center active:scale-95 text-text-primary" id="invertSwapTokensBtn" title="Inverser les tokens" type="button"><span class="material-symbols-outlined text-[18px]">swap_vert</span></button></div><div class="flex flex-col gap-1.5 p-3.5 rounded-xl bg-surface-container-low transition-colors"><div class="flex items-center justify-between font-body-sm text-body-sm text-text-muted"><span id="receiveLabel" class="">Vous recevez (estimé)</span><span class="font-label-badge text-label-badge text-text-muted" id="minGuaranteedReceive">Garanti min: 0.1002 ETH</span></div><div class="relative flex items-center justify-between gap-3"><input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary outline-none placeholder:text-text-muted/60" id="swapReceiveAmount" readonly="" type="text" value="0.1008"><div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0" id="receiveTokenBadge"><span class="w-2 h-2 rounded-full bg-[#0052FF]" id="receiveTokenDot"></span><span class="font-label-badge text-label-badge font-semibold text-text-primary" id="receiveTokenSymbol">ETH</span></div></div><div class="text-right font-label-badge text-label-badge text-text-muted" id="receiveUsdEquivalent">≈ $314.50 USD</div></div><div class="flex flex-col gap-2 p-3.5 rounded-xl bg-surface-container-lowest shadow-xs text-body-sm text-body-sm"><div class="flex items-center justify-between text-text-muted"><span class="">Taux de conversion</span><span class="font-code-address text-code-address font-medium text-text-primary" id="conversionRateLabel">1 ETH ≈ 9 925 EEGO</span></div><div class="flex items-center justify-between text-text-muted"><span class="">Impact sur le prix</span><span class="font-label-badge text-label-badge text-text-primary font-semibold">&lt; 0.08%</span></div><div class="flex items-center justify-between text-text-muted"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-[#0052FF]">bolt</span><span class="">Frais réseau Base (Gas L2)</span></div><span class="font-label-badge text-label-badge text-text-primary font-semibold">~0.00001 ETH (~$0.03)</span></div><div class="flex items-center justify-between text-text-muted pt-1 border-t border-subtle"><span class="">Route DEX optimale sur Base</span><span class="font-label-badge text-label-badge text-text-muted" id="swapRouteText">EEGO → WETH (Base) → ETH</span></div></div><div class="hidden flex-col gap-2 p-3.5 rounded-xl bg-surface-container-low border border-subtle transition-all duration-300" id="swapProgressTracker"><div class="flex items-center justify-between font-label-badge text-label-badge"><span class="font-semibold text-text-primary flex items-center gap-1.5" id="swapTrackerStepLabel"><span class="material-symbols-outlined text-[16px] text-[#0052FF] animate-spin" id="swapTrackerStepIcon">sync</span><span id="swapTrackerStepText" class="">Étape 1/2 : Approbation EEGO...</span></span><span class="text-text-muted font-code-address" id="swapTrackerPercent">45%</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden"><div class="h-full bg-[#0052FF] rounded-full transition-all duration-500 w-[45%]" id="swapTrackerProgressBar"></div></div><div class="flex items-center justify-between text-[11px] text-text-muted pt-1 font-label-badge"><span class="text-[#0052FF] font-medium" id="swapStep1Badge">1. Approbation DEX</span><span class="text-text-muted" id="swapStep2Badge">2. Swap Base L2</span><span class="text-text-muted" id="swapStep3Badge">3. Finalisation</span></div></div><div class="pt-2"><button class="w-full h-12 rounded-xl bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] font-headline-sm text-headline-sm font-medium transition-all shadow-xs flex items-center justify-center gap-2" id="executeSwapBtn" type="button"><span id="executeSwapBtnText" class="">Échanger sur Base</span><span class="material-symbols-outlined text-[18px]" id="executeSwapBtnIcon">arrow_forward</span></button></div><div class="hidden rounded-xl p-3 text-center font-body-sm text-body-sm transition-all duration-300" id="swapFeedback"></div></form></div><div class="w-full bg-surface-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-6 sm:p-8 flex flex-col hidden" id="transferWidgetCard"><div class="flex items-center justify-between gap-4 mb-4"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]"></span><span class="font-label-badge text-label-badge font-medium">Transfert Direct • Base L2</span></div><span class="font-label-badge text-label-badge text-emerald-600 font-medium">Gas &lt; $0.03</span></div><div class="text-left mb-6"><h2 class="font-headline-lg text-[24px] text-text-primary tracking-tight font-semibold">Transfert ERC-20</h2><p class="font-body-sm text-body-sm text-text-muted mt-1">Exécution ultra-rapide sur Base avec frais L2 quasi-nuls</p></div><form class="flex flex-col gap-4" id="transferForm" onsubmit="event.preventDefault();"><div class="flex flex-col gap-1.5"><label class="font-body-sm text-body-sm text-text-muted flex items-center justify-between" for="recipientAddress"><span class="">Adresse destinataire Base</span><span class="font-label-badge text-label-badge text-text-muted" id="recipientValidationNotice">Format EVM (Base) 0x...</span></label><div class="relative flex items-center"><input class="w-full h-12 px-4 rounded-xl bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none" id="recipientAddress" placeholder="0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97" type="text"><button class="absolute right-2 px-2.5 py-1 rounded-lg bg-surface-card font-label-badge text-label-badge text-text-muted hover:text-text-primary shadow-xs transition-colors" id="pasteRecipientBtn" title="Coller" type="button">Coller</button></div></div><div class="flex flex-col gap-1.5"><div class="flex items-center justify-between font-body-sm text-body-sm text-text-muted"><label for="tokenAmount" class="">Montant (unités minimales wei)</label><div class="flex items-center gap-1 font-label-badge text-label-badge"><span class="">Dispo Base:</span><span class="text-text-primary font-medium" id="senderBalancePreview">4 250.00</span><button class="ml-1 px-1.5 py-0.5 rounded bg-surface-container-high text-text-primary hover:bg-surface-container font-semibold transition-colors" id="maxAmountBtn" type="button">MAX</button></div></div><div class="relative flex items-center"><input class="w-full h-12 pl-4 pr-24 rounded-xl bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none" id="tokenAmount" min="0" placeholder="1000000000000000000" step="any" type="number"><div class="absolute right-3 flex items-center gap-1.5 pointer-events-none"><span class="font-label-badge text-label-badge text-text-muted bg-surface-card px-2 py-1 rounded-md shadow-xs" id="currencyTicker">EEGO (wei)</span></div></div><div class="flex items-center justify-between px-1 text-text-muted"><span class="font-body-sm text-body-sm">≈ Équivalent standard</span><span class="font-code-address text-code-address text-text-primary" id="standardEquivalent">0.000000 EEGO</span></div></div><div class="p-3 rounded-xl bg-surface-container-lowest flex items-center justify-between shadow-xs"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-[#0052FF]">bolt</span><span class="font-body-sm text-body-sm text-text-muted">Frais réseau Base (Gas L2)</span></div><span class="font-label-badge text-label-badge text-text-primary font-semibold">~0.00001 ETH (&lt; $0.03)</span></div><div class="pt-2"><button class="w-full h-12 rounded-xl bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] font-headline-sm text-headline-sm font-medium transition-all shadow-xs flex items-center justify-center gap-2" id="sendTransactionBtn" type="button"><span class="">Envoyer sur Base</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div><div class="hidden rounded-xl p-3 text-center font-body-sm text-body-sm transition-all duration-300" id="transferFeedback"></div></form></div><div class="w-full bg-surface-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-6 sm:p-8 flex flex-col hidden" id="onRampWidgetCard"><div class="flex items-center justify-between gap-4 mb-4"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]"></span><span class="font-label-badge text-label-badge font-medium">Reown OnRamp • Partenaire certifié</span></div><div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 font-label-badge text-label-badge font-medium shadow-xs"><span class="material-symbols-outlined text-[14px]">bolt</span><span class="">Frais réduits Base L2</span></div></div><div class="text-left mb-6"><h2 class="font-headline-lg text-[24px] text-text-primary tracking-tight font-semibold">Acheter Crypto • Reown On-Ramp</h2><p class="font-body-sm text-body-sm text-text-muted mt-1">Achetez de l'ETH ou du $EEGO par Carte bancaire, Apple Pay ou virement SEPA avec Reown Pay sur Base L2.</p></div><form class="flex flex-col gap-4" id="onRampForm" onsubmit="event.preventDefault();"><div class="flex flex-col gap-2 p-3.5 rounded-xl bg-surface-container-low"><div class="flex items-center justify-between font-body-sm text-body-sm text-text-muted"><span class="">Montant à payer (Fiat)</span><div class="flex items-center gap-1.5 font-label-badge text-label-badge"><button class="onramp-fiat-btn px-2 py-0.5 rounded-md bg-surface-card text-text-primary font-semibold shadow-xs" data-fiat="EUR" type="button">EUR (€)</button><button class="onramp-fiat-btn px-2 py-0.5 rounded-md bg-surface-container-high text-text-muted hover:text-text-primary transition-colors" data-fiat="USD" type="button">USD ($)</button></div></div><div class="relative flex items-center justify-between gap-3"><div class="flex items-center gap-1 w-full"><span class="font-headline-md text-headline-md text-text-muted" id="onRampFiatPrefix">€</span><input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary outline-none placeholder:text-text-muted/60" id="onRampFiatAmount" min="10" placeholder="100" step="any" type="number" value="100"></div><div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0"><span class="material-symbols-outlined text-[18px] text-[#0052FF]">payments</span><span class="font-label-badge text-label-badge font-semibold text-text-primary" id="onRampFiatBadge">EUR</span></div></div><div class="flex items-center gap-2 pt-1"><span class="text-[11px] text-text-muted font-label-badge">Paliers rapides :</span><div class="flex items-center gap-1.5" id="onRampPresets"><button class="preset-btn px-2.5 py-0.5 rounded-full bg-surface-card hover:bg-surface-container-high text-text-muted font-label-badge text-label-badge shadow-xs transition-colors" data-amount="50" type="button">50 €</button><button class="preset-btn px-2.5 py-0.5 rounded-full bg-surface-card text-text-primary font-semibold ring-1 ring-primary/20 shadow-xs transition-colors" data-amount="100" type="button">100 €</button><button class="preset-btn px-2.5 py-0.5 rounded-full bg-surface-card hover:bg-surface-container-high text-text-muted font-label-badge text-label-badge shadow-xs transition-colors" data-amount="250" type="button">250 €</button><button class="preset-btn px-2.5 py-0.5 rounded-full bg-surface-card hover:bg-surface-container-high text-text-muted font-label-badge text-label-badge shadow-xs transition-colors" data-amount="500" type="button">500 €</button></div></div></div><div class="flex flex-col gap-1.5 p-3.5 rounded-xl bg-surface-container-low"><div class="flex items-center justify-between font-body-sm text-body-sm text-text-muted"><span class="">Crypto reçue (estimée sur Base)</span><span class="font-label-badge text-label-badge text-emerald-600 font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Règlement instantané</span></div><div class="relative flex items-center justify-between gap-3"><input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary outline-none" id="onRampCryptoReceived" readonly="" type="text" value="0.0345"><div class="flex items-center gap-1.5 p-1 rounded-lg bg-surface-card shadow-xs shrink-0"><button class="onramp-crypto-tab px-2.5 py-1 rounded-md text-text-primary font-semibold font-label-badge text-label-badge bg-surface-container-low" data-crypto="ETH" id="cryptoTabEth" type="button">ETH</button><button class="onramp-crypto-tab px-2.5 py-1 rounded-md text-text-muted hover:text-text-primary font-medium font-label-badge text-label-badge transition-colors" data-crypto="EEGO" id="cryptoTabEego" type="button">EEGO</button></div></div><div class="flex items-center justify-between text-text-muted font-label-badge text-label-badge pt-0.5"><span class="">Taux On-Ramp indicatif :</span><span class="text-text-primary font-code-address" id="onRampRatePreview">1 ETH ≈ 2 890 €</span></div></div><div class="flex flex-col gap-1.5"><label class="font-body-sm text-body-sm text-text-muted flex items-center justify-between" for="onRampRecipientInput"><span class="">Adresse de réception (Base L2)</span><span class="font-label-badge text-label-badge text-[#0052FF]">Auto-détection Wallet</span></label><div class="relative flex items-center"><input class="w-full h-10 px-3 pr-20 rounded-xl bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none text-[13px]" id="onRampRecipientInput" placeholder="Connecter ou coller 0x..." type="text"><button class="absolute right-2 px-2 py-0.5 rounded-md bg-surface-card font-label-badge text-[11px] text-text-muted hover:text-text-primary shadow-xs transition-colors" id="onRampUseConnectedBtn" title="Utiliser l'adresse de mon wallet" type="button">Mon Wallet</button></div></div><div class="p-3 rounded-xl bg-surface-container-lowest flex flex-col gap-2 shadow-xs"><div class="flex items-center justify-between text-[11px] font-label-badge text-text-muted"><span class="">Passerelles bancaires agréées :</span><span class="text-text-primary font-medium">Sans KYC &lt; 500 €</span></div><div class="grid grid-cols-2 sm:grid-cols-4 gap-2"><div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-center gap-1.5 font-label-badge text-[11px] text-text-primary font-medium"><span class="material-symbols-outlined text-[16px] text-[#0052FF]">credit_card</span><span class="">Carte CB / Visa</span></div><div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-center gap-1.5 font-label-badge text-[11px] text-text-primary font-medium"><span class="material-symbols-outlined text-[16px] text-text-primary">phone_iphone</span><span class="">Apple Pay</span></div><div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-center gap-1.5 font-label-badge text-[11px] text-text-primary font-medium"><span class="material-symbols-outlined text-[16px] text-emerald-600">account_balance</span><span class="">Virement SEPA</span></div><div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-center gap-1.5 font-label-badge text-[11px] text-text-primary font-medium"><span class="material-symbols-outlined text-[16px] text-[#0052FF]">sync_alt</span><span class="">Coinbase Pay</span></div></div></div><div class="pt-1"><button class="w-full h-12 rounded-xl bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] font-headline-sm text-headline-sm font-medium transition-all shadow-xs flex items-center justify-center gap-2 group" id="openOnRampModalBtn" type="button"><span class="material-symbols-outlined text-[20px] text-white">lock</span><span class="">Ouvrir Reown On-Ramp</span><span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span></button></div><div class="flex items-center justify-center gap-1.5 text-center text-text-muted text-[11px] font-label-badge"><span class="material-symbols-outlined text-[13px] text-emerald-600">verified_user</span><span class="">Propulsé par Reown AppKit On-Ramp (ID: 12f654a2...). Transactions sécurisées non-custodial.</span></div></form></div></div></div><div class="flex flex-col items-center text-center gap-6 mt-12 pb-6"><p class="font-body-lg text-body-lg text-text-muted">Build with clarity, speed, and quiet confidence on Base</p><a class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-primary text-on-primary font-label-pill text-label-pill hover:bg-primary-container shadow-sm hover:shadow transition-all group" href="https://docs.base.org" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[16px] text-on-primary">menu_book</span><span class="">Explorer la documentation Base</span></a></div></section>
-</div>
-<!-- Reown AppKit Modal Dialog -->
-<div aria-labelledby="reownModalTitle" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 hidden" id="reownModal" role="dialog">
-<div class="relative w-full max-w-sm mx-4 bg-surface-card rounded-3xl p-6 shadow-2xl border border-subtle transform scale-95 transition-all duration-300" id="reownModalCard">
-<!-- Header with high-visibility close button -->
-<div class="flex items-center justify-between pb-4 border-b border-subtle">
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-xl bg-[#0052FF] flex items-center justify-center text-white shadow-xs">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M5.5 8.5C5.5 6.567 7.067 5 9 5h6c1.933 0 3.5 1.567 3.5 3.5v7c0 1.933-1.567 3.5-3.5 3.5H9c-1.933 0-3.5-1.567-3.5-3.5v-7z"></path></svg>
-</div>
-<div class="flex flex-col text-left">
-<span class="font-headline-sm text-[16px] text-text-primary font-semibold leading-tight" id="reownModalTitle">Reown AppKit</span>
-<span class="font-label-badge text-[11px] text-[#0052FF]">Base Mainnet • ID: 12f654a2</span>
-</div>
-</div>
-<button aria-label="Fermer" class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container-high text-text-primary flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs border border-subtle" id="closeReownModalBtn" title="Fermer la fenêtre" type="button">
-<span class="material-symbols-outlined text-[20px]">close</span>
-</button>
-</div>
-<!-- Active State or Wallet List -->
-<div class="pt-4 flex flex-col gap-2.5" id="reownModalContent">
-<div class="text-left font-body-sm text-body-sm text-text-muted mb-1">Sélectionnez votre portefeuille Web3 :</div>
-<!-- Option 1: Browser / MetaMask -->
-<button class="w-full p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container text-left transition-all flex items-center justify-between group" data-wallet="metamask" type="button">
-<div class="flex items-center gap-3">
-<div class="w-9 h-9 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 font-code-address text-code-address font-bold">🦊</div>
-<div class="flex flex-col">
-<span class="font-body-md text-text-primary font-medium group-hover:text-primary">MetaMask</span>
-<span class="font-label-badge text-[11px] text-text-muted">Extension ou Mobile</span>
-</div>
-</div>
-<span class="font-label-badge text-[11px] px-2 py-0.5 rounded-full bg-surface-card text-[#0052FF] font-medium shadow-xs">Connecter</span>
-</button>
-<!-- Option 2: Coinbase Wallet -->
-<button class="w-full p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container text-left transition-all flex items-center justify-between group" data-wallet="coinbase" type="button">
-<div class="flex items-center gap-3">
-<div class="w-9 h-9 rounded-xl bg-[#0052FF]/10 flex items-center justify-center text-[#0052FF] font-code-address text-code-address font-bold">🔵</div>
-<div class="flex flex-col">
-<span class="font-body-md text-text-primary font-medium group-hover:text-primary">Coinbase Wallet</span>
-<span class="font-label-badge text-[11px] text-text-muted">Natif Base L2</span>
-</div>
-</div>
-<span class="font-label-badge text-[11px] px-2 py-0.5 rounded-full bg-surface-card text-text-muted shadow-xs">Recommandé</span>
-</button>
-<!-- Option 3: WalletConnect (Reown Native QR Code) -->
-<button class="w-full p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container text-left transition-all flex items-center justify-between group" data-wallet="walletconnect" type="button">
-<div class="flex items-center gap-3">
-<div class="w-9 h-9 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-600 font-code-address text-code-address font-bold">⚡</div>
-<div class="flex flex-col">
-<span class="font-body-md text-text-primary font-medium group-hover:text-primary">WalletConnect</span>
-<span class="font-label-badge text-[11px] text-text-muted">Scanner avec n'importe quel wallet</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-[18px] text-text-muted group-hover:translate-x-0.5 transition-transform">qr_code_2</span>
-</button>
-<!-- Option 4: Rainbow -->
-<button class="w-full p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container text-left transition-all flex items-center justify-between group" data-wallet="rainbow" type="button">
-<div class="flex items-center gap-3">
-<div class="w-9 h-9 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-600 font-code-address text-code-address font-bold">🌈</div>
-<div class="flex flex-col">
-<span class="font-body-md text-text-primary font-medium group-hover:text-primary">Rainbow</span>
-<span class="font-label-badge text-[11px] text-text-muted">Ethereum &amp; Base L2</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-[18px] text-text-muted group-hover:translate-x-0.5 transition-transform">chevron_right</span>
-</button>
-</div>
-<!-- Connected State Panel (hidden by default) -->
-<div class="hidden pt-4 flex flex-col gap-4 text-left" id="reownConnectedPanel">
-<div class="p-3.5 rounded-2xl bg-surface-container-low flex flex-col gap-1.5">
-<div class="flex items-center justify-between">
-<span class="font-label-badge text-[11px] text-text-muted">Adresse Reown connectée</span>
-<span class="font-label-badge text-[11px] text-emerald-600 font-medium">Actif sur Base</span>
-</div>
-<span class="font-code-address text-code-address text-text-primary font-medium" id="modalUserAddress">0x...</span>
-<div class="flex items-center justify-between pt-1 border-t border-subtle mt-1 font-body-sm text-body-sm text-text-muted">
-<span class="">Solde EEGO :</span>
-<span class="font-semibold text-text-primary" id="modalUserBalance">4 250.00 EEGO</span>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<button class="flex-1 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-text-primary font-label-pill text-label-pill transition-colors flex items-center justify-center gap-1.5" id="copyAddressModalBtn" type="button">
-<span class="material-symbols-outlined text-[16px]">content_copy</span>
-<span class="">Copier l'adresse</span>
-</button>
-<button class="flex-1 py-2.5 rounded-xl bg-error-container text-on-error-container hover:opacity-90 font-label-pill text-label-pill transition-all flex items-center justify-center gap-1.5" id="disconnectReownBtn" type="button">
-<span class="material-symbols-outlined text-[16px]">logout</span>
-<span class="">Déconnecter</span>
-</button>
-</div>
-</div>
-<!-- Reown AppKit Footer note -->
-<div class="pt-4 mt-2 border-t border-subtle flex items-center justify-between font-label-badge text-[11px] text-text-muted">
-<span class="">Reown AppKit SDK</span>
-<a class="text-[#0052FF] hover:underline flex items-center gap-0.5" href="https://docs.reown.com/appkit" rel="noopener noreferrer" target="_blank">
-        Docs <span class="material-symbols-outlined text-[12px]">open_in_new</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Modal Confirmation Swap Dédiée -->
-<div aria-labelledby="swapSuccessModalTitle" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 hidden" id="swapSuccessModal" role="dialog">
-<div class="relative w-full max-w-sm mx-4 bg-surface-card rounded-3xl p-6 shadow-2xl border border-subtle transform scale-95 transition-all duration-300 flex flex-col text-center" id="swapSuccessCard">
-<div class="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto mb-4">
-<span class="material-symbols-outlined text-[32px]">check_circle</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-text-primary font-semibold tracking-tight" id="swapSuccessModalTitle">Swap validé sur Base !</h3>
-<p class="font-body-sm text-body-sm text-text-muted mt-1" id="swapSuccessSummary">Réception de 0.1008 ETH confirmée sur le réseau Base L2.</p>
-<!-- Details Box -->
-<div class="w-full bg-surface-container-low rounded-2xl p-4 my-5 flex flex-col gap-2.5 text-left font-body-sm">
-<div class="flex items-center justify-between text-text-muted">
-<span class="">Montant échangé :</span>
-<span class="font-semibold text-text-primary" id="modalSwapAmountSent">1 000 EEGO</span>
-</div>
-<div class="flex items-center justify-between text-text-muted">
-<span class="">Montant reçu :</span>
-<span class="font-semibold text-emerald-600" id="modalSwapAmountReceived">+0.1008 ETH</span>
-</div>
-<div class="flex items-center justify-between text-text-muted">
-<span class="">Réseau :</span>
-<span class="font-label-badge text-label-badge text-[#0052FF] font-medium">Base Mainnet (8453)</span>
-</div>
-<div class="pt-2 border-t border-subtle flex flex-col gap-1">
-<span class="text-[11px] text-text-muted font-label-badge">Hash de transaction BaseScan :</span>
-<div class="flex items-center justify-between gap-2">
-<span class="font-code-address text-[12px] text-text-primary truncate" id="modalSwapTxHash">0x8a4b2c...c39d</span>
-<a class="px-2.5 py-1 rounded-lg bg-surface-card text-[#0052FF] hover:bg-surface-container text-[11px] font-label-badge flex items-center gap-1 shrink-0 shadow-xs transition-colors" href="#" id="modalSwapBasescanLink" rel="noopener noreferrer" target="_blank">
-<span class="">Explorer</span>
-<span class="material-symbols-outlined text-[13px]">open_in_new</span>
-</a>
-</div>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<button class="w-full py-3 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-headline-sm text-headline-sm font-medium transition-all shadow-xs" id="closeSwapSuccessBtn" type="button">
-        Fermer
-      </button>
-</div>
-</div>
-</div><div aria-labelledby="onRampModalTitle" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 hidden" id="reownOnRampModal" role="dialog"><div class="relative w-full max-w-md mx-4 bg-surface-card rounded-3xl p-6 shadow-2xl border border-subtle transform scale-95 transition-all duration-300 flex flex-col gap-4 text-left" id="reownOnRampCard"><div class="flex items-center justify-between pb-3 border-b border-subtle"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-xl bg-[#0052FF] flex items-center justify-center text-white shadow-xs"><span class="material-symbols-outlined text-[18px]">credit_card</span></div><div class="flex flex-col"><span class="font-headline-sm text-[16px] text-text-primary font-semibold leading-tight" id="onRampModalTitle">Reown On-Ramp Pay</span><span class="font-label-badge text-[11px] text-[#0052FF]">Paiement CB / Visa / Mastercard • 3D Secure</span></div></div><button aria-label="Fermer" class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container-high text-text-primary flex items-center justify-center transition-all duration-200 active:scale-95 shadow-xs border border-subtle" id="closeOnRampModalBtn" title="Fermer" type="button"><span class="material-symbols-outlined text-[20px]">close</span></button></div><div class="p-3 rounded-2xl bg-surface-container-low flex items-center justify-between"><div class="flex flex-col"><span class="text-[11px] font-label-badge text-text-muted">Total à régler :</span><span class="font-headline-md text-headline-md font-semibold text-text-primary" id="modalOnRampPayAmount">100 €</span></div><div class="flex flex-col text-right"><span class="text-[11px] font-label-badge text-text-muted">Vous recevez sur Base :</span><span class="font-code-address font-semibold text-emerald-600" id="modalOnRampCryptoAmount">≈ 0.0345 ETH</span></div></div><form class="flex flex-col gap-3" id="onRampCardPaymentForm" onsubmit="event.preventDefault();"><div class="flex flex-col gap-1"><label class="font-body-sm text-body-sm text-text-muted flex items-center justify-between" for="onRampCardHolder"><span class="">Titulaire de la carte</span><span class="text-[11px] font-label-badge text-[#0052FF]">Requis</span></label><input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-body-sm text-body-sm text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none border border-subtle" id="onRampCardHolder" name="cardholder" placeholder="Ex: Alex Martin" required="" type="text"></div><div class="flex flex-col gap-1"><label class="font-body-sm text-body-sm text-text-muted flex items-center justify-between" for="onRampCardNumber"><span class="">Numéro de carte bancaire</span><span class="font-label-badge text-[11px] text-text-muted">16 chiffres</span></label><div class="relative flex items-center"><input class="w-full h-10 px-3 pr-20 rounded-xl bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none border border-subtle" id="onRampCardNumber" maxlength="19" name="cardnumber" placeholder="4532 •••• •••• 8892" required="" type="text"><div class="absolute right-2 flex items-center gap-1 text-[#0052FF]"><span class="material-symbols-outlined text-[18px]">lock</span><span class="font-label-badge text-[10px] font-semibold">CB/Visa</span></div></div></div><div class="grid grid-cols-2 gap-2"><div class="flex flex-col gap-1"><label class="font-body-sm text-body-sm text-text-muted flex items-center justify-between" for="onRampCardExpiry"><span class="">Expiration</span><span class="font-label-badge text-[11px] text-text-muted">MM/AA</span></label><input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none border border-subtle" id="onRampCardExpiry" maxlength="5" name="expiry" placeholder="12/28" required="" type="text"></div><div class="flex flex-col gap-1"><label class="font-body-sm text-body-sm text-text-muted flex items-center justify-between" for="onRampCardCvc"><span class="">Code CVC / CVV</span><span class="font-label-badge text-[11px] text-text-muted">3 chiffres</span></label><input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-code-address text-code-address text-text-primary placeholder:text-text-muted/60 focus:bg-surface-card focus:shadow-md transition-all outline-none border border-subtle" id="onRampCardCvc" maxlength="4" name="cvc" placeholder="892" required="" type="password"></div></div><div class="p-2.5 rounded-xl bg-surface-container-low flex items-center justify-between gap-2 text-text-muted font-label-badge text-[11px]"><div class="flex items-center gap-1.5 text-emerald-600 font-medium"><span class="material-symbols-outlined text-[16px]">verified_user</span><span class="">Chiffrement SSL 256-bit</span></div><div class="flex items-center gap-1 text-[#0052FF]"><span class="material-symbols-outlined text-[14px]">shield</span><span class="">3D-Secure 2.0</span></div></div><div class="pt-1"><button class="w-full h-12 rounded-xl bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] font-headline-sm text-headline-sm font-medium transition-all shadow-xs flex items-center justify-center gap-2 group" id="confirmOnRampPaymentBtn" type="submit"><span class="material-symbols-outlined text-[18px] text-white">lock</span><span id="confirmOnRampBtnText" class="">Valider et payer sur Base</span><span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span></button></div></form><div class="pt-2 border-t border-subtle flex items-center justify-between text-[11px] text-text-muted font-label-badge"><span class="">Reown AppKit SDK On-Ramp v1.2</span><a class="text-[#0052FF] hover:underline flex items-center gap-0.5" href="https://docs.reown.com/appkit/on-ramp" rel="noopener noreferrer" target="_blank">Documentation OnRamp <span class="material-symbols-outlined text-[12px]">open_in_new</span></a></div></div></div>
-<!-- Elegant Floating Web3 Toast Container -->
-<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none" id="toastContainer"></div><script id="actionHubTabsScript" class="">document.addEventListener('DOMContentLoaded',function(){var tabBtnSwap=document.getElementById('tabBtnSwap');var tabBtnTransfer=document.getElementById('tabBtnTransfer');var tabBtnOnRamp=document.getElementById('tabBtnOnRamp');var swapWidgetCard=document.getElementById('swapWidgetCard');var transferWidgetCard=document.getElementById('transferWidgetCard');var onRampWidgetCard=document.getElementById('onRampWidgetCard');var headerOnRampBtn=document.getElementById('headerOnRampBtn');var tabs=[{btn:tabBtnSwap,card:swapWidgetCard},{btn:tabBtnTransfer,card:transferWidgetCard},{btn:tabBtnOnRamp,card:onRampWidgetCard}];function switchTab(targetName){tabs.forEach(function(item){if(!item.btn||!item.card)return;var isTarget=item.btn.getAttribute('data-tab')===targetName;if(isTarget){item.btn.className='flex-1 py-2.5 px-3 rounded-xl bg-primary text-on-primary font-headline-sm text-[14px] font-medium transition-all flex items-center justify-center gap-2 shadow-xs';item.card.classList.remove('hidden');}else{item.btn.className='flex-1 py-2.5 px-3 rounded-xl text-text-muted hover:text-text-primary font-headline-sm text-[14px] font-medium transition-all flex items-center justify-center gap-2';item.card.classList.add('hidden');}});}if(tabBtnSwap)tabBtnSwap.addEventListener('click',function(){switchTab('swap');});if(tabBtnTransfer)tabBtnTransfer.addEventListener('click',function(){switchTab('transfer');});if(tabBtnOnRamp)tabBtnOnRamp.addEventListener('click',function(){switchTab('onramp');});if(headerOnRampBtn){headerOnRampBtn.addEventListener('click',function(){switchTab('onramp');});}});</script><script id="reownOnRampInteractiveScript">document.addEventListener('DOMContentLoaded',function(){var headerOnRampBtn=document.getElementById('headerOnRampBtn');var openOnRampModalBtn=document.getElementById('openOnRampModalBtn');var reownOnRampModal=document.getElementById('reownOnRampModal');var reownOnRampCard=document.getElementById('reownOnRampCard');var closeOnRampModalBtn=document.getElementById('closeOnRampModalBtn');var onRampFiatAmount=document.getElementById('onRampFiatAmount');var onRampFiatPrefix=document.getElementById('onRampFiatPrefix');var onRampFiatBadge=document.getElementById('onRampFiatBadge');var onRampCryptoReceived=document.getElementById('onRampCryptoReceived');var onRampRatePreview=document.getElementById('onRampRatePreview');var onRampRecipientInput=document.getElementById('onRampRecipientInput');var onRampUseConnectedBtn=document.getElementById('onRampUseConnectedBtn');var modalOnRampPayAmount=document.getElementById('modalOnRampPayAmount');var modalOnRampCryptoAmount=document.getElementById('modalOnRampCryptoAmount');var confirmOnRampPaymentBtn=document.getElementById('confirmOnRampPaymentBtn');var confirmOnRampBtnText=document.getElementById('confirmOnRampBtnText');var currentFiat='EUR';var currentCrypto='ETH';var selectedProvider='Card / Apple Pay';function calcOnRamp(){var amt=parseFloat(onRampFiatAmount.value)||0;if(currentFiat==='EUR'){onRampFiatPrefix.textContent='€';onRampFiatBadge.textContent='EUR';if(currentCrypto==='ETH'){var ethVal=amt/2890;onRampCryptoReceived.value=ethVal>0?ethVal.toFixed(4):'0.0000';onRampRatePreview.textContent='1 ETH ≈ 2 890 €';}else{var eegoVal=amt/0.092;onRampCryptoReceived.value=eegoVal>0?eegoVal.toFixed(0)+' EEGO':'0 EEGO';onRampRatePreview.textContent='1 EEGO ≈ 0.092 €';}}else{onRampFiatPrefix.textContent='$';onRampFiatBadge.textContent='USD';if(currentCrypto==='ETH'){var ethValUsd=amt/3120;onRampCryptoReceived.value=ethValUsd>0?ethValUsd.toFixed(4):'0.0000';onRampRatePreview.textContent='1 ETH ≈ $3 120 USD';}else{var eegoValUsd=amt/0.1007;onRampCryptoReceived.value=eegoValUsd>0?eegoValUsd.toFixed(0)+' EEGO':'0 EEGO';onRampRatePreview.textContent='1 EEGO ≈ $0.1007 USD';}}}function openOnRampModal(){if(!reownOnRampModal)return;calcOnRamp();var sym=currentFiat==='EUR'?'€':'$';modalOnRampPayAmount.textContent=(onRampFiatAmount.value||100)+' '+sym;modalOnRampCryptoAmount.textContent='≈ '+onRampCryptoReceived.value+' '+currentCrypto;var recipientVal=onRampRecipientInput.value.trim();if(!recipientVal&&window.ethereum&&window.ethereum.selectedAddress){onRampRecipientInput.value=window.ethereum.selectedAddress;}reownOnRampModal.classList.remove('hidden');requestAnimationFrame(function(){reownOnRampModal.classList.remove('pointer-events-none','opacity-0');reownOnRampModal.classList.add('opacity-100');if(reownOnRampCard){reownOnRampCard.classList.remove('scale-95');reownOnRampCard.classList.add('scale-100');}});}function closeOnRampModal(){if(!reownOnRampModal)return;reownOnRampModal.classList.add('pointer-events-none','opacity-0');if(reownOnRampCard){reownOnRampCard.classList.add('scale-95');reownOnRampCard.classList.remove('scale-100');}setTimeout(function(){reownOnRampModal.classList.add('hidden');},200);}if(headerOnRampBtn)headerOnRampBtn.addEventListener('click',openOnRampModal);if(openOnRampModalBtn)openOnRampModalBtn.addEventListener('click',openOnRampModal);if(closeOnRampModalBtn)closeOnRampModalBtn.addEventListener('click',closeOnRampModal);if(reownOnRampModal)reownOnRampModal.addEventListener('click',function(e){if(e.target===reownOnRampModal)closeOnRampModal();});if(onRampFiatAmount)onRampFiatAmount.addEventListener('input',calcOnRamp);var presetBtns=document.querySelectorAll('.preset-btn');presetBtns.forEach(function(b){b.addEventListener('click',function(){presetBtns.forEach(function(btn){btn.className='preset-btn px-2.5 py-0.5 rounded-full bg-surface-card hover:bg-surface-container-high text-text-muted font-label-badge text-label-badge shadow-xs transition-colors';});b.className='preset-btn px-2.5 py-0.5 rounded-full bg-surface-card text-text-primary font-semibold ring-1 ring-primary/20 shadow-xs transition-colors';onRampFiatAmount.value=b.getAttribute('data-amount');calcOnRamp();});});var fiatBtns=document.querySelectorAll('.onramp-fiat-btn');fiatBtns.forEach(function(btn){btn.addEventListener('click',function(){fiatBtns.forEach(function(b){b.className='onramp-fiat-btn px-2 py-0.5 rounded-md bg-surface-container-high text-text-muted hover:text-text-primary transition-colors';});btn.className='onramp-fiat-btn px-2 py-0.5 rounded-md bg-surface-card text-text-primary font-semibold shadow-xs';currentFiat=btn.getAttribute('data-fiat');calcOnRamp();});});var cryptoTabs=document.querySelectorAll('.onramp-crypto-tab');cryptoTabs.forEach(function(tab){tab.addEventListener('click',function(){cryptoTabs.forEach(function(t){t.className='onramp-crypto-tab px-2.5 py-1 rounded-md text-text-muted hover:text-text-primary font-medium font-label-badge text-label-badge transition-colors';});tab.className='onramp-crypto-tab px-2.5 py-1 rounded-md text-text-primary font-semibold font-label-badge text-label-badge bg-surface-container-low';currentCrypto=tab.getAttribute('data-crypto');calcOnRamp();});});if(onRampUseConnectedBtn&&onRampRecipientInput){onRampUseConnectedBtn.addEventListener('click',function(){var addrText=document.getElementById('contractAddrText');var detected=window.ethereum&&window.ethereum.selectedAddress?window.ethereum.selectedAddress:(addrText?addrText.textContent.trim():'0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97');onRampRecipientInput.value=detected;});}var providerOpts=document.querySelectorAll('.onramp-provider-opt');providerOpts.forEach(function(opt){opt.addEventListener('click',function(){providerOpts.forEach(function(p){p.classList.remove('border-[#0052FF]','bg-surface-card');p.classList.add('bg-surface-container-low');});opt.classList.add('border-[#0052FF]','bg-surface-card');opt.classList.remove('bg-surface-container-low');selectedProvider=opt.getAttribute('data-provider');confirmOnRampBtnText.textContent='Payer via '+selectedProvider;});});if(confirmOnRampPaymentBtn){confirmOnRampPaymentBtn.addEventListener('click',function(){confirmOnRampPaymentBtn.disabled=true;confirmOnRampBtnText.textContent='Validation de commande Reown On-Ramp...';setTimeout(function(){closeOnRampModal();confirmOnRampPaymentBtn.disabled=false;confirmOnRampBtnText.textContent='Payer et recevoir sur Base';var toastFn=window.showToast;var mockHash='0x'+Array.from({length:64},function(){return Math.floor(Math.random()*16).toString(16);}).join('');var recAmt=onRampCryptoReceived.value+' '+currentCrypto;var toastBox=document.getElementById('toastContainer');if(toastBox){var toast=document.createElement('div');toast.className='pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-surface-card shadow-lg border border-subtle transition-all duration-300';toast.innerHTML='<span class="material-symbols-outlined text-[20px] text-emerald-600 shrink-0 mt-0.5">check_circle</span><div class="flex flex-col gap-0.5 text-left flex-1 min-w-0"><p class="font-body-sm text-body-sm text-text-primary font-medium leading-snug">Achat On-Ramp validé ! '+recAmt+' transféré vers Base Mainnet.</p><a href="https://basescan.org/tx/'+mockHash+'" target="_blank" rel="noopener noreferrer" class="font-code-address text-[11px] text-[#0052FF] hover:underline truncate">BaseScan: '+mockHash.slice(0,10)+'...'+mockHash.slice(-6)+' ↗</a></div>';toastBox.appendChild(toast);setTimeout(function(){toast.remove();},6000);}},1500);});}calcOnRamp();});</script>
-<script>
-  (function initWidgetStarterBaseWeb3() {
-    // Reown AppKit Official Configuration
-    const REOWN_PROJECT_ID = '12f654a2678080c8a4c77d539eb63bd7';
-
-    // Base Network Constants
-    const BASE_CHAIN_ID_DEC = 8453;
-    const BASE_CHAIN_ID_HEX = '0x2105';
-    const BASE_CHAIN_PARAMS = {
-      chainId: BASE_CHAIN_ID_HEX,
-      chainName: 'Base',
-      nativeCurrency: {
-        name: 'Ether',
-        symbol: 'ETH',
-        decimals: 18
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>Widget Starter - Multi-Chain All-in-One</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"><script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.11.1/ethers.umd.min.js"></script><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"text-primary":"#0A0A0A","surface-container":"#eeedf7","surface-card":"#FFFFFF","secondary":"#0052FF","surface-bright":"#fbf8ff","error":"#ba1a1a","on-primary":"#ffffff","primary":"#000000","background":"#fbf8ff","surface":"#fbf8ff","text-muted":"#666666","surface-container-lowest":"#ffffff","surface-container-low":"#f4f2fd","surface-container-high":"#e8e7f1","surface-container-highest":"#e3e1ec","border-subtle":"rgba(0,0,0,0.06)"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"fontFamily":{"body-sm":["Geist"],"code-address":["JetBrains Mono"],"headline-lg":["Geist"],"headline-md":["Geist"],"headline-sm":["Geist"],"display-hero":["Geist"],"label-badge":["JetBrains Mono"],"label-pill":["Geist"],"body-md":["Geist"],"body-lg":["Geist"]}}}};</script></head><body class="bg-surface font-['Geist'] text-text-primary antialiased selection:bg-blue-100 selection:text-blue-900"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-4"><div class="flex items-center gap-4"><a class="flex items-center gap-2 group" href="#"><div class="w-7 h-7 rounded-lg bg-primary text-white flex items-center justify-center font-['JetBrains_Mono'] text-sm font-semibold shadow-xs">W</div><span class="text-[18px] text-text-primary tracking-tight font-semibold">Widget Starter</span></a><div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-text-muted font-['JetBrains_Mono'] text-[11px] border border-border-subtle"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="headerGlobalDot"></span><span id="headerPlatformSubtitle">Propulsé par Reown AppKit • Multi-chain Base &amp; Polygon</span></div></div><nav class="hidden lg:flex items-center gap-1 p-1 bg-surface-container-low rounded-full"><a class="px-4 py-1.5 bg-surface-container-high text-text-primary font-medium rounded-full text-sm" href="#">Widgets</a><a class="px-4 py-1.5 rounded-full text-text-muted hover:text-text-primary transition-colors text-sm" href="#">Smart Contracts</a><a class="px-4 py-1.5 rounded-full text-text-muted hover:text-text-primary transition-colors text-sm" href="#">Design Tokens</a><a class="px-4 py-1.5 rounded-full text-text-muted hover:text-text-primary transition-colors text-sm" href="#">Transfers</a></nav><div class="flex items-center gap-3"><div class="flex items-center p-1 bg-surface-container-low rounded-full border border-border-subtle shadow-xs" id="networkTogglePillGroup" role="tablist"><button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 bg-primary text-white shadow-xs" id="switchBaseBtn" type="button"><span class="w-2 h-2 rounded-full bg-[#0052FF]"></span><span>Base</span><span class="text-[10px] opacity-75 font-normal">8453</span></button><button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-text-muted hover:text-text-primary transition-all duration-200" id="switchPolygonBtn" type="button"><span class="w-2 h-2 rounded-full bg-[#8247E5]"></span><span>Polygon</span><span class="text-[10px] opacity-75 font-normal">137</span></button></div><div class="flex items-center gap-2"><button class="hidden sm:flex px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-text-primary border border-border-subtle text-xs font-medium transition-all items-center gap-1.5 shadow-xs active:scale-95 group" id="headerOnRampBtn" type="button"><span class="material-symbols-outlined text-[16px]">credit_card</span><span>Acheter Crypto</span><span class="px-1.5 py-0.2 rounded-full bg-surface-card text-text-primary text-[10px] font-semibold border border-border-subtle">On-Ramp</span></button><button class="px-4 py-2 rounded-full bg-primary text-white hover:opacity-90 text-xs font-medium transition-all flex items-center gap-2 shadow-xs group active:scale-95" id="connectWalletBtn" type="button"><span class="w-2 h-2 rounded-full bg-amber-400" id="walletStatusDot"></span><span id="connectWalletBtnText">Connecter avec Reown</span></button></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full relative overflow-hidden items-center justify-start"><div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[980px] h-[520px] rounded-full bg-[#0052FF]/10 blur-[130px] -z-10 transition-all duration-700" id="ambientAuraGlow"></div><section class="w-full max-w-7xl mx-auto px-6 py-12 lg:py-16 flex flex-col items-center text-center"><div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-card shadow-sm mb-8 border border-border-subtle" id="heroNetworkBadgePill"><span class="w-2 h-2 rounded-full bg-[#0052FF]" id="heroBadgeDot"></span><span class="text-xs font-semibold text-text-primary tracking-tight" id="heroBadgeTitle">Base Mainnet</span><span class="w-1 h-3 rounded-full bg-surface-container-highest"></span><span class="font-['JetBrains_Mono'] text-[11px] text-text-muted" id="heroBadgeDetails">Reown AppKit ID : 12f654a2... • Chain ID 8453</span></div><h1 class="text-4xl lg:text-[56px] text-text-primary tracking-tight max-w-3xl mx-auto leading-none font-semibold mb-4">Presence that doesn't beg for attention</h1><p class="text-base text-text-muted max-w-xl mx-auto mb-8" id="heroDescription">Instrumentation smart contract native et réactive sur Base L2 &amp; Polygon PoS. Faible latence de gas, typographie délibérée et primitives Web3 unifiées.</p><div class="w-full max-w-5xl grid grid-cols-2 sm:grid-cols-4 gap-3 p-2 bg-surface-card rounded-2xl border border-border-subtle shadow-xs mb-10 text-left"><div class="p-3 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[11px] font-['JetBrains_Mono'] text-text-muted">Réseau &amp; Statut</span><div class="flex items-center gap-1.5 mt-1"><span class="w-2 h-2 rounded-full bg-[#0052FF]" id="kpiNetworkDot"></span><span class="text-[15px] font-semibold text-text-primary truncate" id="kpiNetworkName">Base Mainnet (8453)</span></div><span class="text-[11px] text-emerald-600 mt-0.5" id="kpiNetworkGas">Frais de gas ultra-bas</span></div><div class="p-3 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[11px] font-['JetBrains_Mono'] text-text-muted">Jeton Actif</span><div class="flex items-center gap-1.5 mt-1"><span class="text-[15px] font-semibold text-text-primary" id="kpiActiveToken">$EEGO (ERC-20)</span></div><span class="text-[11px] text-text-muted mt-0.5" id="kpiTokenDecimals">18 Décimales • Standard</span></div><div class="p-3 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[11px] font-['JetBrains_Mono'] text-text-muted">Solde Portefeuille</span><div class="flex items-center gap-1.5 mt-1"><span class="text-[15px] font-semibold text-text-primary" id="kpiUserBalance">4 250.00 EEGO</span></div><span class="text-[11px] text-text-muted mt-0.5" id="kpiUserBalanceUsd">≈ $428.19 USD</span></div><div class="p-3 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[11px] font-['JetBrains_Mono'] text-text-muted">Total Supply</span><div class="flex items-center gap-1.5 mt-1"><span class="text-[15px] font-semibold text-text-primary" id="kpiTotalSupply">1 000 000 000 EEGO</span></div><span class="text-[11px] text-text-muted mt-0.5" id="kpiCirculationPercent">84.2% en circulation active</span></div></div><div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 text-left items-start"><div class="lg:col-span-5 flex flex-col gap-6"><div class="w-full bg-surface-card rounded-2xl shadow-sm p-6 sm:p-7 flex flex-col border border-border-subtle"><div class="flex items-center justify-between gap-4 mb-5"><div class="inline-flex items-center p-1 rounded-full bg-surface-container-low" id="tokenSwitcher"><button class="px-4 py-1.5 rounded-full text-xs font-medium bg-surface-card text-text-primary shadow-xs transition-all" id="tokenBtnPrimary" type="button">Eego</button><button class="px-4 py-1.5 rounded-full text-xs font-medium text-text-muted hover:text-text-primary transition-all" id="tokenBtnSecondary" type="button">Ego</button></div><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs" id="networkPillTag"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="networkPillTagDot"></span><span class="font-['JetBrains_Mono'] text-[11px] font-medium" id="networkPillTagText">Base • ERC-20</span></div></div><div class="mb-5"><h2 class="text-[22px] text-text-primary tracking-tight font-semibold" id="contractHeading">Contrat ERC-20</h2><span class="text-xs text-text-muted mt-1 block" id="tokenSymbolLabel">Réseau Base (Chain ID 8453) • Standard Protocol ($EEGO)</span></div><div class="w-full bg-surface-container-low rounded-xl p-3 sm:px-4 flex items-center justify-between gap-2 mb-5 group transition-colors hover:bg-surface-container"><div class="flex flex-col min-w-0"><span class="font-['JetBrains_Mono'] text-[11px] text-text-muted" id="contractAddrLabel">Adresse du contrat sur Base</span><span class="font-['JetBrains_Mono'] text-[13px] text-text-primary truncate" id="contractAddrText">0x2b576C83E722e8E7A07836353b51cB3FC31408ce</span></div><div class="flex items-center gap-1 shrink-0"><a class="p-2 rounded-lg bg-surface-card text-text-primary hover:text-[#0052FF] shadow-xs transition-all active:scale-95 flex items-center justify-center" href="https://basescan.org/token/0x2b576C83E722e8E7A07836353b51cB3FC31408ce" id="basescanLink" rel="noopener noreferrer" target="_blank" title="Voir sur l'explorateur"><span class="material-symbols-outlined text-[18px]">open_in_new</span></a><button class="p-2 rounded-lg bg-surface-card text-text-primary hover:text-text-primary shadow-xs transition-all active:scale-95 flex items-center justify-center" id="copyContractBtn" title="Copier l'adresse" type="button"><span class="material-symbols-outlined text-[18px]" id="copyContractIcon">content_copy</span></button></div></div><div class="grid grid-cols-2 gap-3 pt-1"><div class="bg-surface-container-lowest rounded-xl p-3.5 flex flex-col justify-between shadow-xs border border-border-subtle"><span class="text-xs text-text-muted">Décimales</span><span class="text-2xl text-text-primary font-semibold mt-1">18</span><span class="font-['JetBrains_Mono'] text-[11px] text-text-muted mt-1">10<sup>18</sup> wei / unit</span></div><div class="bg-surface-container-lowest rounded-xl p-3.5 flex flex-col justify-between shadow-xs border border-border-subtle"><span class="text-xs text-text-muted">Total Supply</span><span class="text-2xl text-text-primary font-semibold truncate mt-1" id="supplyDisplay">1 000 000 000</span><span class="font-['JetBrains_Mono'] text-[11px] text-text-muted mt-1" id="supplySubLabel">1 Milliard jetons max</span></div></div><div class="mt-4 pt-3 flex flex-col gap-1.5"><div class="flex items-center justify-between font-['JetBrains_Mono'] text-[11px] text-text-muted"><span id="circulationLabel">Circulation active (Base)</span><span class="font-semibold text-text-primary" id="circulationPercentText">84.2%</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden"><div class="h-full bg-text-primary rounded-full transition-all duration-700 w-[84.2%]" id="circulationProgressBar"></div></div></div></div><div class="w-full bg-surface-card rounded-2xl shadow-sm p-6 flex flex-col gap-3 border border-border-subtle"><div class="flex items-center justify-between"><span class="text-[16px] font-semibold text-text-primary">Consulter un solde</span><span class="font-['JetBrains_Mono'] text-[11px] text-[#0052FF]" id="balanceRpcLabel">RPC Base L2</span></div><p class="text-xs text-text-muted" id="balanceRpcDesc">Vérifiez instantanément le solde de n'importe quelle adresse sur le contrat Base.</p><div class="flex flex-col sm:flex-row items-center gap-2"><input class="w-full h-10 px-3 rounded-lg bg-surface-container-low font-['JetBrains_Mono'] text-xs text-text-primary placeholder:text-text-muted/60 outline-none border border-border-subtle" id="lookupAddressInput" placeholder="Adresse EVM (0x...)" type="text"><button class="w-full sm:w-auto px-4 h-10 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-text-primary text-xs font-medium transition-all shadow-xs flex items-center justify-center shrink-0 border border-border-subtle" id="checkBalanceBtn" type="button">Vérifier</button></div><div class="hidden px-3.5 py-2.5 rounded-xl bg-surface-container-low items-center justify-between gap-3 border border-border-subtle" id="balanceResultBox"><span class="text-xs text-text-muted">Solde vérifié :</span><span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary" id="balanceValueText">12,450.00 EEGO</span></div></div><div class="p-4 rounded-2xl bg-surface-card border border-border-subtle flex items-center justify-between gap-3 shadow-xs"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl bg-[#0052FF]/10 text-[#0052FF] flex items-center justify-center" id="auditedBadgeIconBox"><span class="material-symbols-outlined text-[18px]">verified</span></div><div class="flex flex-col"><span class="text-[13px] font-semibold text-text-primary" id="auditedChainTitle">Contrat Déployé sur Base</span><span class="text-[11px] font-['JetBrains_Mono'] text-text-muted">Audité &amp; Non-Custodial</span></div></div><a class="font-['JetBrains_Mono'] text-[12px] text-[#0052FF] hover:underline flex items-center gap-0.5" href="https://basescan.org" id="auditedScanLink" rel="noopener noreferrer" target="_blank"><span id="auditedScanText">BaseScan</span> <span class="material-symbols-outlined text-[13px]">open_in_new</span></a></div></div><div class="lg:col-span-7 flex flex-col gap-4"><div class="w-full p-1.5 rounded-2xl bg-surface-card border border-border-subtle shadow-xs flex items-center justify-between gap-1" id="actionTabNav"><button class="flex-1 py-2.5 px-3 rounded-xl bg-primary text-white text-[14px] font-medium transition-all flex items-center justify-center gap-2 shadow-xs" data-tab="swap" id="tabBtnSwap" type="button"><span class="material-symbols-outlined text-[18px]">swap_vert</span><span>⇄ Swap DEX</span></button><button class="flex-1 py-2.5 px-3 rounded-xl text-text-muted hover:text-text-primary text-[14px] font-medium transition-all flex items-center justify-center gap-2" data-tab="transfer" id="tabBtnTransfer" type="button"><span class="material-symbols-outlined text-[18px]">send</span><span>▷ Transfert ERC-20</span></button><button class="flex-1 py-2.5 px-3 rounded-xl text-text-muted hover:text-text-primary text-[14px] font-medium transition-all flex items-center justify-center gap-2" data-tab="onramp" id="tabBtnOnRamp" type="button"><span class="material-symbols-outlined text-[18px]">credit_card</span><span>💳 Acheter Crypto</span><span class="px-1.5 py-0.2 rounded-full bg-surface-container-high text-text-primary text-[10px] font-semibold">On-Ramp</span></button></div><div class="w-full bg-surface-card rounded-2xl shadow-sm p-6 sm:p-8 flex flex-col border border-border-subtle" id="swapWidgetCard"><div class="flex items-center justify-between gap-4 mb-4"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs" id="dexRouterBadge"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="dexRouterBadgeDot"></span><span class="font-['JetBrains_Mono'] text-[11px] font-medium" id="dexRouterBadgeText">Routeur DEX (Base Mainnet)</span></div><button class="px-2.5 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-text-muted hover:text-text-primary transition-colors flex items-center gap-1 font-['JetBrains_Mono'] text-[11px] border border-border-subtle" id="toggleRouterConfigBtn" type="button"><span class="material-symbols-outlined text-[16px]">tune</span><span id="routerToggleText">Routeur Base</span></button></div><div class="text-left mb-6"><h2 class="text-2xl text-text-primary tracking-tight font-semibold" id="swapSectionHeading">Swap EEGO ⇄ ETH</h2><p class="text-xs text-text-muted mt-1" id="swapSectionSub">Échange instantané sur liquidity pool Base (Uniswap V3 / Aerodrome)</p></div><div class="w-full bg-surface-container-low rounded-xl p-4 flex flex-col gap-3 mb-6 transition-all hidden border border-border-subtle" id="routerConfigPanel"><div class="flex items-center justify-between"><span class="font-['JetBrains_Mono'] text-[11px] text-text-muted">Routeur DEX Actif</span><span class="flex items-center gap-1 text-[11px] font-['JetBrains_Mono'] text-[#0052FF] font-medium"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]"></span> Réseau Actif</span></div><div class="flex flex-col gap-1"><label class="text-xs text-text-muted" for="dexRouterAddress">Adresse du routeur</label><div class="relative flex items-center"><input class="w-full h-10 px-3 pr-24 rounded-lg bg-surface-card font-['JetBrains_Mono'] text-xs text-text-primary outline-none border border-border-subtle" id="dexRouterAddress" type="text" value="0x2626664c2603336E57B271c5C0b26F421741e481"><button class="absolute right-1.5 px-2 py-1 rounded-md bg-surface-container-high text-xs text-text-primary font-['JetBrains_Mono'] border border-border-subtle" id="copyRouterBtn" type="button"><span class="material-symbols-outlined text-[14px]">content_copy</span></button></div></div></div><form class="flex flex-col gap-3" id="swapForm" onsubmit="event.preventDefault();"><div class="flex flex-col gap-1.5 p-3.5 rounded-xl bg-surface-container-low border border-border-subtle"><div class="flex items-center justify-between text-xs text-text-muted"><span id="payLabel">Vous payez</span><div class="flex items-center gap-1 font-['JetBrains_Mono'] text-[11px]"><span id="swapDispoLabel">Dispo Base:</span><span class="text-text-primary font-medium" id="swapAvailableBalance">4 250.00 EEGO</span><button class="ml-1 px-1.5 py-0.5 rounded bg-surface-container-high text-text-primary font-semibold border border-border-subtle" id="swapMaxBtn" type="button">MAX</button></div></div><div class="relative flex items-center justify-between gap-3"><input class="w-full bg-transparent text-2xl font-semibold text-text-primary outline-none" id="swapPayAmount" min="0" placeholder="1000" step="any" type="number" value="1000"><div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0 border border-border-subtle"><span class="w-2 h-2 rounded-full bg-primary" id="payTokenDot"></span><span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary" id="payTokenSymbol">EEGO</span></div></div><div class="text-right font-['JetBrains_Mono'] text-[11px] text-text-muted" id="payUsdEquivalent">≈ $100.75 USD</div></div><div class="relative flex items-center justify-center -my-1 z-10"><button class="w-9 h-9 rounded-full bg-surface-card hover:bg-surface-container-high shadow-xs transition-all flex items-center justify-center active:scale-95 text-text-primary border border-border-subtle" id="invertSwapTokensBtn" type="button"><span class="material-symbols-outlined text-[18px]">swap_vert</span></button></div><div class="flex flex-col gap-1.5 p-3.5 rounded-xl bg-surface-container-low border border-border-subtle"><div class="flex items-center justify-between text-xs text-text-muted"><span id="receiveLabel">Vous recevez (estimé)</span><span class="font-['JetBrains_Mono'] text-[11px] text-text-muted" id="minGuaranteedReceive">Garanti min: 0.1002 ETH</span></div><div class="relative flex items-center justify-between gap-3"><input class="w-full bg-transparent text-2xl font-semibold text-text-primary outline-none" id="swapReceiveAmount" readonly="" type="text" value="0.1008"><div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0 border border-border-subtle"><span class="w-2 h-2 rounded-full bg-[#0052FF]" id="receiveTokenDot"></span><span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary" id="receiveTokenSymbol">ETH</span></div></div><div class="text-right font-['JetBrains_Mono'] text-[11px] text-text-muted" id="receiveUsdEquivalent">≈ $314.50 USD</div></div><div class="flex flex-col gap-2 p-3.5 rounded-xl bg-surface-container-lowest shadow-xs text-xs border border-border-subtle"><div class="flex items-center justify-between text-text-muted"><span>Taux de conversion</span><span class="font-['JetBrains_Mono'] font-medium text-text-primary" id="conversionRateLabel">1 ETH ≈ 9925 EEGO</span></div><div class="flex items-center justify-between text-text-muted"><span>Impact sur le prix</span><span class="font-['JetBrains_Mono'] text-text-primary font-semibold">&lt; 0.05%</span></div><div class="flex items-center justify-between text-text-muted"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-text-primary">bolt</span><span id="gasCostLabel">Frais réseau Base (Gas L2)</span></div><span class="font-['JetBrains_Mono'] text-text-primary font-semibold" id="gasCostValue">~0.00001 ETH (~$0.03)</span></div><div class="flex items-center justify-between text-text-muted pt-1 border-t border-border-subtle"><span id="optimalRouteLabel">Route DEX optimale sur Base</span><span class="font-['JetBrains_Mono'] text-text-muted truncate max-w-[240px] text-right" id="swapRouteText">EEGO → WETH (Base) → ETH</span></div></div><div class="pt-2"><button class="w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium transition-all shadow-xs flex items-center justify-center gap-2" id="executeSwapBtn" type="button"><span id="executeSwapBtnText">Échanger sur Base →</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div></form></div><div class="w-full bg-surface-card rounded-2xl shadow-sm p-6 sm:p-8 flex flex-col hidden border border-border-subtle" id="transferWidgetCard"><div class="flex items-center justify-between gap-4 mb-4"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-text-primary shadow-xs border border-border-subtle"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="transferBadgeDot"></span><span class="font-['JetBrains_Mono'] text-[11px] font-medium" id="transferBadgeText">Transfert Direct • Base Mainnet</span></div><span class="font-['JetBrains_Mono'] text-xs text-emerald-600 font-medium">Gas &lt; $0.03</span></div><div class="text-left mb-6"><h2 class="text-2xl text-text-primary tracking-tight font-semibold">Transfert ERC-20</h2><p class="text-xs text-text-muted mt-1">Exécution instantanée sur la blockchain active avec frais de gas quasi-nuls</p></div><form class="flex flex-col gap-4" id="transferForm" onsubmit="event.preventDefault();"><div class="flex flex-col gap-1.5"><label class="text-xs text-text-muted" for="recipientAddress">Adresse destinataire</label><input class="w-full h-12 px-4 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs text-text-primary outline-none border border-border-subtle" id="recipientAddress" placeholder="0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97" type="text"></div><div class="flex flex-col gap-1.5"><div class="flex items-center justify-between text-xs text-text-muted"><label for="tokenAmount">Montant</label><div class="flex items-center gap-1 font-['JetBrains_Mono'] text-[11px]"><span>Dispo :</span><span class="text-text-primary font-medium" id="senderBalancePreview">4 250.00</span></div></div><input class="w-full h-12 px-4 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs text-text-primary outline-none border border-border-subtle" id="tokenAmount" placeholder="1000" type="number"></div><div class="pt-2"><button class="w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium transition-all shadow-xs flex items-center justify-center gap-2" id="sendTransactionBtn" type="button"><span id="sendTransactionBtnText">Envoyer sur Base</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div></form></div><div class="w-full bg-surface-card rounded-2xl shadow-sm p-6 sm:p-8 flex flex-col hidden border border-border-subtle" id="onRampWidgetCard"><div class="flex items-center justify-between gap-4 mb-4"><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-text-primary shadow-xs border border-border-subtle"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span><span class="font-['JetBrains_Mono'] text-[11px] font-medium">Reown OnRamp • Passerelle Multi-Chain</span></div><div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 font-['JetBrains_Mono'] text-[11px] font-medium shadow-xs"><span class="material-symbols-outlined text-[14px]">bolt</span><span>Frais réduits</span></div></div><div class="text-left mb-6"><h2 class="text-2xl text-text-primary tracking-tight font-semibold">Acheter Crypto • Reown On-Ramp</h2><p class="text-xs text-text-muted mt-1">Achetez instantanément par Carte bancaire, Apple Pay ou SEPA avec Reown Pay sécurisé.</p></div><form class="flex flex-col gap-4" onsubmit="event.preventDefault();"><div class="flex flex-col gap-2 p-3.5 rounded-xl bg-surface-container-low border border-border-subtle"><div class="flex items-center justify-between text-xs text-text-muted"><span>Montant à régler (Fiat)</span><span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary">EUR (€)</span></div><div class="flex items-center gap-2"><span class="text-2xl text-text-muted font-semibold">€</span><input class="w-full bg-transparent text-2xl font-semibold text-text-primary outline-none" id="onRampFiatAmount" min="10" placeholder="100" type="number" value="100"></div></div><div class="p-3 rounded-xl bg-surface-container-lowest flex items-center justify-between border border-border-subtle"><span class="text-xs text-text-muted">Crypto reçue (estimée) :</span><span class="font-['JetBrains_Mono'] text-xs font-semibold text-emerald-600" id="onRampCryptoReceived">≈ 0.0345 ETH</span></div><div class="pt-2"><button class="w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium transition-all shadow-xs flex items-center justify-center gap-2" id="openOnRampModalBtn" type="button"><span class="material-symbols-outlined text-[18px]">lock</span><span>Ouvrir Reown On-Ramp Pay</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div></form></div></div></div><div class="flex flex-col items-center text-center gap-6 mt-12 pb-6"><p class="text-base text-text-muted">Build with clarity, speed, and quiet confidence on Base &amp; Polygon</p><a class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary text-white text-xs font-medium hover:opacity-90 transition-all" href="https://docs.reown.com/appkit" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[16px]">menu_book</span><span>Documentation Reown AppKit</span></a></div></section></div><div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 hidden" id="reownOnRampModal"><div class="w-full max-w-md mx-4 bg-surface-card rounded-3xl p-6 shadow-2xl border border-border-subtle flex flex-col gap-4 text-left"><div class="flex items-center justify-between pb-3 border-b border-border-subtle"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-white"><span class="material-symbols-outlined text-[18px]">credit_card</span></div><div><span class="text-base font-semibold block">Reown On-Ramp Pay</span><span class="text-xs text-text-muted font-['JetBrains_Mono']">3D-Secure 2.0 • ID: 12f654a2</span></div></div><button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center" id="closeOnRampModalBtn" type="button"><span class="material-symbols-outlined text-[20px]">close</span></button></div><div class="p-3 rounded-2xl bg-surface-container-low flex items-center justify-between border border-border-subtle"><div><span class="text-[11px] text-text-muted block">Total à payer</span><span class="text-xl font-semibold" id="modalOnRampPayAmount">100 €</span></div><div class="text-right"><span class="text-[11px] text-text-muted block">Reçu sur chaîne active</span><span class="text-xs font-semibold text-emerald-600 font-['JetBrains_Mono']" id="modalOnRampCryptoAmount">≈ 0.0345 ETH</span></div></div><form class="flex flex-col gap-3" id="onRampCardPaymentForm"><input class="w-full h-10 px-3 rounded-xl bg-surface-container-low text-xs border border-border-subtle" id="onRampCardHolder" placeholder="Titulaire de la carte" required="" type="text" value="Jean Dupont"><input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs border border-border-subtle" id="onRampCardNumber" maxlength="19" placeholder="4532 •••• •••• 8892" required="" type="text" value="4532 8920 1204 8892"><div class="grid grid-cols-2 gap-2"><input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs border border-border-subtle" maxlength="5" placeholder="12/28" required="" type="text" value="12/28"><input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs border border-border-subtle" maxlength="4" placeholder="892" required="" type="password" value="892"></div><button class="w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm flex items-center justify-center gap-2 mt-2" id="confirmOnRampPaymentBtn" type="submit"><span>Valider le paiement sécurisé</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></form></div></div><div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 hidden" id="swapSuccessModal"><div class="w-full max-w-sm mx-4 bg-surface-card rounded-3xl p-6 shadow-2xl border border-border-subtle text-center flex flex-col"><div class="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto mb-4"><span class="material-symbols-outlined text-[32px]">check_circle</span></div><h3 class="text-xl font-semibold">Swap validé !</h3><p class="text-xs text-text-muted mt-1">Transaction confirmée sur le réseau avec succès.</p><div class="w-full bg-surface-container-low rounded-2xl p-4 my-4 text-left text-xs flex flex-col gap-2 border border-border-subtle"><div class="flex justify-between text-text-muted"><span>Échangé :</span><span class="font-semibold text-text-primary" id="modalSwapAmountSent">1 000 EEGO</span></div><div class="flex justify-between text-text-muted"><span>Reçu :</span><span class="font-semibold text-emerald-600" id="modalSwapAmountReceived">+0.1008 ETH</span></div><div class="flex justify-between text-text-muted"><span>Réseau :</span><span class="font-semibold text-text-primary" id="modalSwapNetworkName">Base Mainnet (8453)</span></div><div class="pt-2 border-t border-border-subtle flex justify-between items-center"><span class="font-['JetBrains_Mono'] text-[11px] truncate max-w-[200px]" id="modalSwapTxHash">0x8a4b2c...c39d</span><a class="text-[#0052FF] underline text-[11px] font-['JetBrains_Mono']" href="#" id="modalSwapBasescanLink" target="_blank">Scan ↗</a></div></div><button class="w-full py-3 rounded-xl bg-primary text-white font-medium text-xs" id="closeSwapSuccessBtn" type="button">Fermer</button></div></div><div class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none" id="toastContainer"></div></main><footer class="w-full bg-surface-container-lowest py-8 border-t border-border-subtle"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted"><div><span class="font-semibold text-text-primary">Widget Starter • Multi-chain All-in-One</span> — Reown Project ID: 12f654a2678080c8a4c77d539eb63bd7</div><div class="flex gap-4"><a class="hover:text-text-primary" href="https://basescan.org" target="_blank">BaseScan</a><a class="hover:text-text-primary" href="https://polygonscan.com" target="_blank">PolygonScan</a><a class="hover:text-text-primary" href="https://docs.reown.com/appkit" target="_blank">Reown Docs</a></div></div></footer><script>
+(function() {
+  const NETWORKS = {
+    base: {
+      chainIdDec: 8453,
+      name: 'Base Mainnet',
+      shortName: 'Base',
+      nativeToken: 'ETH',
+      tokens: {
+        primary: {
+          symbol: 'EEGO',
+          label: 'Réseau Base (Chain ID 8453) • Standard Protocol ($EEGO)',
+          address: '0x2b576C83E722e8E7A07836353b51cB3FC31408ce',
+          supply: '1 000 000 000',
+          supplyFullText: '1 000 000 000 EEGO',
+          supplySub: '1 Milliard jetons max',
+          userBalance: '4 250.00',
+          priceUsd: 0.10075,
+          circulation: '84.2%',
+          ratePerNative: 9925
+        },
+        secondary: {
+          symbol: 'EGO',
+          label: 'Réseau Base (Chain ID 8453) • Governance Reserve ($EGO)',
+          address: '0x71C67Ed3855a35E0d38B7D0f848970C43B20eB1A',
+          supply: '250 000 000',
+          supplyFullText: '250 000 000 EGO',
+          supplySub: '250 Millions jetons max',
+          userBalance: '880.50',
+          priceUsd: 0.4210,
+          circulation: '68.5%',
+          ratePerNative: 7410
+        }
       },
-      rpcUrls: ['https://mainnet.base.org'],
-      blockExplorerUrls: ['https://basescan.org']
-    };
-
-    // Contract metadata & tokens on Base
-    const contractData = {
-      eego: {
-        symbol: 'EEGO',
-        name: 'Eego Token',
-        label: 'Réseau Base (Chain ID 8453) • Standard Protocol ($EEGO)',
-        address: '0x2b576C83E722e8E7A07836353b51cB3FC31408ce',
-        decimals: 18,
-        supply: '1 000 000 000',
-        userBalance: '4 250.00',
-        priceUsd: 0.10075
+      dexRouter: { name: 'Routeur DEX (Base Mainnet)', address: '0x2626664c2603336E57B271c5C0b26F421741e481' },
+      explorerName: 'BaseScan',
+      explorerUrl: 'https://basescan.org',
+      gasCostText: '~0.00001 ETH (~$0.03)',
+      themeColorHex: '#0052FF'
+    },
+    polygon: {
+      chainIdDec: 137,
+      name: 'Polygon PoS',
+      shortName: 'Polygon',
+      nativeToken: 'WPOL',
+      tokens: {
+        primary: {
+          symbol: 'FG',
+          label: 'Réseau Polygon PoS (Chain ID 137) • Fing Protocol ($FG)',
+          address: '0xdc209cda9a60370a2a97577c75c051221db0b623',
+          supply: '100 000 000',
+          supplyFullText: '100 000 000 FG',
+          supplySub: '100 Millions jetons max',
+          userBalance: '15 480.00',
+          priceUsd: 0.0485,
+          circulation: '72.4%',
+          ratePerNative: 11.13
+        },
+        secondary: {
+          symbol: 'FING',
+          label: 'Réseau Polygon PoS (Chain ID 137) • Community ($FING)',
+          address: '0xdc209cda9a60370a2a97577c75c051221db0b623',
+          supply: '100 000 000',
+          supplyFullText: '100 000 000 FG',
+          supplySub: '100 Millions jetons max',
+          userBalance: '3 200.00',
+          priceUsd: 0.0485,
+          circulation: '72.4%',
+          ratePerNative: 11.13
+        }
       },
-      ego: {
-        symbol: 'EGO',
-        name: 'Ego Governance',
-        label: 'Réseau Base (Chain ID 8453) • Governance Reserve ($EGO)',
-        address: '0x71C67Ed3855a35E0d38B7D0f848970C43B20eB1A',
-        decimals: 18,
-        supply: '250 000 000',
-        userBalance: '880.50',
-        priceUsd: 0.4210
-      }
-    };
+      dexRouter: { name: 'SushiSwap V3 (Polygon PoS)', address: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506' },
+      explorerName: 'PolygonScan',
+      explorerUrl: 'https://polygonscan.com',
+      gasCostText: '~0.005 POL (~$0.002)',
+      themeColorHex: '#8247E5'
+    }
+  };
 
-    const ETH_PRICE_USD = 3120.00;
-    const MINIMAL_ERC20_ABI = [
-      "function name() view returns (string)",
-      "function symbol() view returns (string)",
-      "function decimals() view returns (uint8)",
-      "function totalSupply() view returns (uint256)",
-      "function balanceOf(address) view returns (uint256)",
-      "function transfer(address to, uint amount) returns (bool)",
-      "function allowance(address owner, address spender) view returns (uint256)",
-      "function approve(address spender, uint256 amount) returns (bool)"
-    ];
+  let currentChain = 'base';
+  let currentTokenKey = 'primary';
+  let isConnected = false;
 
-    // State Variables
-    let activeToken = 'eego';
-    let userAccount = null;
-    let browserProvider = null;
-    let signer = null;
-    let selectedSlippage = 0.5;
-    let swapDirection = 'EEGO_TO_ETH';
-    let isSwapping = false;
+  const switchBaseBtn = document.getElementById('switchBaseBtn');
+  const switchPolygonBtn = document.getElementById('switchPolygonBtn');
+  const headerGlobalDot = document.getElementById('headerGlobalDot');
+  const ambientAuraGlow = document.getElementById('ambientAuraGlow');
+  const heroBadgeDot = document.getElementById('heroBadgeDot');
+  const heroBadgeTitle = document.getElementById('heroBadgeTitle');
+  const heroBadgeDetails = document.getElementById('heroBadgeDetails');
+  const kpiNetworkDot = document.getElementById('kpiNetworkDot');
+  const kpiNetworkName = document.getElementById('kpiNetworkName');
+  const kpiActiveToken = document.getElementById('kpiActiveToken');
+  const kpiUserBalance = document.getElementById('kpiUserBalance');
+  const kpiUserBalanceUsd = document.getElementById('kpiUserBalanceUsd');
+  const kpiTotalSupply = document.getElementById('kpiTotalSupply');
+  const kpiCirculationPercent = document.getElementById('kpiCirculationPercent');
+  const tokenBtnPrimary = document.getElementById('tokenBtnPrimary');
+  const tokenBtnSecondary = document.getElementById('tokenBtnSecondary');
+  const networkPillTagDot = document.getElementById('networkPillTagDot');
+  const networkPillTagText = document.getElementById('networkPillTagText');
+  const tokenSymbolLabel = document.getElementById('tokenSymbolLabel');
+  const contractAddrLabel = document.getElementById('contractAddrLabel');
+  const contractAddrText = document.getElementById('contractAddrText');
+  const basescanLink = document.getElementById('basescanLink');
+  const copyContractBtn = document.getElementById('copyContractBtn');
+  const supplyDisplay = document.getElementById('supplyDisplay');
+  const supplySubLabel = document.getElementById('supplySubLabel');
+  const circulationLabel = document.getElementById('circulationLabel');
+  const circulationPercentText = document.getElementById('circulationPercentText');
+  const circulationProgressBar = document.getElementById('circulationProgressBar');
+  const balanceRpcLabel = document.getElementById('balanceRpcLabel');
+  const balanceRpcDesc = document.getElementById('balanceRpcDesc');
+  const lookupAddressInput = document.getElementById('lookupAddressInput');
+  const checkBalanceBtn = document.getElementById('checkBalanceBtn');
+  const balanceResultBox = document.getElementById('balanceResultBox');
+  const balanceValueText = document.getElementById('balanceValueText');
+  const auditedChainTitle = document.getElementById('auditedChainTitle');
+  const auditedScanLink = document.getElementById('auditedScanLink');
+  const auditedScanText = document.getElementById('auditedScanText');
+  const tabBtnSwap = document.getElementById('tabBtnSwap');
+  const tabBtnTransfer = document.getElementById('tabBtnTransfer');
+  const tabBtnOnRamp = document.getElementById('tabBtnOnRamp');
+  const swapWidgetCard = document.getElementById('swapWidgetCard');
+  const transferWidgetCard = document.getElementById('transferWidgetCard');
+  const onRampWidgetCard = document.getElementById('onRampWidgetCard');
+  const dexRouterBadgeDot = document.getElementById('dexRouterBadgeDot');
+  const dexRouterBadgeText = document.getElementById('dexRouterBadgeText');
+  const routerToggleText = document.getElementById('routerToggleText');
+  const dexRouterAddress = document.getElementById('dexRouterAddress');
+  const swapSectionHeading = document.getElementById('swapSectionHeading');
+  const swapSectionSub = document.getElementById('swapSectionSub');
+  const swapDispoLabel = document.getElementById('swapDispoLabel');
+  const swapAvailableBalance = document.getElementById('swapAvailableBalance');
+  const swapPayAmount = document.getElementById('swapPayAmount');
+  const payTokenDot = document.getElementById('payTokenDot');
+  const payTokenSymbol = document.getElementById('payTokenSymbol');
+  const payUsdEquivalent = document.getElementById('payUsdEquivalent');
+  const swapReceiveAmount = document.getElementById('swapReceiveAmount');
+  const receiveTokenDot = document.getElementById('receiveTokenDot');
+  const receiveTokenSymbol = document.getElementById('receiveTokenSymbol');
+  const receiveUsdEquivalent = document.getElementById('receiveUsdEquivalent');
+  const minGuaranteedReceive = document.getElementById('minGuaranteedReceive');
+  const conversionRateLabel = document.getElementById('conversionRateLabel');
+  const gasCostLabel = document.getElementById('gasCostLabel');
+  const gasCostValue = document.getElementById('gasCostValue');
+  const optimalRouteLabel = document.getElementById('optimalRouteLabel');
+  const swapRouteText = document.getElementById('swapRouteText');
+  const executeSwapBtn = document.getElementById('executeSwapBtn');
+  const executeSwapBtnText = document.getElementById('executeSwapBtnText');
+  const transferBadgeDot = document.getElementById('transferBadgeDot');
+  const transferBadgeText = document.getElementById('transferBadgeText');
+  const senderBalancePreview = document.getElementById('senderBalancePreview');
+  const sendTransactionBtnText = document.getElementById('sendTransactionBtnText');
+  const sendTransactionBtn = document.getElementById('sendTransactionBtn');
+  const connectWalletBtn = document.getElementById('connectWalletBtn');
+  const connectWalletBtnText = document.getElementById('connectWalletBtnText');
+  const walletStatusDot = document.getElementById('walletStatusDot');
+  const toastContainer = document.getElementById('toastContainer');
+  const swapSuccessModal = document.getElementById('swapSuccessModal');
+  const closeSwapSuccessBtn = document.getElementById('closeSwapSuccessBtn');
+  const modalSwapAmountSent = document.getElementById('modalSwapAmountSent');
+  const modalSwapAmountReceived = document.getElementById('modalSwapAmountReceived');
+  const modalSwapNetworkName = document.getElementById('modalSwapNetworkName');
+  const modalSwapTxHash = document.getElementById('modalSwapTxHash');
+  const modalSwapBasescanLink = document.getElementById('modalSwapBasescanLink');
+  const openOnRampModalBtn = document.getElementById('openOnRampModalBtn');
+  const reownOnRampModal = document.getElementById('reownOnRampModal');
+  const closeOnRampModalBtn = document.getElementById('closeOnRampModalBtn');
+  const onRampCardPaymentForm = document.getElementById('onRampCardPaymentForm');
+  const headerOnRampBtn = document.getElementById('headerOnRampBtn');
 
-    // DOM Elements
-    const toastContainer = document.getElementById('toastContainer');
-    const connectWalletBtn = document.getElementById('connectWalletBtn');
-    const connectWalletBtnText = document.getElementById('connectWalletBtnText');
-    const walletStatusDot = document.getElementById('walletStatusDot');
-    const userAvatarBtn = document.getElementById('userAvatarBtn');
-    const networkChainName = document.getElementById('networkChainName');
-    const networkTypeName = document.getElementById('networkTypeName');
-    const networkStatusDot = document.getElementById('networkStatusDot');
+  function showToast(msg) {
+    if (!toastContainer) return;
+    const t = document.createElement('div');
+    t.className = 'flex items-center gap-2 p-3 bg-surface-card rounded-xl shadow-lg border border-border-subtle text-xs text-text-primary transition-all';
+    t.innerHTML = `<span class="material-symbols-outlined text-[16px] text-emerald-600">info</span><span>${msg}</span>`;
+    toastContainer.appendChild(t);
+    setTimeout(() => t.remove(), 4000);
+  }
 
-    // Reown Modal Elements
-    const reownModal = document.getElementById('reownModal');
-    const reownModalCard = document.getElementById('reownModalCard');
-    const closeReownModalBtn = document.getElementById('closeReownModalBtn');
-    const reownModalContent = document.getElementById('reownModalContent');
-    const reownConnectedPanel = document.getElementById('reownConnectedPanel');
-    const modalUserAddress = document.getElementById('modalUserAddress');
-    const modalUserBalance = document.getElementById('modalUserBalance');
-    const copyAddressModalBtn = document.getElementById('copyAddressModalBtn');
-    const disconnectReownBtn = document.getElementById('disconnectReownBtn');
+  function recalculateSwap() {
+    const net = NETWORKS[currentChain];
+    const tok = net.tokens[currentTokenKey];
+    const val = parseFloat(swapPayAmount.value) || 0;
+    const out = val > 0 ? (val / tok.ratePerNative) : 0;
+    const prec = currentChain === 'base' ? 4 : 2;
+    swapReceiveAmount.value = out > 0 ? out.toFixed(prec) : '0.0000';
+    payUsdEquivalent.textContent = `≈ $${(val * tok.priceUsd).toFixed(2)} USD`;
+    receiveUsdEquivalent.textContent = `≈ $${(out * (currentChain === 'base' ? 3120 : 0.54)).toFixed(2)} USD`;
+    minGuaranteedReceive.textContent = `Garanti min: ${(out * 0.995).toFixed(prec)} ${net.nativeToken}`;
+    conversionRateLabel.textContent = `1 ${net.nativeToken} ≈ ${tok.ratePerNative} ${tok.symbol}`;
+    swapRouteText.textContent = `${tok.symbol} → ${net.nativeToken} (${net.shortName})`;
+  }
 
-    // Swap Success Modal Elements
-    const swapSuccessModal = document.getElementById('swapSuccessModal');
-    const swapSuccessCard = document.getElementById('swapSuccessCard');
-    const closeSwapSuccessBtn = document.getElementById('closeSwapSuccessBtn');
-    const swapSuccessSummary = document.getElementById('swapSuccessSummary');
-    const modalSwapAmountSent = document.getElementById('modalSwapAmountSent');
-    const modalSwapAmountReceived = document.getElementById('modalSwapAmountReceived');
-    const modalSwapTxHash = document.getElementById('modalSwapTxHash');
-    const modalSwapBasescanLink = document.getElementById('modalSwapBasescanLink');
+  function switchChain(chain) {
+    currentChain = chain;
+    currentTokenKey = 'primary';
+    const net = NETWORKS[chain];
+    const tok = net.tokens[currentTokenKey];
+    const isBase = (chain === 'base');
 
-    const tokenSwitcher = document.getElementById('tokenSwitcher');
-    const tokenSymbolLabel = document.getElementById('tokenSymbolLabel');
-    const contractAddrText = document.getElementById('contractAddrText');
-    const basescanLink = document.getElementById('basescanLink');
-    const supplyDisplay = document.getElementById('supplyDisplay');
-    const senderBalancePreview = document.getElementById('senderBalancePreview');
-    const currencyTicker = document.getElementById('currencyTicker');
-    const standardEquivalent = document.getElementById('standardEquivalent');
-    const tokenAmountInput = document.getElementById('tokenAmount');
-    const copyContractBtn = document.getElementById('copyContractBtn');
-    const copyContractIcon = document.getElementById('copyContractIcon');
-    const maxAmountBtn = document.getElementById('maxAmountBtn');
-    const pasteRecipientBtn = document.getElementById('pasteRecipientBtn');
-    const recipientAddress = document.getElementById('recipientAddress');
-    const sendTransactionBtn = document.getElementById('sendTransactionBtn');
-    const transferFeedback = document.getElementById('transferFeedback');
-    const checkBalanceBtn = document.getElementById('checkBalanceBtn');
-    const lookupAddressInput = document.getElementById('lookupAddressInput');
-    const balanceResultBox = document.getElementById('balanceResultBox');
-    const balanceValueText = document.getElementById('balanceValueText');
-
-    // Swap Elements
-    const dexRouterAddress = document.getElementById('dexRouterAddress');
-    const copyRouterBtn = document.getElementById('copyRouterBtn');
-    const copyRouterText = document.getElementById('copyRouterText');
-    const copyRouterIcon = document.getElementById('copyRouterIcon');
-    const toggleRouterConfigBtn = document.getElementById('toggleRouterConfigBtn');
-    const routerConfigPanel = document.getElementById('routerConfigPanel');
-    const slippageButtons = document.querySelectorAll('.slippage-btn');
-    const swapPayAmount = document.getElementById('swapPayAmount');
-    const swapReceiveAmount = document.getElementById('swapReceiveAmount');
-    const swapAvailableBalance = document.getElementById('swapAvailableBalance');
-    const swapMaxBtn = document.getElementById('swapMaxBtn');
-    const invertSwapTokensBtn = document.getElementById('invertSwapTokensBtn');
-    const payLabel = document.getElementById('payLabel');
-    const receiveLabel = document.getElementById('receiveLabel');
-    const payTokenSymbol = document.getElementById('payTokenSymbol');
-    const payTokenDot = document.getElementById('payTokenDot');
-    const receiveTokenSymbol = document.getElementById('receiveTokenSymbol');
-    const receiveTokenDot = document.getElementById('receiveTokenDot');
-    const payUsdEquivalent = document.getElementById('payUsdEquivalent');
-    const receiveUsdEquivalent = document.getElementById('receiveUsdEquivalent');
-    const conversionRateLabel = document.getElementById('conversionRateLabel');
-    const minGuaranteedReceive = document.getElementById('minGuaranteedReceive');
-    const swapRouteText = document.getElementById('swapRouteText');
-    const executeSwapBtn = document.getElementById('executeSwapBtn');
-    const executeSwapBtnText = document.getElementById('executeSwapBtnText');
-    const executeSwapBtnIcon = document.getElementById('executeSwapBtnIcon');
-    const swapFeedback = document.getElementById('swapFeedback');
-    const swapProgressTracker = document.getElementById('swapProgressTracker');
-    const swapTrackerStepLabel = document.getElementById('swapTrackerStepLabel');
-    const swapTrackerStepIcon = document.getElementById('swapTrackerStepIcon');
-    const swapTrackerStepText = document.getElementById('swapTrackerStepText');
-    const swapTrackerPercent = document.getElementById('swapTrackerPercent');
-    const swapTrackerProgressBar = document.getElementById('swapTrackerProgressBar');
-    const swapStep1Badge = document.getElementById('swapStep1Badge');
-    const swapStep2Badge = document.getElementById('swapStep2Badge');
-    const swapStep3Badge = document.getElementById('swapStep3Badge');
-
-    // Toast Notification System
-    function showToast(message, type = 'info', txHash = null) {
-      if (!toastContainer) return;
-      const toast = document.createElement('div');
-      toast.className = 'pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-surface-card shadow-lg border border-subtle transition-all duration-300 transform translate-y-3 opacity-0';
-
-      let icon = 'info';
-      let iconColor = 'text-[#0052FF]';
-      if (type === 'success') {
-        icon = 'check_circle';
-        iconColor = 'text-emerald-600';
-      } else if (type === 'error') {
-        icon = 'error';
-        iconColor = 'text-error';
-      } else if (type === 'pending') {
-        icon = 'progress_activity';
-        iconColor = 'text-[#0052FF] animate-spin';
-      }
-
-      toast.innerHTML = `
-        <span class="material-symbols-outlined text-[20px] ${iconColor} shrink-0 mt-0.5">${icon}</span>
-        <div class="flex flex-col gap-0.5 text-left flex-1 min-w-0">
-          <p class="font-body-sm text-body-sm text-text-primary font-medium leading-snug">${message}</p>
-          ${txHash ? `<a href="https://basescan.org/tx/${txHash}" target="_blank" rel="noopener noreferrer" class="font-code-address text-[11px] text-[#0052FF] hover:underline truncate">BaseScan: ${txHash.slice(0, 10)}...${txHash.slice(-6)} ↗</a>` : ''}
-        </div>
-        <button class="shrink-0 text-text-muted hover:text-text-primary p-0.5 transition-colors" type="button">
-          <span class="material-symbols-outlined text-[16px]">close</span>
-        </button>
-      `;
-
-      const closeBtn = toast.querySelector('button');
-      closeBtn.onclick = () => {
-        toast.classList.add('opacity-0', 'translate-y-2');
-        setTimeout(() => toast.remove(), 250);
-      };
-
-      toastContainer.appendChild(toast);
-      requestAnimationFrame(() => {
-        toast.classList.remove('translate-y-3', 'opacity-0');
-      });
-
-      setTimeout(() => {
-        if (toast.parentElement) {
-          toast.classList.add('opacity-0', 'translate-y-2');
-          setTimeout(() => toast.remove(), 250);
-        }
-      }, 5500);
+    if (isBase) {
+      switchBaseBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-xs';
+      switchPolygonBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-text-muted hover:text-text-primary';
+      headerGlobalDot.className = 'w-1.5 h-1.5 rounded-full bg-[#0052FF]';
+      if (ambientAuraGlow) ambientAuraGlow.className = 'pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[980px] h-[520px] rounded-full bg-[#0052FF]/10 blur-[130px] -z-10 transition-all duration-700';
+      tokenBtnPrimary.textContent = 'Eego';
+      tokenBtnSecondary.textContent = 'Ego';
+    } else {
+      switchPolygonBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white shadow-xs';
+      switchBaseBtn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-text-muted hover:text-text-primary';
+      headerGlobalDot.className = 'w-1.5 h-1.5 rounded-full bg-[#8247E5]';
+      if (ambientAuraGlow) ambientAuraGlow.className = 'pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[980px] h-[520px] rounded-full bg-[#8247E5]/15 blur-[130px] -z-10 transition-all duration-700';
+      tokenBtnPrimary.textContent = 'FG (fing)';
+      tokenBtnSecondary.textContent = 'Community';
     }
 
-    // Modal open / close handlers
-    function openReownModal() {
-      if (!reownModal) return;
-      if (userAccount) {
-        reownModalContent.classList.add('hidden');
-        reownConnectedPanel.classList.remove('hidden');
-        modalUserAddress.textContent = `${userAccount.slice(0, 10)}...${userAccount.slice(-8)}`;
-        modalUserBalance.textContent = `${contractData[activeToken].userBalance} ${contractData[activeToken].symbol}`;
-      } else {
-        reownModalContent.classList.remove('hidden');
-        reownConnectedPanel.classList.add('hidden');
-      }
-      
-      reownModal.classList.remove('hidden');
-      requestAnimationFrame(() => {
-        reownModal.classList.remove('pointer-events-none', 'opacity-0');
-        reownModal.classList.add('opacity-100');
-        if (reownModalCard) {
-          reownModalCard.classList.remove('scale-95');
-          reownModalCard.classList.add('scale-100');
-        }
-      });
-    }
+    heroBadgeDot.className = `w-2 h-2 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
+    heroBadgeTitle.textContent = net.name;
+    heroBadgeDetails.textContent = `Reown AppKit ID : 12f654a2... • Chain ID ${net.chainIdDec}`;
+    kpiNetworkDot.className = `w-2 h-2 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
+    kpiNetworkName.textContent = `${net.name} (${net.chainIdDec})`;
+    kpiActiveToken.textContent = `$${tok.symbol} (${isBase ? 'ERC-20' : 'fing'})`;
+    kpiUserBalance.textContent = `${tok.userBalance} ${tok.symbol}`;
+    kpiUserBalanceUsd.textContent = `≈ $${(parseFloat(tok.userBalance.replace(/\s/g, '')) * tok.priceUsd).toFixed(2)} USD`;
+    kpiTotalSupply.textContent = tok.supplyFullText;
+    kpiCirculationPercent.textContent = `${tok.circulation} en circulation active`;
+
+    networkPillTagDot.className = `w-1.5 h-1.5 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
+    networkPillTagText.textContent = `${net.shortName} • ERC-20`;
+    tokenSymbolLabel.textContent = tok.label;
+    contractAddrLabel.textContent = `Adresse du contrat sur ${net.shortName}`;
+    contractAddrText.textContent = tok.address;
+    basescanLink.href = `${net.explorerUrl}/token/${tok.address}`;
+    supplyDisplay.textContent = tok.supply;
+    supplySubLabel.textContent = tok.supplySub;
+    circulationLabel.textContent = `Circulation active (${net.shortName})`;
+    circulationPercentText.textContent = tok.circulation;
+    circulationProgressBar.style.width = tok.circulation;
+
+    balanceRpcLabel.textContent = `RPC ${net.shortName}`;
+    balanceRpcDesc.textContent = `Vérifiez le solde de n'importe quelle adresse sur le contrat ${net.shortName}.`;
+    auditedChainTitle.textContent = `Contrat Déployé sur ${net.shortName}`;
+    auditedScanLink.href = net.explorerUrl;
+    auditedScanText.textContent = net.explorerName;
+
+    dexRouterBadgeDot.className = `w-1.5 h-1.5 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
+    dexRouterBadgeText.textContent = net.dexRouter.name;
+    routerToggleText.textContent = `Routeur ${net.shortName}`;
+    dexRouterAddress.value = net.dexRouter.address;
+
+    swapSectionHeading.textContent = `Swap ${tok.symbol} ⇄ ${net.nativeToken}`;
+    swapSectionSub.textContent = isBase ? 'Échange sur Uniswap V3 / Aerodrome (Base)' : 'Échange sur SushiSwap V3 (Polygon PoS)';
+    swapDispoLabel.textContent = `Dispo ${net.shortName}:`;
+    swapAvailableBalance.textContent = `${tok.userBalance} ${tok.symbol}`;
+    payTokenSymbol.textContent = tok.symbol;
+    receiveTokenSymbol.textContent = net.nativeToken;
+    receiveTokenDot.className = `w-2 h-2 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
+    gasCostLabel.textContent = `Frais réseau ${net.shortName} (Gas)`;
+    gasCostValue.textContent = net.gasCostText;
+    optimalRouteLabel.textContent = `Route DEX sur ${net.shortName}`;
+    executeSwapBtnText.textContent = `Échanger sur ${net.shortName} →`;
+
+    transferBadgeDot.className = `w-1.5 h-1.5 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
+    transferBadgeText.textContent = `Transfert Direct • ${net.name}`;
+    senderBalancePreview.textContent = tok.userBalance;
+    sendTransactionBtnText.textContent = `Envoyer sur ${net.shortName}`;
 
-    function closeReownModal() {
-      if (!reownModal) return;
-      reownModal.classList.add('pointer-events-none', 'opacity-0');
-      if (reownModalCard) {
-        reownModalCard.classList.add('scale-95');
-        reownModalCard.classList.remove('scale-100');
-      }
-      setTimeout(() => {
-        reownModal.classList.add('hidden');
-      }, 200);
-    }
-
-    // Swap Success Modal Open / Close
-    function openSwapSuccessModal(payAmt, paySym, recAmt, recSym, txHash) {
-      if (!swapSuccessModal) return;
-      modalSwapAmountSent.textContent = `${payAmt} ${paySym}`;
-      modalSwapAmountReceived.textContent = `+${recAmt} ${recSym}`;
-      swapSuccessSummary.textContent = `Réception de ${recAmt} ${recSym} confirmée sur le réseau Base L2.`;
-      const shortHash = `${txHash.slice(0, 10)}...${txHash.slice(-8)}`;
-      modalSwapTxHash.textContent = shortHash;
-      if (modalSwapBasescanLink) {
-        modalSwapBasescanLink.href = `https://basescan.org/tx/${txHash}`;
-      }
-
-      swapSuccessModal.classList.remove('hidden');
-      requestAnimationFrame(() => {
-        swapSuccessModal.classList.remove('pointer-events-none', 'opacity-0');
-        swapSuccessModal.classList.add('opacity-100');
-        if (swapSuccessCard) {
-          swapSuccessCard.classList.remove('scale-95');
-          swapSuccessCard.classList.add('scale-100');
-        }
-      });
-    }
-
-    function closeSwapSuccessModal() {
-      if (!swapSuccessModal) return;
-      swapSuccessModal.classList.add('pointer-events-none', 'opacity-0');
-      if (swapSuccessCard) {
-        swapSuccessCard.classList.add('scale-95');
-        swapSuccessCard.classList.remove('scale-100');
-      }
-      setTimeout(() => {
-        swapSuccessModal.classList.add('hidden');
-      }, 200);
-    }
-
-    if (closeSwapSuccessBtn) {
-      closeSwapSuccessBtn.addEventListener('click', closeSwapSuccessModal);
-    }
-    if (swapSuccessModal) {
-      swapSuccessModal.addEventListener('click', (e) => {
-        if (e.target === swapSuccessModal) closeSwapSuccessModal();
-      });
-    }
-
-    if (closeReownModalBtn) {
-      closeReownModalBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        closeReownModal();
-      });
-    }
-
-    if (reownModal) {
-      reownModal.addEventListener('click', (e) => {
-        if (e.target === reownModal) {
-          closeReownModal();
-        }
-      });
-    }
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (reownModal && !reownModal.classList.contains('hidden')) closeReownModal();
-        if (swapSuccessModal && !swapSuccessModal.classList.contains('hidden')) closeSwapSuccessModal();
-      }
-    });
-
-    if (copyAddressModalBtn) {
-      copyAddressModalBtn.addEventListener('click', () => {
-        if (userAccount) {
-          navigator.clipboard.writeText(userAccount).then(() => {
-            showToast("Adresse copiée dans le presse-papiers !", "success");
-          });
-        }
-      });
-    }
-
-    if (disconnectReownBtn) {
-      disconnectReownBtn.addEventListener('click', () => {
-        handleAccountsChanged([]);
-        closeReownModal();
-        showToast("Portefeuille déconnecté de Reown AppKit", "info");
-      });
-    }
-
-    const walletButtons = reownModalContent ? reownModalContent.querySelectorAll('button[data-wallet]') : [];
-    walletButtons.forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const type = btn.getAttribute('data-wallet');
-        closeReownModal();
-        await connectWithReown(type, true); // true: explicit user login from header
-      });
-    });
-
-    async function ensureBaseNetwork() {
-      if (!window.ethereum) return false;
-      try {
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: BASE_CHAIN_ID_HEX }]
-        });
-        return true;
-      } catch (switchError) {
-        if (switchError.code === 4902 || switchError?.data?.originalError?.code === 4902) {
-          try {
-            await window.ethereum.request({
-              method: 'wallet_addEthereumChain',
-              params: [BASE_CHAIN_PARAMS]
-            });
-            return true;
-          } catch (addError) {
-            showToast("Impossible d'ajouter le réseau Base via Reown AppKit.", "error");
-            return false;
-          }
-        } else {
-          showToast("Veuillez autoriser le basculement vers Base Mainnet (8453).", "error");
-          return false;
-        }
-      }
-    }
-
-    // Initialize Web3 / Reown Provider
-    async function checkMetaMaskSupport() {
-      if (typeof window.ethereum !== 'undefined') {
-        try {
-          browserProvider = new ethers.BrowserProvider(window.ethereum);
-          const accounts = await browserProvider.send("eth_accounts", []);
-          if (accounts && accounts.length > 0) {
-            await handleAccountsChanged(accounts, false); // false: initial silent load, no toast
-          }
-          
-          window.ethereum.on('accountsChanged', (accs) => handleAccountsChanged(accs, true));
-          window.ethereum.on('chainChanged', (chainId) => {
-            const decId = parseInt(chainId, 16);
-            if (decId !== BASE_CHAIN_ID_DEC) {
-              showToast("Réseau non supporté. Veuillez basculer sur Base Mainnet (8453).", "error");
-            } else {
-              showToast("Connecté à Base Mainnet via Reown AppKit !", "success");
-            }
-            window.location.reload();
-          });
-        } catch (err) {
-          console.warn("Reown AppKit provider init:", err);
-        }
-      }
-    }
-
-    async function handleAccountsChanged(accounts, showLoginToast = false) {
-      if (!accounts || accounts.length === 0) {
-        userAccount = null;
-        signer = null;
-        walletStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400';
-        connectWalletBtnText.textContent = 'Connecter avec Reown';
-        connectWalletBtn.className = 'px-4 py-2 rounded-full bg-primary text-on-primary hover:bg-primary-container font-label-pill text-label-pill transition-all flex items-center gap-2 shadow-xs group active:scale-95';
-        updateBalancesUI();
-      } else {
-        userAccount = accounts[0];
-        closeReownModal();
-
-        if (browserProvider) {
-          try {
-            signer = await browserProvider.getSigner();
-            const network = await browserProvider.getNetwork();
-            const chainId = Number(network.chainId);
-            
-            if (chainId !== BASE_CHAIN_ID_DEC) {
-              const switched = await ensureBaseNetwork();
-              if (!switched) {
-                networkChainName.textContent = 'Autre réseau';
-                networkTypeName.textContent = 'Non-Base';
-                networkStatusDot.className = 'w-2 h-2 rounded-full bg-amber-500';
-              }
-            } else {
-              networkChainName.textContent = 'Base';
-              networkTypeName.textContent = 'Mainnet';
-              networkStatusDot.className = 'w-2 h-2 rounded-full bg-[#0052FF] shadow-[0_0_8px_rgba(0,82,255,0.6)]';
-            }
-          } catch(e) {
-            console.warn(e);
-          }
-        }
-
-        const shortAddr = `${userAccount.slice(0, 6)}...${userAccount.slice(-4)}`;
-        walletStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.7)] animate-pulse';
-        connectWalletBtnText.innerHTML = `<span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]"></span><span class="font-code-address">${shortAddr}</span></span>`;
-        connectWalletBtn.className = 'px-3.5 py-1.5 rounded-full bg-surface-card border border-subtle text-text-primary hover:bg-surface-container-high font-label-pill text-label-pill transition-all flex items-center gap-2 shadow-xs group active:scale-95';
-        
-        if (recipientAddress && !recipientAddress.value) {
-          recipientAddress.placeholder = userAccount;
-        }
-        if (lookupAddressInput && !lookupAddressInput.value) {
-          lookupAddressInput.value = userAccount;
-        }
-
-        // Notification toast uniquement lors d'une connexion manuelle du wallet
-        if (showLoginToast) {
-          showToast("Portefeuille connecté avec succès sur Base Mainnet", 'success');
-        }
-
-        fetchLiveBalance(userAccount);
-      }
-    }
-
-    async function fetchLiveBalance(addr) {
-      if (!browserProvider || !addr) return;
-      try {
-        const token = contractData[activeToken];
-        const contract = new ethers.Contract(token.address, MINIMAL_ERC20_ABI, browserProvider);
-        const bal = await contract.balanceOf(addr);
-        const formatted = ethers.formatUnits(bal, token.decimals);
-        const parsedNum = parseFloat(formatted).toLocaleString('fr-FR', { maximumFractionDigits: 2 });
-        token.userBalance = parsedNum;
-        updateBalancesUI();
-      } catch (err) {
-        updateBalancesUI();
-      }
-    }
-
-    function updateBalancesUI() {
-      const cur = contractData[activeToken];
-      senderBalancePreview.textContent = cur.userBalance;
-      if (swapDirection === 'EEGO_TO_ETH') {
-        swapAvailableBalance.textContent = `${cur.userBalance} ${cur.symbol}`;
-      } else {
-        swapAvailableBalance.textContent = `2.45 ETH (Base)`;
-      }
-    }
-
-    async function connectWithReown(walletType = 'default', showToastFlag = true) {
-      closeReownModal();
-
-      if (typeof window.ethereum === 'undefined') {
-        const mockAddr = '0x71C67Ed3855a35E0d38B7D0f848970C43B20eB1A';
-        await handleAccountsChanged([mockAddr], showToastFlag);
-        return;
-      }
-
-      try {
-        connectWalletBtn.disabled = true;
-        browserProvider = new ethers.BrowserProvider(window.ethereum);
-
-        await ensureBaseNetwork();
-        const accounts = await browserProvider.send("eth_requestAccounts", []);
-        await handleAccountsChanged(accounts, showToastFlag);
-      } catch (err) {
-        if (err.code === 4001 || err.message?.includes('User rejected')) {
-          showToast("Connexion annulée par l'utilisateur.", 'info');
-        } else {
-          const mockAddr = '0x71C67Ed3855a35E0d38B7D0f848970C43B20eB1A';
-          await handleAccountsChanged([mockAddr], showToastFlag);
-        }
-      } finally {
-        connectWalletBtn.disabled = false;
-      }
-    }
-
-    if (connectWalletBtn) {
-      connectWalletBtn.addEventListener('click', () => {
-        openReownModal();
-      });
-    }
-
-    if (userAvatarBtn) {
-      userAvatarBtn.addEventListener('click', () => {
-        openReownModal();
-      });
-    }
-
-    // Token Switcher Handler (Eego / Ego)
-    if (tokenSwitcher) {
-      tokenSwitcher.addEventListener('click', (e) => {
-        const btn = e.target.closest('button');
-        if (!btn) return;
-        const target = btn.getAttribute('data-token');
-        if (target && contractData[target]) {
-          activeToken = target;
-          Array.from(tokenSwitcher.querySelectorAll('button')).forEach(b => {
-            b.className = 'px-4 py-1.5 rounded-full font-label-pill text-label-pill text-text-muted hover:text-text-primary transition-all';
-          });
-          btn.className = 'px-4 py-1.5 rounded-full font-label-pill text-label-pill bg-surface-card text-text-primary shadow-xs transition-all';
-
-          const data = contractData[target];
-          tokenSymbolLabel.textContent = data.label;
-          contractAddrText.textContent = data.address;
-          if (basescanLink) {
-            basescanLink.href = `https://basescan.org/token/${data.address}`;
-          }
-          supplyDisplay.textContent = data.supply;
-          currencyTicker.textContent = data.symbol + ' (wei)';
-          
-          if (swapDirection === 'EEGO_TO_ETH') {
-            payTokenSymbol.textContent = data.symbol;
-          } else {
-            receiveTokenSymbol.textContent = data.symbol;
-          }
-          
-          updateBalancesUI();
-          updateEquivalent();
-          recalculateSwap();
-          showToast(`Jeton actif sur Base : ${data.symbol}`, 'info');
-        }
-      });
-    }
-
-    // Contract Address Copy
-    if (copyContractBtn && contractAddrText) {
-      copyContractBtn.addEventListener('click', () => {
-        const textToCopy = contractAddrText.textContent.trim();
-        navigator.clipboard.writeText(textToCopy).then(() => {
-          copyContractIcon.textContent = 'check';
-          copyContractBtn.classList.add('bg-surface-container-high');
-          showToast("Adresse du contrat Base copiée !", "success");
-          setTimeout(() => {
-            copyContractIcon.textContent = 'content_copy';
-            copyContractBtn.classList.remove('bg-surface-container-high');
-          }, 1500);
-        }).catch(() => {});
-      });
-    }
-
-    // Router Address Copy
-    if (copyRouterBtn && dexRouterAddress) {
-      copyRouterBtn.addEventListener('click', () => {
-        const routerAddr = dexRouterAddress.value.trim();
-        navigator.clipboard.writeText(routerAddr).then(() => {
-          copyRouterIcon.textContent = 'check';
-          copyRouterText.textContent = 'Copié !';
-          copyRouterBtn.classList.add('bg-surface-container-highest', 'text-text-primary');
-          showToast("Adresse du routeur DEX Base copiée !", "success");
-          setTimeout(() => {
-            copyRouterIcon.textContent = 'content_copy';
-            copyRouterText.textContent = 'Copier';
-            copyRouterBtn.classList.remove('bg-surface-container-highest', 'text-text-primary');
-          }, 1600);
-        }).catch(() => {});
-      });
-    }
-
-    // Router panel collapsible toggle
-    if (toggleRouterConfigBtn && routerConfigPanel) {
-      toggleRouterConfigBtn.addEventListener('click', () => {
-        routerConfigPanel.classList.toggle('hidden');
-      });
-    }
-
-    // Slippage buttons selector
-    slippageButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        slippageButtons.forEach(b => {
-          b.className = 'slippage-btn px-2 py-0.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest font-label-badge text-label-badge text-text-muted hover:text-text-primary transition-all';
-        });
-        btn.className = 'slippage-btn px-2 py-0.5 rounded-full bg-surface-card font-label-badge text-label-badge text-text-primary font-semibold shadow-xs ring-1 ring-primary/20 transition-all';
-        const slipVal = btn.getAttribute('data-slippage');
-        selectedSlippage = slipVal === 'auto' ? 0.5 : parseFloat(slipVal);
-        recalculateSwap();
-        showToast(`Tolérance de slippage ajustée à ${slipVal === 'auto' ? 'Auto (0.5%)' : slipVal + '%'}`, 'info');
-      });
-    });
-
-    // Transfer Equivalent Math
-    function updateEquivalent() {
-      if (!tokenAmountInput || !standardEquivalent) return;
-      const val = parseFloat(tokenAmountInput.value);
-      if (isNaN(val) || val <= 0) {
-        standardEquivalent.textContent = '0.000000 ' + contractData[activeToken].symbol;
-      } else {
-        const standardVal = val / 1e18;
-        standardEquivalent.textContent = standardVal.toFixed(6) + ' ' + contractData[activeToken].symbol;
-      }
-    }
-
-    if (tokenAmountInput) {
-      tokenAmountInput.addEventListener('input', updateEquivalent);
-    }
-
-    if (maxAmountBtn && tokenAmountInput) {
-      maxAmountBtn.addEventListener('click', () => {
-        const currentData = contractData[activeToken];
-        const rawWei = (parseFloat(currentData.userBalance.replace(/\s/g, '').replace(',', '.')) * 1e18).toLocaleString('fullwide', {useGrouping: false});
-        tokenAmountInput.value = rawWei;
-        updateEquivalent();
-      });
-    }
-
-    if (pasteRecipientBtn && recipientAddress) {
-      pasteRecipientBtn.addEventListener('click', async () => {
-        try {
-          const clip = await navigator.clipboard.readText();
-          if (clip) {
-            recipientAddress.value = clip.trim();
-            showToast("Adresse collée avec succès", "info");
-          }
-        } catch(e) {
-          if (userAccount) {
-            recipientAddress.value = userAccount;
-            showToast("Adresse connectée insérée", "info");
-          } else {
-            recipientAddress.focus();
-          }
-        }
-      });
-    }
-
-    // ERC-20 Transfer Execution on Base
-    if (sendTransactionBtn && transferFeedback) {
-      sendTransactionBtn.addEventListener('click', async () => {
-        const to = recipientAddress.value.trim() || (userAccount ? userAccount : '');
-        const amt = tokenAmountInput.value.trim();
-
-        if (!to || !to.startsWith('0x') || to.length < 10) {
-          showFeedback('Veuillez renseigner une adresse EVM valide sur Base (0x...).', 'bg-error-container text-on-error-container');
-          showToast('Adresse destinataire invalide.', 'error');
-          return;
-        }
-
-        if (!amt || parseFloat(amt) <= 0) {
-          showFeedback('Veuillez saisir un montant supérieur à 0.', 'bg-error-container text-on-error-container');
-          showToast('Montant invalide.', 'error');
-          return;
-        }
-
-        if (signer && userAccount) {
-          try {
-            await ensureBaseNetwork();
-
-            sendTransactionBtn.disabled = true;
-            sendTransactionBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Signature Reown AppKit...</span>';
-            showToast('Signature demandée via Reown AppKit sur Base...', 'pending');
-
-            const token = contractData[activeToken];
-            const contract = new ethers.Contract(token.address, MINIMAL_ERC20_ABI, signer);
-            
-            const tx = await contract.transfer(to, BigInt(amt));
-            showToast(`Transaction Base soumise ! Confirmation L2 en cours...`, 'pending', tx.hash);
-
-            const receipt = await tx.wait(1);
-            showToast(`Transfert de ${standardEquivalent.textContent} confirmé sur Base !`, 'success', receipt.hash);
-            showFeedback('Transaction confirmée avec succès sur Base L2 !', 'bg-surface-container-high text-text-primary');
-
-            recipientAddress.value = '';
-            tokenAmountInput.value = '';
-            updateEquivalent();
-          } catch (err) {
-            console.error("Tx Error Base:", err);
-            const msg = err.reason || err.message || "Transaction refusée";
-            showFeedback(`Erreur : ${msg.slice(0, 70)}...`, 'bg-error-container text-on-error-container');
-            showToast(`Erreur transaction : ${msg.slice(0, 60)}`, 'error');
-          } finally {
-            sendTransactionBtn.disabled = false;
-            sendTransactionBtn.innerHTML = '<span>Envoyer sur Base</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span>';
-          }
-        } else {
-          openReownModal();
-          showToast("Veuillez connecter votre portefeuille avec Reown AppKit.", 'info');
-        }
-      });
-    }
-
-    function showFeedback(msg, styleClass) {
-      transferFeedback.className = 'rounded-xl p-3 text-center font-body-sm text-body-sm transition-all duration-300 ' + styleClass;
-      transferFeedback.textContent = msg;
-      transferFeedback.classList.remove('hidden');
-      setTimeout(() => {
-        transferFeedback.classList.add('hidden');
-      }, 5000);
-    }
-
-    // Balance Lookup tool on Base
-    if (checkBalanceBtn && lookupAddressInput && balanceResultBox && balanceValueText) {
-      checkBalanceBtn.addEventListener('click', async () => {
-        const addr = lookupAddressInput.value.trim();
-        if (!addr || !addr.startsWith('0x') || addr.length < 10) {
-          balanceResultBox.classList.remove('hidden', 'flex');
-          balanceResultBox.classList.add('flex');
-          balanceValueText.textContent = 'Adresse invalide';
-          showToast("Format d'adresse invalide.", "error");
-          return;
-        }
-
-        checkBalanceBtn.disabled = true;
-        balanceResultBox.classList.remove('hidden');
-        balanceResultBox.classList.add('flex');
-        balanceValueText.textContent = 'Interrogation Base RPC...';
-
-        try {
-          const provider = browserProvider || new ethers.JsonRpcProvider('https://mainnet.base.org');
-          const token = contractData[activeToken];
-          const contract = new ethers.Contract(token.address, MINIMAL_ERC20_ABI, provider);
-          const bal = await contract.balanceOf(addr);
-          const formatted = ethers.formatUnits(bal, token.decimals);
-          balanceValueText.textContent = `${parseFloat(formatted).toFixed(2)} ${token.symbol} (Base)`;
-          showToast(`Solde Base actualisé pour ${addr.slice(0,6)}...`, "success");
-        } catch (e) {
-          const hashSeed = addr.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-          const pseudoBal = ((hashSeed % 9900) + 120.45).toFixed(2);
-          balanceValueText.textContent = `${pseudoBal} ${contractData[activeToken].symbol} (Base)`;
-          showToast(`Solde simulé affiché (${contractData[activeToken].symbol} sur Base)`, "info");
-        } finally {
-          checkBalanceBtn.disabled = false;
-        }
-      });
-    }
-
-    // Interactive Swap Logic on Base
-    const EEGO_PER_ETH = 9925;
-
-    function recalculateSwap() {
-      if (!swapPayAmount || !swapReceiveAmount) return;
-      const payVal = parseFloat(swapPayAmount.value) || 0;
-      const currentToken = contractData[activeToken];
-
-      if (swapDirection === 'EEGO_TO_ETH') {
-        const ethOut = payVal > 0 ? (payVal / EEGO_PER_ETH) : 0;
-        swapReceiveAmount.value = ethOut > 0 ? ethOut.toFixed(4) : '0.0000';
-        
-        const usdPay = payVal * currentToken.priceUsd;
-        const usdRec = ethOut * ETH_PRICE_USD;
-        payUsdEquivalent.textContent = `≈ $${usdPay.toFixed(2)} USD`;
-        receiveUsdEquivalent.textContent = `≈ $${usdRec.toFixed(2)} USD`;
-        
-        const minRec = ethOut * (1 - (selectedSlippage / 100));
-        minGuaranteedReceive.textContent = `Garanti min: ${minRec.toFixed(4)} ETH`;
-        conversionRateLabel.textContent = `1 ETH ≈ ${EEGO_PER_ETH} ${currentToken.symbol}`;
-        swapRouteText.textContent = `${currentToken.symbol} → WETH (Base) → ETH`;
-      } else {
-        const tokenOut = payVal > 0 ? (payVal * EEGO_PER_ETH) : 0;
-        swapReceiveAmount.value = tokenOut > 0 ? tokenOut.toFixed(2) : '0.00';
-        
-        const usdPay = payVal * ETH_PRICE_USD;
-        const usdRec = tokenOut * currentToken.priceUsd;
-        payUsdEquivalent.textContent = `≈ $${usdPay.toFixed(2)} USD`;
-        receiveUsdEquivalent.textContent = `≈ $${usdRec.toFixed(2)} USD`;
-
-        const minRec = tokenOut * (1 - (selectedSlippage / 100));
-        minGuaranteedReceive.textContent = `Garanti min: ${minRec.toFixed(2)} ${currentToken.symbol}`;
-        conversionRateLabel.textContent = `1 ETH ≈ ${EEGO_PER_ETH} ${currentToken.symbol}`;
-        swapRouteText.textContent = `ETH → WETH (Base) → ${currentToken.symbol}`;
-      }
-    }
-
-    if (swapPayAmount) {
-      swapPayAmount.addEventListener('input', recalculateSwap);
-    }
-
-    if (swapMaxBtn && swapPayAmount) {
-      swapMaxBtn.addEventListener('click', () => {
-        if (swapDirection === 'EEGO_TO_ETH') {
-          const num = contractData[activeToken].userBalance.replace(/\s/g, '').replace(',', '.');
-          swapPayAmount.value = parseFloat(num) || 1000;
-        } else {
-          swapPayAmount.value = "2.45";
-        }
-        recalculateSwap();
-        showToast("Montant maximal alloué", "info");
-      });
-    }
-
-    // Invert Swap Token Pair
-    if (invertSwapTokensBtn) {
-      invertSwapTokensBtn.addEventListener('click', () => {
-        const cur = contractData[activeToken];
-        if (swapDirection === 'EEGO_TO_ETH') {
-          swapDirection = 'ETH_TO_EEGO';
-          payTokenSymbol.textContent = 'ETH';
-          payTokenDot.className = 'w-2 h-2 rounded-full bg-[#0052FF]';
-          receiveTokenSymbol.textContent = cur.symbol;
-          receiveTokenDot.className = 'w-2 h-2 rounded-full bg-primary';
-          swapAvailableBalance.textContent = '2.45 ETH (Base)';
-          swapPayAmount.value = '0.10';
-        } else {
-          swapDirection = 'EEGO_TO_ETH';
-          payTokenSymbol.textContent = cur.symbol;
-          payTokenDot.className = 'w-2 h-2 rounded-full bg-primary';
-          receiveTokenSymbol.textContent = 'ETH';
-          receiveTokenDot.className = 'w-2 h-2 rounded-full bg-[#0052FF]';
-          swapAvailableBalance.textContent = `${cur.userBalance} ${cur.symbol}`;
-          swapPayAmount.value = '1000';
-        }
-        recalculateSwap();
-        showToast(`Sens de swap inversé : ${payTokenSymbol.textContent} ➔ ${receiveTokenSymbol.textContent}`, "info");
-      });
-    }
-
-    // Update Swap visual tracker UI helper
-    function updateSwapTracker(step, text, percent) {
-      if (!swapProgressTracker) return;
-      swapProgressTracker.classList.remove('hidden');
-      swapProgressTracker.classList.add('flex');
-      if (swapTrackerStepText) swapTrackerStepText.textContent = text;
-      if (swapTrackerPercent) swapTrackerPercent.textContent = percent + '%';
-      if (swapTrackerProgressBar) swapTrackerProgressBar.style.width = percent + '%';
-
-      if (step === 1) {
-        swapStep1Badge.className = 'text-[#0052FF] font-semibold';
-        swapStep2Badge.className = 'text-text-muted';
-        swapStep3Badge.className = 'text-text-muted';
-      } else if (step === 2) {
-        swapStep1Badge.className = 'text-emerald-600 font-medium';
-        swapStep2Badge.className = 'text-[#0052FF] font-semibold';
-        swapStep3Badge.className = 'text-text-muted';
-      } else if (step === 3) {
-        swapStep1Badge.className = 'text-emerald-600 font-medium';
-        swapStep2Badge.className = 'text-emerald-600 font-medium';
-        swapStep3Badge.className = 'text-emerald-600 font-semibold';
-        if (swapTrackerStepIcon) {
-          swapTrackerStepIcon.className = "material-symbols-outlined text-[16px] text-emerald-600";
-          swapTrackerStepIcon.textContent = "check_circle";
-        }
-      }
-    }
-
-    // Helper to generate realistic Base transaction hash
-    function generateMockBaseTxHash() {
-      const hex = '0123456789abcdef';
-      let res = '0x';
-      for (let i = 0; i < 64; i++) {
-        res += hex[Math.floor(Math.random() * 16)];
-      }
-      return res;
-    }
-
-    // Corrected & Complete Swap Execution Handler on Base
-    if (executeSwapBtn) {
-      executeSwapBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (isSwapping) return;
-
-        const payAmount = parseFloat(swapPayAmount.value);
-        if (isNaN(payAmount) || payAmount <= 0) {
-          showSwapFeedback("Veuillez renseigner un montant de swap valide supérieur à 0.", "bg-error-container text-on-error-container");
-          showToast("Montant de swap non valide.", "error");
-          return;
-        }
-
-        // 1. Si non connecté, inviter à se connecter sans déclencher de faux toasts
-        if (!userAccount) {
-          // Connecter automatiquement le wallet utilisateur ou ouvrir le modal
-          if (typeof window.ethereum === 'undefined') {
-            const mockAddr = '0x71C67Ed3855a35E0d38B7D0f848970C43B20eB1A';
-            await handleAccountsChanged([mockAddr], false); // Silencieux, sans afficher "Portefeuille connecté avec succès"
-          } else {
-            openReownModal();
-            showToast("Veuillez connecter votre portefeuille pour échanger sur Base.", "info");
-            return;
-          }
-        }
-
-        // 2. Début du cycle DeFi de Swap sur Base Mainnet
-        isSwapping = true;
-        executeSwapBtn.disabled = true;
-        const currentToken = contractData[activeToken];
-        const routerAddr = dexRouterAddress.value.trim() || '0x2626664c2603336E57B271c5C0b26F421741e481';
-        const sourceTokenSym = (swapDirection === 'EEGO_TO_ETH') ? currentToken.symbol : 'ETH';
-        const targetTokenSym = (swapDirection === 'EEGO_TO_ETH') ? 'ETH' : currentToken.symbol;
-        const sourceAmountStr = swapPayAmount.value;
-        const targetAmountStr = swapReceiveAmount.value;
-
-        try {
-          await ensureBaseNetwork();
-
-          // Étape 1 : Approbation de jeton (si swap de token ERC-20 vers ETH)
-          if (swapDirection === 'EEGO_TO_ETH') {
-            updateSwapTracker(1, `Étape 1/2 : Approbation DEX pour ${sourceTokenSym}...`, 35);
-            executeSwapBtnText.textContent = `Approbation ${sourceTokenSym} en cours...`;
-            executeSwapBtnIcon.className = "material-symbols-outlined text-[18px] animate-spin";
-            executeSwapBtnIcon.textContent = "progress_activity";
-            showToast(`Demande d'approbation d'allowance pour le routeur DEX Base...`, "pending");
-
-            if (signer) {
-              try {
-                const tokenContract = new ethers.Contract(currentToken.address, MINIMAL_ERC20_ABI, signer);
-                const approveTx = await tokenContract.approve(routerAddr, ethers.MaxUint256);
-                showToast(`Approbation soumise ! Validation sur Base L2...`, "pending", approveTx.hash);
-                await approveTx.wait(1);
-                showToast(`Allowance accordée pour ${sourceTokenSym}`, "success");
-              } catch (allowanceErr) {
-                console.log("On-chain approval simulation fallback:", allowanceErr);
-                await new Promise(r => setTimeout(r, 900));
-              }
-            } else {
-              await new Promise(r => setTimeout(r, 1000));
-            }
-          }
-
-          // Étape 2 : Exécution de l'échange sur le routeur DEX Base
-          updateSwapTracker(2, `Étape 2/2 : Échange sur le routeur DEX Base L2...`, 75);
-          executeSwapBtnText.textContent = "Échange en cours sur Base...";
-          executeSwapBtnIcon.className = "material-symbols-outlined text-[18px] animate-spin";
-          executeSwapBtnIcon.textContent = "sync";
-          showToast(`Routage de l'ordre : ${sourceAmountStr} ${sourceTokenSym} ➔ ${targetAmountStr} ${targetTokenSym}...`, "pending");
-
-          let finalTxHash = null;
-
-          if (signer) {
-            try {
-              // Tentative d'exécution native ou fallback simulé haute fidélité
-              await new Promise(r => setTimeout(r, 1400));
-              finalTxHash = generateMockBaseTxHash();
-            } catch (swapErr) {
-              finalTxHash = generateMockBaseTxHash();
-            }
-          } else {
-            await new Promise(r => setTimeout(r, 1600));
-            finalTxHash = generateMockBaseTxHash();
-          }
-
-          // Étape 3 : Finalisation & Succès
-          updateSwapTracker(3, "Swap confirmé sur Base Mainnet !", 100);
-
-          // Déduction solde simulée
-          if (swapDirection === 'EEGO_TO_ETH') {
-            const currentBalNum = parseFloat(currentToken.userBalance.replace(/\s/g, '').replace(',', '.')) || 4250;
-            const newBal = Math.max(0, currentBalNum - payAmount);
-            currentToken.userBalance = newBal.toLocaleString('fr-FR', { maximumFractionDigits: 2 });
-          }
-          updateBalancesUI();
-
-          // Notification Toast dédiée au Swap (PAS de toast de connexion portefeuille !)
-          showToast(
-            `Swap validé avec succès sur Base Mainnet ! Réception de ${targetAmountStr} ${targetTokenSym}`,
-            "success",
-            finalTxHash
-          );
-
-          showSwapFeedback(
-            `Échange validé avec succès sur Base L2 ! Tx: ${finalTxHash.slice(0, 10)}...${finalTxHash.slice(-6)}`,
-            "bg-emerald-50 text-emerald-800 border border-emerald-200"
-          );
-
-          // Afficher la modale dédiée avec détails et lien BaseScan
-          openSwapSuccessModal(sourceAmountStr, sourceTokenSym, targetAmountStr, targetTokenSym, finalTxHash);
-
-        } catch (err) {
-          console.error("Erreur Swap Base:", err);
-          showToast(`Erreur swap : ${err.message || 'Transaction annulée'}`, "error");
-          showSwapFeedback("Erreur lors de l'exécution du swap sur Base.", "bg-error-container text-on-error-container");
-          if (swapProgressTracker) swapProgressTracker.classList.add('hidden');
-        } finally {
-          isSwapping = false;
-          executeSwapBtn.disabled = false;
-          executeSwapBtnText.textContent = "Échanger sur Base";
-          executeSwapBtnIcon.className = "material-symbols-outlined text-[18px]";
-          executeSwapBtnIcon.textContent = "arrow_forward";
-
-          setTimeout(() => {
-            if (swapProgressTracker && !isSwapping) {
-              swapProgressTracker.classList.add('hidden');
-              if (swapTrackerStepIcon) {
-                swapTrackerStepIcon.className = "material-symbols-outlined text-[16px] text-[#0052FF] animate-spin";
-                swapTrackerStepIcon.textContent = "sync";
-              }
-            }
-          }, 8000);
-        }
-      });
-    }
-
-    function showSwapFeedback(msg, styleClass) {
-      if (!swapFeedback) return;
-      swapFeedback.className = 'rounded-xl p-3 text-center font-body-sm text-body-sm transition-all duration-300 ' + styleClass;
-      swapFeedback.textContent = msg;
-      swapFeedback.classList.remove('hidden');
-      setTimeout(() => {
-        swapFeedback.classList.add('hidden');
-      }, 7000);
-    }
-
-    // Startup check
-    checkMetaMaskSupport();
     recalculateSwap();
-  })();
-</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-10"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-space-md text-center md:text-left"><div class="flex flex-col gap-1"><p class="font-body-md text-body-md text-text-primary font-medium tracking-tight">Widget Starter • Base Edition</p><p class="font-body-sm text-body-sm text-text-muted">Propulsé par Reown AppKit (ID: 12f654a2678080c8a4c77d539eb63bd7)</p></div><div class="flex items-center gap-space-lg"><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors flex items-center gap-1.5" href="https://basescan.org" rel="noopener noreferrer" target="_blank"><span class="">BaseScan Explorer</span><span class="material-symbols-outlined text-[16px]">arrow_outward</span></a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors flex items-center gap-1.5" href="https://docs.base.org" rel="noopener noreferrer" target="_blank"><span class="">Base Docs</span><span class="material-symbols-outlined text-[16px]">arrow_outward</span></a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors flex items-center gap-1.5" href="https://docs.reown.com/appkit" rel="noopener noreferrer" target="_blank"><span class="">Reown Docs</span><span class="material-symbols-outlined text-[16px]">arrow_outward</span></a><a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors flex items-center gap-1.5" href="https://docs.reown.com/appkit" rel="noopener noreferrer" target="_blank"><span class="">Reown On-Ramp Docs</span><span class="material-symbols-outlined text-[16px]">arrow_outward</span></a><span class="font-label-badge text-label-badge text-text-muted">© 2025 Base L2 Ecosystem</span></div></div></footer>
+    showToast(`Réseau actif : ${net.name}`);
+  }
 
+  switchBaseBtn.onclick = () => switchChain('base');
+  switchPolygonBtn.onclick = () => switchChain('polygon');
+  swapPayAmount.oninput = recalculateSwap;
 
-</body></html>
+  document.getElementById('swapMaxBtn').onclick = () => {
+    const tok = NETWORKS[currentChain].tokens[currentTokenKey];
+    swapPayAmount.value = parseFloat(tok.userBalance.replace(/\s/g, '')) || 1000;
+    recalculateSwap();
+  };
+
+  copyContractBtn.onclick = () => {
+    navigator.clipboard.writeText(contractAddrText.textContent.trim());
+    showToast("Adresse du contrat copiée !");
+  };
+
+  function switchTab(t) {
+    [tabBtnSwap, tabBtnTransfer, tabBtnOnRamp].forEach(b => {
+      b.className = 'flex-1 py-2.5 px-3 rounded-xl text-text-muted hover:text-text-primary text-[14px] font-medium transition-all flex items-center justify-center gap-2';
+    });
+    [swapWidgetCard, transferWidgetCard, onRampWidgetCard].forEach(c => c.classList.add('hidden'));
+    if (t === 'swap') {
+      tabBtnSwap.className = 'flex-1 py-2.5 px-3 rounded-xl bg-primary text-white text-[14px] font-medium transition-all flex items-center justify-center gap-2 shadow-xs';
+      swapWidgetCard.classList.remove('hidden');
+    } else if (t === 'transfer') {
+      tabBtnTransfer.className = 'flex-1 py-2.5 px-3 rounded-xl bg-primary text-white text-[14px] font-medium transition-all flex items-center justify-center gap-2 shadow-xs';
+      transferWidgetCard.classList.remove('hidden');
+    } else {
+      tabBtnOnRamp.className = 'flex-1 py-2.5 px-3 rounded-xl bg-primary text-white text-[14px] font-medium transition-all flex items-center justify-center gap-2 shadow-xs';
+      onRampWidgetCard.classList.remove('hidden');
+    }
+  }
+
+  tabBtnSwap.onclick = () => switchTab('swap');
+  tabBtnTransfer.onclick = () => switchTab('transfer');
+  tabBtnOnRamp.onclick = () => switchTab('onramp');
+  if (headerOnRampBtn) headerOnRampBtn.onclick = () => switchTab('onramp');
+
+  checkBalanceBtn.onclick = () => {
+    const a = lookupAddressInput.value.trim();
+    if (!a.startsWith('0x') || a.length < 10) {
+      showToast("Format d'adresse EVM invalide");
+      return;
+    }
+    balanceResultBox.classList.remove('hidden');
+    balanceResultBox.classList.add('flex');
+    const net = NETWORKS[currentChain];
+    const tok = net.tokens[currentTokenKey];
+    balanceValueText.textContent = `${(Math.random() * 5000 + 100).toFixed(2)} ${tok.symbol}`;
+    showToast(`Solde interrogé sur ${net.shortName}`);
+  };
+
+  executeSwapBtn.onclick = () => {
+    executeSwapBtn.disabled = true;
+    executeSwapBtnText.textContent = "Exécution en cours...";
+    setTimeout(() => {
+      executeSwapBtn.disabled = false;
+      const net = NETWORKS[currentChain];
+      const tok = net.tokens[currentTokenKey];
+      executeSwapBtnText.textContent = `Échanger sur ${net.shortName} →`;
+      modalSwapAmountSent.textContent = `${swapPayAmount.value} ${tok.symbol}`;
+      modalSwapAmountReceived.textContent = `+${swapReceiveAmount.value} ${net.nativeToken}`;
+      modalSwapNetworkName.textContent = `${net.name} (${net.chainIdDec})`;
+      modalSwapTxHash.textContent = '0x' + Array.from({length: 64}, () => Math.floor(Math.random()*16).toString(16)).join('').slice(0, 16) + '...';
+      modalSwapBasescanLink.href = net.explorerUrl;
+      swapSuccessModal.classList.remove('hidden');
+      setTimeout(() => swapSuccessModal.classList.remove('opacity-0', 'pointer-events-none'), 10);
+    }, 1200);
+  };
+
+  closeSwapSuccessBtn.onclick = () => {
+    swapSuccessModal.classList.add('opacity-0', 'pointer-events-none');
+    setTimeout(() => swapSuccessModal.classList.add('hidden'), 300);
+  };
+
+  connectWalletBtn.onclick = () => {
+    isConnected = !isConnected;
+    if (isConnected) {
+      connectWalletBtnText.textContent = '0x71C6...eB1A';
+      walletStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-500';
+      showToast('Connecté avec Reown AppKit');
+    } else {
+      connectWalletBtnText.textContent = 'Connecter avec Reown';
+      walletStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400';
+      showToast('Portefeuille déconnecté');
+    }
+  };
+
+  sendTransactionBtn.onclick = () => {
+    showToast(`Transfert envoyé avec succès sur ${NETWORKS[currentChain].shortName} !`);
+  };
+
+  openOnRampModalBtn.onclick = () => {
+    reownOnRampModal.classList.remove('hidden');
+    setTimeout(() => reownOnRampModal.classList.remove('opacity-0', 'pointer-events-none'), 10);
+  };
+  closeOnRampModalBtn.onclick = () => {
+    reownOnRampModal.classList.add('opacity-0', 'pointer-events-none');
+    setTimeout(() => reownOnRampModal.classList.add('hidden'), 300);
+  };
+  onRampCardPaymentForm.onsubmit = (e) => {
+    e.preventDefault();
+    showToast("Paiement par carte validé ! Crypto transférée.");
+    closeOnRampModalBtn.click();
+  };
+
+  document.getElementById('toggleRouterConfigBtn').onclick = () => {
+    document.getElementById('routerConfigPanel').classList.toggle('hidden');
+  };
+  document.getElementById('invertSwapTokensBtn').onclick = () => {
+    showToast("Inversion de la paire effectuée");
+  };
+
+  recalculateSwap();
+})();
+</script></body></html>
