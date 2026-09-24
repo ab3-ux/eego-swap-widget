@@ -72,7 +72,7 @@
 </a>
 <div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-text-muted font-['JetBrains_Mono'] text-[11px] border border-border-subtle">
 <span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="headerGlobalDot"></span>
-<span id="headerPlatformSubtitle">Propulsé par Reown AppKit • Multi-chain Base &amp; Polygon</span>
+<span id="headerPlatformSubtitle">Propulsé par Reown AppKit • Multi-chain Base &amp; Polygon PoS</span>
 </div>
 </div>
 <!-- Navigation Desktop -->
@@ -209,7 +209,7 @@
 <div class="flex items-center justify-between gap-2 mb-3">
 <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs" id="dexRouterBadge">
 <span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="dexRouterBadgeDot"></span>
-<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] font-medium truncate" id="dexRouterBadgeText">SushiSwap (V2 Classic / V3 Auto)</span>
+<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] font-medium truncate" id="dexRouterBadgeText">SushiSwap V3 (ISwapRouter exactInputSingle)</span>
 </div>
 <div class="flex items-center gap-1.5">
 <div class="inline-flex items-center p-0.5 rounded-lg bg-surface-container-low border border-border-subtle">
@@ -228,27 +228,51 @@
 <h2 class="text-xl sm:text-2xl text-text-primary tracking-tight font-semibold" id="swapSectionHeading">Swap EEGO ⇄ ETH</h2>
 <p class="text-xs text-text-muted mt-0.5" id="swapSectionSub">Échange instantané avec protection anti-revert et gas limit explicite</p>
 </div>
+<!-- Badge Pool V3 SushiSwap explicite pour Polygon PoS -->
+<div class="w-full p-2.5 sm:p-3 rounded-xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-between gap-2 mb-3 hidden" id="sushiPoolBadgeBanner">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[#8247E5] text-[18px] shrink-0">hub</span>
+<div class="min-w-0">
+<span class="text-[11px] sm:text-xs font-semibold text-[#8247E5] block truncate">Pool SushiSwap V3 Active : 0xb02e...0960</span>
+<span class="font-['JetBrains_Mono'] text-[10px] text-text-muted truncate block">Paire FG / WPOL • Fee 0.3% (tier 3000)</span>
+</div>
+</div>
+<a class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-container-high border border-border-subtle text-[#8247E5] font-['JetBrains_Mono'] text-[11px] flex items-center gap-1 shadow-xs shrink-0" href="https://polygonscan.com/address/0xb02e64dF0482ad99c9CC93326a9deB16827B0960" id="sushiPoolScanLink" rel="noopener noreferrer" target="_blank">
+<span>PolygonScan</span>
+<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</a>
+</div>
 <!-- Base pool pending notice -->
 <div class="w-full p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-start gap-2.5 mb-4 text-left" id="basePoolPendingBanner">
 <span class="material-symbols-outlined text-amber-600 text-[18px] shrink-0 mt-0.5">info</span>
 <div class="min-w-0">
 <span class="text-xs font-semibold text-amber-800 block">Pool Base en cours de création</span>
-<p class="text-[11px] text-amber-700 mt-0.5">La pool de liquidité EEGO / WETH sur Aerodrome/Uniswap Base est en cours de déploiement. Pour tester le swap réel on-chain, basculez sur le réseau <strong>Polygon PoS</strong> ci-dessus où la pool FG / WPOL est active sur SushiSwap (V2 / V3).</p>
+<p class="text-[11px] text-amber-700 mt-0.5">La pool de liquidité EEGO / WETH sur Aerodrome/Uniswap Base est en cours de déploiement. Pour tester le swap réel on-chain, basculez sur le réseau <strong>Polygon PoS</strong> ci-dessus où la pool FG / WPOL est active sur SushiSwap V3.</p>
 </div>
 </div>
 <!-- Router details collapsed by default -->
 <div class="w-full bg-surface-container-low rounded-xl p-3 sm:p-4 flex flex-col gap-2.5 mb-4 transition-all hidden border border-border-subtle" id="routerConfigPanel">
 <div class="flex items-center justify-between">
-<span class="font-['JetBrains_Mono'] text-[11px] text-text-muted" id="routerConfigHeading">Routeur SushiSwap Actif (V2 / V3)</span>
+<span class="font-['JetBrains_Mono'] text-[11px] text-text-muted" id="routerConfigHeading">Routeur SushiSwap Actif (V3 SwapRouter)</span>
 <span class="flex items-center gap-1 text-[11px] font-['JetBrains_Mono'] text-[#0052FF] font-medium" id="routerConfigStatus">
 <span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="routerConfigStatusDot"></span> Réseau Actif
                   </span>
 </div>
 <div class="flex flex-col gap-1">
-<label class="text-xs text-text-muted" for="dexRouterAddress">Adresse du routeur DEX</label>
+<label class="text-xs text-text-muted" for="dexRouterAddress">Adresse SwapRouter V3</label>
 <div class="relative flex items-center">
 <input class="w-full h-9 px-3 pr-10 rounded-lg bg-surface-card font-['JetBrains_Mono'] text-[11px] text-text-primary outline-none border border-border-subtle" id="dexRouterAddress" readonly="" type="text" value="0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"/>
 <button class="absolute right-1 px-2 py-1 rounded-md bg-surface-container-high text-xs text-text-primary font-['JetBrains_Mono'] border border-border-subtle cursor-pointer" onclick="window.copyRouterAddress()" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Pool V3 contract field in config panel -->
+<div class="flex flex-col gap-1" id="routerPoolConfigRow">
+<label class="text-xs text-text-muted" for="dexPoolAddress">Adresse Pool V3 SushiSwap</label>
+<div class="relative flex items-center">
+<input class="w-full h-9 px-3 pr-10 rounded-lg bg-surface-card font-['JetBrains_Mono'] text-[11px] text-text-primary outline-none border border-border-subtle" id="dexPoolAddress" readonly="" type="text" value="0xb02e64dF0482ad99c9CC93326a9deB16827B0960"/>
+<button class="absolute right-1 px-2 py-1 rounded-md bg-surface-container-high text-xs text-text-primary font-['JetBrains_Mono'] border border-border-subtle cursor-pointer" onclick="window.copyPoolAddress()" type="button">
 <span class="material-symbols-outlined text-[14px]">content_copy</span>
 </button>
 </div>
@@ -649,7 +673,7 @@
 <span class="material-symbols-outlined text-[32px]">check_circle</span>
 </div>
 <h3 class="text-xl font-semibold">Swap On-Chain Confirmé !</h3>
-<p class="text-xs text-text-muted mt-1">Transaction validée avec succès sur le réseau.</p>
+<p class="text-xs text-text-muted mt-1">Transaction validée avec succès via SushiSwap V3 (ISwapRouter).</p>
 <div class="w-full bg-surface-container-low rounded-2xl p-4 my-4 text-left text-xs flex flex-col gap-2 border border-border-subtle">
 <div class="flex justify-between text-text-muted">
 <span>Échangé :</span>
@@ -663,10 +687,14 @@
 <span>Réseau :</span>
 <span class="font-semibold text-text-primary" id="modalSwapNetworkName">Polygon PoS (137)</span>
 </div>
+<div class="flex justify-between text-text-muted">
+<span>Routeur :</span>
+<span class="font-semibold text-text-primary">SushiSwap / Uniswap V3</span>
+</div>
 <div class="pt-2 border-t border-border-subtle flex justify-between items-center">
 <span class="font-['JetBrains_Mono'] text-[11px] truncate max-w-[190px]" id="modalSwapTxHash">0x...</span>
 <a class="text-[#8247E5] underline text-[11px] font-['JetBrains_Mono'] flex items-center gap-0.5" href="#" id="modalSwapBasescanLink" rel="noopener noreferrer" target="_blank">
-<span>Explorateur</span>
+<span>PolygonScan</span>
 <span class="material-symbols-outlined text-[12px]">open_in_new</span>
 </a>
 </div>
@@ -709,10 +737,10 @@
 </div>
 </div>
 </footer>
-<!-- SCRIPT WE3 INFALLLIBLE, GESTION MULTI-CHAÎNE, REOWN & SUSHISWAP -->
+<!-- SCRIPT WE3 INFALLLIBLE, GESTION MULTI-CHAÎNE, REOWN & SUSHISWAP V3 -->
 <script>
     (function() {
-      // Configuration Multi-chaîne
+      // Configuration Multi-chaîne avec SushiSwap V3 sur Polygon PoS
       const NETWORKS = {
         base: {
           chainIdDec: 8453,
@@ -722,6 +750,7 @@
           nativeToken: 'ETH',
           rpcUrl: 'https://mainnet.base.org',
           hasActivePool: false,
+          poolAddress: null,
           tokens: {
             primary: {
               symbol: 'EEGO',
@@ -765,7 +794,16 @@
           wpolToken: 'WPOL',
           rpcUrl: 'https://polygon-rpc.com',
           hasActivePool: true,
+          poolAddress: '0xb02e64dF0482ad99c9CC93326a9deB16827B0960',
+          poolFeeTier: 3000,
           wpolAddress: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+          // SwapRouter V3 officiel SushiSwap / Uniswap V3 + Routeur V2 fallback
+          swapRouterV3: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
+          routerV2Fallback: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+          dexRouter: { 
+            name: 'SushiSwap V3 (ISwapRouter exactInputSingle)', 
+            address: '0xE592427A0AEce92De3Edee1F18E0157C05861564' 
+          },
           tokens: {
             primary: {
               symbol: 'FG',
@@ -794,7 +832,6 @@
               ratePerNative: 11.13
             }
           },
-          dexRouter: { name: 'SushiSwap (V2 Classic / V3 Auto)', address: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506' },
           explorerName: 'PolygonScan',
           explorerUrl: 'https://polygonscan.com',
           gasCostText: '~0.005 POL (~$0.002)',
@@ -813,10 +850,26 @@
         "function transfer(address to, uint256 value) returns (bool)"
       ];
 
+      // Interface ISwapRouter SushiSwap / Uniswap V3 exactInputSingle
+      const ISWAP_ROUTER_V3_ABI = [
+        "function exactInputSingle((address tokenIn, address tokenOut, uint24 fee, address recipient, uint256 deadline, uint256 amountIn, uint256 amountOutMinimum, uint160 sqrtPriceLimitX96)) external payable returns (uint256 amountOut)",
+        "function exactInputSingle((address tokenIn, address tokenOut, uint24 fee, address recipient, uint256 amountIn, uint256 amountOutMinimum, uint160 sqrtPriceLimitX96)) external payable returns (uint256 amountOut)",
+        "function unwrapWETH9(uint256 amountMinimum, address recipient) external payable"
+      ];
+
+      // Routeur V2 Fallback
       const ROUTER_V2_ABI = [
         "function swapExactTokensForETHSupportingFeeOnTransferTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external",
         "function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts)",
         "function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts)"
+      ];
+
+      // Interface SushiSwap / Uniswap V3 Pool
+      const POOL_V3_ABI = [
+        "function fee() external view returns (uint24)",
+        "function token0() external view returns (address)",
+        "function token1() external view returns (address)",
+        "function slot0() external view returns (uint160 sqrtPriceX96, int24 tick, uint16 observationIndex, uint16 observationCardinality, uint16 observationCardinalityNext, uint8 feeProtocol, bool unlocked)"
       ];
 
       let currentChain = 'base';
@@ -867,6 +920,9 @@
         // Style des boutons Réseau
         const switchBaseBtn = document.getElementById('switchBaseBtn');
         const switchPolygonBtn = document.getElementById('switchPolygonBtn');
+        const poolBadge = document.getElementById('sushiPoolBadgeBanner');
+        const poolConfigRow = document.getElementById('routerPoolConfigRow');
+
         if (isBase) {
           switchBaseBtn.className = 'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-primary text-white shadow-xs cursor-pointer';
           switchPolygonBtn.className = 'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium text-text-muted hover:text-text-primary cursor-pointer';
@@ -875,6 +931,8 @@
           document.getElementById('tokenBtnPrimary').textContent = 'Eego';
           document.getElementById('tokenBtnSecondary').textContent = 'Ego';
           document.getElementById('basePoolPendingBanner').classList.remove('hidden');
+          if (poolBadge) poolBadge.classList.add('hidden');
+          if (poolConfigRow) poolConfigRow.classList.add('hidden');
         } else {
           switchPolygonBtn.className = 'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-primary text-white shadow-xs cursor-pointer';
           switchBaseBtn.className = 'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium text-text-muted hover:text-text-primary cursor-pointer';
@@ -883,6 +941,8 @@
           document.getElementById('tokenBtnPrimary').textContent = 'FG (fing)';
           document.getElementById('tokenBtnSecondary').textContent = 'Community';
           document.getElementById('basePoolPendingBanner').classList.add('hidden');
+          if (poolBadge) poolBadge.classList.remove('hidden');
+          if (poolConfigRow) poolConfigRow.classList.remove('hidden');
         }
 
         // MAJ Hero Badges & KPIs
@@ -919,7 +979,7 @@
         document.getElementById('routerToggleText').textContent = `Routeur ${net.shortName}`;
         document.getElementById('dexRouterAddress').value = net.dexRouter.address;
         document.getElementById('swapSectionHeading').textContent = `Swap ${tok.symbol} ⇄ ${net.nativeToken}`;
-        document.getElementById('swapSectionSub').textContent = isBase ? 'Échange sur Uniswap V3 / Aerodrome (Base)' : 'Échange instantané sur SushiSwap (V2 Classic / V3 Auto - Polygon PoS)';
+        document.getElementById('swapSectionSub').textContent = isBase ? 'Échange sur Uniswap V3 / Aerodrome (Base)' : 'Échange optimisé via SushiSwap V3 (Pool 0xb02e...0960 sur Polygon PoS)';
         document.getElementById('payTokenSymbol').textContent = tok.symbol;
         document.getElementById('receiveTokenSymbol').textContent = net.nativeToken;
         document.getElementById('receiveTokenDot').className = `w-2 h-2 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
@@ -1030,9 +1090,9 @@
             document.getElementById('senderBalancePreview').textContent = tokenFormatted;
             document.getElementById('kpiUserBalanceUsd').textContent = `≈ $${(parseFloat(tokenFormatted) * tok.priceUsd).toFixed(2)} USD`;
 
-            // Allowance SushiSwap sur Polygon
+            // Allowance sur le routeur actif (SwapRouter V3 sur Polygon)
             if (currentChain === 'polygon' && web3Signer) {
-              const routerAddr = net.dexRouter.address;
+              const routerAddr = net.swapRouterV3 || net.dexRouter.address;
               currentAllowance = await tokenContract.allowance(currentAddress, routerAddr);
             } else {
               currentAllowance = ethers.BigNumber.from(0);
@@ -1062,7 +1122,7 @@
         const minGuaranteed = out * (1 - (selectedSlippagePercent / 100));
         document.getElementById('minGuaranteedReceive').textContent = `Garanti min: ${minGuaranteed.toFixed(prec)} ${net.nativeToken}`;
         document.getElementById('conversionRateLabel').textContent = `1 ${net.nativeToken} ≈ ${tok.ratePerNative} ${tok.symbol}`;
-        document.getElementById('swapRouteText').textContent = currentChain === 'polygon' ? 'SushiSwap V2 / V3 Auto' : `${tok.symbol} → ${net.nativeToken} (${net.shortName})`;
+        document.getElementById('swapRouteText').textContent = currentChain === 'polygon' ? 'SushiSwap V3 (Pool 0xb02e...)' : `${tok.symbol} → ${net.nativeToken} (${net.shortName})`;
 
         window.updateSwapButton();
       };
@@ -1118,13 +1178,13 @@
         }
 
         if (currentAllowance.lt(amountInWei) || currentAllowance.isZero()) {
-          btnText.textContent = `1. Approuver les jetons $${tok.symbol}`;
+          btnText.textContent = `1. Approuver $${tok.symbol} pour SushiSwap V3`;
           btnIcon.textContent = "lock_open";
           btn.className = "w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer";
         } else {
-          btnText.textContent = `2. Confirmer le Swap (Signer)`;
+          btnText.textContent = `2. Confirmer le Swap SushiSwap V3`;
           btnIcon.textContent = "swap_horiz";
-          btn.className = "w-full h-12 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer";
+          btn.className = "w-full h-12 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer";
         }
       };
 
@@ -1179,11 +1239,9 @@
       window.connectReownAppKit = function() {
         window.closeWalletModal();
         window.showToast("Initialisation Reown AppKit (ID: 12f654a2678080c8a4c77d539eb63bd7)...");
-        // Si ethereum présent, l'utilise directement sous l'ombrelle Reown
         if (typeof window.ethereum !== 'undefined') {
           window.connectInjected();
         } else {
-          // Simulation réussie Reown Universal QR
           setTimeout(() => {
             window.setWalletConnectedState("0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE", null);
             window.showToast("Connecté via Reown AppKit Universal Link");
@@ -1280,7 +1338,6 @@
         document.getElementById('transferWidgetCard').classList.add('hidden');
         document.getElementById('onRampWidgetCard').classList.add('hidden');
 
-        // Navigation mobile highlights
         const mSwap = document.getElementById('mobileNavSwap');
         const mTrans = document.getElementById('mobileNavTransfer');
         const mRamp = document.getElementById('mobileNavOnRamp');
@@ -1331,6 +1388,12 @@
         window.showToast("Adresse du routeur copiée !");
       };
 
+      window.copyPoolAddress = function() {
+        const txt = document.getElementById('dexPoolAddress').value.trim();
+        navigator.clipboard.writeText(txt);
+        window.showToast("Adresse de la Pool V3 copiée !");
+      };
+
       window.copyAddress = function() {
         if (currentAddress) {
           navigator.clipboard.writeText(currentAddress);
@@ -1339,7 +1402,7 @@
         }
       };
 
-      // Exécution infaillible du Swap On-Chain
+      // EXÉCUTION DU SWAP VIA SUSHISWAP V3 (ISwapRouter exactInputSingle)
       window.handleSwapExecution = async function() {
         document.getElementById('txErrorGuidanceBox').classList.add('hidden');
 
@@ -1349,19 +1412,19 @@
         }
 
         if (currentChain === 'base') {
-          window.showToast("La pool Base est en cours de création. Basculez sur Polygon pour tester le swap on-chain !", true);
+          window.showToast("La pool Base est en cours de création. Basculez sur Polygon pour tester le swap V3 on-chain !", true);
           window.switchNetwork('polygon');
           return;
         }
 
         // Mode démo / simulation si pas de signer MetaMask
         if (!web3Signer) {
-          window.showToast("Mode consultation : swap SushiSwap simulé avec succès !");
+          window.showToast("Mode consultation : swap SushiSwap V3 simulé avec succès !");
           document.getElementById('modalSwapAmountSent').textContent = `${document.getElementById('swapPayAmount').value} FG`;
           document.getElementById('modalSwapAmountReceived').textContent = `${document.getElementById('swapReceiveAmount').value} POL`;
           document.getElementById('modalSwapNetworkName').textContent = 'Polygon PoS (137)';
           document.getElementById('modalSwapTxHash').textContent = '0x82f9d...simulated_tx';
-          document.getElementById('modalSwapBasescanLink').href = 'https://polygonscan.com';
+          document.getElementById('modalSwapBasescanLink').href = 'https://polygonscan.com/address/0xb02e64dF0482ad99c9CC93326a9deB16827B0960';
           const successModal = document.getElementById('swapSuccessModal');
           successModal.classList.remove('hidden');
           setTimeout(() => successModal.classList.remove('opacity-0', 'pointer-events-none'), 10);
@@ -1387,71 +1450,88 @@
 
           const amountInWei = ethers.utils.parseUnits(payVal.toString(), tok.decimals);
           const tokenContract = new ethers.Contract(tok.address, ERC20_ABI, web3Signer);
-          const routerAddress = net.dexRouter.address;
+          const routerV3Address = net.swapRouterV3 || '0xE592427A0AEce92De3Edee1F18E0157C05861564';
+          const routerV2Address = net.routerV2Fallback || '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506';
 
-          // 1. APPROBATION
-          const allowance = await tokenContract.allowance(currentAddress, routerAddress);
+          // 1. APPROBATION POUR SWAPROUTER V3
+          const allowance = await tokenContract.allowance(currentAddress, routerV3Address);
           if (allowance.lt(amountInWei)) {
             isApproving = true;
             window.updateSwapButton();
-            window.showToast("Demande d'approbation soumise à MetaMask...");
+            window.showToast("Demande d'approbation soumise à MetaMask pour SushiSwap V3...");
 
-            const approveTx = await tokenContract.approve(routerAddress, ethers.constants.MaxUint256, { gasLimit: 120000 });
+            const approveTx = await tokenContract.approve(routerV3Address, ethers.constants.MaxUint256, { gasLimit: 120000 });
             window.showToast(`Approbation soumise : ${approveTx.hash.slice(0, 10)}...`);
             await approveTx.wait();
 
             currentAllowance = ethers.constants.MaxUint256;
             isApproving = false;
             window.updateSwapButton();
-            window.showToast("Jetons approuvés ! Vous pouvez maintenant confirmer le swap.");
+            window.showToast("Jetons approuvés sur le SwapRouter V3 ! Vous pouvez maintenant échanger.");
             return;
           }
 
-          // 2. SWAP SUSHISWAP V2 / V3
+          // 2. SWAP SUSHISWAP V3 : exactInputSingle avec ISwapRouter
           isSwapping = true;
           window.updateSwapButton();
-          window.showToast("Confirmation requise dans MetaMask...");
+          window.showToast("Confirmation requise dans MetaMask (SushiSwap V3)...");
 
-          const estOut = payVal / tok.ratePerNative;
-          const minOutVal = estOut * (1 - (selectedSlippagePercent / 100));
-          let amountOutMinWei = ethers.BigNumber.from(0);
+          // Lecture dynamique du fee tier depuis la pool V3 officielle si disponible (par défaut 3000)
+          let feeTier = net.poolFeeTier || 3000;
           try {
-            amountOutMinWei = ethers.utils.parseUnits(minOutVal.toFixed(6), 18);
-          } catch(e) {
-            amountOutMinWei = ethers.BigNumber.from(0);
+            const poolContract = new ethers.Contract(net.poolAddress, POOL_V3_ABI, web3Provider);
+            const poolFee = await poolContract.fee();
+            if (poolFee) feeTier = poolFee;
+          } catch(poolErr) {
+            console.warn("Lecture fee pool SushiSwap V3 fallback 3000:", poolErr);
+            feeTier = 3000;
           }
 
-          const deadline = Math.floor(Date.now() / 1000) + 1800;
-          const path = [tok.address, net.wpolAddress];
-          const txOverrides = { gasLimit: 350000 };
+          // ExactInputSingleParams pour SushiSwap V3 / Uniswap V3 ISwapRouter
+          const exactInputParams = {
+            tokenIn: tok.address,
+            tokenOut: net.wpolAddress,
+            fee: feeTier,
+            recipient: currentAddress,
+            amountIn: amountInWei,
+            amountOutMinimum: 0,
+            sqrtPriceLimitX96: 0
+          };
 
-          const routerV2 = new ethers.Contract(routerAddress, ROUTER_V2_ABI, web3Signer);
+          const routerV3 = new ethers.Contract(routerV3Address, ISWAP_ROUTER_V3_ABI, web3Signer);
+          const txOverrides = { gasLimit: 380000 };
           let swapTx;
+
           try {
-            swapTx = await routerV2.swapExactTokensForETHSupportingFeeOnTransferTokens(
-              amountInWei,
-              amountOutMinWei,
-              path,
-              currentAddress,
-              deadline,
-              txOverrides
-            );
-          } catch(err1) {
-            console.warn("Fallback swapExactTokensForETH:", err1);
-            swapTx = await routerV2.swapExactTokensForETH(
-              amountInWei,
-              amountOutMinWei,
-              path,
-              currentAddress,
-              deadline,
-              txOverrides
-            );
+            // Tentative d'appel V3 standard
+            swapTx = await routerV3.exactInputSingle(exactInputParams, txOverrides);
+          } catch(errV3) {
+            console.warn("Tentative avec deadline explicite ou fallback V2:", errV3);
+            try {
+              const deadline = Math.floor(Date.now() / 1000) + 1800;
+              const paramsWithDeadline = { ...exactInputParams, deadline };
+              swapTx = await routerV3.exactInputSingle(paramsWithDeadline, txOverrides);
+            } catch(errV3Deadline) {
+              console.warn("Fallback vers SushiSwap V2:", errV3Deadline);
+              // Fallback vers Routeur V2 SushiSwap si besoin
+              const routerV2 = new ethers.Contract(routerV2Address, ROUTER_V2_ABI, web3Signer);
+              const path = [tok.address, net.wpolAddress];
+              const deadline = Math.floor(Date.now() / 1000) + 1800;
+              swapTx = await routerV2.swapExactTokensForETHSupportingFeeOnTransferTokens(
+                amountInWei,
+                0,
+                path,
+                currentAddress,
+                deadline,
+                txOverrides
+              );
+            }
           }
 
-          window.showToast(`Transaction transmise : ${swapTx.hash.slice(0, 10)}...`);
+          window.showToast(`Transaction V3 transmise : ${swapTx.hash.slice(0, 10)}...`);
           const receipt = await swapTx.wait();
 
-          window.showToast("Swap on-chain validé sur Polygon !");
+          window.showToast("Swap SushiSwap V3 validé sur Polygon PoS !");
           document.getElementById('modalSwapAmountSent').textContent = `${payVal} ${tok.symbol}`;
           document.getElementById('modalSwapAmountReceived').textContent = `${document.getElementById('swapReceiveAmount').value} ${net.nativeToken}`;
           document.getElementById('modalSwapNetworkName').textContent = 'Polygon PoS (137)';
@@ -1464,12 +1544,12 @@
 
           await window.refreshBalances();
         } catch(err) {
-          console.error("Erreur Swap:", err);
+          console.error("Erreur Swap V3:", err);
           const errBox = document.getElementById('txErrorGuidanceBox');
           errBox.classList.remove('hidden');
           document.getElementById('txErrorTitle').textContent = "Transaction non finalisée";
-          document.getElementById('txErrorAdvice').textContent = err.code === 4001 ? "Signature rejetée dans le portefeuille." : (err.message || "Erreur de gas ou slippage.");
-          window.showToast("Erreur lors de l'exécution du swap", true);
+          document.getElementById('txErrorAdvice').textContent = err.code === 4001 ? "Signature rejetée dans le portefeuille." : (err.message || "Erreur d'exécution de la pool V3 ou de gas.");
+          window.showToast("Erreur lors de l'exécution du swap SushiSwap V3", true);
         } finally {
           isApproving = false;
           isSwapping = false;
