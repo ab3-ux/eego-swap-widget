@@ -1,266 +1,964 @@
 <!DOCTYPE html>
 
-<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta content="mobile_tab" name="shell-type"/>
+<title>Cross-Chain DApp • Quietude</title>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#FAFBFD;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"tertiary":"#000000","on-secondary":"#ffffff","on-background":"#1a1b22","button-neutral-bg":"#F2F3F5","on-secondary-fixed-variant":"#334670","on-primary":"#ffffff","error-container":"#ffdad6","on-error":"#ffffff","border-focus":"rgba(0, 0, 0, 0.24)","tertiary-container":"#1b1b1b","outline":"#7e7576","secondary-fixed":"#d9e2ff","primary-container":"#1b1b1b","secondary-fixed-dim":"#b3c6f8","on-secondary-fixed":"#021a42","surface-variant":"#e3e1ec","on-primary-container":"#848484","inverse-primary":"#c6c6c6","surface-bright":"#fbf8ff","on-surface-variant":"#4c4546","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#474747","inverse-surface":"#2f3038","on-error-container":"#93000a","inverse-on-surface":"#f1effa","surface-container-low":"#f4f2fd","text-muted":"#666666","accent-glow":"rgba(180, 199, 249, 0.35)","tertiary-fixed-dim":"#c6c6c6","surface-card":"#FFFFFF","secondary-container":"#b8cbfe","secondary":"#4b5e89","on-tertiary":"#ffffff","surface-container":"#eeedf7","outline-variant":"#cfc4c5","canvas-base":"#FAFBFD","background":"#fbf8ff","error":"#ba1a1a","tertiary-fixed":"#e2e2e2","primary-fixed":"#e2e2e2","on-secondary-container":"#435581","on-tertiary-fixed":"#1b1b1b","on-surface":"#1a1b22","primary-fixed-dim":"#c6c6c6","on-primary-fixed":"#1b1b1b","primary":"#000000","on-tertiary-container":"#848484","on-primary-fixed-variant":"#474747","border-subtle":"rgba(0, 0, 0, 0.06)","surface":"#fbf8ff","button-neutral-hover":"#E5E7EB","surface-container-high":"#e8e7f1","surface-dim":"#dad9e3","surface-tint":"#5e5e5e","text-primary":"#0A0A0A","surface-container-highest":"#e3e1ec"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter":"1.5rem","space-xs":"0.25rem","margin":"1.5rem","margin-desktop":"3rem","space-lg":"1.5rem","space-sm":"0.5rem","gutter-desktop":"2rem","space-md":"1rem","space-xl":"2.5rem"},fontFamily:{"headline-sm":["Geist"],"display-hero":["Geist"],"body-md":["Geist"],"label-pill":["Geist"],"headline-lg":["Geist"],"code-address":["JetBrains Mono"],"body-lg":["Geist"],"label-badge":["JetBrains Mono"],"display-hero-mobile":["Geist"],"headline-md":["Geist"],"body-sm":["Geist"]},fontSize:{"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"500"}],"display-hero":["56px",{"lineHeight":"60px","letterSpacing":"-0.04em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0","fontWeight":"400"}],"label-pill":["12px",{"lineHeight":"16px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["32px",{"lineHeight":"38px","letterSpacing":"-0.03em","fontWeight":"600"}],"code-address":["13px",{"lineHeight":"18px","letterSpacing":"-0.02em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"400"}],"label-badge":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"display-hero-mobile":["36px",{"lineHeight":"40px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"30px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}]}}}};</script><style>
-    body {
-      min-height: max(884px, 100dvh);
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "canvas-base": "#FAFBFD",
+            "surface": "#fbf8ff",
+            "surface-card": "#FFFFFF",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f2fd",
+            "surface-container": "#eeedf7",
+            "surface-container-high": "#e8e7f1",
+            "surface-container-highest": "#e3e1ec",
+            "text-primary": "#0A0A0A",
+            "text-muted": "#666666",
+            "on-surface": "#1a1b22",
+            "on-surface-variant": "#4c4546",
+            "primary": "#000000",
+            "on-primary": "#ffffff",
+            "outline-variant": "#cfc4c5",
+            "border-subtle": "rgba(0, 0, 0, 0.06)",
+            "button-neutral-bg": "#F2F3F5",
+            "button-neutral-hover": "#E5E7EB",
+          },
+          fontFamily: {
+            "headline-lg": ["Geist"],
+            "headline-md": ["Geist"],
+            "headline-sm": ["Geist"],
+            "body-lg": ["Geist"],
+            "body-md": ["Geist"],
+            "body-sm": ["Geist"],
+            "label-pill": ["Geist"],
+            "code-address": ["JetBrains Mono"],
+            "label-badge": ["JetBrains Mono"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #FAFBFD;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        overscroll-behavior: none;
+        min-height: max(884px, 100dvh);
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
     }
+    ::-webkit-scrollbar { display: none; }
   </style>
-</head><body class="bg-canvas-base text-on-surface font-body-md flex flex-col min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><div class="flex items-center p-1 bg-surface-container-lowest/90 backdrop-blur-md rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.03)]"><button class="min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all bg-surface-container text-on-surface" title="Base (8453)" type="button"><span class="w-2 h-2 rounded-full bg-[#0052FF]"></span><span class="font-label-pill text-label-pill font-medium">Base</span></button><button class="min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-on-surface-variant hover:text-on-surface" title="Polygon (137)" type="button"><span class="w-2 h-2 rounded-full bg-[#8247E5]"></span><span class="font-label-pill text-label-pill font-medium">Polygon</span></button><button class="min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-on-surface-variant hover:text-on-surface" title="BNB Chain (56)" type="button"><span class="w-2 h-2 rounded-full bg-[#F0B90B]"></span><span class="font-label-pill text-label-pill font-medium">BSC</span></button></div></div><div class="flex items-center gap-space-sm"><button class="min-h-[44px] px-3.5 py-2 rounded-full bg-primary text-on-primary font-body-sm text-body-sm font-medium flex items-center gap-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.08)] hover:bg-neutral-800 transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">account_balance_wallet</span><span class="font-code-address text-code-address">0x2b...08ce</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-canvas-base min-h-screen"><div class="flex flex-col w-full px-margin pb-space-xl gap-space-lg max-w-md mx-auto">
-<!-- Atmospheric Top Light Ambient -->
-<div class="relative w-full pt-space-xs flex flex-col items-center text-center">
-<!-- Top Chain Indicator Badge -->
-<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-lowest shadow-sm mb-space-md">
+</head>
+<body class="bg-canvas-base text-on-surface font-body-md flex flex-col min-h-screen selection:bg-neutral-200">
+<!-- Fixed Top Header -->
+<header class="fixed top-0 inset-x-0 z-50 pt-safe bg-surface/85 backdrop-blur-xl border-b border-border-subtle shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
+<div class="h-16 px-4 flex items-center justify-between gap-2 max-w-md mx-auto">
+<!-- Network Switcher Pill -->
+<div class="flex items-center p-1 bg-surface-container-low/90 rounded-full border border-border-subtle shadow-sm" id="networkPillNav">
+<!-- Base Button -->
+<button class="px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-on-surface-variant hover:text-on-surface text-label-pill font-medium" id="btn-net-base" onclick="switchNetwork('base')" title="Basculer sur Base (8453)" type="button">
+<span class="w-2 h-2 rounded-full bg-[#0052FF]"></span>
+<span>Base</span>
+</button>
+<!-- Polygon Button -->
+<button class="px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-on-surface-variant hover:text-on-surface text-label-pill font-medium" id="btn-net-polygon" onclick="switchNetwork('polygon')" title="Basculer sur Polygon (137)" type="button">
+<span class="w-2 h-2 rounded-full bg-[#8247E5]"></span>
+<span>Polygon</span>
+</button>
+<!-- BSC Button (Active by default) -->
+<button class="px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all bg-primary text-on-primary shadow-xs text-label-pill font-medium" id="btn-net-bsc" onclick="switchNetwork('bsc')" title="Basculer sur BSC (56)" type="button">
+<span class="w-2 h-2 rounded-full bg-[#F0B90B] ring-2 ring-primary"></span>
+<span>BSC</span>
+</button>
+</div>
+<!-- Wallet & Profile -->
+<div class="flex items-center gap-2">
+<button class="min-h-[38px] px-3 py-1.5 rounded-full bg-primary text-on-primary font-code-address text-[12px] font-medium flex items-center gap-1.5 shadow-[0_2px_10px_rgba(0,0,0,0.08)] hover:bg-neutral-800 transition-all active:scale-95" id="walletBtn" onclick="toggleWalletConnection()" type="button">
+<span class="material-symbols-outlined text-[16px]" id="walletIcon">account_balance_wallet</span>
+<span id="walletAddressLabel">0x2b...08ce</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-high border border-border-subtle flex items-center justify-center shrink-0 hover:bg-surface-container transition-colors" onclick="showToast('Profil utilisateur synchronisé')" type="button">
+<span class="material-symbols-outlined text-on-surface text-[18px]">person</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-col relative w-full pt-20 pb-32 bg-canvas-base min-h-screen">
+<div class="flex flex-col w-full px-4 gap-5 max-w-md mx-auto">
+<!-- Top Chain Dynamic Badge & Hero -->
+<div class="relative w-full pt-1 flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-card border border-border-subtle shadow-xs mb-3 transition-all" id="heroBadge">
 <span class="relative flex h-2 w-2">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" id="badgePulseDot"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500" id="badgeSolidDot"></span>
 </span>
-<span class="font-code-address text-code-address text-on-surface">BNB Smart Chain</span>
+<span class="font-code-address text-code-address font-medium text-on-surface" id="heroNetworkName">BNB Smart Chain</span>
 <span class="text-outline-variant">•</span>
-<span class="font-code-address text-code-address text-text-muted">ID 56</span>
+<span class="font-code-address text-code-address text-text-muted" id="heroChainId">ID 56</span>
 <span class="text-outline-variant">•</span>
-<span class="font-code-address text-code-address text-text-muted truncate max-w-[90px]">AppKit: 12f6...</span>
+<span class="font-code-address text-code-address text-text-muted truncate max-w-[85px]">AppKit: 12f6</span>
 </div>
-<!-- Editorial Headline -->
-<h1 class="font-headline-md text-headline-md text-text-primary tracking-tight max-w-xs">
-      Presence that doesn't beg for attention
-    </h1>
-<p class="font-body-md text-body-md text-text-muted mt-2 max-w-xs leading-relaxed">
-      Instrumentation smart contract native et réactive sur BNB Smart Chain (BSC), Base L2 &amp; Polygon PoS.
-    </p>
+<h1 class="font-headline-md text-headline-md text-text-primary tracking-tight max-w-xs font-semibold">
+          Presence that doesn't beg for attention
+        </h1>
+<p class="font-body-md text-body-md text-text-muted mt-2 max-w-xs leading-relaxed" id="heroSubtitle">
+          Instrumentation smart contract native et réactive sur BNB Smart Chain (BSC), Base L2 &amp; Polygon PoS.
+        </p>
 </div>
-<!-- Quick Stats 2x2 Bento Grid -->
-<div class="grid grid-cols-2 gap-space-sm w-full">
+<!-- Bento Grid (4 Stats) -->
+<div class="grid grid-cols-2 gap-3 w-full">
 <!-- Stat 1: Réseau & Statut -->
-<div class="bg-surface-card rounded-2xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="bg-surface-card rounded-2xl p-4 border border-border-subtle shadow-xs flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="font-label-pill text-label-pill text-text-muted">Réseau &amp; Statut</span>
-<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500" id="statNetworkDot"></span>
 </div>
 <div class="mt-3">
-<div class="font-headline-sm text-headline-sm text-text-primary flex items-center gap-1">
-          BSC <span class="font-code-address text-body-sm text-text-muted font-normal">(56)</span>
+<div class="font-headline-sm text-headline-sm text-text-primary flex items-center gap-1 font-semibold" id="statNetworkLabel">
+              BSC <span class="font-code-address text-body-sm text-text-muted font-normal">(56)</span>
 </div>
-<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Frais ultra-rapides</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5" id="statNetworkDesc">Frais ultra-rapides</p>
 </div>
 </div>
 <!-- Stat 2: Jeton Actif -->
-<div class="bg-surface-card rounded-2xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="bg-surface-card rounded-2xl p-4 border border-border-subtle shadow-xs flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="font-label-pill text-label-pill text-text-muted">Jeton Actif</span>
-<span class="material-symbols-outlined text-[16px] text-amber-600">token</span>
+<span class="material-symbols-outlined text-[18px] text-text-muted" id="statTokenIcon">token</span>
 </div>
 <div class="mt-3">
-<div class="font-headline-sm text-headline-sm text-text-primary truncate">
-          $BNB-TOKEN
-        </div>
-<p class="font-body-sm text-body-sm text-text-muted mt-0.5 truncate">BEP-20 • 18 Décimales</p>
+<div class="font-headline-sm text-headline-sm text-text-primary truncate font-semibold" id="statTokenSymbol">
+              $BEP20
+            </div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5 truncate" id="statTokenStandard">BEP-20 • 18 Décimales</p>
 </div>
 </div>
 <!-- Stat 3: Solde Portefeuille -->
-<div class="bg-surface-card rounded-2xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="bg-surface-card rounded-2xl p-4 border border-border-subtle shadow-xs flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="font-label-pill text-label-pill text-text-muted">Solde Portefeuille</span>
-<span class="material-symbols-outlined text-[16px] text-text-muted">account_balance_wallet</span>
+<span class="material-symbols-outlined text-[18px] text-text-muted">account_balance_wallet</span>
 </div>
 <div class="mt-3">
-<div class="font-headline-sm text-headline-sm text-text-primary font-code-address">
-          0.00 BNB
-        </div>
-<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Connectez pour voir</p>
+<div class="font-headline-sm text-headline-sm text-text-primary font-code-address font-semibold truncate" id="statWalletBalance">
+              0.00 BNB
+            </div>
+<p class="font-body-sm text-body-sm text-emerald-600 mt-0.5 flex items-center gap-1" id="statWalletStatus">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Connecté
+            </p>
 </div>
 </div>
 <!-- Stat 4: Total Supply -->
-<div class="bg-surface-card rounded-2xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="bg-surface-card rounded-2xl p-4 border border-border-subtle shadow-xs flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="font-label-pill text-label-pill text-text-muted">Total Supply</span>
-<span class="material-symbols-outlined text-[16px] text-text-muted">donut_large</span>
+<span class="material-symbols-outlined text-[18px] text-text-muted">donut_large</span>
 </div>
 <div class="mt-3">
-<div class="font-headline-sm text-headline-sm text-text-primary font-code-address">
-          1.00B
-        </div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-code-address font-semibold" id="statTotalSupply">
+              1.00B
+            </div>
 <p class="font-body-sm text-body-sm text-text-muted mt-0.5">Circulation active</p>
 </div>
 </div>
 </div>
-<!-- Mode Navigation Pills (Segmented Control) -->
-<div class="w-full bg-surface-container-high p-1 rounded-full flex items-center gap-1 shadow-inner">
-<button class="flex-1 py-2 px-3 rounded-full bg-surface-card text-text-primary font-label-pill text-label-pill shadow-sm transition-all text-center" type="button">
-      Swap DEX
-    </button>
-<button class="flex-1 py-2 px-3 rounded-full text-text-muted hover:text-text-primary font-label-pill text-label-pill transition-all text-center" type="button">
-      Transfert
-    </button>
-<button class="flex-1 py-2 px-3 rounded-full text-text-muted hover:text-text-primary font-label-pill text-label-pill transition-all text-center" type="button">
-      Acheter Crypto
-    </button>
+<!-- Segmented Navigation Buttons -->
+<div class="w-full bg-surface-container-high/60 p-1 rounded-full flex items-center gap-1 border border-border-subtle">
+<button class="flex-1 py-2 px-3 rounded-full bg-surface-card text-text-primary font-label-pill text-label-pill font-medium shadow-xs transition-all text-center" id="viewBtn-swap" onclick="switchView('swap')" type="button">
+          Swap DEX
+        </button>
+<button class="flex-1 py-2 px-3 rounded-full text-text-muted hover:text-text-primary font-label-pill text-label-pill transition-all text-center" id="viewBtn-transfert" onclick="switchView('transfert')" type="button">
+          Transfert
+        </button>
+<button class="flex-1 py-2 px-3 rounded-full text-text-muted hover:text-text-primary font-label-pill text-label-pill transition-all text-center flex items-center justify-center gap-1" id="viewBtn-acheter" onclick="openBuyModal()" type="button">
+<span>Acheter Crypto</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
 </div>
-<!-- SWAP DEX CARD (PancakeSwap Engine) -->
-<div class="bg-surface-card rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- SWAP DEX CARD -->
+<div class="bg-surface-card rounded-2xl p-5 border border-border-subtle shadow-xs flex flex-col gap-4" id="swapCardSection">
 <!-- Header with slippage -->
 <div class="flex items-center justify-between">
 <div class="flex flex-col">
 <div class="flex items-center gap-1.5">
-<span class="font-headline-sm text-headline-sm text-text-primary">Swap BEP-20</span>
+<span class="font-headline-sm text-headline-sm text-text-primary font-semibold" id="swapCardTokenA">BEP-20</span>
 <span class="material-symbols-outlined text-[18px] text-text-muted">sync_alt</span>
-<span class="font-headline-sm text-headline-sm text-text-primary">BNB</span>
+<span class="font-headline-sm text-headline-sm text-text-primary font-semibold" id="swapCardTokenB">BNB</span>
 </div>
-<span class="font-body-sm text-body-sm text-text-muted mt-0.5">PancakeSwap V2 / V3 Router</span>
+<span class="font-body-sm text-body-sm text-text-muted mt-0.5" id="swapRouterLabel">PancakeSwap V2 / V3 Router</span>
 </div>
 <!-- Slippage Selector -->
-<div class="flex items-center gap-1 bg-surface-container p-1 rounded-lg">
-<button class="px-2 py-1 rounded bg-surface-card font-label-badge text-label-badge text-text-primary shadow-xs" type="button">0.5%</button>
-<button class="px-2 py-1 rounded text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors" type="button">1%</button>
-<button class="px-2 py-1 rounded text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors" type="button">2%</button>
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg border border-border-subtle" id="slippageGroup">
+<button class="px-2 py-1 rounded bg-surface-card font-label-badge text-label-badge text-text-primary font-medium shadow-xs" onclick="setSlippage('0.5', this)" type="button">0.5%</button>
+<button class="px-2 py-1 rounded text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors" onclick="setSlippage('1.0', this)" type="button">1%</button>
+<button class="px-2 py-1 rounded text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors" onclick="setSlippage('2.0', this)" type="button">2%</button>
 </div>
 </div>
-<!-- BSC Yellow Info Notice -->
-<div class="bg-amber-50 rounded-xl p-3 flex items-start gap-2.5">
-<span class="material-symbols-outlined text-[18px] text-amber-700 shrink-0 mt-0.5">info</span>
-<p class="font-body-sm text-body-sm text-amber-900 leading-snug">
-        BNB Smart Chain PancakeSwap Pool configurée. Prêt pour l'échange instantané de jetons BEP-20 contre WBNB / BNB natif.
-      </p>
+<!-- Banner Info Dynamic Notice -->
+<div class="bg-amber-50/80 border border-amber-200/60 rounded-xl p-3 flex items-start gap-2.5 transition-colors" id="networkNoticeBanner">
+<span class="material-symbols-outlined text-[18px] text-amber-700 shrink-0 mt-0.5" id="noticeBannerIcon">info</span>
+<p class="font-body-sm text-body-sm text-amber-900 leading-snug" id="noticeBannerText">
+            BNB Smart Chain PancakeSwap Pool configurée. Prêt pour l'échange instantané de jetons BEP-20 contre WBNB / BNB natif.
+          </p>
 </div>
-<!-- Swap Form Area -->
-<div class="flex flex-col gap-space-xs relative">
-<!-- Pay Input -->
-<div class="bg-surface-container-low rounded-xl p-3.5 flex flex-col gap-2">
+<!-- Swap Form Fields -->
+<div class="flex flex-col gap-1 relative">
+<!-- Pay Box -->
+<div class="bg-surface-container-low rounded-xl p-3.5 flex flex-col gap-2 border border-border-subtle">
 <div class="flex items-center justify-between">
-<span class="font-label-pill text-label-pill text-text-muted">Vous payez</span>
+<span class="font-label-pill text-label-pill text-text-muted" id="labelYouPay">Vous payez</span>
 <div class="flex items-center gap-1.5">
-<span class="font-body-sm text-body-sm text-text-muted">Solde: 0.00</span>
-<button class="font-label-badge text-label-badge text-amber-600 bg-amber-100/60 px-1.5 py-0.5 rounded uppercase font-medium hover:bg-amber-100 transition-colors" type="button">Max</button>
+<span class="font-body-sm text-body-sm text-text-muted" id="userPayBalance">Solde: 1,000.00</span>
+<button class="font-label-badge text-label-badge text-primary bg-surface-container-high px-2 py-0.5 rounded font-semibold hover:bg-neutral-200 transition-colors" onclick="setMaxPayAmount()" type="button">MAX</button>
 </div>
 </div>
 <div class="flex items-center justify-between gap-2">
-<input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary focus:outline-none placeholder:text-outline-variant font-code-address" inputmode="decimal" placeholder="0.0" type="text" value="1000"/>
-<div class="flex items-center gap-1.5 bg-surface-card px-2.5 py-1.5 rounded-full shadow-xs shrink-0">
-<div class="w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-[10px] text-white font-bold font-code-address">
-              B
-            </div>
-<span class="font-headline-sm text-headline-sm text-text-primary">BEP20</span>
-</div>
+<input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary focus:outline-none font-code-address placeholder:text-outline-variant" id="inputPayAmount" inputmode="decimal" oninput="calculateSwapRate()" placeholder="0.0" type="text" value="1000"/>
+<button class="flex items-center gap-1.5 bg-surface-card border border-border-subtle px-3 py-1.5 rounded-full shadow-xs shrink-0 active:scale-95 transition-transform" onclick="showToast('Sélection de jeton')" type="button">
+<span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] font-bold font-code-address" id="tokenPayBadgeIcon">B</span>
+<span class="font-headline-sm text-headline-sm text-text-primary font-semibold" id="tokenPayName">BEP20</span>
+</button>
 </div>
 </div>
 <!-- Invert Button Floating Center -->
 <div class="flex justify-center -my-2.5 z-10">
-<button aria-label="Inverser les jetons" class="w-9 h-9 rounded-full bg-surface-card text-text-primary shadow-md flex items-center justify-center hover:bg-surface-container-high transition-transform active:scale-95" type="button">
-<span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+<button aria-label="Inverser les jetons" class="w-9 h-9 rounded-full bg-surface-card border border-border-subtle text-text-primary shadow-md flex items-center justify-center hover:bg-surface-container-high active:rotate-180 transition-all duration-200" id="invertSwapBtn" onclick="invertSwapTokens()">
+<span class="material-symbols-outlined text-[18px]">swap_vert</span>
 </button>
 </div>
-<!-- Receive Input -->
-<div class="bg-surface-container-low rounded-xl p-3.5 flex flex-col gap-2">
+<!-- Receive Box -->
+<div class="bg-surface-container-low rounded-xl p-3.5 flex flex-col gap-2 border border-border-subtle">
 <div class="flex items-center justify-between">
-<span class="font-label-pill text-label-pill text-text-muted">Vous recevez (estimé)</span>
-<span class="font-body-sm text-body-sm text-text-muted">Frais BSC inclus</span>
+<span class="font-label-pill text-label-pill text-text-muted" id="labelYouReceive">Vous recevez (estimé)</span>
+<span class="font-body-sm text-body-sm text-text-muted" id="feeNetworkIncluded">Frais BSC inclus</span>
 </div>
 <div class="flex items-center justify-between gap-2">
-<input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary focus:outline-none font-code-address" inputmode="decimal" readonly="" type="text" value="1.4284"/>
-<div class="flex items-center gap-1.5 bg-surface-card px-2.5 py-1.5 rounded-full shadow-xs shrink-0">
-<div class="w-5 h-5 rounded-full bg-[#F3BA2F] flex items-center justify-center text-[10px] text-black font-bold font-code-address">
-              ❖
-            </div>
-<span class="font-headline-sm text-headline-sm text-text-primary">BNB</span>
+<input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary focus:outline-none font-code-address" id="inputReceiveAmount" inputmode="decimal" readonly="" type="text" value="1.4284"/>
+<button class="flex items-center gap-1.5 bg-surface-card border border-border-subtle px-3 py-1.5 rounded-full shadow-xs shrink-0 active:scale-95 transition-transform" onclick="showToast('Sélection de jeton')" type="button">
+<span class="w-5 h-5 rounded-full bg-[#F3BA2F] text-black flex items-center justify-center text-[11px] font-bold font-code-address" id="tokenReceiveBadgeIcon">❖</span>
+<span class="font-headline-sm text-headline-sm text-text-primary font-semibold" id="tokenReceiveName">BNB</span>
+</button>
 </div>
 </div>
 </div>
-</div>
-<!-- Execution Details Accordion/Summary -->
-<div class="bg-surface-container-low/70 rounded-xl p-3 flex flex-col gap-2">
+<!-- Execution Details Accordion -->
+<div class="bg-surface-container-low/70 rounded-xl p-3 flex flex-col gap-2 border border-border-subtle">
 <div class="flex items-center justify-between font-body-sm text-body-sm">
 <span class="text-text-muted">Taux d'échange</span>
-<span class="font-code-address text-text-primary">1 BNB ≈ 700.08 BEP20</span>
+<span class="font-code-address text-text-primary" id="rateLabelDisplay">1 BNB ≈ 700.08 BEP20</span>
 </div>
 <div class="flex items-center justify-between font-body-sm text-body-sm">
-<span class="text-text-muted">Frais réseau BSC</span>
-<span class="font-code-address text-text-primary flex items-center gap-1">
-          ~0.0005 BNB <span class="text-text-muted">(&lt;$0.15)</span>
+<span class="text-text-muted">Frais réseau</span>
+<span class="font-code-address text-text-primary flex items-center gap-1" id="gasCostDisplay">
+              ~0.0005 BNB <span class="text-text-muted">(&lt;$0.15)</span>
 </span>
 </div>
 <div class="flex items-center justify-between font-body-sm text-body-sm">
 <span class="text-text-muted">Route DEX</span>
-<span class="font-code-address text-text-primary truncate max-w-[170px]" title="0x10ED43C718714eb63d5aA57B78B54704E256024E">Pancake V2 (0x10ED...024E)</span>
+<span class="font-code-address text-text-primary truncate max-w-[180px]" id="dexRouteDisplay">Pancake V2 (0x10ED...024E)</span>
 </div>
 </div>
-<!-- Primary Action CTA -->
-<button class="w-full py-3.5 px-6 rounded-full bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-md hover:bg-neutral-800 active:scale-[0.99] transition-all" type="button">
-<span class="material-symbols-outlined text-[20px]">swap_horizontal_circle</span>
-<span>Échanger sur PancakeSwap</span>
+<!-- Primary Swap CTA -->
+<button class="w-full py-3.5 px-6 rounded-full bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-md hover:bg-neutral-800 active:scale-[0.99] transition-all" id="primarySwapCta" onclick="executeSwapAction()" type="button">
+<span class="material-symbols-outlined text-[20px]" id="swapCtaIcon">swap_horizontal_circle</span>
+<span id="swapCtaLabel">Échanger sur PancakeSwap</span>
 </button>
 </div>
-<!-- CONTRACT BEP-20 CARD -->
-<div class="bg-surface-card rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- CONTRACT TOKEN DETAILS CARD -->
+<div class="bg-surface-card rounded-2xl p-5 border border-border-subtle shadow-xs flex flex-col gap-4">
 <div class="flex items-center justify-between">
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center text-amber-700">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-600" id="contractIconBox">
 <span class="material-symbols-outlined text-[18px]">description</span>
 </div>
 <div>
-<h2 class="font-headline-sm text-headline-sm text-text-primary">Contrat BEP-20</h2>
+<h2 class="font-headline-sm text-headline-sm text-text-primary font-semibold" id="contractCardTitle">Contrat BEP-20</h2>
 <p class="font-body-sm text-body-sm text-text-muted">Paramètres on-chain vérifiés</p>
 </div>
 </div>
-<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-label-badge text-label-badge font-semibold">
-        BNB Chain • BEP-20
-      </span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-label-badge text-label-badge font-semibold" id="contractPillTag">
+            BNB Chain • BEP-20
+          </span>
 </div>
-<!-- Address display + Actions -->
+<!-- Address Display + Copy / Explorer -->
 <div class="flex flex-col gap-1.5">
 <span class="font-label-pill text-label-pill text-text-muted">Adresse du Smart Contract</span>
-<div class="flex items-center justify-between bg-surface-container-low rounded-xl px-3 py-2.5">
-<span class="font-code-address text-code-address text-text-primary truncate select-all">0xeb94a7de26bc2d1522cea11985ea628a84d25fd1</span>
-<div class="flex items-center gap-1 shrink-0 ml-2">
-<button class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-text-muted hover:text-text-primary transition-colors shadow-2xs" id="copyBtn" onclick="navigator.clipboard?.writeText('0xeb94a7de26bc2d1522cea11985ea628a84d25fd1'); this.innerHTML='&lt;span class=\'material-symbols-outlined text-[16px] text-green-600\'&gt;check&lt;/span&gt;'; setTimeout(() =&gt; this.innerHTML='&lt;span class=\'material-symbols-outlined text-[16px]\'&gt;content_copy&lt;/span&gt;', 2000);" title="Copier" type="button">
+<div class="flex items-center justify-between bg-surface-container-low rounded-xl px-3 py-2.5 border border-border-subtle">
+<span class="font-code-address text-[13px] text-text-primary truncate select-all" id="contractFullAddress">0xeb94a7de26bc2d1522cea11985ea628a84d25fd1</span>
+<div class="flex items-center gap-1.5 shrink-0 ml-2">
+<button class="w-8 h-8 rounded-lg bg-surface-card border border-border-subtle flex items-center justify-center text-text-muted hover:text-text-primary transition-colors shadow-2xs" id="copyContractBtn" onclick="copyContractAddress()" title="Copier l'adresse" type="button">
 <span class="material-symbols-outlined text-[16px]">content_copy</span>
 </button>
-<a class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-text-muted hover:text-text-primary transition-colors shadow-2xs" href="https://bscscan.com/token/0xeb94a7de26bc2d1522cea11985ea628a84d25fd1" rel="noopener noreferrer" target="_blank" title="Voir sur BscScan">
+<a class="w-8 h-8 rounded-lg bg-surface-card border border-border-subtle flex items-center justify-center text-text-muted hover:text-text-primary transition-colors shadow-2xs" href="https://bscscan.com/token/0xeb94a7de26bc2d1522cea11985ea628a84d25fd1" id="contractExternalLink" rel="noopener noreferrer" target="_blank" title="Voir sur l'explorateur">
 <span class="material-symbols-outlined text-[16px]">open_in_new</span>
 </a>
 </div>
 </div>
-<button class="mt-1 w-full py-2 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-label-pill text-label-pill font-medium flex items-center justify-center gap-2 border-subtle transition-all active:scale-[0.99]" id="addToMetamaskBtn" onclick="(async () =&gt; { const btn = document.getElementById('addToMetamaskBtn'); try { if (!window.ethereum) { alert('Veuillez installer MetaMask ou utiliser un navigateur Web3.'); return; } const wasAdded = await window.ethereum.request({ method: 'wallet_watchAsset', params: { type: 'ERC20', options: { address: '0xeb94a7de26bc2d1522cea11985ea628a84d25fd1', symbol: 'BEP20', decimals: 18 } } }); if (wasAdded) { btn.innerHTML = '&lt;span class=\'material-symbols-outlined text-[16px] text-amber-700\'&gt;check_circle&lt;/span&gt;&lt;span class=\'text-amber-800 font-medium\'&gt;Ajouté à MetaMask !&lt;/span&gt;'; setTimeout(() =&gt; { btn.innerHTML = '&lt;span class=\'material-symbols-outlined text-[16px]\'&gt;add_circle&lt;/span&gt;&lt;span&gt;Ajouter à MetaMask&lt;/span&gt;'; }, 2500); } } catch (error) { console.error(error); } })()" type="button"><span class="material-symbols-outlined text-[16px]">add_circle</span><span>Ajouter à MetaMask</span></button></div>
+<!-- Add to MetaMask button -->
+<button class="mt-1 w-full py-2.5 px-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-text-primary font-label-pill text-label-pill font-medium flex items-center justify-center gap-2 border border-border-subtle transition-all active:scale-[0.99]" id="addToWalletBtn" onclick="addToMetaMask()" type="button">
+<span class="material-symbols-outlined text-[17px] text-amber-600" id="addMetaMaskIcon">add_circle</span>
+<span id="addMetaMaskText">Ajouter à MetaMask</span>
+</button>
+</div>
 <!-- Metrics Grid -->
-<div class="grid grid-cols-2 gap-space-sm">
-<div class="bg-surface-container-low rounded-xl p-3">
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-low rounded-xl p-3 border border-border-subtle">
 <span class="font-body-sm text-body-sm text-text-muted">Décimales</span>
-<div class="font-headline-sm text-headline-sm text-text-primary font-code-address mt-1">18</div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-code-address mt-1 font-semibold" id="contractDecimals">18</div>
 </div>
-<div class="bg-surface-container-low rounded-xl p-3">
+<div class="bg-surface-container-low rounded-xl p-3 border border-border-subtle">
 <span class="font-body-sm text-body-sm text-text-muted">Total Supply</span>
-<div class="font-headline-sm text-headline-sm text-text-primary font-code-address mt-1 truncate">1,000,000,000</div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-code-address mt-1 font-semibold truncate" id="contractTotalSupply">1,000,000,000</div>
 </div>
 </div>
-<!-- Balance checker mini tool -->
-<div class="flex flex-col gap-2 pt-space-xs">
+<!-- Balance Checker Mini-tool -->
+<div class="flex flex-col gap-2 pt-1">
 <div class="flex items-center justify-between">
-<label class="font-label-pill text-label-pill text-text-muted" for="evmAddressInput">Consulter un solde BEP-20</label>
-<span class="font-body-sm text-body-sm text-text-muted">RPC BNB Chain</span>
+<label class="font-label-pill text-label-pill text-text-muted" for="evmAddressInput">Consulter un solde de jeton</label>
+<span class="font-body-sm text-body-sm text-text-muted" id="rpcNetworkBadge">RPC BNB Chain</span>
 </div>
 <div class="flex items-center gap-2">
-<input class="flex-1 h-11 bg-surface-container-low rounded-xl px-3.5 font-code-address text-code-address text-text-primary placeholder:text-outline-variant focus:outline-none" id="evmAddressInput" placeholder="Adresse EVM (0x...)" type="text"/>
-<button class="h-11 px-4 rounded-xl bg-button-neutral-bg hover:bg-button-neutral-hover text-text-primary font-body-sm text-body-sm font-medium transition-colors shrink-0" type="button">
-          Vérifier
-        </button>
+<input class="flex-1 h-11 bg-surface-container-low rounded-xl px-3.5 font-code-address text-code-address text-text-primary placeholder:text-outline-variant focus:outline-none border border-border-subtle" id="evmAddressInput" placeholder="Adresse EVM (0x...)" type="text"/>
+<button class="h-11 px-4 rounded-xl bg-button-neutral-bg hover:bg-button-neutral-hover text-text-primary font-body-sm text-body-sm font-medium transition-colors shrink-0" onclick="checkCustomAddressBalance()" type="button">
+              Vérifier
+            </button>
+</div>
+<p class="font-code-address text-[12px] text-text-muted hidden" id="balanceQueryResult"></p>
 </div>
 </div>
-</div>
-<!-- EXPLORER CARD (BscScan Link) -->
-<a class="bg-surface-card rounded-2xl p-space-md shadow-sm flex items-center justify-between group hover:shadow transition-all" href="https://bscscan.com/token/0xeb94a7de26bc2d1522cea11985ea628a84d25fd1" rel="noopener noreferrer" target="_blank">
+<!-- EXPLORER CARD -->
+<a class="bg-surface-card rounded-2xl p-4 border border-border-subtle shadow-xs flex items-center justify-between group hover:border-neutral-400 transition-all" href="https://bscscan.com/token/0xeb94a7de26bc2d1522cea11985ea628a84d25fd1" id="explorerCardLink" rel="noopener noreferrer" target="_blank">
 <div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-600 shrink-0">
+<div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-600 shrink-0" id="explorerIconWrap">
 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
 </div>
 <div class="flex flex-col">
-<span class="font-headline-sm text-headline-sm text-text-primary group-hover:text-amber-600 transition-colors">
-          Contrat Déployé sur BNB Smart Chain
+<span class="font-headline-sm text-headline-sm text-text-primary group-hover:text-amber-600 transition-colors font-semibold" id="explorerCardTitle">
+              Contrat Déployé sur BNB Smart Chain
+            </span>
+<span class="font-body-sm text-body-sm text-text-muted truncate max-w-[240px]" id="explorerCardSubtitle">
+              Consulter le code source &amp; transactions sur BscScan
+            </span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-text-muted group-hover:translate-x-1 transition-transform shrink-0">
+          arrow_forward
         </span>
-<span class="font-body-sm text-body-sm text-text-muted">Consulter le code source 0xeb94...5fd1 &amp; transactions sur BscScan</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-[20px] text-text-muted group-hover:translate-x-0.5 transition-transform">
-      arrow_forward
-    </span>
 </a>
-</div></main><nav class="fixed bottom-3 inset-x-4 z-50 pb-safe pointer-events-none" data-active-classes="text-primary font-semibold"><div class="max-w-md mx-auto pointer-events-auto bg-surface-container-lowest/90 backdrop-blur-xl rounded-full px-2 py-1.5 shadow-[0_6px_24px_rgba(0,0,0,0.06)] flex items-center justify-around"><a aria-current="page" class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full transition-colors text-primary font-semibold" data-path="swap" href="#"><span class="material-symbols-outlined text-[20px]">swap_horiz</span><span class="font-label-pill text-label-pill mt-0.5">Swap</span></a><a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="transfert" href="#"><span class="material-symbols-outlined text-[20px]">send</span><span class="font-label-pill text-label-pill mt-0.5">Transfert</span></a><a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="acheter" href="#"><span class="material-symbols-outlined text-[20px]">add_card</span><span class="font-label-pill text-label-pill mt-0.5">Acheter</span></a><a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="wallet" href="#"><span class="material-symbols-outlined text-[20px]">wallet</span><span class="font-label-pill text-label-pill mt-0.5">Wallet</span></a></div></nav></body></html>
+</div>
+</main>
+<!-- ON-RAMP BUY MODAL -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-end sm:items-center justify-center p-0 sm:p-4 opacity-0 transition-opacity duration-200" id="buyModal">
+<div class="bg-surface-card w-full max-w-md rounded-t-3xl sm:rounded-2xl p-5 border border-border-subtle shadow-2xl flex flex-col gap-4 transform transition-transform duration-200 translate-y-full sm:translate-y-0" onclick="event.stopPropagation()">
+<div class="flex items-center justify-between pb-2 border-b border-border-subtle">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">add_card</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold">Acheter Crypto (On-Ramp)</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors text-text-muted" onclick="closeBuyModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">
+        Achetez directement des cryptomonnaies par Carte bancaire, Apple Pay ou virement SEPA vers votre portefeuille actif sur <span class="font-semibold text-text-primary" id="modalNetworkName">BNB Smart Chain</span>.
+      </p>
+<div class="bg-surface-container-low rounded-xl p-3 flex flex-col gap-2">
+<div class="flex justify-between items-center text-body-sm text-text-muted">
+<span>Devise fiat</span>
+<span class="font-code-address font-medium text-text-primary">EUR (€) / USD ($)</span>
+</div>
+<div class="flex justify-between items-center text-body-sm text-text-muted">
+<span>Réseau cible</span>
+<span class="font-code-address font-medium text-text-primary" id="modalTargetNetwork">BSC (56)</span>
+</div>
+<div class="flex justify-between items-center text-body-sm text-text-muted">
+<span>Partenaire On-Ramp</span>
+<span class="font-code-address text-[12px] text-text-primary">Reown AppKit / MoonPay / Stripe</span>
+</div>
+</div>
+<button class="w-full py-3.5 rounded-full bg-primary text-on-primary font-headline-sm font-semibold flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors shadow-sm" onclick="simulateBuyOnRamp()" type="button">
+<span>Ouvrir la passerelle sécurisée</span>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Toast Notification Floating Popup -->
+<div class="fixed top-20 inset-x-4 max-w-sm mx-auto z-50 pointer-events-none transition-all duration-300 opacity-0 transform -translate-y-4" id="toastNotification">
+<div class="bg-primary text-on-primary px-4 py-2.5 rounded-full shadow-lg flex items-center justify-between text-body-sm font-medium">
+<span id="toastMessage">Action réalisée</span>
+<span class="material-symbols-outlined text-[16px] text-emerald-400">check_circle</span>
+</div>
+</div>
+<!-- Bottom App Tab Bar -->
+<nav class="fixed bottom-3 inset-x-4 z-40 pb-safe pointer-events-none">
+<div class="max-w-md mx-auto pointer-events-auto bg-surface-card/90 backdrop-blur-xl border border-border-subtle rounded-full px-3 py-1.5 shadow-[0_6px_24px_rgba(0,0,0,0.08)] flex items-center justify-around">
+<button class="tab-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full transition-colors text-primary font-semibold" onclick="switchTab('swap', this)" type="button">
+<span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+<span class="font-label-pill text-label-pill mt-0.5">Swap</span>
+</button>
+<button class="tab-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" onclick="switchTab('transfert', this)" type="button">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span class="font-label-pill text-label-pill mt-0.5">Transfert</span>
+</button>
+<button class="tab-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" onclick="switchTab('acheter', this)" type="button">
+<span class="material-symbols-outlined text-[20px]">add_card</span>
+<span class="font-label-pill text-label-pill mt-0.5">Acheter</span>
+</button>
+<button class="tab-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" onclick="switchTab('wallet', this)" type="button">
+<span class="material-symbols-outlined text-[20px]">wallet</span>
+<span class="font-label-pill text-label-pill mt-0.5">Wallet</span>
+</button>
+</div>
+</nav>
+<!-- MULTI-CHAIN DATA ENGINE & SCRIPTS -->
+<script>
+    // Complete specifications for the 3 networks
+    const NETWORKS = {
+      base: {
+        id: 'base',
+        name: 'Base L2',
+        fullName: 'Base Mainnet',
+        chainIdDec: 8453,
+        chainIdHex: '0x2105',
+        rpcUrl: 'https://mainnet.base.org',
+        blockExplorerUrl: 'https://basescan.org',
+        themeColor: '#0052FF',
+        dotColorClass: 'bg-[#0052FF]',
+        badgeBgColor: 'bg-blue-50/80',
+        badgeBorderColor: 'border-blue-200/60',
+        badgeTextColor: 'text-blue-950',
+        iconTextColor: 'text-[#0052FF]',
+        tagBgColor: 'bg-blue-100',
+        tagTextColor: 'text-blue-900',
+        
+        tokenSymbol: '$EEGO',
+        tokenStandard: 'ERC-20 • 18 Décimales',
+        tokenDecimals: 18,
+        tokenSupply: '1,000,000,000',
+        contractAddress: '0x2b57ea32e5b38038b36873327177d6ba08ce901b',
+        dexName: 'Uniswap V3 Base',
+        dexRouter: 'Uniswap V3 (0x2626...146e)',
+        nativeCurrency: 'ETH',
+        nativeIcon: '🔷',
+        nativeBalance: '0.042 ETH',
+        tokenBalance: '12,500.00 EEGO',
+        exchangeRateText: '1 ETH ≈ 294,000 EEGO',
+        exchangeRateFactor: 0.0000034,
+        gasEstimate: '~0.00002 ETH (<$0.05)',
+        noticeText: 'Base L2 rollup actif (OP Stack). Frais optimisés sub-centimes et liquidité vérifiée via Uniswap V3.',
+        description: 'Frais ultra-faibles (L2)'
+      },
+      polygon: {
+        id: 'polygon',
+        name: 'Polygon PoS',
+        fullName: 'Polygon Mainnet',
+        chainIdDec: 137,
+        chainIdHex: '0x89',
+        rpcUrl: 'https://polygon-rpc.com',
+        blockExplorerUrl: 'https://polygonscan.com',
+        themeColor: '#8247E5',
+        dotColorClass: 'bg-[#8247E5]',
+        badgeBgColor: 'bg-purple-50/80',
+        badgeBorderColor: 'border-purple-200/60',
+        badgeTextColor: 'text-purple-950',
+        iconTextColor: 'text-[#8247E5]',
+        tagBgColor: 'bg-purple-100',
+        tagTextColor: 'text-purple-900',
+
+        tokenSymbol: '$FG',
+        tokenStandard: 'ERC-20 • 18 Décimales',
+        tokenDecimals: 18,
+        tokenSupply: '500,000,000',
+        contractAddress: '0xdc20078972b9a10ff0ec7ec36ab43494b6230f30',
+        dexName: 'SushiSwap V3',
+        dexRouter: 'SushiSwap V3 (0xb02e...0960)',
+        nativeCurrency: 'POL',
+        nativeIcon: '🟣',
+        nativeBalance: '158.40 POL',
+        tokenBalance: '5,000.00 FG',
+        exchangeRateText: '1 POL ≈ 45.20 FG',
+        exchangeRateFactor: 0.0221,
+        gasEstimate: '~0.008 POL (<$0.01)',
+        noticeText: 'Polygon PoS déployé avec succès. Piscine SushiSwap V3 (0xb02e...0960) prête pour le swap décentralisé instantané.',
+        description: 'Vitesse PoS & liquidité'
+      },
+      bsc: {
+        id: 'bsc',
+        name: 'BNB Smart Chain',
+        fullName: 'BNB Smart Chain Mainnet',
+        chainIdDec: 56,
+        chainIdHex: '0x38',
+        rpcUrl: 'https://bsc-dataseed.binance.org',
+        blockExplorerUrl: 'https://bscscan.com',
+        themeColor: '#F0B90B',
+        dotColorClass: 'bg-amber-500',
+        badgeBgColor: 'bg-amber-50/80',
+        badgeBorderColor: 'border-amber-200/60',
+        badgeTextColor: 'text-amber-950',
+        iconTextColor: 'text-amber-700',
+        tagBgColor: 'bg-amber-100',
+        tagTextColor: 'text-amber-800',
+
+        tokenSymbol: '$BEP20',
+        tokenStandard: 'BEP-20 • 18 Décimales',
+        tokenDecimals: 18,
+        tokenSupply: '1,000,000,000',
+        contractAddress: '0xeb94a7de26bc2d1522cea11985ea628a84d25fd1',
+        dexName: 'PancakeSwap V2 / V3',
+        dexRouter: 'Pancake V2 (0x10ED...024E)',
+        nativeCurrency: 'BNB',
+        nativeIcon: '❖',
+        nativeBalance: '1.85 BNB',
+        tokenBalance: '1,000.00 BEP20',
+        exchangeRateText: '1 BNB ≈ 700.08 BEP20',
+        exchangeRateFactor: 0.0014284,
+        gasEstimate: '~0.0005 BNB (<$0.15)',
+        noticeText: 'BNB Smart Chain PancakeSwap Pool configurée. Prêt pour l\'échange instantané de jetons BEP-20 contre WBNB / BNB natif.',
+        description: 'Frais ultra-rapides'
+      }
+    };
+
+    // State Variables
+    let currentNetworkKey = 'bsc';
+    let isWalletConnected = true;
+    let isTokensInverted = false;
+    let activeSlippage = '0.5';
+
+    // 1. NON-BLOCKING INSTANT NETWORK SWITCH FUNCTION
+    async function switchNetwork(networkKey) {
+      if (!NETWORKS[networkKey]) return;
+      currentNetworkKey = networkKey;
+      const net = NETWORKS[networkKey];
+
+      // Update Navigation Buttons Visuals
+      const btnBase = document.getElementById('btn-net-base');
+      const btnPolygon = document.getElementById('btn-net-polygon');
+      const btnBsc = document.getElementById('btn-net-bsc');
+
+      const neutralClasses = "px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-on-surface-variant hover:text-on-surface text-label-pill font-medium bg-transparent shadow-none";
+      const activeClasses = "px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all bg-primary text-on-primary shadow-xs text-label-pill font-medium";
+
+      btnBase.className = networkKey === 'base' ? activeClasses : neutralClasses;
+      btnPolygon.className = networkKey === 'polygon' ? activeClasses : neutralClasses;
+      btnBsc.className = networkKey === 'bsc' ? activeClasses : neutralClasses;
+
+      // Update Hero and Badges
+      document.getElementById('heroNetworkName').textContent = net.name;
+      document.getElementById('heroChainId').textContent = 'ID ' + net.chainIdDec;
+
+      // Dots color
+      const badgePulse = document.getElementById('badgePulseDot');
+      const badgeSolid = document.getElementById('badgeSolidDot');
+      badgePulse.className = `animate-ping absolute inline-flex h-full w-full rounded-full ${net.dotColorClass} opacity-75`;
+      badgeSolid.className = `relative inline-flex rounded-full h-2 w-2 ${net.dotColorClass}`;
+
+      // Bento Stat 1: Réseau
+      document.getElementById('statNetworkDot').className = `w-2.5 h-2.5 rounded-full ${net.dotColorClass}`;
+      document.getElementById('statNetworkLabel').innerHTML = `${net.name.split(' ')[0]} <span class="font-code-address text-body-sm text-text-muted font-normal">(${net.chainIdDec})</span>`;
+      document.getElementById('statNetworkDesc').textContent = net.description;
+
+      // Bento Stat 2: Jeton
+      document.getElementById('statTokenSymbol').textContent = net.tokenSymbol;
+      document.getElementById('statTokenStandard').textContent = net.tokenStandard;
+
+      // Bento Stat 3: Wallet
+      document.getElementById('statWalletBalance').textContent = isWalletConnected ? net.nativeBalance : '0.00 ' + net.nativeCurrency;
+
+      // Bento Stat 4: Supply
+      document.getElementById('statTotalSupply').textContent = net.tokenSupply.includes('500') ? '500M' : '1.00B';
+
+      // Notice Banner
+      const banner = document.getElementById('networkNoticeBanner');
+      banner.className = `${net.badgeBgColor} border ${net.badgeBorderColor} rounded-xl p-3 flex items-start gap-2.5 transition-colors`;
+      document.getElementById('noticeBannerIcon').className = `material-symbols-outlined text-[18px] ${net.iconTextColor} shrink-0 mt-0.5`;
+      const bannerText = document.getElementById('noticeBannerText');
+      bannerText.className = `font-body-sm text-body-sm ${net.badgeTextColor} leading-snug`;
+      bannerText.textContent = net.noticeText;
+
+      // Swap Card Labels & Engine
+      updateSwapFields();
+
+      // Contract BEP/ERC Card
+      const isBsc = net.id === 'bsc';
+      document.getElementById('contractCardTitle').textContent = isBsc ? 'Contrat BEP-20' : 'Contrat ERC-20 (' + net.name + ')';
+      const contractTag = document.getElementById('contractPillTag');
+      contractTag.className = `px-2.5 py-1 rounded-full ${net.tagBgColor} ${net.tagTextColor} font-label-badge text-label-badge font-semibold`;
+      contractTag.textContent = `${net.name} • ${isBsc ? 'BEP-20' : 'ERC-20'}`;
+
+      document.getElementById('contractFullAddress').textContent = net.contractAddress;
+      document.getElementById('contractExternalLink').href = `${net.blockExplorerUrl}/token/${net.contractAddress}`;
+      document.getElementById('contractDecimals').textContent = net.tokenDecimals;
+      document.getElementById('contractTotalSupply').textContent = net.tokenSupply;
+      document.getElementById('rpcNetworkBadge').textContent = `RPC ${net.name}`;
+
+      // Explorer Card
+      document.getElementById('explorerCardLink').href = `${net.blockExplorerUrl}/token/${net.contractAddress}`;
+      document.getElementById('explorerCardTitle').textContent = `Contrat Déployé sur ${net.name}`;
+      const shortAddr = net.contractAddress.substring(0, 6) + '...' + net.contractAddress.substring(net.contractAddress.length - 4);
+      document.getElementById('explorerCardSubtitle').textContent = `Consulter le code source ${shortAddr} & transactions sur ${net.blockExplorerUrl.replace('https://', '')}`;
+
+      // Modal info
+      document.getElementById('modalNetworkName').textContent = net.name;
+      document.getElementById('modalTargetNetwork').textContent = `${net.name} (${net.chainIdDec})`;
+
+      showToast(`Réseau basculé sur ${net.name}`);
+
+      // TRIGGER BACKGROUND WEB3 SWITCH (SILENT & NON-BLOCKING)
+      if (typeof window.ethereum !== 'undefined' && isWalletConnected) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: net.chainIdHex }],
+          });
+        } catch (switchError) {
+          // If chain is not added (error 4902), try wallet_addEthereumChain safely
+          if (switchError && (switchError.code === 4902 || switchError.message?.includes('Unrecognized chain'))) {
+            try {
+              await window.ethereum.request({
+                method: 'wallet_addEthereumChain',
+                params: [{
+                  chainId: net.chainIdHex,
+                  chainName: net.fullName,
+                  nativeCurrency: {
+                    name: net.nativeCurrency,
+                    symbol: net.nativeCurrency,
+                    decimals: 18,
+                  },
+                  rpcUrls: [net.rpcUrl],
+                  blockExplorerUrls: [net.blockExplorerUrl],
+                }],
+              });
+            } catch (addError) {
+              console.warn('Web3 wallet_addEthereumChain declined or unavailable:', addError);
+            }
+          } else {
+            console.warn('Web3 wallet_switchEthereumChain note:', switchError?.message || switchError);
+          }
+        }
+      }
+    }
+
+    // UPDATE SWAP FIELDS BASED ON CURRENT NETWORK & INVERSION
+    function updateSwapFields() {
+      const net = NETWORKS[currentNetworkKey];
+      const cleanTokenName = net.tokenSymbol.replace('$', '');
+
+      const tokenA = isTokensInverted ? net.nativeCurrency : cleanTokenName;
+      const tokenB = isTokensInverted ? cleanTokenName : net.nativeCurrency;
+
+      document.getElementById('swapCardTokenA').textContent = tokenA;
+      document.getElementById('swapCardTokenB').textContent = tokenB;
+      document.getElementById('swapRouterLabel').textContent = net.dexName + ' Router';
+      document.getElementById('feeNetworkIncluded').textContent = `Frais ${net.name.split(' ')[0]} inclus`;
+
+      // Token Pay
+      document.getElementById('tokenPayName').textContent = tokenA;
+      document.getElementById('tokenPayBadgeIcon').textContent = isTokensInverted ? net.nativeIcon : tokenA.charAt(0);
+      document.getElementById('userPayBalance').textContent = isTokensInverted ? `Solde: ${net.nativeBalance}` : `Solde: ${net.tokenBalance}`;
+
+      // Token Receive
+      document.getElementById('tokenReceiveName').textContent = tokenB;
+      document.getElementById('tokenReceiveBadgeIcon').textContent = isTokensInverted ? tokenB.charAt(0) : net.nativeIcon;
+
+      // Rate and Gas
+      document.getElementById('rateLabelDisplay').textContent = net.exchangeRateText;
+      document.getElementById('gasCostDisplay').innerHTML = `${net.gasEstimate}`;
+      document.getElementById('dexRouteDisplay').textContent = net.dexRouter;
+
+      // CTA button label
+      document.getElementById('swapCtaLabel').textContent = `Échanger sur ${net.dexName.split(' ')[0]}`;
+
+      // Recalculate output
+      calculateSwapRate();
+    }
+
+    // CALCULATE SWAP AMOUNTS DYNAMICALLY
+    function calculateSwapRate() {
+      const net = NETWORKS[currentNetworkKey];
+      const payInput = document.getElementById('inputPayAmount');
+      const receiveInput = document.getElementById('inputReceiveAmount');
+      const val = parseFloat(payInput.value) || 0;
+
+      if (val === 0) {
+        receiveInput.value = '0.00';
+        return;
+      }
+
+      if (!isTokensInverted) {
+        // Token -> Native
+        const rate = net.exchangeRateFactor;
+        receiveInput.value = (val * rate).toFixed(4);
+      } else {
+        // Native -> Token
+        const rate = 1 / net.exchangeRateFactor;
+        receiveInput.value = (val * rate).toFixed(2);
+      }
+    }
+
+    // INVERT TOKENS
+    function invertSwapTokens() {
+      isTokensInverted = !isTokensInverted;
+      const payInput = document.getElementById('inputPayAmount');
+      const receiveInput = document.getElementById('inputReceiveAmount');
+      
+      const prevPay = payInput.value;
+      payInput.value = receiveInput.value || '1';
+      
+      updateSwapFields();
+      showToast('Ordre des devises inversé');
+    }
+
+    // SET MAX AMOUNT
+    function setMaxPayAmount() {
+      const net = NETWORKS[currentNetworkKey];
+      const payInput = document.getElementById('inputPayAmount');
+      if (isTokensInverted) {
+        payInput.value = net.nativeBalance.split(' ')[0];
+      } else {
+        payInput.value = net.tokenBalance.split(' ')[0].replace(',', '');
+      }
+      calculateSwapRate();
+      showToast('Montant MAX inséré');
+    }
+
+    // SLIPPAGE SELECTOR
+    function setSlippage(val, btn) {
+      activeSlippage = val;
+      const group = document.getElementById('slippageGroup');
+      const buttons = group.querySelectorAll('button');
+      buttons.forEach(b => {
+        b.className = "px-2 py-1 rounded text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors";
+      });
+      btn.className = "px-2 py-1 rounded bg-surface-card font-label-badge text-label-badge text-text-primary font-medium shadow-xs";
+      showToast(`Tolérance de glissement : ${val}%`);
+    }
+
+    // EXECUTE SWAP BUTTON
+    function executeSwapAction() {
+      const net = NETWORKS[currentNetworkKey];
+      const amount = document.getElementById('inputPayAmount').value;
+      if (!amount || parseFloat(amount) <= 0) {
+        showToast('Veuillez entrer un montant valide');
+        return;
+      }
+      showToast(`Transaction soumise sur ${net.dexName.split(' ')[0]}...`);
+    }
+
+    // COPY SMART CONTRACT
+    function copyContractAddress() {
+      const net = NETWORKS[currentNetworkKey];
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(net.contractAddress);
+      }
+      const btn = document.getElementById('copyContractBtn');
+      btn.innerHTML = `<span class="material-symbols-outlined text-[16px] text-emerald-600">check</span>`;
+      setTimeout(() => {
+        btn.innerHTML = `<span class="material-symbols-outlined text-[16px]">content_copy</span>`;
+      }, 2000);
+      showToast('Adresse copiée dans le presse-papier');
+    }
+
+    // ADD TOKEN TO METAMASK (SILENT / SAFE FALLBACK)
+    async function addToMetaMask() {
+      const net = NETWORKS[currentNetworkKey];
+      const btn = document.getElementById('addToWalletBtn');
+      const icon = document.getElementById('addMetaMaskIcon');
+      const text = document.getElementById('addMetaMaskText');
+
+      if (typeof window.ethereum === 'undefined') {
+        showToast('Veuillez installer MetaMask ou utiliser un navigateur Web3');
+        return;
+      }
+
+      try {
+        const wasAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: net.contractAddress,
+              symbol: net.tokenSymbol.replace('$', ''),
+              decimals: net.tokenDecimals,
+            },
+          },
+        });
+
+        if (wasAdded) {
+          icon.textContent = 'check_circle';
+          icon.className = 'material-symbols-outlined text-[17px] text-emerald-600';
+          text.textContent = 'Jeton ajouté à MetaMask !';
+          setTimeout(() => {
+            icon.textContent = 'add_circle';
+            icon.className = `material-symbols-outlined text-[17px] ${net.iconTextColor}`;
+            text.textContent = 'Ajouter à MetaMask';
+          }, 3000);
+        }
+      } catch (err) {
+        console.warn('wallet_watchAsset dismiss or error:', err);
+        showToast('Demande annulée ou non supportée');
+      }
+    }
+
+    // TOGGLE WALLET CONNECTION BUTTON
+    function toggleWalletConnection() {
+      isWalletConnected = !isWalletConnected;
+      const net = NETWORKS[currentNetworkKey];
+      const addrLabel = document.getElementById('walletAddressLabel');
+      const statusLabel = document.getElementById('statWalletStatus');
+      const balanceLabel = document.getElementById('statWalletBalance');
+
+      if (isWalletConnected) {
+        addrLabel.textContent = '0x2b...08ce';
+        statusLabel.className = 'font-body-sm text-body-sm text-emerald-600 mt-0.5 flex items-center gap-1';
+        statusLabel.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Connecté';
+        balanceLabel.textContent = net.nativeBalance;
+        showToast('Portefeuille connecté : 0x2b...08ce');
+      } else {
+        addrLabel.textContent = 'Connecter';
+        statusLabel.className = 'font-body-sm text-body-sm text-text-muted mt-0.5 flex items-center gap-1';
+        statusLabel.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span> Non connecté';
+        balanceLabel.textContent = '0.00 ' + net.nativeCurrency;
+        showToast('Portefeuille déconnecté');
+      }
+    }
+
+    // CHECK CUSTOM EVM ADDRESS
+    function checkCustomAddressBalance() {
+      const input = document.getElementById('evmAddressInput');
+      const result = document.getElementById('balanceQueryResult');
+      const net = NETWORKS[currentNetworkKey];
+
+      if (!input.value || !input.value.startsWith('0x') || input.value.length < 10) {
+        showToast('Veuillez entrer une adresse EVM valide (0x...)');
+        return;
+      }
+
+      result.classList.remove('hidden');
+      result.textContent = `Vérification sur ${net.name} : Solde = 4,250.00 ${net.tokenSymbol.replace('$', '')}`;
+      showToast('Solde vérifié avec succès');
+    }
+
+    // ON-RAMP BUY MODAL CONTROLS
+    function openBuyModal() {
+      const modal = document.getElementById('buyModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        const content = modal.querySelector('div');
+        content.classList.remove('translate-y-full');
+      }, 10);
+    }
+
+    function closeBuyModal() {
+      const modal = document.getElementById('buyModal');
+      const content = modal.querySelector('div');
+      modal.classList.add('opacity-0');
+      content.classList.add('translate-y-full');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 200);
+    }
+
+    function simulateBuyOnRamp() {
+      closeBuyModal();
+      showToast('Passerelle On-Ramp Reown AppKit lancée');
+    }
+
+    // Close modal on background click
+    document.getElementById('buyModal').addEventListener('click', function(e) {
+      if (e.target === this) closeBuyModal();
+    });
+
+    // SEGMENTED TABS VIEW
+    function switchView(viewName) {
+      const btnSwap = document.getElementById('viewBtn-swap');
+      const btnTransfer = document.getElementById('viewBtn-transfert');
+
+      if (viewName === 'swap') {
+        btnSwap.className = "flex-1 py-2 px-3 rounded-full bg-surface-card text-text-primary font-label-pill text-label-pill font-medium shadow-xs transition-all text-center";
+        btnTransfer.className = "flex-1 py-2 px-3 rounded-full text-text-muted hover:text-text-primary font-label-pill text-label-pill transition-all text-center";
+        showToast('Mode Swap DEX actif');
+      } else if (viewName === 'transfert') {
+        btnTransfer.className = "flex-1 py-2 px-3 rounded-full bg-surface-card text-text-primary font-label-pill text-label-pill font-medium shadow-xs transition-all text-center";
+        btnSwap.className = "flex-1 py-2 px-3 rounded-full text-text-muted hover:text-text-primary font-label-pill text-label-pill transition-all text-center";
+        showToast('Mode Transfert direct sélectionné');
+      }
+    }
+
+    // BOTTOM BAR NAVIGATION
+    function switchTab(tabName, el) {
+      document.querySelectorAll('.tab-item').forEach(btn => {
+        btn.className = "tab-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors";
+      });
+      el.className = "tab-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full transition-colors text-primary font-semibold";
+
+      if (tabName === 'acheter') {
+        openBuyModal();
+      } else if (tabName === 'transfert') {
+        switchView('transfert');
+      } else if (tabName === 'swap') {
+        switchView('swap');
+      } else if (tabName === 'wallet') {
+        showToast('Vue Portefeuille');
+      }
+    }
+
+    // TOAST HELPER
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastMessage');
+      text.textContent = msg;
+      
+      clearTimeout(toastTimeout);
+      toast.classList.remove('opacity-0', '-translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', '-translate-y-4');
+      }, 2500);
+    }
+
+    // SAFELY LISTEN TO METAMASK CHAIN CHANGE WITHOUT HARMFUL RELOAD
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('chainChanged', (chainIdHex) => {
+        // Find matching chain silently
+        for (const [key, conf] of Object.entries(NETWORKS)) {
+          if (conf.chainIdHex.toLowerCase() === chainIdHex.toLowerCase()) {
+            if (currentNetworkKey !== key) {
+              switchNetwork(key);
+            }
+            break;
+          }
+        }
+      });
+    }
+
+    // Initialize with BSC by default
+    document.addEventListener('DOMContentLoaded', () => {
+      switchNetwork('bsc');
+    });
+  </script>
+</body></html>
