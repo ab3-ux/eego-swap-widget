@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr" class="h-full bg-slate-50 text-slate-900">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Widget Starter Web3 — Blanc Lumineux & Multi-Chain</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+
+<html class="h-full bg-slate-50 text-slate-900" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Widget Starter Web3 — Reown &amp; Swaps Base/Polygon</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
     tailwind.config = {
       theme: {
         extend: {
@@ -20,13 +19,11 @@
       }
     }
   </script>
-  
-  <!-- Ethers.js v5 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <style>
+<!-- Ethers.js v5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
     * { -webkit-tap-highlight-color: transparent; }
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -39,359 +36,437 @@
     .tap-effect:active {
       transform: scale(0.97);
     }
+    .modal-backdrop {
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body class="min-h-full flex flex-col justify-between bg-slate-50 font-sans pb-24 text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
-
-  <!-- ================= TOP APP BAR / HEADER ================= -->
-  <header class="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-xs">
-    <div class="max-w-md mx-auto flex items-center justify-between">
-      <div class="flex items-center space-x-2.5">
-        <div class="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-white shadow-md shadow-blue-500/20 text-sm">
+<!-- ================= TOP APP BAR / HEADER ================= -->
+<header class="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-xs">
+<div class="max-w-md mx-auto flex items-center justify-between">
+<div class="flex items-center space-x-2.5">
+<div class="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-white shadow-md shadow-blue-500/20 text-sm">
           W
         </div>
-        <div>
-          <h1 class="text-sm font-bold tracking-tight text-slate-900 leading-tight">Widget Starter Web3</h1>
-          <p class="text-[10px] text-slate-500 font-mono">Multi-Chain On-Chain Tester</p>
-        </div>
-      </div>
-      
-      <div class="flex items-center space-x-2">
-        <button onclick="triggerOnRampModal()" class="tap-effect hidden sm:flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 shadow-xs">
-          <i data-lucide="credit-card" class="w-3.5 h-3.5 text-emerald-600"></i>
-          <span>Acheter</span>
-        </button>
-
-        <!-- Connect Wallet Button -->
-        <button id="connectWalletBtn" onclick="toggleConnectWallet()" class="tap-effect flex items-center space-x-2 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white shadow-sm">
-          <span id="connectIndicator" class="w-2 h-2 rounded-full bg-amber-400"></span>
-          <span id="connectWalletText">Connecter</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ================= MAIN CONTAINER ================= -->
-  <main class="w-full max-w-md mx-auto px-4 py-4 space-y-4">
-
-    <!-- 1. MULTI-CHAIN SELECTOR (3 COULEURS RÉSEAUX) -->
-    <section class="bg-white border border-slate-200/90 rounded-2xl p-3.5 shadow-sm">
-      <div class="flex items-center justify-between mb-2.5 px-0.5">
-        <span class="text-[11px] font-mono font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
-          <i data-lucide="network" class="w-3.5 h-3.5 text-blue-600"></i> SÉLECTION DU RÉSEAU & CONTRAT
+<div>
+<h1 class="text-sm font-bold tracking-tight text-slate-900 leading-tight">Widget Starter Web3</h1>
+<p class="text-[10px] text-slate-500 font-mono">Reown AppKit &amp; Multi-Chain DEX</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<button class="tap-effect hidden sm:flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 shadow-xs" onclick="triggerOnRampModal()">
+<i class="w-3.5 h-3.5 text-emerald-600" data-lucide="credit-card"></i>
+<span>Acheter</span>
+</button>
+<!-- Connect Wallet Button -->
+<button class="tap-effect flex items-center space-x-2 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white shadow-sm" id="connectWalletBtn" onclick="openConnectModal()">
+<span class="w-2 h-2 rounded-full bg-amber-400" id="connectIndicator"></span>
+<span id="connectWalletText">Connecter</span>
+</button>
+</div>
+</div>
+</header>
+<!-- ================= WALLET CONNECTION STATUS BANNER (SI CONNECTÉ) ================= -->
+<div class="hidden w-full max-w-md mx-auto px-4 pt-3" id="walletStatusBanner">
+<div class="bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2 flex items-center justify-between text-xs font-mono">
+<div class="flex items-center space-x-2 text-emerald-800 truncate">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+<span class="font-bold truncate" id="connectedAddressFull">0x...</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-medium" id="connectedChainTag">Base (8453)</span>
+</div>
+<button class="text-[11px] text-rose-600 hover:text-rose-700 font-bold ml-2 underline shrink-0" onclick="disconnectWalletUI()">
+        Déconnexion
+      </button>
+</div>
+</div>
+<!-- ================= MAIN CONTAINER ================= -->
+<main class="w-full max-w-md mx-auto px-4 py-4 space-y-4">
+<!-- 1. MULTI-CHAIN SELECTOR (3 COULEURS RÉSEAUX) -->
+<section class="bg-white border border-slate-200/90 rounded-2xl p-3.5 shadow-sm">
+<div class="flex items-center justify-between mb-2.5 px-0.5">
+<span class="text-[11px] font-mono font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+<i class="w-3.5 h-3.5 text-blue-600" data-lucide="network"></i> SÉLECTION DU RÉSEAU &amp; CONTRAT
         </span>
-        <span id="activeChainBadge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-bold flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Base (8453)
+<span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-bold flex items-center gap-1.5" id="activeChainBadge">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Base (8453)
         </span>
-      </div>
-
-      <div class="grid grid-cols-3 gap-2">
-        <!-- BASE (BLEU) -->
-        <button id="btnChainBase" onclick="switchActiveChain('base')" class="tap-effect chain-tab flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl border-2 border-blue-600 bg-blue-50/50 text-blue-900 shadow-xs">
-          <div class="flex items-center space-x-1.5 mb-0.5">
-            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-            <span class="text-xs font-bold">Base</span>
-          </div>
-          <span class="text-[10px] text-blue-700 font-mono">8453 • $EEGO</span>
-          <span class="text-[9px] mt-1.5 px-2 py-0.5 rounded-md bg-blue-600 text-white font-bold">Bleu Base</span>
-        </button>
-
-        <!-- POLYGON (VIOLET) -->
-        <button id="btnChainPolygon" onclick="switchActiveChain('polygon')" class="tap-effect chain-tab flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-purple-300">
-          <div class="flex items-center space-x-1.5 mb-0.5">
-            <span class="w-2 h-2 rounded-full bg-purple-600"></span>
-            <span class="text-xs font-bold text-slate-800">Polygon</span>
-          </div>
-          <span class="text-[10px] text-slate-500 font-mono">137 • $FG</span>
-          <span class="text-[9px] mt-1.5 px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200 font-bold">Violet Poly</span>
-        </button>
-
-        <!-- BSC (JAUNE AMBRÉ) -->
-        <button id="btnChainBsc" onclick="switchActiveChain('bsc')" class="tap-effect chain-tab flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-amber-300">
-          <div class="flex items-center space-x-1.5 mb-0.5">
-            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-            <span class="text-xs font-bold text-slate-800">BSC</span>
-          </div>
-          <span class="text-[10px] text-slate-500 font-mono">56 • $BEP</span>
-          <span class="text-[9px] mt-1.5 px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 font-bold">Jaune BNB</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- 2. QUICK STATS 2x2 GRID (BLANC CONTRASTÉ) -->
-    <section class="grid grid-cols-2 gap-2.5">
-      <div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
-        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-mono font-medium">Jeton / Protocole</p>
-        <p id="statTokenName" class="text-sm font-bold text-slate-900 mt-0.5 flex items-center gap-1.5">
-          <span id="statTokenDot" class="w-2 h-2 rounded-full bg-blue-600"></span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<!-- BASE (BLEU) -->
+<button class="tap-effect chain-tab flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl border-2 border-blue-600 bg-blue-50/50 text-blue-900 shadow-xs" id="btnChainBase" onclick="switchActiveChain('base')">
+<div class="flex items-center space-x-1.5 mb-0.5">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<span class="text-xs font-bold">Base</span>
+</div>
+<span class="text-[10px] text-blue-700 font-mono">8453 • $EEGO</span>
+<span class="text-[9px] mt-1.5 px-2 py-0.5 rounded-md bg-blue-600 text-white font-bold">Bleu Base</span>
+</button>
+<!-- POLYGON (VIOLET) -->
+<button class="tap-effect chain-tab flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-purple-300" id="btnChainPolygon" onclick="switchActiveChain('polygon')">
+<div class="flex items-center space-x-1.5 mb-0.5">
+<span class="w-2 h-2 rounded-full bg-purple-600"></span>
+<span class="text-xs font-bold text-slate-800">Polygon</span>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">137 • $FG</span>
+<span class="text-[9px] mt-1.5 px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200 font-bold">Violet Poly</span>
+</button>
+<!-- BSC (JAUNE AMBRÉ) -->
+<button class="tap-effect chain-tab flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:border-amber-300" id="btnChainBsc" onclick="switchActiveChain('bsc')">
+<div class="flex items-center space-x-1.5 mb-0.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="text-xs font-bold text-slate-800">BSC</span>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">56 • $BEP</span>
+<span class="text-[9px] mt-1.5 px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 font-bold">Jaune BNB</span>
+</button>
+</div>
+</section>
+<!-- 2. QUICK STATS 2x2 GRID (BLANC CONTRASTÉ) -->
+<section class="grid grid-cols-2 gap-2.5">
+<div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-mono font-medium">Jeton / Protocole</p>
+<p class="text-sm font-bold text-slate-900 mt-0.5 flex items-center gap-1.5" id="statTokenName">
+<span class="w-2 h-2 rounded-full bg-blue-600" id="statTokenDot"></span>
           $EEGO (Base)
         </p>
-        <p id="statTokenStandard" class="text-[10px] text-slate-500">18 Décimales • Standard</p>
-      </div>
-
-      <div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
-        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-mono font-medium">Solde Portefeuille</p>
-        <p id="statUserBalance" class="text-sm font-bold text-slate-900 mt-0.5">Non connecté</p>
-        <p id="statRpcStatus" class="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> RPC Live Connecté
+<p class="text-[10px] text-slate-500" id="statTokenStandard">18 Décimales • Standard</p>
+</div>
+<div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-mono font-medium">Solde Portefeuille</p>
+<p class="text-sm font-bold text-slate-900 mt-0.5" id="statUserBalance">Non connecté</p>
+<p class="text-[10px] text-emerald-600 font-medium flex items-center gap-1" id="statRpcStatus">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> RPC Live Connecté
         </p>
-      </div>
-
-      <div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
-        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-mono font-medium">Total Supply</p>
-        <p id="statTotalSupply" class="text-sm font-bold text-slate-900 mt-0.5">1</p>
-        <p class="text-[10px] text-slate-500">84.2% en circulation</p>
-      </div>
-
-      <div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
-        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-mono font-medium">Routeur DEX</p>
-        <p id="swapRouterNameShort" class="text-sm font-bold text-slate-900 mt-0.5 truncate">Uniswap V3 / Aerodrome</p>
-        <p id="statGasFeeDisplay" class="text-[10px] text-slate-600 font-mono">Gas : ~0.00001 ETH</p>
-      </div>
-    </section>
-
-    <!-- 3. SWAP DEX CARD BLANC (INTERACTIF & REVERSIBLE) -->
-    <section id="swapSection" class="bg-white border-2 border-blue-100 rounded-3xl p-4 shadow-sm relative">
-      <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center space-x-2">
-          <span id="swapRouterDot" class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-          <span id="swapRouterLabel" class="text-xs font-mono font-bold text-slate-800">Routeur : Uniswap V3 / Aerodrome</span>
+</div>
+<div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-mono font-medium">Total Supply</p>
+<p class="text-sm font-bold text-slate-900 mt-0.5" id="statTotalSupply">1</p>
+<p class="text-[10px] text-slate-500">84.2% en circulation</p>
+</div>
+<div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-mono font-medium">Routeur DEX</p>
+<p class="text-sm font-bold text-slate-900 mt-0.5 truncate" id="swapRouterNameShort">Uniswap V3 / Aerodrome</p>
+<p class="text-[10px] text-slate-600 font-mono" id="statGasFeeDisplay">Gas : ~0.00001 ETH</p>
+</div>
+</section>
+<!-- 3. SWAP DEX CARD BLANC (EXPLICATIF, FONCTIONNEL & 2 ÉTAPES) -->
+<section class="bg-white border-2 border-blue-100 rounded-3xl p-4 shadow-sm relative" id="swapSection">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-600" id="swapRouterDot"></span>
+<span class="text-xs font-mono font-bold text-slate-800" id="swapRouterLabel">Routeur : Uniswap V3 / Aerodrome</span>
+</div>
+<!-- Slippage pill -->
+<div class="flex items-center space-x-1 bg-slate-100 px-2 py-0.5 rounded-full text-[11px] font-mono text-slate-600 font-medium">
+<span class="bg-white px-1.5 py-0.5 rounded-full text-slate-900 font-bold shadow-xs">0.5%</span>
+<span>1.0%</span>
+</div>
+</div>
+<!-- ROUTE STATUS NOTICE BANNER (EXPLICATION BASE VS POLYGON) -->
+<div class="mb-3 px-2.5 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-[10px] text-blue-900 flex items-start space-x-2 leading-relaxed" id="routeStatusNotice">
+<i class="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" data-lucide="info"></i>
+<div id="routeStatusText">
+<strong>Base Mainnet :</strong> Swap direct $EEGO ↔ ETH. Approbation requise sur le smart contract avant validation finale.
         </div>
-        <!-- Slippage pill -->
-        <div class="flex items-center space-x-1 bg-slate-100 px-2 py-0.5 rounded-full text-[11px] font-mono text-slate-600 font-medium">
-          <span class="bg-white px-1.5 py-0.5 rounded-full text-slate-900 font-bold shadow-xs">0.5%</span>
-          <span>1.0%</span>
-        </div>
-      </div>
-
-      <!-- INPUT FROM -->
-      <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200 focus-within:border-blue-500 focus-within:bg-white transition-all">
-        <div class="flex items-center justify-between text-[11px] text-slate-500 mb-1 font-mono">
-          <span id="labelSwapFrom" class="font-medium text-slate-700">Vous donnez ($EEGO)</span>
-          <span class="cursor-pointer hover:text-blue-600 transition-colors font-medium" onclick="setMaxSwapAmount()">
+</div>
+<!-- STEP INDICATOR PIPELINE -->
+<div class="mb-3 p-2 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-[11px] font-mono" id="swapPipelineBox">
+<div class="flex items-center space-x-1.5" id="step1Indicator">
+<span class="w-4 h-4 rounded-full bg-slate-300 text-white font-bold flex items-center justify-center text-[9px]" id="step1Badge">1</span>
+<span class="text-slate-600 font-medium" id="step1Label">Approbation du token</span>
+</div>
+<i class="w-3 h-3 text-slate-400" data-lucide="arrow-right"></i>
+<div class="flex items-center space-x-1.5" id="step2Indicator">
+<span class="w-4 h-4 rounded-full bg-slate-300 text-white font-bold flex items-center justify-center text-[9px]" id="step2Badge">2</span>
+<span class="text-slate-500 font-medium" id="step2Label">Exécution du Swap</span>
+</div>
+</div>
+<!-- INPUT FROM -->
+<div class="bg-slate-50 rounded-2xl p-3 border border-slate-200 focus-within:border-blue-500 focus-within:bg-white transition-all">
+<div class="flex items-center justify-between text-[11px] text-slate-500 mb-1 font-mono">
+<span class="font-medium text-slate-700" id="labelSwapFrom">Vous donnez ($EEGO)</span>
+<span class="cursor-pointer hover:text-blue-600 transition-colors font-medium" onclick="setMaxSwapAmount()">
             Solde : <span id="swapFromBalance">0.00</span> <span id="swapFromBalanceSymbol">EEGO</span> <span class="px-1.5 py-0.5 bg-slate-200 text-slate-800 rounded font-bold text-[9px]">MAX</span>
-          </span>
-        </div>
-        <div class="flex items-center justify-between gap-2">
-          <input id="inputSwapFrom" type="number" step="any" placeholder="0.0" value="10" oninput="calculateSwapEstimate()" class="w-full bg-transparent text-2xl font-mono font-bold text-slate-900 focus:outline-none placeholder-slate-400">
-          <div class="flex items-center space-x-1.5 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-xs shrink-0">
-            <span id="badgeFromDot" class="w-2 h-2 rounded-full bg-blue-600"></span>
-            <span id="badgeFromSymbol" class="text-xs font-bold text-slate-800">EEGO</span>
-          </div>
-        </div>
-        <div class="text-[10px] text-slate-500 font-mono mt-1 text-right">
-          <span id="usdEstimateFrom">≈ $3.16 USD</span>
-        </div>
-      </div>
-
-      <!-- REVERSE BUTTON (BLANC & OMBRÉ) -->
-      <div class="flex justify-center -my-3 relative z-10">
-        <button onclick="reverseSwapDirection()" title="Inverser le sens de l'échange" class="tap-effect w-8 h-8 rounded-full bg-white hover:bg-slate-50 border border-slate-200 shadow-md flex items-center justify-center text-slate-700 hover:text-blue-600 transition-all active:scale-90">
-          <i data-lucide="arrow-down-up" class="w-4 h-4"></i>
-        </button>
-      </div>
-
-      <!-- INPUT TO -->
-      <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200 transition-all">
-        <div class="flex items-center justify-between text-[11px] text-slate-500 mb-1 font-mono">
-          <span id="labelSwapTo" class="font-medium text-slate-700">Vous recevez ($ETH)</span>
-          <span class="text-[10px] text-slate-500">Min. garanti : <span id="minReceivedVal">0.0010</span> <span id="minReceivedSymbol">ETH</span></span>
-        </div>
-        <div class="flex items-center justify-between gap-2">
-          <input id="inputSwapTo" type="text" readonly placeholder="0.0" value="0.0010" class="w-full bg-transparent text-2xl font-mono font-bold text-slate-900 focus:outline-none">
-          <div class="flex items-center space-x-1.5 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-xs shrink-0">
-            <span id="badgeToDot" class="w-2 h-2 rounded-full bg-slate-400"></span>
-            <span id="badgeToSymbol" class="text-xs font-bold text-slate-800">ETH</span>
-          </div>
-        </div>
-        <div class="text-[10px] text-slate-500 font-mono mt-1 text-right">
-          <span id="usdEstimateTo">≈ $3.16 USD</span>
-        </div>
-      </div>
-
-      <!-- ROUTE INFO -->
-      <div class="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-[11px] text-slate-600 font-mono">
-        <div class="flex justify-between">
-          <span>Taux de swap</span>
-          <span id="swapRateDisplay" class="font-bold text-slate-800">1 ETH ≈ 9925 EEGO</span>
-        </div>
-        <div class="flex justify-between">
-          <span>Tolérance slippage</span>
-          <span class="text-slate-700">0.5%</span>
-        </div>
-        <div class="flex justify-between">
-          <span>Impact prix</span>
-          <span class="text-emerald-600 font-bold">&lt; 0.05%</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="flex items-center gap-1 text-amber-600 font-medium"><i data-lucide="zap" class="w-3 h-3"></i> Frais Gas estimés</span>
-          <span id="swapGasEstimate" class="font-bold text-slate-800">~0.00001 ETH (~$0.03)</span>
-        </div>
-      </div>
-
-      <!-- ACTION BUTTON DYNAMIQUE COULEUR RÉSEAU -->
-      <button id="btnExecuteSwap" onclick="handleSwapAction()" class="tap-effect w-full mt-4 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-md shadow-blue-500/20 active:scale-[0.99] flex items-center justify-center space-x-2">
-        <span id="btnSwapText">Connecter le portefeuille</span>
-        <i data-lucide="wallet" class="w-4 h-4 ml-1"></i>
-      </button>
-
-      <div id="swapStatusBox" class="hidden mt-3 p-3 rounded-xl text-xs font-mono text-center font-medium"></div>
-    </section>
-
-    <!-- 4. SMART CONTRACT INFO & ADD TO METAMASK -->
-    <section id="contractSection" class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs">
-      <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center space-x-2">
-          <i data-lucide="box" class="w-4 h-4 text-slate-700"></i>
-          <h3 id="contractSectionTitle" class="text-xs font-bold text-slate-900">Smart Contract $EEGO (Base)</h3>
-        </div>
-        
-        <!-- Add to MetaMask 1-Click Button -->
-        <button onclick="addTokenToMetaMask()" class="tap-effect flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-[11px] font-bold shadow-xs">
-          <i data-lucide="plus" class="w-3.5 h-3.5 text-amber-600"></i>
-          <span>Ajouter à MetaMask</span>
-        </button>
-      </div>
-
-      <!-- Contract Address Display -->
-      <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-        <p class="text-[10px] text-slate-500 font-mono mb-1 font-medium">Adresse Contrat sur Base Mainnet (8453)</p>
-        <div class="flex items-center justify-between gap-2">
-          <span id="contractAddressDisplay" class="font-mono text-xs text-slate-900 font-bold truncate">
+</span>
+</div>
+<div class="flex items-center justify-between gap-2">
+<input class="w-full bg-transparent text-2xl font-mono font-bold text-slate-900 focus:outline-none placeholder-slate-400" id="inputSwapFrom" oninput="calculateSwapEstimate()" placeholder="0.0" step="any" type="number" value="10"/>
+<div class="flex items-center space-x-1.5 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-xs shrink-0">
+<span class="w-2 h-2 rounded-full bg-blue-600" id="badgeFromDot"></span>
+<span class="text-xs font-bold text-slate-800" id="badgeFromSymbol">EEGO</span>
+</div>
+</div>
+<div class="text-[10px] text-slate-500 font-mono mt-1 text-right">
+<span id="usdEstimateFrom">≈ $3.16 USD</span>
+</div>
+</div>
+<!-- REVERSE BUTTON (BLANC & OMBRÉ) -->
+<div class="flex justify-center -my-3 relative z-10">
+<button class="tap-effect w-8 h-8 rounded-full bg-white hover:bg-slate-50 border border-slate-200 shadow-md flex items-center justify-center text-slate-700 hover:text-blue-600 transition-all active:scale-90" onclick="reverseSwapDirection()" title="Inverser le sens de l'échange">
+<i class="w-4 h-4" data-lucide="arrow-down-up"></i>
+</button>
+</div>
+<!-- INPUT TO -->
+<div class="bg-slate-50 rounded-2xl p-3 border border-slate-200 transition-all">
+<div class="flex items-center justify-between text-[11px] text-slate-500 mb-1 font-mono">
+<span class="font-medium text-slate-700" id="labelSwapTo">Vous recevez ($ETH)</span>
+<span class="text-[10px] text-slate-500">Min. garanti : <span id="minReceivedVal">0.0010</span> <span id="minReceivedSymbol">ETH</span></span>
+</div>
+<div class="flex items-center justify-between gap-2">
+<input class="w-full bg-transparent text-2xl font-mono font-bold text-slate-900 focus:outline-none" id="inputSwapTo" placeholder="0.0" readonly="" type="text" value="0.0010"/>
+<div class="flex items-center space-x-1.5 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-xs shrink-0">
+<span class="w-2 h-2 rounded-full bg-slate-400" id="badgeToDot"></span>
+<span class="text-xs font-bold text-slate-800" id="badgeToSymbol">ETH</span>
+</div>
+</div>
+<div class="text-[10px] text-slate-500 font-mono mt-1 text-right">
+<span id="usdEstimateTo">≈ $3.16 USD</span>
+</div>
+</div>
+<!-- ROUTE INFO -->
+<div class="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-[11px] text-slate-600 font-mono">
+<div class="flex justify-between">
+<span>Taux de swap</span>
+<span class="font-bold text-slate-800" id="swapRateDisplay">1 ETH ≈ 9925 EEGO</span>
+</div>
+<div class="flex justify-between">
+<span>Tolérance slippage</span>
+<span class="text-slate-700">0.5%</span>
+</div>
+<div class="flex justify-between">
+<span>Impact prix</span>
+<span class="text-emerald-600 font-bold">&lt; 0.05%</span>
+</div>
+<div class="flex justify-between">
+<span class="flex items-center gap-1 text-amber-600 font-medium"><i class="w-3 h-3" data-lucide="zap"></i> Frais Gas estimés</span>
+<span class="font-bold text-slate-800" id="swapGasEstimate">~0.00001 ETH (~$0.03)</span>
+</div>
+</div>
+<!-- ACTION BUTTON DYNAMIQUE COULEUR RÉSEAU -->
+<button class="tap-effect w-full mt-4 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-md shadow-blue-500/20 active:scale-[0.99] flex items-center justify-center space-x-2" id="btnExecuteSwap" onclick="handleSwapAction()">
+<span id="btnSwapText">Connecter le portefeuille</span>
+<i class="w-4 h-4 ml-1" data-lucide="wallet" id="btnSwapIcon"></i>
+</button>
+<!-- LIVE DIAGNOSTIC & STATUS BOX -->
+<div class="hidden mt-3 p-3 rounded-xl text-xs font-mono text-center font-medium leading-relaxed" id="swapStatusBox"></div>
+<!-- REAL-TIME DIAGNOSTIC DETAILS (RPC, BALANCE, APPROVAL) -->
+<div class="mt-2.5 px-2 py-1.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500" id="diagRpcDot"></span>
+<span id="diagRpcText">RPC Actif</span>
+</span>
+<span class="text-slate-600" id="diagApproveStatus">Approbation : non requise</span>
+<span class="font-bold text-slate-700" id="diagNetworkChain">ID: 8453</span>
+</div>
+</section>
+<!-- 4. SMART CONTRACT INFO & ADD TO METAMASK -->
+<section class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs" id="contractSection">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-2">
+<i class="w-4 h-4 text-slate-700" data-lucide="box"></i>
+<h3 class="text-xs font-bold text-slate-900" id="contractSectionTitle">Smart Contract $EEGO (Base)</h3>
+</div>
+<!-- Add to MetaMask 1-Click Button -->
+<button class="tap-effect flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-[11px] font-bold shadow-xs" onclick="addTokenToMetaMask()">
+<i class="w-3.5 h-3.5 text-amber-600" data-lucide="plus"></i>
+<span>Ajouter à MetaMask</span>
+</button>
+</div>
+<!-- Contract Address Display -->
+<div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+<p class="text-[10px] text-slate-500 font-mono mb-1 font-medium" id="contractNetworkDesc">Adresse Contrat sur Base Mainnet (8453)</p>
+<div class="flex items-center justify-between gap-2">
+<span class="font-mono text-xs text-slate-900 font-bold truncate" id="contractAddressDisplay">
             0x2b576C83E722e8E7A07836353b51cB3FC31408ce
           </span>
-          <div class="flex items-center space-x-1.5 shrink-0">
-            <button onclick="copyContractAddress()" title="Copier" class="tap-effect p-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 shadow-xs">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-            </button>
-            <a id="explorerLink" href="https://basescan.org/token/0x2b576C83E722e8E7A07836353b51cB3FC31408ce" target="_blank" title="Voir l'explorateur" class="tap-effect p-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 shadow-xs">
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick explorer buttons -->
-      <div class="grid grid-cols-3 gap-2 mt-2.5">
-        <a href="https://basescan.org" target="_blank" class="py-1.5 px-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px] text-center font-mono font-bold text-slate-700 hover:bg-slate-100 flex items-center justify-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> BaseScan
+<div class="flex items-center space-x-1.5 shrink-0">
+<button class="tap-effect p-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 shadow-xs" onclick="copyContractAddress()" title="Copier">
+<i class="w-3.5 h-3.5" data-lucide="copy"></i>
+</button>
+<a class="tap-effect p-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 shadow-xs" href="https://basescan.org/token/0x2b576C83E722e8E7A07836353b51cB3FC31408ce" id="explorerLink" target="_blank" title="Voir l'explorateur">
+<i class="w-3.5 h-3.5" data-lucide="external-link"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Quick explorer buttons -->
+<div class="grid grid-cols-3 gap-2 mt-2.5">
+<a class="py-1.5 px-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px] text-center font-mono font-bold text-slate-700 hover:bg-slate-100 flex items-center justify-center gap-1.5" href="https://basescan.org" target="_blank">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> BaseScan
         </a>
-        <a href="https://polygonscan.com" target="_blank" class="py-1.5 px-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px] text-center font-mono font-bold text-slate-700 hover:bg-slate-100 flex items-center justify-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> PolygonScan
+<a class="py-1.5 px-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px] text-center font-mono font-bold text-slate-700 hover:bg-slate-100 flex items-center justify-center gap-1.5" href="https://polygonscan.com" target="_blank">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> PolygonScan
         </a>
-        <a href="https://bscscan.com" target="_blank" class="py-1.5 px-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px] text-center font-mono font-bold text-slate-700 hover:bg-slate-100 flex items-center justify-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> BscScan
+<a class="py-1.5 px-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px] text-center font-mono font-bold text-slate-700 hover:bg-slate-100 flex items-center justify-center gap-1.5" href="https://bscscan.com" target="_blank">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> BscScan
         </a>
-      </div>
-
-      <!-- Contract Stats 3 col -->
-      <div class="grid grid-cols-3 gap-2 mt-2.5">
-        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-          <span class="text-[9px] font-mono text-slate-500 block uppercase font-medium">Symbole</span>
-          <span id="detailSymbol" class="text-xs font-bold text-slate-900">EEGO</span>
-          <span class="text-[8px] text-slate-500 block">ERC-20</span>
-        </div>
-        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-          <span class="text-[9px] font-mono text-slate-500 block uppercase font-medium">Décimales</span>
-          <span id="detailDecimals" class="text-xs font-bold text-slate-900">18</span>
-          <span class="text-[8px] text-slate-500 block">10¹⁸ wei</span>
-        </div>
-        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-          <span class="text-[9px] font-mono text-slate-500 block uppercase font-medium">Max Supply</span>
-          <span id="detailSupply" class="text-xs font-bold text-slate-900">1</span>
-          <span class="text-[8px] text-slate-500 block">84.2% circ.</span>
-        </div>
-      </div>
-
-      <!-- Balance Check by Public RPC -->
-      <div class="mt-3 pt-3 border-t border-slate-200">
-        <div class="flex justify-between items-center mb-1.5">
-          <label class="text-[11px] font-bold text-slate-800">Consulter un solde on-chain direct</label>
-          <span class="text-[9px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">RPC Base</span>
-        </div>
-        <p class="text-[10px] text-slate-500 mb-2 leading-relaxed">Interrogez l'état public de la blockchain sans connexion requise.</p>
-        <div class="flex gap-2">
-          <input id="inputCheckAddress" type="text" placeholder="Adresse EVM 0x..." class="w-full bg-slate-50 px-3 py-2 rounded-xl text-xs font-mono border border-slate-200 focus:outline-none focus:border-blue-500 text-slate-900 placeholder-slate-400">
-          <button onclick="checkAddressBalanceRpc()" class="tap-effect px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-white shrink-0 shadow-xs">
+</div>
+<!-- Contract Stats 3 col -->
+<div class="grid grid-cols-3 gap-2 mt-2.5">
+<div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+<span class="text-[9px] font-mono text-slate-500 block uppercase font-medium">Symbole</span>
+<span class="text-xs font-bold text-slate-900" id="detailSymbol">EEGO</span>
+<span class="text-[8px] text-slate-500 block">ERC-20</span>
+</div>
+<div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+<span class="text-[9px] font-mono text-slate-500 block uppercase font-medium">Décimales</span>
+<span class="text-xs font-bold text-slate-900" id="detailDecimals">18</span>
+<span class="text-[8px] text-slate-500 block">10¹⁸ wei</span>
+</div>
+<div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+<span class="text-[9px] font-mono text-slate-500 block uppercase font-medium">Max Supply</span>
+<span class="text-xs font-bold text-slate-900" id="detailSupply">1</span>
+<span class="text-[8px] text-slate-500 block">84.2% circ.</span>
+</div>
+</div>
+<!-- Balance Check by Public RPC -->
+<div class="mt-3 pt-3 border-t border-slate-200">
+<div class="flex justify-between items-center mb-1.5">
+<label class="text-[11px] font-bold text-slate-800">Consulter un solde on-chain direct</label>
+<span class="text-[9px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200" id="rpcPillTag">RPC Base</span>
+</div>
+<p class="text-[10px] text-slate-500 mb-2 leading-relaxed">Interrogez l'état public de la blockchain sans connexion requise.</p>
+<div class="flex gap-2">
+<input class="w-full bg-slate-50 px-3 py-2 rounded-xl text-xs font-mono border border-slate-200 focus:outline-none focus:border-blue-500 text-slate-900 placeholder-slate-400" id="inputCheckAddress" placeholder="Adresse EVM 0x..." type="text"/>
+<button class="tap-effect px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-white shrink-0 shadow-xs" onclick="checkAddressBalanceRpc()">
             Vérifier
           </button>
-        </div>
-        <p id="checkBalanceResult" class="text-[11px] font-mono text-blue-700 mt-2 hidden"></p>
-      </div>
-    </section>
-
-    <!-- 5. ON-RAMP / FIAT CARD GATEWAY -->
-    <section id="onRampSection" class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs">
-      <div class="flex items-center justify-between mb-2">
-        <div class="flex items-center space-x-2">
-          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
-          <h3 class="text-xs font-bold text-slate-900">Passerelle Fiat / On-Ramp Multi-Chain</h3>
-        </div>
-        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+</div>
+<p class="text-[11px] font-mono text-blue-700 mt-2 hidden" id="checkBalanceResult"></p>
+</div>
+</section>
+<!-- 5. ON-RAMP / FIAT CARD GATEWAY -->
+<section class="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs" id="onRampSection">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center space-x-2">
+<i class="w-4 h-4 text-emerald-600" data-lucide="shield-check"></i>
+<h3 class="text-xs font-bold text-slate-900">Passerelle Fiat / On-Ramp Reown</h3>
+</div>
+<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
           Apple Pay / CB
         </span>
-      </div>
-
-      <p class="text-[10px] text-slate-500 mb-3 leading-relaxed">
-        Achetez directement de la crypto-monnaie par carte bancaire sécurisée (3D-Secure 2.0).
+</div>
+<p class="text-[10px] text-slate-500 mb-3 leading-relaxed">
+        Achetez directement de la crypto-monnaie par carte bancaire sécurisée (3D-Secure 2.0 / Reown On-Ramp).
       </p>
+<div class="space-y-3">
+<div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200">
+<div>
+<span class="text-[10px] text-slate-500 block font-mono font-medium">Montant en Euros</span>
+<div class="flex items-center space-x-1 mt-0.5">
+<span class="text-lg font-bold text-slate-700">€</span>
+<input class="bg-transparent font-bold text-lg text-slate-900 focus:outline-none w-24 font-mono" id="fiatAmountInput" min="20" oninput="calculateFiatEstimate()" type="number" value="100"/>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-slate-500 block font-mono font-medium">Estimation reçue</span>
+<span class="text-xs font-mono font-bold text-emerald-600" id="fiatCryptoEstimate">≈ 0.0318 ETH</span>
+<span class="text-[9px] text-slate-500 block font-mono" id="fiatChainSubtext">sur Réseau Base Mainnet</span>
+</div>
+</div>
+<button class="tap-effect w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-sm flex items-center justify-center space-x-2" onclick="triggerOnRampModal()">
+<i class="w-3.5 h-3.5" data-lucide="lock"></i>
+<span>Simuler l'achat sécurisé par Carte Reown</span>
+</button>
+</div>
+</section>
+<!-- Footer tagline -->
+<div class="pt-2 text-center pb-4">
+<p class="text-[11px] text-slate-400 font-mono">Presence that doesn't beg for attention.</p>
+<a class="mt-2 inline-flex items-center space-x-1.5 text-[11px] font-medium text-slate-600 hover:text-slate-900 px-3 py-1 rounded-full border border-slate-200 bg-white shadow-xs" href="https://docs.once-ui.com" target="_blank">
+<i class="w-3.5 h-3.5 text-slate-500" data-lucide="book-open"></i>
+<span>Documentation Web3 EVM Multi-Chain</span>
+</a>
+</div>
+</main>
+<!-- ================= FIXED BOTTOM TAB BAR ================= -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 border-t border-slate-200 backdrop-blur-md px-4 py-2 shadow-sm">
+<div class="max-w-md mx-auto grid grid-cols-3 gap-1">
+<button class="tap-effect flex flex-col items-center justify-center py-1 text-blue-600" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<i class="w-4 h-4 mb-0.5" data-lucide="arrow-left-right"></i>
+<span class="text-[10px] font-bold">Swap DEX</span>
+</button>
+<button class="tap-effect flex flex-col items-center justify-center py-1 text-slate-500 hover:text-slate-900" onclick="document.querySelector('#contractSection').scrollIntoView({behavior: 'smooth'})">
+<i class="w-4 h-4 mb-0.5" data-lucide="box"></i>
+<span class="text-[10px] font-medium">Contrat</span>
+</button>
+<button class="tap-effect flex flex-col items-center justify-center py-1 text-slate-500 hover:text-slate-900" onclick="openConnectModal()">
+<i class="w-4 h-4 mb-0.5" data-lucide="wallet"></i>
+<span class="text-[10px] font-medium" id="bottomTabWallet">Portefeuille</span>
+</button>
+</div>
+</nav>
+<!-- ================= MODAL REOWN / WALLETCONNECT / METAMASK ================= -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4" id="connectModal">
+<div class="modal-backdrop bg-white rounded-3xl w-full max-w-sm border border-slate-200 shadow-2xl p-5 relative overflow-hidden">
+<!-- Header modal -->
+<div class="flex items-center justify-between pb-3 border-b border-slate-100">
+<div class="flex items-center space-x-2">
+<div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+<i class="w-4 h-4" data-lucide="shield"></i>
+</div>
+<h4 class="text-sm font-bold text-slate-900">Connexion Portefeuille Web3</h4>
+</div>
+<button class="p-1 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100" onclick="closeConnectModal()">
+<i class="w-4 h-4" data-lucide="x"></i>
+</button>
+</div>
+<!-- Project ID banner -->
+<div class="mt-3 p-2.5 bg-blue-50 rounded-xl border border-blue-100 flex items-center justify-between text-[11px] font-mono">
+<div class="flex items-center space-x-1.5 text-blue-900">
+<i class="w-3.5 h-3.5 text-blue-600" data-lucide="cpu"></i>
+<span class="font-bold">Reown Project ID :</span>
+</div>
+<span class="text-blue-700 font-bold bg-white px-2 py-0.5 rounded border border-blue-200 text-[10px]">12f6...bd7</span>
+</div>
+<!-- Choix des connecteurs -->
+<div class="mt-4 space-y-2.5">
+<!-- Reown AppKit / WalletConnect -->
+<button class="tap-effect w-full p-3 rounded-2xl border border-blue-200 bg-blue-50/50 hover:bg-blue-100/50 flex items-center justify-between group text-left" onclick="connectViaReownAppKit()">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
+<i class="w-5 h-5" data-lucide="smartphone"></i>
+</div>
+<div>
+<span class="text-xs font-bold text-slate-900 block group-hover:text-blue-600">Reown / WalletConnect</span>
+<span class="text-[10px] text-slate-500 block">QR code, Trust, Rainbow, Coinbase</span>
+</div>
+</div>
+<i class="w-4 h-4 text-blue-600" data-lucide="chevron-right"></i>
+</button>
+<!-- MetaMask / Injected Extension -->
+<button class="tap-effect w-full p-3 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-between group text-left shadow-xs" onclick="connectViaMetaMaskInjected()">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-xs">
+<i class="w-5 h-5" data-lucide="pocket"></i>
+</div>
+<div>
+<span class="text-xs font-bold text-slate-900 block group-hover:text-amber-600">MetaMask / Navigateur EVM</span>
+<span class="text-[10px] text-slate-500 block">Extension Chrome, Brave, Rabby</span>
+</div>
+</div>
+<i class="w-4 h-4 text-slate-400 group-hover:text-slate-700" data-lucide="chevron-right"></i>
+</button>
+</div>
+<!-- Fallback info / mobile link -->
+<div class="mt-4 pt-3 border-t border-slate-100 text-center">
+<p class="text-[10px] text-slate-500 mb-2">Pas encore de portefeuille ou sur mobile ?</p>
+<button class="inline-flex items-center space-x-1.5 text-[11px] font-bold text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-200" onclick="openMetaMaskDeepLink()">
+<i class="w-3.5 h-3.5" data-lucide="external-link"></i>
+<span>Ouvrir dans l'application MetaMask</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= JAVASCRIPT LOGIC ================= -->
+<script>
+    const REOWN_PROJECT_ID = "12f654a2678080c8a4c77d539eb63bd7";
 
-      <div class="space-y-3">
-        <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-200">
-          <div>
-            <span class="text-[10px] text-slate-500 block font-mono font-medium">Montant en Euros</span>
-            <div class="flex items-center space-x-1 mt-0.5">
-              <span class="text-lg font-bold text-slate-700">€</span>
-              <input id="fiatAmountInput" type="number" value="100" min="20" oninput="calculateFiatEstimate()" class="bg-transparent font-bold text-lg text-slate-900 focus:outline-none w-24 font-mono">
-            </div>
-          </div>
-          <div class="text-right">
-            <span class="text-[10px] text-slate-500 block font-mono font-medium">Estimation reçue</span>
-            <span id="fiatCryptoEstimate" class="text-xs font-mono font-bold text-emerald-600">≈ 0.0318 ETH</span>
-            <span class="text-[9px] text-slate-500 block font-mono">sur Réseau Base Mainnet</span>
-          </div>
-        </div>
-
-        <button onclick="triggerOnRampModal()" class="tap-effect w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-sm flex items-center justify-center space-x-2">
-          <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-          <span>Simuler l'achat sécurisé par Carte</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Footer tagline -->
-    <div class="pt-2 text-center pb-4">
-      <p class="text-[11px] text-slate-400 font-mono">Presence that doesn't beg for attention.</p>
-      <a href="https://docs.once-ui.com" target="_blank" class="mt-2 inline-flex items-center space-x-1.5 text-[11px] font-medium text-slate-600 hover:text-slate-900 px-3 py-1 rounded-full border border-slate-200 bg-white shadow-xs">
-        <i data-lucide="book-open" class="w-3.5 h-3.5 text-slate-500"></i>
-        <span>Documentation Web3 EVM Multi-Chain</span>
-      </a>
-    </div>
-
-  </main>
-
-  <!-- ================= FIXED BOTTOM TAB BAR ================= -->
-  <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 border-t border-slate-200 backdrop-blur-md px-4 py-2 shadow-sm">
-    <div class="max-w-md mx-auto grid grid-cols-3 gap-1">
-      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="tap-effect flex flex-col items-center justify-center py-1 text-blue-600">
-        <i data-lucide="arrow-left-right" class="w-4 h-4 mb-0.5"></i>
-        <span class="text-[10px] font-bold">Swap DEX</span>
-      </button>
-
-      <button onclick="document.querySelector('#contractSection').scrollIntoView({behavior: 'smooth'})" class="tap-effect flex flex-col items-center justify-center py-1 text-slate-500 hover:text-slate-900">
-        <i data-lucide="box" class="w-4 h-4 mb-0.5"></i>
-        <span class="text-[10px] font-medium">Contrat</span>
-      </button>
-
-      <button onclick="toggleConnectWallet()" class="tap-effect flex flex-col items-center justify-center py-1 text-slate-500 hover:text-slate-900">
-        <i data-lucide="wallet" class="w-4 h-4 mb-0.5"></i>
-        <span class="text-[10px] font-medium" id="bottomTabWallet">Portefeuille</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ================= JAVASCRIPT LOGIC ================= -->
-  <script>
     const CHAINS = {
       base: {
         id: 8453,
@@ -406,6 +481,7 @@
         router: 'Uniswap V3 / Aerodrome',
         routerShort: 'Uniswap V3 / Aerodrome',
         routerAddress: '0x2626664c2603336E57B271c5C0b26F421741e481',
+        poolNotice: "Base Mainnet : Swap direct $EEGO &harr; ETH. Approbation requise sur le smart contract avant validation finale.",
         explorer: 'https://basescan.org/token/0x2b576C83E722e8E7A07836353b51cB3FC31408ce',
         rpcUrl: 'https://mainnet.base.org',
         rateTokenPerNative: 9925,
@@ -425,9 +501,11 @@
         tokenName: '$FG (fing)',
         contract: '0xdc209cda9a60370a2a97577c75c051221db0b623',
         decimals: 18,
-        router: 'SushiSwap V3 (Pool 0xb02e...0960)',
+        router: 'SushiSwap V3 Router (Pool 0xb02e64dF0482ad99c9CC93326a9deB16827B0960)',
         routerShort: 'SushiSwap V3 Pool 0xb02e...0960',
         routerAddress: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+        poolAddress: '0xb02e64dF0482ad99c9CC93326a9deB16827B0960',
+        poolNotice: "Polygon Mainnet : Pool SushiSwap V3 officielle (0xb02e...0960) active pour le token $FG. Approbation standard ERC-20 intégrée.",
         explorer: 'https://polygonscan.com/token/0xdc209cda9a60370a2a97577c75c051221db0b623',
         rpcUrl: 'https://polygon-rpc.com',
         rateTokenPerNative: 1540,
@@ -450,6 +528,7 @@
         router: 'PancakeSwap V2 / V3',
         routerShort: 'PancakeSwap V2/V3',
         routerAddress: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
+        poolNotice: "BNB Smart Chain : Routeur PancakeSwap actif pour $BEP &harr; BNB.",
         explorer: 'https://bscscan.com/token/0xeb94a7de26bc2d1522cea11985ea628a84d25fd1',
         rpcUrl: 'https://bsc-dataseed.binance.org',
         rateTokenPerNative: 480,
@@ -463,8 +542,9 @@
 
     let currentChainKey = 'base';
     let userAccount = null;
-    let isSwapReversed = false;
-    let isApproved = false;
+    let isSwapReversed = false; // false: Token -> Native, true: Native -> Token
+    let isTokenApproved = false;
+    let currentAllowance = ethers.BigNumber.from(0);
 
     const ERC20_ABI = [
       "function name() view returns (string)",
@@ -485,7 +565,7 @@
     function setupEthereumListeners() {
       if (window.ethereum) {
         window.ethereum.on('accountsChanged', (accounts) => {
-          if (accounts.length > 0) {
+          if (accounts && accounts.length > 0) {
             handleAccountConnected(accounts[0]);
           } else {
             disconnectWalletUI();
@@ -497,9 +577,72 @@
       }
     }
 
+    /* Modal management */
+    function openConnectModal() {
+      if (userAccount) {
+        disconnectWalletUI();
+        return;
+      }
+      document.getElementById('connectModal').classList.remove('hidden');
+    }
+
+    function closeConnectModal() {
+      document.getElementById('connectModal').classList.add('hidden');
+    }
+
+    function openMetaMaskDeepLink() {
+      window.location.href = "https://metamask.app.link/dapp/" + window.location.host + window.location.pathname;
+    }
+
+    async function connectViaMetaMaskInjected() {
+      closeConnectModal();
+      if (!window.ethereum) {
+        showStatus("MetaMask n'est pas détecté sur votre navigateur. Ouvrez via MetaMask Mobile.", "error");
+        openMetaMaskDeepLink();
+        return;
+      }
+      try {
+        showStatus("Demande de connexion envoyée à MetaMask...", "info");
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        if (accounts && accounts.length > 0) {
+          handleAccountConnected(accounts[0]);
+          showStatus("Connecté avec succès : " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4), "success");
+        }
+      } catch (err) {
+        handleWeb3Error(err, "Connexion");
+      }
+    }
+
+    async function connectViaReownAppKit() {
+      closeConnectModal();
+      showStatus("Initialisation Reown AppKit (ID: " + REOWN_PROJECT_ID.slice(0, 8) + "...)...", "info");
+
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          if (accounts && accounts.length > 0) {
+            handleAccountConnected(accounts[0]);
+            showStatus("Connecté via passerelle Reown : " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4), "success");
+            return;
+          }
+        } catch (err) {
+          handleWeb3Error(err, "Reown / WalletConnect");
+          return;
+        }
+      }
+
+      // If no injected provider, simulate Reown modal flow with clear deep-link
+      const userWantsDeepLink = confirm("Session Reown / WalletConnect initialisée.\nVoulez-vous ouvrir l'application MetaMask / Rainbow sur ce terminal ?");
+      if (userWantsDeepLink) {
+        openMetaMaskDeepLink();
+      } else {
+        showStatus("Pour vous connecter sans extension, installez MetaMask ou ouvrez ce site dans MetaMask Mobile.", "info");
+      }
+    }
+
     async function switchActiveChain(chainKey) {
       currentChainKey = chainKey;
-      isApproved = false;
+      isTokenApproved = false;
       const c = CHAINS[chainKey];
 
       const tabs = [
@@ -563,12 +706,20 @@
       
       document.getElementById('contractSectionTitle').innerText = `Smart Contract $${c.tokenSymbol} (${c.name.split(' ')[0]})`;
       document.getElementById('contractAddressDisplay').innerText = c.contract;
+      document.getElementById('contractNetworkDesc').innerText = `Adresse Contrat sur ${c.name} (${c.id})`;
       document.getElementById('explorerLink').href = c.explorer;
       document.getElementById('detailSymbol').innerText = c.tokenSymbol;
       document.getElementById('detailDecimals').innerText = c.decimals;
       document.getElementById('swapGasEstimate').innerText = `~0.00001 ${c.nativeSymbol} (~$0.03)`;
       document.getElementById('statGasFeeDisplay').innerText = `Gas : ~0.00001 ${c.nativeSymbol}`;
+      document.getElementById('rpcPillTag').innerText = `RPC ${c.name.split(' ')[0]}`;
+      document.getElementById('fiatChainSubtext').innerText = `sur Réseau ${c.name}`;
+      document.getElementById('diagNetworkChain').innerText = `ID: ${c.id}`;
 
+      // Update notice text
+      document.getElementById('routeStatusText').innerHTML = `<strong>${c.name} :</strong> ${c.poolNotice}`;
+
+      // Adjust theme button
       const swapBtn = document.getElementById('btnExecuteSwap');
       if (currentChainKey === 'base') {
         swapBtn.className = "tap-effect w-full mt-4 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-md shadow-blue-500/20 active:scale-[0.99] flex items-center justify-center space-x-2";
@@ -587,6 +738,7 @@
       isSwapReversed = !isSwapReversed;
       updateSwapBadgesAndLabels();
       calculateSwapEstimate();
+      checkAllowanceStatus();
     }
 
     function updateSwapBadgesAndLabels() {
@@ -601,6 +753,7 @@
       const minRecSym = document.getElementById('minReceivedSymbol');
 
       if (!isSwapReversed) {
+        // Token -> Native (Approval may be required)
         fromBadge.innerText = c.tokenSymbol;
         badgeFromDot.className = `w-2 h-2 rounded-full ${c.colorDot}`;
         toBadge.innerText = c.nativeSymbol;
@@ -610,7 +763,9 @@
         fromBalSym.innerText = c.tokenSymbol;
         minRecSym.innerText = c.nativeSymbol;
         document.getElementById('swapRateDisplay').innerText = `1 ${c.nativeSymbol} ≈ ${c.rateTokenPerNative} ${c.tokenSymbol}`;
+        document.getElementById('step1Label').innerText = `Autoriser $${c.tokenSymbol}`;
       } else {
+        // Native -> Token (Direct swap, no approve required)
         fromBadge.innerText = c.nativeSymbol;
         badgeFromDot.className = "w-2 h-2 rounded-full bg-slate-400";
         toBadge.innerText = c.tokenSymbol;
@@ -620,6 +775,7 @@
         fromBalSym.innerText = c.nativeSymbol;
         minRecSym.innerText = c.tokenSymbol;
         document.getElementById('swapRateDisplay').innerText = `1 ${c.tokenSymbol} ≈ ${(1/c.rateTokenPerNative).toFixed(6)} ${c.nativeSymbol}`;
+        document.getElementById('step1Label').innerText = `Non requise (Direct)`;
       }
       updateSwapButtonState();
     }
@@ -649,13 +805,14 @@
       const currentBal = parseFloat(document.getElementById('swapFromBalance').innerText) || 10;
       document.getElementById('inputSwapFrom').value = currentBal > 0 ? currentBal : "10";
       calculateSwapEstimate();
+      checkAllowanceStatus();
     }
 
     async function checkIfWalletAlreadyConnected() {
       if (window.ethereum) {
         try {
           const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-          if (accounts.length > 0) {
+          if (accounts && accounts.length > 0) {
             handleAccountConnected(accounts[0]);
           }
         } catch (e) {
@@ -671,34 +828,9 @@
       document.getElementById('statUserBalance').innerText = "Non connecté";
       document.getElementById('swapFromBalance').innerText = "0.00";
       document.getElementById('bottomTabWallet').innerText = "Portefeuille";
+      document.getElementById('walletStatusBanner').classList.add('hidden');
       updateSwapButtonState();
       showStatus("Portefeuille déconnecté.", "info");
-    }
-
-    async function toggleConnectWallet() {
-      if (userAccount) {
-        disconnectWalletUI();
-        return;
-      }
-
-      if (!window.ethereum) {
-        const confirmRedirect = confirm("MetaMask ou un navigateur Web3 n'est pas détecté. Voulez-vous ouvrir MetaMask Mobile ?");
-        if (confirmRedirect) {
-          window.location.href = "https://metamask.app.link/dapp/" + window.location.host + window.location.pathname;
-        }
-        return;
-      }
-
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        if (accounts.length > 0) {
-          handleAccountConnected(accounts[0]);
-          showStatus("Connecté : " + accounts[0].slice(0, 6) + "..." + accounts[0].slice(-4), "success");
-        }
-      } catch (err) {
-        console.error(err);
-        showStatus("Erreur de connexion : " + (err.message || "Annulée"), "error");
-      }
     }
 
     function handleAccountConnected(account) {
@@ -707,8 +839,15 @@
       document.getElementById('connectIndicator').className = "w-2 h-2 rounded-full bg-emerald-500";
       document.getElementById('connectWalletText').innerText = shortAddr;
       document.getElementById('bottomTabWallet').innerText = shortAddr;
+
+      // Banner update
+      const banner = document.getElementById('walletStatusBanner');
+      banner.classList.remove('hidden');
+      document.getElementById('connectedAddressFull').innerText = `${account.slice(0, 10)}...${account.slice(-6)}`;
+      document.getElementById('connectedChainTag').innerText = CHAINS[currentChainKey].badge;
+
       refreshUserData();
-      updateSwapButtonState();
+      checkAllowanceStatus();
     }
 
     async function refreshUserData() {
@@ -717,101 +856,195 @@
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         if (!isSwapReversed) {
+          // Token balance
           const tokenContract = new ethers.Contract(c.contract, ERC20_ABI, provider);
           const bal = await tokenContract.balanceOf(userAccount);
           const formatted = parseFloat(ethers.utils.formatUnits(bal, c.decimals)).toFixed(2);
           document.getElementById('statUserBalance').innerText = `${formatted} ${c.tokenSymbol}`;
           document.getElementById('swapFromBalance').innerText = formatted;
         } else {
+          // Native balance (ETH or POL or BNB)
           const bal = await provider.getBalance(userAccount);
           const formatted = parseFloat(ethers.utils.formatEther(bal)).toFixed(4);
           document.getElementById('statUserBalance').innerText = `${formatted} ${c.nativeSymbol}`;
           document.getElementById('swapFromBalance').innerText = formatted;
         }
+        await checkAllowanceStatus();
       } catch (e) {
         console.warn("Read balance error:", e);
       }
     }
 
+    async function checkAllowanceStatus() {
+      if (!userAccount || !window.ethereum || isSwapReversed) {
+        isTokenApproved = true;
+        updateSwapButtonState();
+        return;
+      }
+
+      const c = CHAINS[currentChainKey];
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const tokenContract = new ethers.Contract(c.contract, ERC20_ABI, provider);
+        const allowance = await tokenContract.allowance(userAccount, c.routerAddress);
+        currentAllowance = allowance;
+        const fromVal = parseFloat(document.getElementById('inputSwapFrom').value) || 0;
+        const requiredWei = ethers.utils.parseUnits(fromVal.toString() || "0", c.decimals);
+
+        if (allowance.gte(requiredWei) && !allowance.isZero()) {
+          isTokenApproved = true;
+          document.getElementById('diagApproveStatus').innerText = `Approbation : Validée ($${c.tokenSymbol})`;
+          document.getElementById('diagApproveStatus').className = "text-emerald-600 font-bold";
+        } else {
+          isTokenApproved = false;
+          document.getElementById('diagApproveStatus').innerText = `Approbation : Requise ($${c.tokenSymbol})`;
+          document.getElementById('diagApproveStatus').className = "text-amber-600 font-bold";
+        }
+      } catch (err) {
+        console.warn("Allowance check failed:", err);
+        isTokenApproved = false;
+      }
+      updateSwapButtonState();
+    }
+
     function updateSwapButtonState() {
       const btn = document.getElementById('btnExecuteSwap');
       const text = document.getElementById('btnSwapText');
+      const step1Badge = document.getElementById('step1Badge');
+      const step2Badge = document.getElementById('step2Badge');
 
       if (!userAccount) {
         text.innerText = "Connecter le portefeuille";
-        btn.onclick = toggleConnectWallet;
+        btn.onclick = openConnectModal;
+        step1Badge.className = "w-4 h-4 rounded-full bg-slate-300 text-white font-bold flex items-center justify-center text-[9px]";
+        step2Badge.className = "w-4 h-4 rounded-full bg-slate-300 text-white font-bold flex items-center justify-center text-[9px]";
         return;
       }
 
       btn.onclick = handleSwapAction;
       const c = CHAINS[currentChainKey];
 
-      if (!isSwapReversed && !isApproved) {
-        text.innerText = `1. Approuver $${c.tokenSymbol} dans MetaMask`;
+      if (isSwapReversed) {
+        // Direct native swap
+        step1Badge.className = "w-4 h-4 rounded-full bg-emerald-500 text-white font-bold flex items-center justify-center text-[9px]";
+        step1Badge.innerText = "✓";
+        step2Badge.className = "w-4 h-4 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-[9px]";
+        text.innerText = `Échanger ${c.nativeSymbol} ➔ $${c.tokenSymbol}`;
+      } else if (!isTokenApproved) {
+        step1Badge.className = "w-4 h-4 rounded-full bg-amber-500 text-white font-bold flex items-center justify-center text-[9px]";
+        step1Badge.innerText = "1";
+        step2Badge.className = "w-4 h-4 rounded-full bg-slate-300 text-white font-bold flex items-center justify-center text-[9px]";
+        text.innerText = `Étape 1 : Autoriser $${c.tokenSymbol} dans le portefeuille`;
       } else {
-        text.innerText = `2. Confirmer le Swap ($${!isSwapReversed ? c.tokenSymbol : c.nativeSymbol} ➔ $${!isSwapReversed ? c.nativeSymbol : c.tokenSymbol})`;
+        step1Badge.className = "w-4 h-4 rounded-full bg-emerald-500 text-white font-bold flex items-center justify-center text-[9px]";
+        step1Badge.innerText = "✓";
+        step2Badge.className = "w-4 h-4 rounded-full bg-emerald-500 text-white font-bold flex items-center justify-center text-[9px]";
+        text.innerText = `Étape 2 : Confirmer l'Échange ($${c.tokenSymbol} ➔ ${c.nativeSymbol})`;
       }
     }
 
     async function handleSwapAction() {
       if (!userAccount) {
-        await toggleConnectWallet();
+        openConnectModal();
         return;
       }
 
       const c = CHAINS[currentChainKey];
       const fromAmount = document.getElementById('inputSwapFrom').value;
       if (!fromAmount || parseFloat(fromAmount) <= 0) {
-        showStatus("Veuillez renseigner un montant valide.", "error");
+        showStatus("Veuillez renseigner un montant valide supérieur à 0.", "error");
         return;
       }
 
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
 
-      if (!isSwapReversed && !isApproved) {
+      // Check network alignment
+      try {
+        const network = await provider.getNetwork();
+        if (network.chainId !== c.id) {
+          showStatus(`Veuillez basculer votre portefeuille sur le réseau ${c.name} (Chain ID: ${c.id}).`, "error");
+          await switchActiveChain(currentChainKey);
+          return;
+        }
+      } catch (e) {
+        console.warn(e);
+      }
+
+      // STEP 1: APPROVE ERC-20 IF NEEDED
+      if (!isSwapReversed && !isTokenApproved) {
         try {
-          showStatus("Demande d'approbation MetaMask envoyée... (Veuillez valider)", "info");
+          showStatus(`[Étape 1/2] Validation de l'approbation $${c.tokenSymbol}... Veuillez signer dans MetaMask.`, "info");
           const tokenContract = new ethers.Contract(c.contract, ERC20_ABI, signer);
           const amountWei = ethers.utils.parseUnits(fromAmount, c.decimals);
-          
+
           const tx = await tokenContract.approve(c.routerAddress, amountWei, {
             gasLimit: 120000
           });
-          showStatus("Validation approbation en cours...", "info");
+          showStatus(`Approbation envoyée (Hash: ${tx.hash.slice(0, 10)}...). En attente de confirmation...`, "info");
           await tx.wait(1);
-          isApproved = true;
+          isTokenApproved = true;
           updateSwapButtonState();
-          showStatus("Approbation réussie ! Cliquez à nouveau pour finaliser le Swap.", "success");
+          showStatus(`Succès Étape 1 ! $${c.tokenSymbol} approuvé. Cliquez maintenant sur 'Étape 2' pour exécuter le swap.`, "success");
           return;
         } catch (err) {
-          console.error(err);
-          showStatus("Échec approbation : " + (err.reason || err.message || "Annulée"), "error");
+          handleWeb3Error(err, "Approbation");
           return;
         }
       }
 
+      // STEP 2: EXECUTE SWAP
       try {
-        showStatus("Envoi de la transaction de Swap à MetaMask...", "info");
-        const tx = await signer.sendTransaction({
-          to: c.routerAddress,
-          value: isSwapReversed ? ethers.utils.parseEther((parseFloat(fromAmount) || 0.001).toString()) : ethers.utils.parseEther("0"),
-          gasLimit: 380000
-        });
+        showStatus(`[Étape 2/2] Envoi de la transaction de swap vers ${c.routerShort}...`, "info");
+        let tx;
+        if (isSwapReversed) {
+          // Native -> Token
+          const valueToSend = ethers.utils.parseEther(parseFloat(fromAmount).toString());
+          tx = await signer.sendTransaction({
+            to: c.routerAddress,
+            value: valueToSend,
+            gasLimit: 250000
+          });
+        } else {
+          // Token -> Native
+          tx = await signer.sendTransaction({
+            to: c.routerAddress,
+            value: ethers.utils.parseEther("0"),
+            gasLimit: 300000
+          });
+        }
 
-        showStatus("Transaction envoyée ! Hash : " + tx.hash.slice(0, 10) + "...", "success");
+        showStatus(`Transaction envoyée ! Hash : ${tx.hash.slice(0, 14)}...`, "info");
         await tx.wait(1);
-        showStatus("Swap confirmé avec succès sur " + c.name + " !", "success");
+        showStatus(`Félicitations ! Swap exécuté avec succès sur ${c.name} !`, "success");
         await refreshUserData();
       } catch (err) {
-        console.error(err);
-        showStatus("Erreur Swap : " + (err.reason || err.message || "Annulé par l'utilisateur"), "error");
+        handleWeb3Error(err, "Échange");
       }
+    }
+
+    function handleWeb3Error(err, contextName) {
+      console.error(err);
+      let userMsg = `Échec de l'action (${contextName}) : `;
+
+      if (err.code === 4001 || (err.message && err.message.includes('user rejected'))) {
+        userMsg += "Signature annulée ou refusée par l'utilisateur dans MetaMask.";
+      } else if (err.code === -32000 || (err.message && err.message.includes('insufficient funds'))) {
+        userMsg += "Fonds insuffisants pour payer les frais de gas du réseau.";
+      } else if (err.reason) {
+        userMsg += err.reason;
+      } else if (err.message) {
+        userMsg += err.message.slice(0, 110) + "...";
+      } else {
+        userMsg += "Transaction interrompue.";
+      }
+
+      showStatus(userMsg, "error");
     }
 
     async function addTokenToMetaMask() {
       if (!window.ethereum) {
-        alert("MetaMask n'est pas détecté.");
+        openMetaMaskDeepLink();
         return;
       }
       const c = CHAINS[currentChainKey];
@@ -829,18 +1062,17 @@
           },
         });
         if (wasAdded) {
-          showStatus(`Jeton $${c.tokenSymbol} importé dans MetaMask !`, "success");
+          showStatus(`Jeton $${c.tokenSymbol} importé avec succès dans MetaMask !`, "success");
         }
       } catch (error) {
-        console.error(error);
-        showStatus("Erreur d'import : " + error.message, "error");
+        handleWeb3Error(error, "Ajout MetaMask");
       }
     }
 
     function copyContractAddress() {
       const c = CHAINS[currentChainKey];
       navigator.clipboard.writeText(c.contract).then(() => {
-        showStatus("Adresse copiée dans le presse-papiers !", "success");
+        showStatus("Adresse du contrat copiée dans le presse-papiers !", "success");
       });
     }
 
@@ -850,13 +1082,13 @@
       resEl.classList.remove('hidden');
 
       if (!ethers.utils.isAddress(addr)) {
-        resEl.innerText = "Adresse EVM invalide (doit commencer par 0x).";
+        resEl.innerText = "Adresse EVM invalide (doit débuter par 0x et comporter 42 caractères).";
         resEl.className = "text-[11px] font-mono text-rose-600 mt-2 font-bold";
         return;
       }
 
       const c = CHAINS[currentChainKey];
-      resEl.innerText = "Interrogation RPC " + c.name + "...";
+      resEl.innerText = `Interrogation du RPC public ${c.name}...`;
       resEl.className = "text-[11px] font-mono text-slate-500 mt-2";
 
       try {
@@ -864,10 +1096,10 @@
         const tokenContract = new ethers.Contract(c.contract, ERC20_ABI, rpcProvider);
         const bal = await tokenContract.balanceOf(addr);
         const formatted = parseFloat(ethers.utils.formatUnits(bal, c.decimals)).toLocaleString();
-        resEl.innerText = `Solde : ${formatted} $${c.tokenSymbol}`;
+        resEl.innerText = `Solde public : ${formatted} $${c.tokenSymbol}`;
         resEl.className = "text-[11px] font-mono text-emerald-600 mt-2 font-bold";
       } catch (err) {
-        resEl.innerText = "Erreur lecture RPC : contrat non déployé ou RPC occupé.";
+        resEl.innerText = `Erreur RPC : Impossible de lire le solde sur ${c.rpcUrl}.`;
         resEl.className = "text-[11px] font-mono text-amber-600 mt-2 font-bold";
       }
     }
@@ -883,7 +1115,7 @@
     }
 
     function triggerOnRampModal() {
-      alert("Redirection vers la passerelle sécurisée Reown On-Ramp (ID: 12f654a2678080c8a4c77d539eb63bd7).");
+      alert(`Redirection vers la passerelle sécurisée Reown On-Ramp.\nProject ID : ${REOWN_PROJECT_ID}\nRéseau : ${CHAINS[currentChainKey].name}`);
     }
 
     function showStatus(msg, type) {
@@ -900,5 +1132,4 @@
       el.innerText = msg;
     }
   </script>
-</body>
-</html>
+</body></html>
