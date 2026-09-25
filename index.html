@@ -1,1708 +1,266 @@
 <!DOCTYPE html>
 
-<html lang="fr"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
-<title>Widget Starter - Multi-Chain All-in-One</title>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
-<style>
-    @layer base {
-      html, body { margin:0; padding:0; -webkit-tap-highlight-color: transparent; }
-      body { overscroll-behavior-y: none; }
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#FAFBFD;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"tertiary":"#000000","on-secondary":"#ffffff","on-background":"#1a1b22","button-neutral-bg":"#F2F3F5","on-secondary-fixed-variant":"#334670","on-primary":"#ffffff","error-container":"#ffdad6","on-error":"#ffffff","border-focus":"rgba(0, 0, 0, 0.24)","tertiary-container":"#1b1b1b","outline":"#7e7576","secondary-fixed":"#d9e2ff","primary-container":"#1b1b1b","secondary-fixed-dim":"#b3c6f8","on-secondary-fixed":"#021a42","surface-variant":"#e3e1ec","on-primary-container":"#848484","inverse-primary":"#c6c6c6","surface-bright":"#fbf8ff","on-surface-variant":"#4c4546","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#474747","inverse-surface":"#2f3038","on-error-container":"#93000a","inverse-on-surface":"#f1effa","surface-container-low":"#f4f2fd","text-muted":"#666666","accent-glow":"rgba(180, 199, 249, 0.35)","tertiary-fixed-dim":"#c6c6c6","surface-card":"#FFFFFF","secondary-container":"#b8cbfe","secondary":"#4b5e89","on-tertiary":"#ffffff","surface-container":"#eeedf7","outline-variant":"#cfc4c5","canvas-base":"#FAFBFD","background":"#fbf8ff","error":"#ba1a1a","tertiary-fixed":"#e2e2e2","primary-fixed":"#e2e2e2","on-secondary-container":"#435581","on-tertiary-fixed":"#1b1b1b","on-surface":"#1a1b22","primary-fixed-dim":"#c6c6c6","on-primary-fixed":"#1b1b1b","primary":"#000000","on-tertiary-container":"#848484","on-primary-fixed-variant":"#474747","border-subtle":"rgba(0, 0, 0, 0.06)","surface":"#fbf8ff","button-neutral-hover":"#E5E7EB","surface-container-high":"#e8e7f1","surface-dim":"#dad9e3","surface-tint":"#5e5e5e","text-primary":"#0A0A0A","surface-container-highest":"#e3e1ec"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter":"1.5rem","space-xs":"0.25rem","margin":"1.5rem","margin-desktop":"3rem","space-lg":"1.5rem","space-sm":"0.5rem","gutter-desktop":"2rem","space-md":"1rem","space-xl":"2.5rem"},fontFamily:{"headline-sm":["Geist"],"display-hero":["Geist"],"body-md":["Geist"],"label-pill":["Geist"],"headline-lg":["Geist"],"code-address":["JetBrains Mono"],"body-lg":["Geist"],"label-badge":["JetBrains Mono"],"display-hero-mobile":["Geist"],"headline-md":["Geist"],"body-sm":["Geist"]},fontSize:{"headline-sm":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"500"}],"display-hero":["56px",{"lineHeight":"60px","letterSpacing":"-0.04em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0","fontWeight":"400"}],"label-pill":["12px",{"lineHeight":"16px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["32px",{"lineHeight":"38px","letterSpacing":"-0.03em","fontWeight":"600"}],"code-address":["13px",{"lineHeight":"18px","letterSpacing":"-0.02em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"400"}],"label-badge":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"display-hero-mobile":["36px",{"lineHeight":"40px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"30px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
     }
-    ::-webkit-scrollbar { display:none; }
   </style>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "text-primary": "#0A0A0A",
-            "surface-container": "#eeedf7",
-            "surface-card": "#FFFFFF",
-            "secondary": "#0052FF",
-            "surface-bright": "#fbf8ff",
-            "error": "#ba1a1a",
-            "on-primary": "#ffffff",
-            "primary": "#000000",
-            "background": "#fbf8ff",
-            "surface": "#fbf8ff",
-            "text-muted": "#666666",
-            "surface-container-lowest": "#ffffff",
-            "surface-container-low": "#f4f2fd",
-            "surface-container-high": "#e8e7f1",
-            "surface-container-highest": "#e3e1ec",
-            "border-subtle": "rgba(0,0,0,0.06)"
-          },
-          borderRadius: {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
-            "full": "9999px"
-          },
-          fontFamily: {
-            "body-sm": ["Geist"],
-            "code-address": ["JetBrains Mono"],
-            "headline-lg": ["Geist"],
-            "headline-md": ["Geist"],
-            "headline-sm": ["Geist"],
-            "display-hero": ["Geist"],
-            "label-badge": ["JetBrains Mono"],
-            "label-pill": ["Geist"],
-            "body-md": ["Geist"],
-            "body-lg": ["Geist"]
-          }
-        }
-      }
-    };
-  </script>
-</head>
-<body class="bg-surface font-['Geist'] text-text-primary antialiased selection:bg-blue-100 selection:text-blue-900 pb-20 sm:pb-0">
-<!-- Header Fixe -->
-<header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-border-subtle shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
-<div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-12 flex items-center justify-between h-14 sm:h-20 gap-2">
-<div class="flex items-center gap-2">
-<a class="flex items-center gap-1.5 shrink-0 group" href="#">
-<div class="w-7 h-7 rounded-lg bg-primary text-white flex items-center justify-center font-['JetBrains_Mono'] text-xs sm:text-sm font-semibold shadow-xs">W</div>
-<span class="text-[15px] sm:text-[18px] text-text-primary tracking-tight font-semibold">Widget Starter</span>
-</a>
-<div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-text-muted font-['JetBrains_Mono'] text-[11px] border border-border-subtle">
-<span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="headerGlobalDot"></span>
-<span id="headerPlatformSubtitle">Propulsé par Reown AppKit • Multi-chain Base &amp; Polygon PoS</span>
-</div>
-</div>
-<!-- Navigation Desktop -->
-<nav class="hidden lg:flex items-center gap-1 p-1 bg-surface-container-low rounded-full">
-<button class="px-4 py-1.5 bg-surface-container-high text-text-primary font-medium rounded-full text-sm" onclick="window.switchTab('swap')">Widgets</button>
-<button class="px-4 py-1.5 rounded-full text-text-muted hover:text-text-primary transition-colors text-sm" onclick="window.scrollToSection('contract-section')">Smart Contracts</button>
-<button class="px-4 py-1.5 rounded-full text-text-muted hover:text-text-primary transition-colors text-sm" onclick="window.switchTab('transfer')">Transfers</button>
-</nav>
-<!-- Contrôles Réseau + Connexion -->
-<div class="flex items-center gap-1.5 sm:gap-3">
-<!-- Switcher Réseau Pill -->
-<div class="flex items-center p-0.5 bg-surface-container-low rounded-full border border-border-subtle shadow-xs" id="networkTogglePillGroup" role="tablist">
-<button class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold transition-all duration-200 bg-primary text-white shadow-xs cursor-pointer" id="switchBaseBtn" onclick="window.switchNetwork('base')" type="button">
-<span class="w-2 h-2 rounded-full bg-[#0052FF]"></span>
-<span>Base</span>
-<span class="text-[9px] sm:text-[10px] opacity-75 font-normal">8453</span>
-</button>
-<button class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium text-text-muted hover:text-text-primary transition-all duration-200 cursor-pointer" id="switchPolygonBtn" onclick="window.switchNetwork('polygon')" type="button">
-<span class="w-2 h-2 rounded-full bg-[#8247E5]"></span>
-<span>Polygon</span>
-<span class="text-[9px] sm:text-[10px] opacity-75 font-normal">137</span>
-</button>
-</div>
-<!-- Bouton Acheter desktop -->
-<button class="hidden md:flex px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-text-primary border border-border-subtle text-xs font-medium transition-all items-center gap-1.5 shadow-xs active:scale-95" onclick="window.switchTab('onramp')" type="button">
-<span class="material-symbols-outlined text-[16px]">credit_card</span>
-<span>Acheter</span>
-</button>
-<!-- Bouton Portefeuille Connecter -->
-<div class="relative">
-<button class="h-8 sm:h-9 px-2.5 sm:px-4 rounded-full bg-primary text-white hover:opacity-90 text-[11px] sm:text-xs font-medium transition-all flex items-center gap-1.5 shadow-xs shrink-0 active:scale-95 cursor-pointer" id="connectWalletBtn" onclick="window.handleWalletClick()" type="button">
-<span class="w-2 h-2 rounded-full bg-amber-400 shrink-0" id="walletStatusDot"></span>
-<span class="truncate max-w-[105px] sm:max-w-none" id="connectWalletBtnText">Connecter</span>
-</button>
-<!-- Dropdown du Portefeuille -->
-<div class="absolute right-0 mt-2 w-64 bg-surface-card rounded-2xl shadow-xl border border-border-subtle p-2 flex flex-col gap-1 hidden z-50 text-left transition-all" id="walletDropdown">
-<div class="px-3 py-2 border-b border-border-subtle mb-1">
-<span class="text-[10px] font-['JetBrains_Mono'] text-text-muted block">Compte connecté</span>
-<span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary truncate block" id="dropdownFullAddress">0x...</span>
-<span class="text-[11px] text-emerald-600 font-medium mt-0.5 block" id="dropdownNativeBalance">0.00 ETH</span>
-</div>
-<button class="w-full px-3 py-2 rounded-xl hover:bg-surface-container-low text-xs text-text-primary flex items-center justify-between transition-colors cursor-pointer" onclick="window.copyAddress()" type="button">
-<span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px]">content_copy</span>
-<span>Copier l'adresse</span>
+</head><body class="bg-canvas-base text-on-surface font-body-md flex flex-col min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><div class="flex items-center p-1 bg-surface-container-lowest/90 backdrop-blur-md rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.03)]"><button class="min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all bg-surface-container text-on-surface" title="Base (8453)" type="button"><span class="w-2 h-2 rounded-full bg-[#0052FF]"></span><span class="font-label-pill text-label-pill font-medium">Base</span></button><button class="min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-on-surface-variant hover:text-on-surface" title="Polygon (137)" type="button"><span class="w-2 h-2 rounded-full bg-[#8247E5]"></span><span class="font-label-pill text-label-pill font-medium">Polygon</span></button><button class="min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-on-surface-variant hover:text-on-surface" title="BNB Chain (56)" type="button"><span class="w-2 h-2 rounded-full bg-[#F0B90B]"></span><span class="font-label-pill text-label-pill font-medium">BSC</span></button></div></div><div class="flex items-center gap-space-sm"><button class="min-h-[44px] px-3.5 py-2 rounded-full bg-primary text-on-primary font-body-sm text-body-sm font-medium flex items-center gap-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.08)] hover:bg-neutral-800 transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">account_balance_wallet</span><span class="font-code-address text-code-address">0x2b...08ce</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-canvas-base min-h-screen"><div class="flex flex-col w-full px-margin pb-space-xl gap-space-lg max-w-md mx-auto">
+<!-- Atmospheric Top Light Ambient -->
+<div class="relative w-full pt-space-xs flex flex-col items-center text-center">
+<!-- Top Chain Indicator Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-lowest shadow-sm mb-space-md">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
 </span>
-<span class="font-['JetBrains_Mono'] text-[10px] text-text-muted">Copie</span>
-</button>
-<a class="w-full px-3 py-2 rounded-xl hover:bg-surface-container-low text-xs text-text-primary flex items-center justify-between transition-colors" href="https://basescan.org" id="dropdownExplorerLink" rel="noopener noreferrer" target="_blank">
-<span class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px]">open_in_new</span>
-<span>Voir sur l'explorateur</span>
-</span>
-<span class="font-['JetBrains_Mono'] text-[10px] text-text-muted" id="dropdownExplorerTag">BaseScan</span>
-</a>
-<button class="w-full px-3 py-2 rounded-xl hover:bg-rose-50 hover:text-rose-600 text-xs text-rose-600 flex items-center gap-2 transition-colors border-t border-border-subtle mt-1 pt-2 font-medium cursor-pointer" onclick="window.disconnectWallet()" type="button">
-<span class="material-symbols-outlined text-[16px]">logout</span>
-<span>Déconnecter</span>
-</button>
+<span class="font-code-address text-code-address text-on-surface">BNB Smart Chain</span>
+<span class="text-outline-variant">•</span>
+<span class="font-code-address text-code-address text-text-muted">ID 56</span>
+<span class="text-outline-variant">•</span>
+<span class="font-code-address text-code-address text-text-muted truncate max-w-[90px]">AppKit: 12f6...</span>
+</div>
+<!-- Editorial Headline -->
+<h1 class="font-headline-md text-headline-md text-text-primary tracking-tight max-w-xs">
+      Presence that doesn't beg for attention
+    </h1>
+<p class="font-body-md text-body-md text-text-muted mt-2 max-w-xs leading-relaxed">
+      Instrumentation smart contract native et réactive sur BNB Smart Chain (BSC), Base L2 &amp; Polygon PoS.
+    </p>
+</div>
+<!-- Quick Stats 2x2 Bento Grid -->
+<div class="grid grid-cols-2 gap-space-sm w-full">
+<!-- Stat 1: Réseau & Statut -->
+<div class="bg-surface-card rounded-2xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-text-muted">Réseau &amp; Statut</span>
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+</div>
+<div class="mt-3">
+<div class="font-headline-sm text-headline-sm text-text-primary flex items-center gap-1">
+          BSC <span class="font-code-address text-body-sm text-text-muted font-normal">(56)</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Frais ultra-rapides</p>
+</div>
+</div>
+<!-- Stat 2: Jeton Actif -->
+<div class="bg-surface-card rounded-2xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-text-muted">Jeton Actif</span>
+<span class="material-symbols-outlined text-[16px] text-amber-600">token</span>
+</div>
+<div class="mt-3">
+<div class="font-headline-sm text-headline-sm text-text-primary truncate">
+          $BNB-TOKEN
+        </div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5 truncate">BEP-20 • 18 Décimales</p>
+</div>
+</div>
+<!-- Stat 3: Solde Portefeuille -->
+<div class="bg-surface-card rounded-2xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-text-muted">Solde Portefeuille</span>
+<span class="material-symbols-outlined text-[16px] text-text-muted">account_balance_wallet</span>
+</div>
+<div class="mt-3">
+<div class="font-headline-sm text-headline-sm text-text-primary font-code-address">
+          0.00 BNB
+        </div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Connectez pour voir</p>
+</div>
+</div>
+<!-- Stat 4: Total Supply -->
+<div class="bg-surface-card rounded-2xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-text-muted">Total Supply</span>
+<span class="material-symbols-outlined text-[16px] text-text-muted">donut_large</span>
+</div>
+<div class="mt-3">
+<div class="font-headline-sm text-headline-sm text-text-primary font-code-address">
+          1.00B
+        </div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Circulation active</p>
 </div>
 </div>
 </div>
+<!-- Mode Navigation Pills (Segmented Control) -->
+<div class="w-full bg-surface-container-high p-1 rounded-full flex items-center gap-1 shadow-inner">
+<button class="flex-1 py-2 px-3 rounded-full bg-surface-card text-text-primary font-label-pill text-label-pill shadow-sm transition-all text-center" type="button">
+      Swap DEX
+    </button>
+<button class="flex-1 py-2 px-3 rounded-full text-text-muted hover:text-text-primary font-label-pill text-label-pill transition-all text-center" type="button">
+      Transfert
+    </button>
+<button class="flex-1 py-2 px-3 rounded-full text-text-muted hover:text-text-primary font-label-pill text-label-pill transition-all text-center" type="button">
+      Acheter Crypto
+    </button>
 </div>
-</header>
-<!-- Contenu Principal -->
-<main class="w-full pt-16 sm:pt-20 bg-surface min-h-[calc(100vh-140px)]">
-<div class="flex flex-col w-full relative overflow-hidden items-center justify-start">
-<div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[980px] h-[520px] rounded-full bg-[#0052FF]/10 blur-[130px] -z-10 transition-all duration-700" id="ambientAuraGlow"></div>
-<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-12 lg:py-16 flex flex-col items-center text-center">
-<!-- Badge Réseau & Reown AppKit -->
-<div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-surface-card shadow-sm mb-3 sm:mb-8 border border-border-subtle max-w-full overflow-hidden" id="heroNetworkBadgePill">
-<span class="w-2 h-2 rounded-full bg-[#0052FF] shrink-0" id="heroBadgeDot"></span>
-<span class="text-[11px] sm:text-xs font-semibold text-text-primary tracking-tight shrink-0" id="heroBadgeTitle">Base Mainnet</span>
-<span class="w-1 h-3 rounded-full bg-surface-container-highest shrink-0"></span>
-<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] text-text-muted truncate" id="heroBadgeDetails">Reown AppKit ID : 12f654a2... • Chain ID 8453</span>
-</div>
-<h1 class="text-2xl sm:text-4xl lg:text-[56px] text-text-primary tracking-tight max-w-3xl mx-auto leading-tight font-semibold mb-2 sm:mb-4 px-2">Presence that doesn't beg for attention</h1>
-<p class="text-xs sm:text-base text-text-muted max-w-xl mx-auto mb-5 sm:mb-8 px-2" id="heroDescription">Instrumentation smart contract native et réactive sur Base L2 &amp; Polygon PoS. Faible latence de gas, typographie délibérée et primitives Web3 unifiées.</p>
-<!-- KPI Grid -->
-<div class="w-full max-w-5xl grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 p-1.5 sm:p-2 bg-surface-card rounded-2xl border border-border-subtle shadow-xs mb-5 sm:mb-10 text-left">
-<div class="p-2.5 sm:p-3 rounded-xl bg-surface-container-low flex flex-col justify-between">
-<span class="text-[10px] sm:text-[11px] font-['JetBrains_Mono'] text-text-muted truncate">Réseau &amp; Statut</span>
-<div class="flex items-center gap-1.5 mt-1">
-<span class="w-2 h-2 rounded-full bg-[#0052FF] shrink-0" id="kpiNetworkDot"></span>
-<span class="text-[13px] sm:text-[15px] font-semibold text-text-primary truncate" id="kpiNetworkName">Base Mainnet (8453)</span>
-</div>
-<span class="text-[10px] sm:text-[11px] text-emerald-600 mt-0.5 truncate" id="kpiNetworkGas">Frais de gas ultra-bas</span>
-</div>
-<div class="p-2.5 sm:p-3 rounded-xl bg-surface-container-low flex flex-col justify-between">
-<span class="text-[10px] sm:text-[11px] font-['JetBrains_Mono'] text-text-muted truncate">Jeton Actif</span>
-<div class="flex items-center gap-1 mt-1">
-<span class="text-[13px] sm:text-[15px] font-semibold text-text-primary truncate" id="kpiActiveToken">$EEGO (ERC-20)</span>
-</div>
-<span class="text-[10px] sm:text-[11px] text-text-muted mt-0.5 truncate" id="kpiTokenDecimals">18 Décimales • Standard</span>
-</div>
-<div class="p-2.5 sm:p-3 rounded-xl bg-surface-container-low flex flex-col justify-between">
-<span class="text-[10px] sm:text-[11px] font-['JetBrains_Mono'] text-text-muted truncate">Solde Portefeuille</span>
-<div class="flex items-center gap-1 mt-1">
-<span class="text-[13px] sm:text-[15px] font-semibold text-text-primary truncate" id="kpiUserBalance">--</span>
-</div>
-<span class="text-[10px] sm:text-[11px] text-text-muted mt-0.5 truncate" id="kpiUserBalanceUsd">Connectez pour voir</span>
-</div>
-<div class="p-2.5 sm:p-3 rounded-xl bg-surface-container-low flex flex-col justify-between">
-<span class="text-[10px] sm:text-[11px] font-['JetBrains_Mono'] text-text-muted truncate">Total Supply</span>
-<div class="flex items-center gap-1 mt-1">
-<span class="text-[13px] sm:text-[15px] font-semibold text-text-primary truncate" id="kpiTotalSupply">1 000 000 000 EEGO</span>
-</div>
-<span class="text-[10px] sm:text-[11px] text-text-muted mt-0.5 truncate" id="kpiCirculationPercent">84.2% en circulation active</span>
-</div>
-</div>
-<!-- Onglets d'action Principaux -->
-<div class="w-full max-w-5xl mb-4">
-<div class="w-full p-1 sm:p-1.5 rounded-2xl bg-surface-card border border-border-subtle shadow-xs flex items-center justify-between gap-1" id="actionTabNav">
-<button class="flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl bg-primary text-white text-xs sm:text-[14px] font-medium transition-all flex items-center justify-center gap-1.5 shadow-xs shrink-0 cursor-pointer" id="tabBtnSwap" onclick="window.switchTab('swap')" type="button">
-<span class="material-symbols-outlined text-[16px] sm:text-[18px]">swap_vert</span>
-<span>Swap DEX</span>
-</button>
-<button class="flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl text-text-muted hover:text-text-primary text-xs sm:text-[14px] font-medium transition-all flex items-center justify-center gap-1.5 shrink-0 cursor-pointer" id="tabBtnTransfer" onclick="window.switchTab('transfer')" type="button">
-<span class="material-symbols-outlined text-[16px] sm:text-[18px]">send</span>
-<span>Transfert</span>
-</button>
-<button class="flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl text-text-muted hover:text-text-primary text-xs sm:text-[14px] font-medium transition-all flex items-center justify-center gap-1.5 shrink-0 cursor-pointer" id="tabBtnOnRamp" onclick="window.switchTab('onramp')" type="button">
-<span class="material-symbols-outlined text-[16px] sm:text-[18px]">credit_card</span>
-<span>Acheter Crypto</span>
-</button>
-</div>
-</div>
-<!-- Layout 2 Colonnes : Widgets & Détails Contrats -->
-<div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 text-left items-start">
-<!-- Colonne Widget Interactif (Swap / Transfer / OnRamp) -->
-<div class="lg:col-span-7 flex flex-col gap-4 order-1 w-full" id="widget-container">
-<!-- WIDGET SWAP -->
-<div class="w-full bg-surface-card rounded-2xl shadow-sm p-4 sm:p-7 flex flex-col border border-border-subtle" id="swapWidgetCard">
-<div class="flex items-center justify-between gap-2 mb-3">
-<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs" id="dexRouterBadge">
-<span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="dexRouterBadgeDot"></span>
-<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] font-medium truncate" id="dexRouterBadgeText">SushiSwap V3 (ISwapRouter exactInputSingle)</span>
-</div>
+<!-- SWAP DEX CARD (PancakeSwap Engine) -->
+<div class="bg-surface-card rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Header with slippage -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
 <div class="flex items-center gap-1.5">
-<div class="inline-flex items-center p-0.5 rounded-lg bg-surface-container-low border border-border-subtle">
-<span class="font-['JetBrains_Mono'] text-[9px] text-text-muted px-1.5">Slippage</span>
-<button class="px-1.5 py-0.5 rounded text-[10px] font-['JetBrains_Mono'] font-medium bg-surface-card text-text-primary shadow-xs transition-all cursor-pointer" id="slip05Btn" onclick="window.setSlippage(0.5)" type="button">0.5%</button>
-<button class="px-1.5 py-0.5 rounded text-[10px] font-['JetBrains_Mono'] font-medium text-text-muted hover:text-text-primary transition-all cursor-pointer" id="slip10Btn" onclick="window.setSlippage(1.0)" type="button">1%</button>
-<button class="px-1.5 py-0.5 rounded text-[10px] font-['JetBrains_Mono'] font-medium text-text-muted hover:text-text-primary transition-all cursor-pointer" id="slip20Btn" onclick="window.setSlippage(2.0)" type="button">2%</button>
+<span class="font-headline-sm text-headline-sm text-text-primary">Swap BEP-20</span>
+<span class="material-symbols-outlined text-[18px] text-text-muted">sync_alt</span>
+<span class="font-headline-sm text-headline-sm text-text-primary">BNB</span>
 </div>
-<button class="px-2 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container text-text-muted hover:text-text-primary transition-colors flex items-center gap-1 font-['JetBrains_Mono'] text-[10px] sm:text-[11px] border border-border-subtle shrink-0 cursor-pointer" onclick="document.getElementById('routerConfigPanel').classList.toggle('hidden')" type="button">
-<span class="material-symbols-outlined text-[14px]">tune</span>
-<span id="routerToggleText">Routeur</span>
-</button>
+<span class="font-body-sm text-body-sm text-text-muted mt-0.5">PancakeSwap V2 / V3 Router</span>
 </div>
-</div>
-<div class="text-left mb-3">
-<h2 class="text-xl sm:text-2xl text-text-primary tracking-tight font-semibold" id="swapSectionHeading">Swap EEGO ⇄ ETH</h2>
-<p class="text-xs text-text-muted mt-0.5" id="swapSectionSub">Échange instantané avec protection anti-revert et gas limit explicite</p>
-</div>
-<!-- Badge Pool V3 SushiSwap explicite pour Polygon PoS -->
-<div class="w-full p-2.5 sm:p-3 rounded-xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-between gap-2 mb-3 hidden" id="sushiPoolBadgeBanner">
-<div class="flex items-center gap-2 min-w-0">
-<span class="material-symbols-outlined text-[#8247E5] text-[18px] shrink-0">hub</span>
-<div class="min-w-0">
-<span class="text-[11px] sm:text-xs font-semibold text-[#8247E5] block truncate">Pool SushiSwap V3 Active : 0xb02e...0960</span>
-<span class="font-['JetBrains_Mono'] text-[10px] text-text-muted truncate block">Paire FG / WPOL • Fee 0.3% (tier 3000)</span>
+<!-- Slippage Selector -->
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded-lg">
+<button class="px-2 py-1 rounded bg-surface-card font-label-badge text-label-badge text-text-primary shadow-xs" type="button">0.5%</button>
+<button class="px-2 py-1 rounded text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors" type="button">1%</button>
+<button class="px-2 py-1 rounded text-text-muted hover:text-text-primary font-label-badge text-label-badge transition-colors" type="button">2%</button>
 </div>
 </div>
-<a class="px-2 py-1 rounded-lg bg-surface-card hover:bg-surface-container-high border border-border-subtle text-[#8247E5] font-['JetBrains_Mono'] text-[11px] flex items-center gap-1 shadow-xs shrink-0" href="https://polygonscan.com/address/0xb02e64dF0482ad99c9CC93326a9deB16827B0960" id="sushiPoolScanLink" rel="noopener noreferrer" target="_blank">
-<span>PolygonScan</span>
-<span class="material-symbols-outlined text-[13px]">open_in_new</span>
-</a>
+<!-- BSC Yellow Info Notice -->
+<div class="bg-amber-50 rounded-xl p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-amber-700 shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-amber-900 leading-snug">
+        BNB Smart Chain PancakeSwap Pool configurée. Prêt pour l'échange instantané de jetons BEP-20 contre WBNB / BNB natif.
+      </p>
 </div>
-<!-- Base pool pending notice -->
-<div class="w-full p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-start gap-2.5 mb-4 text-left" id="basePoolPendingBanner">
-<span class="material-symbols-outlined text-amber-600 text-[18px] shrink-0 mt-0.5">info</span>
-<div class="min-w-0">
-<span class="text-xs font-semibold text-amber-800 block">Pool Base en cours de création</span>
-<p class="text-[11px] text-amber-700 mt-0.5">La pool de liquidité EEGO / WETH sur Aerodrome/Uniswap Base est en cours de déploiement. Pour tester le swap réel on-chain, basculez sur le réseau <strong>Polygon PoS</strong> ci-dessus où la pool FG / WPOL est active sur SushiSwap V3.</p>
-</div>
-</div>
-<!-- Router details collapsed by default -->
-<div class="w-full bg-surface-container-low rounded-xl p-3 sm:p-4 flex flex-col gap-2.5 mb-4 transition-all hidden border border-border-subtle" id="routerConfigPanel">
+<!-- Swap Form Area -->
+<div class="flex flex-col gap-space-xs relative">
+<!-- Pay Input -->
+<div class="bg-surface-container-low rounded-xl p-3.5 flex flex-col gap-2">
 <div class="flex items-center justify-between">
-<span class="font-['JetBrains_Mono'] text-[11px] text-text-muted" id="routerConfigHeading">Routeur SushiSwap Actif (V3 SwapRouter)</span>
-<span class="flex items-center gap-1 text-[11px] font-['JetBrains_Mono'] text-[#0052FF] font-medium" id="routerConfigStatus">
-<span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="routerConfigStatusDot"></span> Réseau Actif
-                  </span>
+<span class="font-label-pill text-label-pill text-text-muted">Vous payez</span>
+<div class="flex items-center gap-1.5">
+<span class="font-body-sm text-body-sm text-text-muted">Solde: 0.00</span>
+<button class="font-label-badge text-label-badge text-amber-600 bg-amber-100/60 px-1.5 py-0.5 rounded uppercase font-medium hover:bg-amber-100 transition-colors" type="button">Max</button>
 </div>
-<div class="flex flex-col gap-1">
-<label class="text-xs text-text-muted" for="dexRouterAddress">Adresse SwapRouter V3</label>
-<div class="relative flex items-center">
-<input class="w-full h-9 px-3 pr-10 rounded-lg bg-surface-card font-['JetBrains_Mono'] text-[11px] text-text-primary outline-none border border-border-subtle" id="dexRouterAddress" readonly="" type="text" value="0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"/>
-<button class="absolute right-1 px-2 py-1 rounded-md bg-surface-container-high text-xs text-text-primary font-['JetBrains_Mono'] border border-border-subtle cursor-pointer" onclick="window.copyRouterAddress()" type="button">
-<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</div>
+<div class="flex items-center justify-between gap-2">
+<input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary focus:outline-none placeholder:text-outline-variant font-code-address" inputmode="decimal" placeholder="0.0" type="text" value="1000"/>
+<div class="flex items-center gap-1.5 bg-surface-card px-2.5 py-1.5 rounded-full shadow-xs shrink-0">
+<div class="w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-[10px] text-white font-bold font-code-address">
+              B
+            </div>
+<span class="font-headline-sm text-headline-sm text-text-primary">BEP20</span>
+</div>
+</div>
+</div>
+<!-- Invert Button Floating Center -->
+<div class="flex justify-center -my-2.5 z-10">
+<button aria-label="Inverser les jetons" class="w-9 h-9 rounded-full bg-surface-card text-text-primary shadow-md flex items-center justify-center hover:bg-surface-container-high transition-transform active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_downward</span>
 </button>
 </div>
+<!-- Receive Input -->
+<div class="bg-surface-container-low rounded-xl p-3.5 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-text-muted">Vous recevez (estimé)</span>
+<span class="font-body-sm text-body-sm text-text-muted">Frais BSC inclus</span>
 </div>
-<!-- Pool V3 contract field in config panel -->
-<div class="flex flex-col gap-1" id="routerPoolConfigRow">
-<label class="text-xs text-text-muted" for="dexPoolAddress">Adresse Pool V3 SushiSwap</label>
-<div class="relative flex items-center">
-<input class="w-full h-9 px-3 pr-10 rounded-lg bg-surface-card font-['JetBrains_Mono'] text-[11px] text-text-primary outline-none border border-border-subtle" id="dexPoolAddress" readonly="" type="text" value="0xb02e64dF0482ad99c9CC93326a9deB16827B0960"/>
-<button class="absolute right-1 px-2 py-1 rounded-md bg-surface-container-high text-xs text-text-primary font-['JetBrains_Mono'] border border-border-subtle cursor-pointer" onclick="window.copyPoolAddress()" type="button">
-<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<div class="flex items-center justify-between gap-2">
+<input class="w-full bg-transparent font-headline-md text-headline-md text-text-primary focus:outline-none font-code-address" inputmode="decimal" readonly="" type="text" value="1.4284"/>
+<div class="flex items-center gap-1.5 bg-surface-card px-2.5 py-1.5 rounded-full shadow-xs shrink-0">
+<div class="w-5 h-5 rounded-full bg-[#F3BA2F] flex items-center justify-center text-[10px] text-black font-bold font-code-address">
+              ❖
+            </div>
+<span class="font-headline-sm text-headline-sm text-text-primary">BNB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Execution Details Accordion/Summary -->
+<div class="bg-surface-container-low/70 rounded-xl p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-text-muted">Taux d'échange</span>
+<span class="font-code-address text-text-primary">1 BNB ≈ 700.08 BEP20</span>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-text-muted">Frais réseau BSC</span>
+<span class="font-code-address text-text-primary flex items-center gap-1">
+          ~0.0005 BNB <span class="text-text-muted">(&lt;$0.15)</span>
+</span>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-text-muted">Route DEX</span>
+<span class="font-code-address text-text-primary truncate max-w-[170px]" title="0x10ED43C718714eb63d5aA57B78B54704E256024E">Pancake V2 (0x10ED...024E)</span>
+</div>
+</div>
+<!-- Primary Action CTA -->
+<button class="w-full py-3.5 px-6 rounded-full bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-md hover:bg-neutral-800 active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">swap_horizontal_circle</span>
+<span>Échanger sur PancakeSwap</span>
 </button>
 </div>
-</div>
-<div class="flex items-center justify-between text-[11px] font-['JetBrains_Mono'] text-text-muted pt-1 border-t border-border-subtle">
-<span>Paramètre Gas Limit</span>
-<span class="text-text-primary font-medium">350 000 (anti-freeze MetaMask)</span>
-</div>
-</div>
-<!-- Formulaire Swap -->
-<form class="flex flex-col gap-3" id="swapForm" onsubmit="event.preventDefault();">
-<!-- Input Pay -->
-<div class="flex flex-col gap-1.5 p-3 rounded-xl bg-surface-container-low border border-border-subtle">
-<div class="flex items-center justify-between text-xs text-text-muted">
-<span id="payLabel">Vous payez</span>
-<div class="flex items-center gap-1 font-['JetBrains_Mono'] text-[10px] sm:text-[11px]">
-<span id="swapDispoLabel">Dispo:</span>
-<span class="text-text-primary font-medium truncate" id="swapAvailableBalance">0.00 EEGO</span>
-<button class="ml-1 px-1.5 py-0.5 rounded bg-surface-container-high text-text-primary font-semibold border border-border-subtle text-[10px] active:scale-95 cursor-pointer" onclick="window.handleMaxSwap()" type="button">MAX</button>
-</div>
-</div>
-<div class="relative flex items-center justify-between gap-2 mt-1">
-<input class="w-full bg-transparent text-xl sm:text-2xl font-semibold text-text-primary outline-none" id="swapPayAmount" min="0" oninput="window.recalculateSwap()" placeholder="10" step="any" type="number" value="10"/>
-<div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0 border border-border-subtle">
-<span class="w-2 h-2 rounded-full bg-primary" id="payTokenDot"></span>
-<span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary" id="payTokenSymbol">EEGO</span>
-</div>
-</div>
-<div class="text-right font-['JetBrains_Mono'] text-[10px] sm:text-[11px] text-text-muted" id="payUsdEquivalent">≈ $0.00 USD</div>
-</div>
-<!-- Bouton Inverseur -->
-<div class="relative flex items-center justify-center -my-1 z-10">
-<button class="w-9 h-9 rounded-full bg-surface-card hover:bg-surface-container-high shadow-xs transition-all flex items-center justify-center active:scale-95 text-text-primary border border-border-subtle cursor-pointer" onclick="window.showToast('Paire inversée')" type="button">
-<span class="material-symbols-outlined text-[18px]">swap_vert</span>
-</button>
-</div>
-<!-- Input Receive -->
-<div class="flex flex-col gap-1.5 p-3 rounded-xl bg-surface-container-low border border-border-subtle">
-<div class="flex items-center justify-between text-xs text-text-muted">
-<span id="receiveLabel">Vous recevez (estimé)</span>
-<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] text-text-muted" id="minGuaranteedReceive">Garanti min: 0.0000 ETH</span>
-</div>
-<div class="relative flex items-center justify-between gap-2 mt-1">
-<input class="w-full bg-transparent text-xl sm:text-2xl font-semibold text-text-primary outline-none" id="swapReceiveAmount" readonly="" type="text" value="0.0010"/>
-<div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-card shadow-xs shrink-0 border border-border-subtle">
-<span class="w-2 h-2 rounded-full bg-[#0052FF]" id="receiveTokenDot"></span>
-<span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary" id="receiveTokenSymbol">ETH</span>
-</div>
-</div>
-<div class="text-right font-['JetBrains_Mono'] text-[10px] sm:text-[11px] text-text-muted" id="receiveUsdEquivalent">≈ $0.00 USD</div>
-</div>
-<!-- Taux & Details -->
-<div class="flex flex-col gap-1.5 p-3 rounded-xl bg-surface-container-lowest shadow-xs text-[11px] sm:text-xs border border-border-subtle">
-<div class="flex items-center justify-between text-text-muted">
-<span>Taux</span>
-<span class="font-['JetBrains_Mono'] font-medium text-text-primary" id="conversionRateLabel">1 ETH ≈ 9925 EEGO</span>
-</div>
-<div class="flex items-center justify-between text-text-muted">
-<span>Slippage sélectionné</span>
-<span class="font-['JetBrains_Mono'] text-text-primary font-semibold" id="slippageValueDisplay">0.5% (tolérant)</span>
-</div>
-<div class="flex items-center justify-between text-text-muted">
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px] text-text-primary">bolt</span>
-<span id="gasCostLabel">Frais réseau Base (Gas)</span>
-</div>
-<span class="font-['JetBrains_Mono'] text-text-primary font-semibold" id="gasCostValue">~0.00001 ETH (~$0.03)</span>
-</div>
-<div class="flex items-center justify-between text-text-muted pt-1 border-t border-border-subtle">
-<span id="optimalRouteLabel">Route DEX</span>
-<span class="font-['JetBrains_Mono'] text-text-muted truncate max-w-[170px] sm:max-w-[240px] text-right" id="swapRouteText">EEGO → ETH (Base)</span>
-</div>
-</div>
-<!-- Transaction Live Step Banner -->
-<div class="hidden p-3 rounded-xl bg-surface-container-low border border-border-subtle flex flex-col gap-1.5" id="txStatusProgressBanner">
+<!-- CONTRACT BEP-20 CARD -->
+<div class="bg-surface-card rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-amber-500 animate-ping" id="txStatusIndicatorDot"></span>
-<span class="text-xs font-medium text-text-primary" id="txStatusIndicatorTitle">En attente de signature...</span>
+<div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center text-amber-700">
+<span class="material-symbols-outlined text-[18px]">description</span>
 </div>
-<a class="hidden font-['JetBrains_Mono'] text-[11px] text-[#8247E5] underline flex items-center gap-0.5" href="#" id="txStatusScanLink" target="_blank">
-<span>Voir sur l'explorateur</span>
-<span class="material-symbols-outlined text-[12px]">open_in_new</span>
-</a>
-</div>
-<p class="text-[11px] text-text-muted leading-tight" id="txStatusIndicatorDesc">Ouvrez et confirmez la requête dans votre portefeuille Web3.</p>
-</div>
-<!-- Error Guidance Box -->
-<div class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-left" id="txErrorGuidanceBox">
-<div class="flex items-start gap-2">
-<span class="material-symbols-outlined text-[16px] text-rose-600 shrink-0 mt-0.5">warning</span>
-<div class="min-w-0">
-<span class="text-xs font-semibold text-rose-800 block" id="txErrorTitle">Transaction non finalisée</span>
-<p class="text-[11px] text-rose-700 mt-0.5" id="txErrorAdvice">Vérifiez le solde pour payer le gas ou ajustez le slippage.</p>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary">Contrat BEP-20</h2>
+<p class="font-body-sm text-body-sm text-text-muted">Paramètres on-chain vérifiés</p>
 </div>
 </div>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-label-badge text-label-badge font-semibold">
+        BNB Chain • BEP-20
+      </span>
 </div>
-<!-- Bouton d'Action Swap Principal -->
-<div class="pt-1">
-<button class="w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 disabled:opacity-60 disabled:pointer-events-none cursor-pointer" id="executeSwapBtn" onclick="window.handleSwapExecution()" type="button">
-<span id="executeSwapBtnText">Connecter le portefeuille pour échanger</span>
-<span class="material-symbols-outlined text-[18px]" id="executeSwapBtnIcon">account_balance_wallet</span>
-</button>
-</div>
-</form>
-</div>
-<!-- WIDGET TRANSFERT -->
-<div class="w-full bg-surface-card rounded-2xl shadow-sm p-4 sm:p-7 flex flex-col hidden border border-border-subtle" id="transferWidgetCard">
-<div class="flex items-center justify-between gap-2 mb-3">
-<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-text-primary shadow-xs border border-border-subtle">
-<span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="transferBadgeDot"></span>
-<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] font-medium" id="transferBadgeText">Transfert Direct • Base</span>
-</div>
-<span class="font-['JetBrains_Mono'] text-[11px] text-emerald-600 font-medium">Gas bas</span>
-</div>
-<div class="text-left mb-4">
-<h2 class="text-xl sm:text-2xl text-text-primary tracking-tight font-semibold">Transfert ERC-20</h2>
-<p class="text-xs text-text-muted mt-0.5">Exécution instantanée sur la blockchain active</p>
-</div>
-<form class="flex flex-col gap-3" id="transferForm" onsubmit="event.preventDefault();">
-<div class="flex flex-col gap-1">
-<label class="text-xs text-text-muted" for="recipientAddress">Adresse destinataire</label>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs text-text-primary outline-none border border-border-subtle" id="recipientAddress" placeholder="0x4838B106FCe9..." type="text"/>
-</div>
-<div class="flex flex-col gap-1">
-<div class="flex items-center justify-between text-xs text-text-muted">
-<label for="tokenAmount">Montant</label>
-<div class="flex items-center gap-1 font-['JetBrains_Mono'] text-[11px]">
-<span>Dispo :</span>
-<span class="text-text-primary font-medium" id="senderBalancePreview">0.00</span>
-</div>
-</div>
-<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs text-text-primary outline-none border border-border-subtle" id="tokenAmount" placeholder="10" type="number"/>
-</div>
-<div class="pt-2">
-<button class="w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer" id="sendTransactionBtn" onclick="window.handleTransferExecution()" type="button">
-<span id="sendTransactionBtnText">Envoyer sur Base</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-</div>
-</form>
-</div>
-<!-- WIDGET ACHETER (ON-RAMP) -->
-<div class="w-full bg-surface-card rounded-2xl shadow-sm p-4 sm:p-7 flex flex-col hidden border border-border-subtle" id="onRampWidgetCard">
-<div class="flex items-center justify-between gap-2 mb-3">
-<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-text-primary shadow-xs border border-border-subtle">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] font-medium">Reown OnRamp • Passerelle</span>
-</div>
-<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-['JetBrains_Mono'] text-[10px] font-medium">
-<span class="material-symbols-outlined text-[12px]">bolt</span>
-<span>Frais réduits</span>
-</div>
-</div>
-<div class="text-left mb-4">
-<h2 class="text-xl sm:text-2xl text-text-primary tracking-tight font-semibold">Acheter Crypto</h2>
-<p class="text-xs text-text-muted mt-0.5">Achetez par CB, Apple Pay ou SEPA instantané</p>
-</div>
-<form class="flex flex-col gap-3" onsubmit="event.preventDefault();">
-<div class="flex flex-col gap-1.5 p-3 rounded-xl bg-surface-container-low border border-border-subtle">
-<div class="flex items-center justify-between text-xs text-text-muted">
-<span>Montant à régler (Fiat)</span>
-<span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary">EUR (€)</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="text-xl text-text-muted font-semibold">€</span>
-<input class="w-full bg-transparent text-xl font-semibold text-text-primary outline-none" id="onRampFiatAmount" min="10" oninput="window.updateFiatCalc()" placeholder="100" type="number" value="100"/>
-</div>
-</div>
-<div class="p-3 rounded-xl bg-surface-container-lowest flex items-center justify-between border border-border-subtle">
-<span class="text-xs text-text-muted">Crypto reçue (estimée) :</span>
-<span class="font-['JetBrains_Mono'] text-xs font-semibold text-emerald-600" id="onRampCryptoReceived">≈ 0.0345 ETH</span>
-</div>
-<div class="pt-2">
-<button class="w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer" onclick="window.openOnRampModal()" type="button">
-<span class="material-symbols-outlined text-[18px]">lock</span>
-<span>Payer avec Reown Pay</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-</div>
-</form>
-</div>
-</div>
-<!-- Colonne Spécifications & Info Smart Contract -->
-<div class="lg:col-span-5 flex flex-col gap-4 order-2 w-full" id="contract-section">
-<div class="w-full bg-surface-card rounded-2xl shadow-sm p-4 sm:p-7 flex flex-col border border-border-subtle">
-<div class="flex items-center justify-between gap-2 mb-4">
-<div class="inline-flex items-center p-0.5 rounded-full bg-surface-container-low" id="tokenSwitcher">
-<button class="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-medium bg-surface-card text-text-primary shadow-xs transition-all cursor-pointer" id="tokenBtnPrimary" onclick="window.setTokenSub('primary')" type="button">Eego</button>
-<button class="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-medium text-text-muted hover:text-text-primary transition-all cursor-pointer" id="tokenBtnSecondary" onclick="window.setTokenSub('secondary')" type="button">Ego</button>
-</div>
-<div class="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 rounded-full bg-[#0052FF]/10 text-[#0052FF] shadow-xs" id="networkPillTag">
-<span class="w-1.5 h-1.5 rounded-full bg-[#0052FF]" id="networkPillTagDot"></span>
-<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] font-medium" id="networkPillTagText">Base • ERC-20</span>
-</div>
-</div>
-<div class="mb-4">
-<h2 class="text-lg sm:text-[22px] text-text-primary tracking-tight font-semibold" id="contractHeading">Contrat ERC-20</h2>
-<span class="text-xs text-text-muted mt-0.5 block truncate" id="tokenSymbolLabel">Réseau Base (Chain ID 8453) • Standard Protocol ($EEGO)</span>
-</div>
-<!-- Adresse du Contrat -->
-<div class="w-full bg-surface-container-low rounded-xl p-3 flex items-center justify-between gap-2 mb-4 group transition-colors hover:bg-surface-container">
-<div class="flex flex-col min-w-0">
-<span class="font-['JetBrains_Mono'] text-[10px] sm:text-[11px] text-text-muted" id="contractAddrLabel">Adresse du contrat sur Base</span>
-<span class="font-['JetBrains_Mono'] text-xs sm:text-[13px] text-text-primary truncate" id="contractAddrText">0x2b576C83E722e8E7A07836353b51cB3FC31408ce</span>
-</div>
-<div class="flex items-center gap-1 shrink-0">
-<a class="w-8 h-8 rounded-lg bg-surface-card text-text-primary hover:text-[#0052FF] shadow-xs transition-all active:scale-95 flex items-center justify-center" href="https://basescan.org/token/0x2b576C83E722e8E7A07836353b51cB3FC31408ce" id="basescanLink" rel="noopener noreferrer" target="_blank" title="Voir sur l'explorateur">
-<span class="material-symbols-outlined text-[16px]">open_in_new</span>
-</a>
-<button class="w-8 h-8 rounded-lg bg-surface-card text-text-primary hover:text-text-primary shadow-xs transition-all active:scale-95 flex items-center justify-center cursor-pointer" onclick="window.copyContractAddress()" title="Copier l'adresse" type="button">
+<!-- Address display + Actions -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-pill text-label-pill text-text-muted">Adresse du Smart Contract</span>
+<div class="flex items-center justify-between bg-surface-container-low rounded-xl px-3 py-2.5">
+<span class="font-code-address text-code-address text-text-primary truncate select-all">0xeb94a7de26bc2d1522cea11985ea628a84d25fd1</span>
+<div class="flex items-center gap-1 shrink-0 ml-2">
+<button class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-text-muted hover:text-text-primary transition-colors shadow-2xs" id="copyBtn" onclick="navigator.clipboard?.writeText('0xeb94a7de26bc2d1522cea11985ea628a84d25fd1'); this.innerHTML='&lt;span class=\'material-symbols-outlined text-[16px] text-green-600\'&gt;check&lt;/span&gt;'; setTimeout(() =&gt; this.innerHTML='&lt;span class=\'material-symbols-outlined text-[16px]\'&gt;content_copy&lt;/span&gt;', 2000);" title="Copier" type="button">
 <span class="material-symbols-outlined text-[16px]">content_copy</span>
 </button>
+<a class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-text-muted hover:text-text-primary transition-colors shadow-2xs" href="https://bscscan.com/token/0xeb94a7de26bc2d1522cea11985ea628a84d25fd1" rel="noopener noreferrer" target="_blank" title="Voir sur BscScan">
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
 </div>
 </div>
-<!-- Caractéristiques Token -->
-<div class="grid grid-cols-2 gap-2.5 pt-1">
-<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col justify-between shadow-xs border border-border-subtle">
-<span class="text-xs text-text-muted">Décimales</span>
-<span class="text-xl sm:text-2xl text-text-primary font-semibold mt-1">18</span>
-<span class="font-['JetBrains_Mono'] text-[10px] text-text-muted mt-1">10<sup>18</sup> wei / unit</span>
+<button class="mt-1 w-full py-2 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-label-pill text-label-pill font-medium flex items-center justify-center gap-2 border-subtle transition-all active:scale-[0.99]" id="addToMetamaskBtn" onclick="(async () =&gt; { const btn = document.getElementById('addToMetamaskBtn'); try { if (!window.ethereum) { alert('Veuillez installer MetaMask ou utiliser un navigateur Web3.'); return; } const wasAdded = await window.ethereum.request({ method: 'wallet_watchAsset', params: { type: 'ERC20', options: { address: '0xeb94a7de26bc2d1522cea11985ea628a84d25fd1', symbol: 'BEP20', decimals: 18 } } }); if (wasAdded) { btn.innerHTML = '&lt;span class=\'material-symbols-outlined text-[16px] text-amber-700\'&gt;check_circle&lt;/span&gt;&lt;span class=\'text-amber-800 font-medium\'&gt;Ajouté à MetaMask !&lt;/span&gt;'; setTimeout(() =&gt; { btn.innerHTML = '&lt;span class=\'material-symbols-outlined text-[16px]\'&gt;add_circle&lt;/span&gt;&lt;span&gt;Ajouter à MetaMask&lt;/span&gt;'; }, 2500); } } catch (error) { console.error(error); } })()" type="button"><span class="material-symbols-outlined text-[16px]">add_circle</span><span>Ajouter à MetaMask</span></button></div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low rounded-xl p-3">
+<span class="font-body-sm text-body-sm text-text-muted">Décimales</span>
+<div class="font-headline-sm text-headline-sm text-text-primary font-code-address mt-1">18</div>
 </div>
-<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col justify-between shadow-xs border border-border-subtle">
-<span class="text-xs text-text-muted">Total Supply</span>
-<span class="text-xl sm:text-2xl text-text-primary font-semibold truncate mt-1" id="supplyDisplay">1 000 000 000</span>
-<span class="font-['JetBrains_Mono'] text-[10px] text-text-muted mt-1 truncate" id="supplySubLabel">1 Milliard jetons max</span>
-</div>
-</div>
-<!-- Jauge de Circulation -->
-<div class="mt-3 pt-2 flex flex-col gap-1.5">
-<div class="flex items-center justify-between font-['JetBrains_Mono'] text-[11px] text-text-muted">
-<span id="circulationLabel">Circulation active (Base)</span>
-<span class="font-semibold text-text-primary" id="circulationPercentText">84.2%</span>
-</div>
-<div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
-<div class="h-full bg-text-primary rounded-full transition-all duration-700 w-[84.2%]" id="circulationProgressBar"></div>
+<div class="bg-surface-container-low rounded-xl p-3">
+<span class="font-body-sm text-body-sm text-text-muted">Total Supply</span>
+<div class="font-headline-sm text-headline-sm text-text-primary font-code-address mt-1 truncate">1,000,000,000</div>
 </div>
 </div>
-</div>
-<!-- Boîte de Consultation Solde RPC -->
-<div class="w-full bg-surface-card rounded-2xl shadow-sm p-4 sm:p-6 flex flex-col gap-3 border border-border-subtle">
+<!-- Balance checker mini tool -->
+<div class="flex flex-col gap-2 pt-space-xs">
 <div class="flex items-center justify-between">
-<span class="text-[15px] sm:text-[16px] font-semibold text-text-primary">Consulter un solde</span>
-<span class="font-['JetBrains_Mono'] text-[11px] text-[#0052FF]" id="balanceRpcLabel">RPC Base L2</span>
+<label class="font-label-pill text-label-pill text-text-muted" for="evmAddressInput">Consulter un solde BEP-20</label>
+<span class="font-body-sm text-body-sm text-text-muted">RPC BNB Chain</span>
 </div>
-<p class="text-xs text-text-muted" id="balanceRpcDesc">Vérifiez instantanément le solde on-chain de n'importe quelle adresse sur le contrat actif.</p>
-<div class="flex flex-col sm:flex-row items-center gap-2">
-<input class="w-full h-11 px-3 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs text-text-primary placeholder:text-text-muted/60 outline-none border border-border-subtle" id="lookupAddressInput" placeholder="Adresse EVM (0x...)" type="text"/>
-<button class="w-full sm:w-auto h-11 px-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-text-primary text-xs font-medium transition-all shadow-xs flex items-center justify-center shrink-0 border border-border-subtle active:scale-95 cursor-pointer" id="checkBalanceBtn" onclick="window.checkExternalBalance()" type="button">Vérifier</button>
-</div>
-<div class="hidden px-3.5 py-2.5 rounded-xl bg-surface-container-low items-center justify-between gap-3 border border-border-subtle" id="balanceResultBox">
-<span class="text-xs text-text-muted">Solde vérifié (on-chain) :</span>
-<span class="font-['JetBrains_Mono'] text-xs font-semibold text-text-primary" id="balanceValueText">0.00</span>
+<div class="flex items-center gap-2">
+<input class="flex-1 h-11 bg-surface-container-low rounded-xl px-3.5 font-code-address text-code-address text-text-primary placeholder:text-outline-variant focus:outline-none" id="evmAddressInput" placeholder="Adresse EVM (0x...)" type="text"/>
+<button class="h-11 px-4 rounded-xl bg-button-neutral-bg hover:bg-button-neutral-hover text-text-primary font-body-sm text-body-sm font-medium transition-colors shrink-0" type="button">
+          Vérifier
+        </button>
 </div>
 </div>
-<!-- Badge Audit & Explorer Link -->
-<div class="p-3.5 sm:p-4 rounded-2xl bg-surface-card border border-border-subtle flex items-center justify-between gap-3 shadow-xs">
-<div class="flex items-center gap-3 min-w-0">
-<div class="w-8 h-8 rounded-xl bg-[#0052FF]/10 text-[#0052FF] flex items-center justify-center shrink-0" id="auditedBadgeIconBox">
-<span class="material-symbols-outlined text-[18px]">verified</span>
 </div>
-<div class="flex flex-col min-w-0">
-<span class="text-[12px] sm:text-[13px] font-semibold text-text-primary truncate" id="auditedChainTitle">Contrat Déployé sur Base</span>
-<span class="text-[10px] sm:text-[11px] font-['JetBrains_Mono'] text-text-muted">Audité &amp; Non-Custodial</span>
+<!-- EXPLORER CARD (BscScan Link) -->
+<a class="bg-surface-card rounded-2xl p-space-md shadow-sm flex items-center justify-between group hover:shadow transition-all" href="https://bscscan.com/token/0xeb94a7de26bc2d1522cea11985ea628a84d25fd1" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-600 shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-text-primary group-hover:text-amber-600 transition-colors">
+          Contrat Déployé sur BNB Smart Chain
+        </span>
+<span class="font-body-sm text-body-sm text-text-muted">Consulter le code source 0xeb94...5fd1 &amp; transactions sur BscScan</span>
 </div>
 </div>
-<a class="font-['JetBrains_Mono'] text-xs text-[#0052FF] hover:underline flex items-center gap-0.5 shrink-0" href="https://basescan.org" id="auditedScanLink" rel="noopener noreferrer" target="_blank">
-<span id="auditedScanText">BaseScan</span>
-<span class="material-symbols-outlined text-[13px]">open_in_new</span>
+<span class="material-symbols-outlined text-[20px] text-text-muted group-hover:translate-x-0.5 transition-transform">
+      arrow_forward
+    </span>
 </a>
-</div>
-</div>
-</div>
-<!-- Documentation Footer Tagline -->
-<div class="flex flex-col items-center text-center gap-4 mt-8 pb-10 sm:pb-6">
-<p class="text-xs sm:text-base text-text-muted px-4">Build with clarity, speed, and quiet confidence on Base &amp; Polygon</p>
-<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-xs font-medium hover:opacity-90 transition-all shadow-xs" href="https://docs.reown.com/appkit" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[16px]">menu_book</span>
-<span>Documentation Reown AppKit</span>
-</a>
-</div>
-</section>
-</div>
-<!-- Modale Sélection Portefeuille Reown AppKit -->
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200 hidden" id="walletSelectionModal">
-<div class="w-full max-w-sm mx-4 bg-surface-card rounded-3xl p-5 sm:p-6 shadow-2xl border border-border-subtle flex flex-col gap-3.5 text-left">
-<div class="flex items-center justify-between pb-3 border-b border-border-subtle">
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-white shrink-0">
-<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
-</div>
-<div>
-<span class="text-sm sm:text-base font-semibold block leading-tight">Reown AppKit Wallet</span>
-<span class="text-[10px] text-text-muted font-['JetBrains_Mono']">Project ID: 12f654a26780...</span>
-</div>
-</div>
-<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center hover:bg-surface-container text-text-muted hover:text-text-primary transition-all active:scale-95 cursor-pointer" onclick="window.closeWalletModal()" type="button">
-<span class="material-symbols-outlined text-[18px]">close</span>
-</button>
-</div>
-<p class="text-xs text-text-muted">Choisissez votre méthode de connexion sécurisée :</p>
-<div class="flex flex-col gap-2">
-<!-- MetaMask / Injected -->
-<button class="w-full p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-all flex items-center justify-between border border-border-subtle group text-left active:scale-95 cursor-pointer" onclick="window.connectInjected()" type="button">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[18px]">extension</span>
-</div>
-<div class="min-w-0">
-<div class="text-xs font-semibold text-text-primary flex items-center gap-1.5">
-<span>MetaMask / Navigateur Web3</span>
-<span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-600 text-white font-medium">Direct</span>
-</div>
-<span class="text-[10px] text-text-muted block truncate">Connexion instantanée window.ethereum</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-text-muted text-[18px]">chevron_right</span>
-</button>
-<!-- Reown AppKit / WalletConnect v2 -->
-<button class="w-full p-3 rounded-2xl bg-blue-500/10 hover:bg-blue-500/15 border border-blue-500/20 transition-all flex items-center justify-between text-left active:scale-95 cursor-pointer" onclick="window.connectReownAppKit()" type="button">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-8 h-8 rounded-xl bg-[#0052FF] text-white flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[18px]">hub</span>
-</div>
-<div class="min-w-0">
-<div class="text-xs font-semibold text-text-primary flex items-center gap-1.5">
-<span>Reown AppKit (WalletConnect)</span>
-</div>
-<span class="text-[10px] text-[#0052FF] block truncate">Projet 12f654a2678080c8a4c77d539eb63bd7</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-[#0052FF] text-[18px]">qr_code_scanner</span>
-</button>
-<!-- Mode Consultation / Simulation RPC -->
-<button class="w-full p-3 rounded-2xl bg-purple-500/10 hover:bg-purple-500/15 border border-purple-500/20 transition-all flex items-center justify-between text-left active:scale-95 cursor-pointer" onclick="window.connectDemoMode()" type="button">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-8 h-8 rounded-xl bg-purple-500 text-white flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[18px]">visibility</span>
-</div>
-<div class="min-w-0">
-<div class="text-xs font-semibold text-text-primary">Mode Lecture Seule / RPC Public</div>
-<span class="text-[10px] text-purple-700 block truncate">Tester les widgets sans extension</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-purple-600 text-[18px]">bolt</span>
-</button>
-</div>
-<div class="pt-1 text-center border-t border-border-subtle">
-<span class="text-[10px] text-text-muted font-['JetBrains_Mono']">Non-custodial • Ethers.js v5 • Reown Protocol</span>
-</div>
-</div>
-</div>
-<!-- Modale Reown OnRamp -->
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200 hidden" id="reownOnRampModal">
-<div class="w-full max-w-md mx-4 bg-surface-card rounded-3xl p-6 shadow-2xl border border-border-subtle flex flex-col gap-4 text-left">
-<div class="flex items-center justify-between pb-3 border-b border-border-subtle">
-<div class="flex items-center gap-2.5">
-<div class="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-white">
-<span class="material-symbols-outlined text-[18px]">credit_card</span>
-</div>
-<div>
-<span class="text-base font-semibold block">Reown On-Ramp Pay</span>
-<span class="text-xs text-text-muted font-['JetBrains_Mono']">Passerelle Fiat ⇄ Crypto Sécurisée</span>
-</div>
-</div>
-<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center cursor-pointer" onclick="window.closeOnRampModal()" type="button">
-<span class="material-symbols-outlined text-[20px]">close</span>
-</button>
-</div>
-<div class="p-3 rounded-2xl bg-surface-container-low flex items-center justify-between border border-border-subtle">
-<div>
-<span class="text-[11px] text-text-muted block">Total à payer</span>
-<span class="text-xl font-semibold" id="modalOnRampPayAmount">100 €</span>
-</div>
-<div class="text-right">
-<span class="text-[11px] text-text-muted block">Reçu sur chaîne active</span>
-<span class="text-xs font-semibold text-emerald-600 font-['JetBrains_Mono']" id="modalOnRampCryptoAmount">≈ 0.0345 ETH</span>
-</div>
-</div>
-<form class="flex flex-col gap-3" onsubmit="event.preventDefault(); window.submitOnRamp();">
-<input class="w-full h-10 px-3 rounded-xl bg-surface-container-low text-xs border border-border-subtle outline-none" placeholder="Titulaire de la carte" required="" type="text" value="Jean Dupont"/>
-<input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs border border-border-subtle outline-none" maxlength="19" placeholder="4532 •••• •••• 8892" required="" type="text" value="4532 8920 1204 8892"/>
-<div class="grid grid-cols-2 gap-2">
-<input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs border border-border-subtle outline-none" maxlength="5" placeholder="12/28" required="" type="text" value="12/28"/>
-<input class="w-full h-10 px-3 rounded-xl bg-surface-container-low font-['JetBrains_Mono'] text-xs border border-border-subtle outline-none" maxlength="4" placeholder="892" required="" type="password" value="892"/>
-</div>
-<button class="w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm flex items-center justify-center gap-2 mt-2 active:scale-95 cursor-pointer" type="submit">
-<span>Valider le paiement sécurisé</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-</form>
-</div>
-</div>
-<!-- Modale Succès Swap On-Chain -->
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200 hidden" id="swapSuccessModal">
-<div class="w-full max-w-sm mx-4 bg-surface-card rounded-3xl p-6 shadow-2xl border border-border-subtle text-center flex flex-col">
-<div class="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto mb-4">
-<span class="material-symbols-outlined text-[32px]">check_circle</span>
-</div>
-<h3 class="text-xl font-semibold">Swap On-Chain Confirmé !</h3>
-<p class="text-xs text-text-muted mt-1">Transaction validée avec succès via SushiSwap V3 (ISwapRouter).</p>
-<div class="w-full bg-surface-container-low rounded-2xl p-4 my-4 text-left text-xs flex flex-col gap-2 border border-border-subtle">
-<div class="flex justify-between text-text-muted">
-<span>Échangé :</span>
-<span class="font-semibold text-text-primary" id="modalSwapAmountSent">10 FG</span>
-</div>
-<div class="flex justify-between text-text-muted">
-<span>Reçu estimé :</span>
-<span class="font-semibold text-emerald-600" id="modalSwapAmountReceived">POL</span>
-</div>
-<div class="flex justify-between text-text-muted">
-<span>Réseau :</span>
-<span class="font-semibold text-text-primary" id="modalSwapNetworkName">Polygon PoS (137)</span>
-</div>
-<div class="flex justify-between text-text-muted">
-<span>Routeur :</span>
-<span class="font-semibold text-text-primary">SushiSwap / Uniswap V3</span>
-</div>
-<div class="pt-2 border-t border-border-subtle flex justify-between items-center">
-<span class="font-['JetBrains_Mono'] text-[11px] truncate max-w-[190px]" id="modalSwapTxHash">0x...</span>
-<a class="text-[#8247E5] underline text-[11px] font-['JetBrains_Mono'] flex items-center gap-0.5" href="#" id="modalSwapBasescanLink" rel="noopener noreferrer" target="_blank">
-<span>PolygonScan</span>
-<span class="material-symbols-outlined text-[12px]">open_in_new</span>
-</a>
-</div>
-</div>
-<button class="w-full py-3 rounded-xl bg-primary text-white font-medium text-xs active:scale-95 cursor-pointer" onclick="window.closeSwapSuccessModal()" type="button">Fermer</button>
-</div>
-</div>
-<!-- Conteneur Toast Notifications -->
-<div class="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none" id="toastContainer"></div>
-</main>
-<!-- Bottom Bar Navigation Mobile -->
-<div class="fixed bottom-0 left-0 w-full sm:hidden z-40 bg-surface-card/95 backdrop-blur-md border-t border-border-subtle px-2 py-2 flex items-center justify-around shadow-lg">
-<button class="flex-1 flex flex-col items-center gap-0.5 text-text-primary text-[10px] font-semibold cursor-pointer" id="mobileNavSwap" onclick="window.switchTab('swap'); window.scrollToSection('widget-container');" type="button">
-<span class="material-symbols-outlined text-[20px]">swap_vert</span>
-<span>Swap</span>
-</button>
-<button class="flex-1 flex flex-col items-center gap-0.5 text-text-muted hover:text-text-primary text-[10px] font-medium cursor-pointer" id="mobileNavTransfer" onclick="window.switchTab('transfer'); window.scrollToSection('widget-container');" type="button">
-<span class="material-symbols-outlined text-[20px]">send</span>
-<span>Transfert</span>
-</button>
-<button class="flex-1 flex flex-col items-center gap-0.5 text-text-muted hover:text-text-primary text-[10px] font-medium cursor-pointer" id="mobileNavOnRamp" onclick="window.switchTab('onramp'); window.scrollToSection('widget-container');" type="button">
-<span class="material-symbols-outlined text-[20px]">credit_card</span>
-<span>Acheter</span>
-</button>
-<button class="flex-1 flex flex-col items-center gap-0.5 text-text-muted hover:text-text-primary text-[10px] font-medium cursor-pointer" id="mobileNavWallet" onclick="window.handleWalletClick()" type="button">
-<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
-<span id="mobileBarWalletText">Wallet</span>
-</button>
-</div>
-<!-- Footer Desktop & Mobile -->
-<footer class="w-full bg-surface-container-lowest py-8 border-t border-border-subtle">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs text-text-muted mb-12 sm:mb-0">
-<div>
-<span class="font-semibold text-text-primary">Widget Starter • Multi-chain All-in-One</span> — Base &amp; Polygon PoS
-      </div>
-<div class="flex flex-wrap justify-center gap-4 font-['JetBrains_Mono'] text-[11px]">
-<a class="hover:text-text-primary" href="https://basescan.org" target="_blank">BaseScan</a>
-<a class="hover:text-text-primary" href="https://polygonscan.com" target="_blank">PolygonScan</a>
-<a class="hover:text-text-primary" href="https://docs.reown.com/appkit" target="_blank">Reown Docs</a>
-</div>
-</div>
-</footer>
-<!-- SCRIPT WE3 INFALLLIBLE, GESTION MULTI-CHAÎNE, REOWN & SUSHISWAP V3 -->
-<script>
-    (function() {
-      // Configuration Multi-chaîne avec SushiSwap V3 sur Polygon PoS
-      const NETWORKS = {
-        base: {
-          chainIdDec: 8453,
-          chainIdHex: '0x2105',
-          name: 'Base Mainnet',
-          shortName: 'Base',
-          nativeToken: 'ETH',
-          rpcUrl: 'https://mainnet.base.org',
-          hasActivePool: false,
-          poolAddress: null,
-          tokens: {
-            primary: {
-              symbol: 'EEGO',
-              label: 'Réseau Base (Chain ID 8453) • Standard Protocol ($EEGO)',
-              address: '0x2b576C83E722e8E7A07836353b51cB3FC31408ce',
-              decimals: 18,
-              supply: '1 000 000 000',
-              supplyFullText: '1 000 000 000 EEGO',
-              supplySub: '1 Milliard jetons max',
-              userBalance: '0.00',
-              priceUsd: 0.10075,
-              circulation: '84.2%',
-              ratePerNative: 9925
-            },
-            secondary: {
-              symbol: 'EGO',
-              label: 'Réseau Base (Chain ID 8453) • Governance Reserve ($EGO)',
-              address: '0x71C67Ed3855a35E0d38B7D0f848970C43B20eB1A',
-              decimals: 18,
-              supply: '250 000 000',
-              supplyFullText: '250 000 000 EGO',
-              supplySub: '250 Millions jetons max',
-              userBalance: '0.00',
-              priceUsd: 0.4210,
-              circulation: '68.5%',
-              ratePerNative: 7410
-            }
-          },
-          dexRouter: { name: 'SushiSwap / Aerodrome (Base)', address: '0x2626664c2603336E57B271c5C0b26F421741e481' },
-          explorerName: 'BaseScan',
-          explorerUrl: 'https://basescan.org',
-          gasCostText: '~0.00001 ETH (~$0.03)',
-          themeColorHex: '#0052FF'
-        },
-        polygon: {
-          chainIdDec: 137,
-          chainIdHex: '0x89',
-          name: 'Polygon PoS',
-          shortName: 'Polygon',
-          nativeToken: 'POL',
-          wpolToken: 'WPOL',
-          rpcUrl: 'https://polygon-rpc.com',
-          hasActivePool: true,
-          poolAddress: '0xb02e64dF0482ad99c9CC93326a9deB16827B0960',
-          poolFeeTier: 3000,
-          wpolAddress: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
-          // SwapRouter V3 officiel SushiSwap / Uniswap V3 + Routeur V2 fallback
-          swapRouterV3: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
-          routerV2Fallback: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
-          dexRouter: { 
-            name: 'SushiSwap V3 (ISwapRouter exactInputSingle)', 
-            address: '0xE592427A0AEce92De3Edee1F18E0157C05861564' 
-          },
-          tokens: {
-            primary: {
-              symbol: 'FG',
-              label: 'Réseau Polygon PoS (Chain ID 137) • Fing Protocol ($FG)',
-              address: '0xdc209cda9a60370a2a97577c75c051221db0b623',
-              decimals: 18,
-              supply: '100 000 000',
-              supplyFullText: '100 000 000 FG',
-              supplySub: '100 Millions jetons max',
-              userBalance: '0.00',
-              priceUsd: 0.0485,
-              circulation: '72.4%',
-              ratePerNative: 11.13
-            },
-            secondary: {
-              symbol: 'FING',
-              label: 'Réseau Polygon PoS (Chain ID 137) • Community ($FING)',
-              address: '0xdc209cda9a60370a2a97577c75c051221db0b623',
-              decimals: 18,
-              supply: '100 000 000',
-              supplyFullText: '100 000 000 FG',
-              supplySub: '100 Millions jetons max',
-              userBalance: '0.00',
-              priceUsd: 0.0485,
-              circulation: '72.4%',
-              ratePerNative: 11.13
-            }
-          },
-          explorerName: 'PolygonScan',
-          explorerUrl: 'https://polygonscan.com',
-          gasCostText: '~0.005 POL (~$0.002)',
-          themeColorHex: '#8247E5'
-        }
-      };
-
-      const ERC20_ABI = [
-        "function name() view returns (string)",
-        "function symbol() view returns (string)",
-        "function decimals() view returns (uint8)",
-        "function totalSupply() view returns (uint256)",
-        "function balanceOf(address owner) view returns (uint256)",
-        "function allowance(address owner, address spender) view returns (uint256)",
-        "function approve(address spender, uint256 value) returns (bool)",
-        "function transfer(address to, uint256 value) returns (bool)"
-      ];
-
-      // Interface ISwapRouter SushiSwap / Uniswap V3 exactInputSingle
-      const ISWAP_ROUTER_V3_ABI = [
-        "function exactInputSingle((address tokenIn, address tokenOut, uint24 fee, address recipient, uint256 deadline, uint256 amountIn, uint256 amountOutMinimum, uint160 sqrtPriceLimitX96)) external payable returns (uint256 amountOut)",
-        "function exactInputSingle((address tokenIn, address tokenOut, uint24 fee, address recipient, uint256 amountIn, uint256 amountOutMinimum, uint160 sqrtPriceLimitX96)) external payable returns (uint256 amountOut)",
-        "function unwrapWETH9(uint256 amountMinimum, address recipient) external payable"
-      ];
-
-      // Routeur V2 Fallback
-      const ROUTER_V2_ABI = [
-        "function swapExactTokensForETHSupportingFeeOnTransferTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external",
-        "function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts)",
-        "function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts)"
-      ];
-
-      // Interface SushiSwap / Uniswap V3 Pool
-      const POOL_V3_ABI = [
-        "function fee() external view returns (uint24)",
-        "function token0() external view returns (address)",
-        "function token1() external view returns (address)",
-        "function slot0() external view returns (uint160 sqrtPriceX96, int24 tick, uint16 observationIndex, uint16 observationCardinality, uint16 observationCardinalityNext, uint8 feeProtocol, bool unlocked)"
-      ];
-
-      let currentChain = 'base';
-      let currentTokenKey = 'primary';
-      let isConnected = false;
-      let currentAddress = null;
-      let web3Provider = null;
-      let web3Signer = null;
-      let currentAllowance = (typeof ethers !== 'undefined') ? ethers.BigNumber.from(0) : { isZero: () => true, lt: () => true };
-      let selectedSlippagePercent = 0.5;
-      let isApproving = false;
-      let isSwapping = false;
-
-      // Toast Notifier
-      window.showToast = function(msg, isError = false) {
-        const container = document.getElementById('toastContainer');
-        if (!container) return;
-        const t = document.createElement('div');
-        t.className = `flex items-center gap-2 p-3 bg-surface-card rounded-xl shadow-xl border ${isError ? 'border-rose-200 text-rose-800' : 'border-border-subtle text-text-primary'} text-xs transition-all duration-300`;
-        t.innerHTML = `<span class="material-symbols-outlined text-[16px] ${isError ? 'text-rose-600' : 'text-emerald-600'}">${isError ? 'error' : 'check_circle'}</span><span>${msg}</span>`;
-        container.appendChild(t);
-        setTimeout(() => {
-          t.style.opacity = '0';
-          t.style.transform = 'translateY(10px)';
-          setTimeout(() => t.remove(), 300);
-        }, 4000);
-      };
-
-      function truncateAddress(addr) {
-        if (!addr || addr.length < 10) return addr || '';
-        return addr.slice(0, 6) + '...' + addr.slice(-4);
-      }
-
-      function getProvider() {
-        if (web3Provider) return web3Provider;
-        const net = NETWORKS[currentChain];
-        return new ethers.providers.JsonRpcProvider(net.rpcUrl);
-      }
-
-      // Changement de réseau
-      window.switchNetwork = async function(chain, requestWalletChainChange = true) {
-        currentChain = chain;
-        currentTokenKey = 'primary';
-        const net = NETWORKS[chain];
-        const tok = net.tokens[currentTokenKey];
-        const isBase = (chain === 'base');
-
-        // Style des boutons Réseau
-        const switchBaseBtn = document.getElementById('switchBaseBtn');
-        const switchPolygonBtn = document.getElementById('switchPolygonBtn');
-        const poolBadge = document.getElementById('sushiPoolBadgeBanner');
-        const poolConfigRow = document.getElementById('routerPoolConfigRow');
-
-        if (isBase) {
-          switchBaseBtn.className = 'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-primary text-white shadow-xs cursor-pointer';
-          switchPolygonBtn.className = 'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium text-text-muted hover:text-text-primary cursor-pointer';
-          document.getElementById('headerGlobalDot').className = 'w-1.5 h-1.5 rounded-full bg-[#0052FF]';
-          document.getElementById('ambientAuraGlow').className = 'pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[980px] h-[520px] rounded-full bg-[#0052FF]/10 blur-[130px] -z-10 transition-all duration-700';
-          document.getElementById('tokenBtnPrimary').textContent = 'Eego';
-          document.getElementById('tokenBtnSecondary').textContent = 'Ego';
-          document.getElementById('basePoolPendingBanner').classList.remove('hidden');
-          if (poolBadge) poolBadge.classList.add('hidden');
-          if (poolConfigRow) poolConfigRow.classList.add('hidden');
-        } else {
-          switchPolygonBtn.className = 'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-primary text-white shadow-xs cursor-pointer';
-          switchBaseBtn.className = 'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium text-text-muted hover:text-text-primary cursor-pointer';
-          document.getElementById('headerGlobalDot').className = 'w-1.5 h-1.5 rounded-full bg-[#8247E5]';
-          document.getElementById('ambientAuraGlow').className = 'pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] lg:w-[980px] h-[520px] rounded-full bg-[#8247E5]/15 blur-[130px] -z-10 transition-all duration-700';
-          document.getElementById('tokenBtnPrimary').textContent = 'FG (fing)';
-          document.getElementById('tokenBtnSecondary').textContent = 'Community';
-          document.getElementById('basePoolPendingBanner').classList.add('hidden');
-          if (poolBadge) poolBadge.classList.remove('hidden');
-          if (poolConfigRow) poolConfigRow.classList.remove('hidden');
-        }
-
-        // MAJ Hero Badges & KPIs
-        document.getElementById('heroBadgeDot').className = `w-2 h-2 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
-        document.getElementById('heroBadgeTitle').textContent = net.name;
-        document.getElementById('heroBadgeDetails').textContent = `Reown AppKit ID : 12f654a2... • Chain ID ${net.chainIdDec}`;
-        document.getElementById('kpiNetworkDot').className = `w-2 h-2 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
-        document.getElementById('kpiNetworkName').textContent = `${net.name} (${net.chainIdDec})`;
-        document.getElementById('kpiActiveToken').textContent = `$${tok.symbol} (${isBase ? 'ERC-20' : 'fing'})`;
-        document.getElementById('kpiTotalSupply').textContent = tok.supplyFullText;
-        document.getElementById('kpiCirculationPercent').textContent = `${tok.circulation} en circulation active`;
-
-        // MAJ Contrat Panel
-        document.getElementById('networkPillTagDot').className = `w-1.5 h-1.5 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
-        document.getElementById('networkPillTagText').textContent = `${net.shortName} • ERC-20`;
-        document.getElementById('tokenSymbolLabel').textContent = tok.label;
-        document.getElementById('contractAddrLabel').textContent = `Adresse du contrat sur ${net.shortName}`;
-        document.getElementById('contractAddrText').textContent = tok.address;
-        document.getElementById('basescanLink').href = `${net.explorerUrl}/token/${tok.address}`;
-        document.getElementById('supplyDisplay').textContent = tok.supply;
-        document.getElementById('supplySubLabel').textContent = tok.supplySub;
-        document.getElementById('circulationLabel').textContent = `Circulation active (${net.shortName})`;
-        document.getElementById('circulationPercentText').textContent = tok.circulation;
-        document.getElementById('circulationProgressBar').style.width = tok.circulation;
-        document.getElementById('balanceRpcLabel').textContent = `RPC ${net.shortName}`;
-        document.getElementById('balanceRpcDesc').textContent = `Vérifiez le solde on-chain de n'importe quelle adresse sur le contrat ${net.shortName}.`;
-        document.getElementById('auditedChainTitle').textContent = `Contrat Déployé sur ${net.shortName}`;
-        document.getElementById('auditedScanLink').href = net.explorerUrl;
-        document.getElementById('auditedScanText').textContent = net.explorerName;
-
-        // MAJ Swap Info
-        document.getElementById('dexRouterBadgeDot').className = `w-1.5 h-1.5 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
-        document.getElementById('dexRouterBadgeText').textContent = net.dexRouter.name;
-        document.getElementById('routerToggleText').textContent = `Routeur ${net.shortName}`;
-        document.getElementById('dexRouterAddress').value = net.dexRouter.address;
-        document.getElementById('swapSectionHeading').textContent = `Swap ${tok.symbol} ⇄ ${net.nativeToken}`;
-        document.getElementById('swapSectionSub').textContent = isBase ? 'Échange sur Uniswap V3 / Aerodrome (Base)' : 'Échange optimisé via SushiSwap V3 (Pool 0xb02e...0960 sur Polygon PoS)';
-        document.getElementById('payTokenSymbol').textContent = tok.symbol;
-        document.getElementById('receiveTokenSymbol').textContent = net.nativeToken;
-        document.getElementById('receiveTokenDot').className = `w-2 h-2 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
-        document.getElementById('gasCostLabel').textContent = `Frais réseau ${net.shortName} (Gas)`;
-        document.getElementById('gasCostValue').textContent = net.gasCostText;
-
-        // MAJ Transfert
-        document.getElementById('transferBadgeDot').className = `w-1.5 h-1.5 rounded-full ${isBase ? 'bg-[#0052FF]' : 'bg-[#8247E5]'}`;
-        document.getElementById('transferBadgeText').textContent = `Transfert Direct • ${net.name}`;
-        document.getElementById('sendTransactionBtnText').textContent = `Envoyer sur ${net.shortName}`;
-
-        if (currentAddress) {
-          document.getElementById('dropdownExplorerLink').href = `${net.explorerUrl}/address/${currentAddress}`;
-          document.getElementById('dropdownExplorerTag').textContent = net.explorerName;
-        }
-
-        // Déclencher switchEthereumChain si connecté avec MetaMask
-        if (requestWalletChainChange && isConnected && window.ethereum) {
-          try {
-            await window.ethereum.request({
-              method: 'wallet_switchEthereumChain',
-              params: [{ chainId: net.chainIdHex }]
-            });
-          } catch (switchErr) {
-            if (switchErr.code === 4902) {
-              try {
-                await window.ethereum.request({
-                  method: 'wallet_addEthereumChain',
-                  params: [{
-                    chainId: net.chainIdHex,
-                    chainName: net.name,
-                    nativeCurrency: {
-                      name: isBase ? 'Ether' : 'POL',
-                      symbol: net.nativeToken,
-                      decimals: 18
-                    },
-                    rpcUrls: [net.rpcUrl],
-                    blockExplorerUrls: [net.explorerUrl]
-                  }]
-                });
-              } catch (addErr) {
-                console.warn("Échec ajout chaîne:", addErr);
-              }
-            }
-          }
-        }
-
-        window.recalculateSwap();
-        await window.refreshBalances();
-        window.showToast(`Réseau actif : ${net.name}`);
-      };
-
-      // Changement de sous-jeton
-      window.setTokenSub = function(key) {
-        currentTokenKey = key;
-        const net = NETWORKS[currentChain];
-        const tok = net.tokens[key];
-        const pBtn = document.getElementById('tokenBtnPrimary');
-        const sBtn = document.getElementById('tokenBtnSecondary');
-        if (key === 'primary') {
-          pBtn.className = 'px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-medium bg-surface-card text-text-primary shadow-xs transition-all cursor-pointer';
-          sBtn.className = 'px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-medium text-text-muted hover:text-text-primary transition-all cursor-pointer';
-        } else {
-          sBtn.className = 'px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-medium bg-surface-card text-text-primary shadow-xs transition-all cursor-pointer';
-          pBtn.className = 'px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-medium text-text-muted hover:text-text-primary transition-all cursor-pointer';
-        }
-        document.getElementById('kpiActiveToken').textContent = `$${tok.symbol}`;
-        document.getElementById('tokenSymbolLabel').textContent = tok.label;
-        document.getElementById('contractAddrText').textContent = tok.address;
-        document.getElementById('basescanLink').href = `${net.explorerUrl}/token/${tok.address}`;
-        document.getElementById('supplyDisplay').textContent = tok.supply;
-        document.getElementById('supplySubLabel').textContent = tok.supplySub;
-        document.getElementById('circulationPercentText').textContent = tok.circulation;
-        document.getElementById('circulationProgressBar').style.width = tok.circulation;
-        document.getElementById('payTokenSymbol').textContent = tok.symbol;
-        document.getElementById('swapSectionHeading').textContent = `Swap ${tok.symbol} ⇄ ${net.nativeToken}`;
-
-        window.recalculateSwap();
-        window.refreshBalances();
-      };
-
-      // Rafraîchissement des soldes
-      window.refreshBalances = async function() {
-        if (!currentAddress || typeof ethers === 'undefined') return;
-        try {
-          const net = NETWORKS[currentChain];
-          const tok = net.tokens[currentTokenKey];
-          const provider = getProvider();
-
-          // Solde natif (ETH / POL)
-          try {
-            const nativeBal = await provider.getBalance(currentAddress);
-            const nativeFormatted = parseFloat(ethers.utils.formatEther(nativeBal)).toFixed(4);
-            document.getElementById('dropdownNativeBalance').textContent = `${nativeFormatted} ${net.nativeToken}`;
-          } catch(e) {
-            console.warn("Solde natif rpc:", e);
-          }
-
-          // Solde Token actif ERC20
-          try {
-            const tokenContract = new ethers.Contract(tok.address, ERC20_ABI, provider);
-            const rawBal = await tokenContract.balanceOf(currentAddress);
-            const tokenFormatted = parseFloat(ethers.utils.formatUnits(rawBal, tok.decimals)).toFixed(2);
-            tok.userBalance = tokenFormatted;
-
-            document.getElementById('kpiUserBalance').textContent = `${tokenFormatted} ${tok.symbol}`;
-            document.getElementById('swapAvailableBalance').textContent = `${tokenFormatted} ${tok.symbol}`;
-            document.getElementById('senderBalancePreview').textContent = tokenFormatted;
-            document.getElementById('kpiUserBalanceUsd').textContent = `≈ $${(parseFloat(tokenFormatted) * tok.priceUsd).toFixed(2)} USD`;
-
-            // Allowance sur le routeur actif (SwapRouter V3 sur Polygon)
-            if (currentChain === 'polygon' && web3Signer) {
-              const routerAddr = net.swapRouterV3 || net.dexRouter.address;
-              currentAllowance = await tokenContract.allowance(currentAddress, routerAddr);
-            } else {
-              currentAllowance = ethers.BigNumber.from(0);
-            }
-          } catch(e) {
-            console.warn("Solde ERC20:", e);
-          }
-
-          window.updateSwapButton();
-        } catch(err) {
-          console.error("Erreur rafraîchissement:", err);
-        }
-      };
-
-      // Calcul des montants de Swap
-      window.recalculateSwap = function() {
-        const net = NETWORKS[currentChain];
-        const tok = net.tokens[currentTokenKey];
-        const val = parseFloat(document.getElementById('swapPayAmount').value) || 0;
-        const out = val > 0 ? (val / tok.ratePerNative) : 0;
-        const prec = 4;
-
-        document.getElementById('swapReceiveAmount').value = out > 0 ? out.toFixed(prec) : '0.0000';
-        document.getElementById('payUsdEquivalent').textContent = `≈ $${(val * tok.priceUsd).toFixed(2)} USD`;
-        document.getElementById('receiveUsdEquivalent').textContent = `≈ $${(out * (currentChain === 'base' ? 3120 : 0.54)).toFixed(2)} USD`;
-
-        const minGuaranteed = out * (1 - (selectedSlippagePercent / 100));
-        document.getElementById('minGuaranteedReceive').textContent = `Garanti min: ${minGuaranteed.toFixed(prec)} ${net.nativeToken}`;
-        document.getElementById('conversionRateLabel').textContent = `1 ${net.nativeToken} ≈ ${tok.ratePerNative} ${tok.symbol}`;
-        document.getElementById('swapRouteText').textContent = currentChain === 'polygon' ? 'SushiSwap V3 (Pool 0xb02e...)' : `${tok.symbol} → ${net.nativeToken} (${net.shortName})`;
-
-        window.updateSwapButton();
-      };
-
-      // MAJ État du bouton Swap
-      window.updateSwapButton = function() {
-        const btn = document.getElementById('executeSwapBtn');
-        const btnText = document.getElementById('executeSwapBtnText');
-        const btnIcon = document.getElementById('executeSwapBtnIcon');
-        const net = NETWORKS[currentChain];
-        const tok = net.tokens[currentTokenKey];
-
-        if (isApproving) {
-          btnText.textContent = "1. Approbation en cours...";
-          btnIcon.textContent = "sync";
-          btnIcon.classList.add("animate-spin");
-          btn.disabled = true;
-          return;
-        }
-
-        if (isSwapping) {
-          btnText.textContent = "2. Swap en cours dans MetaMask...";
-          btnIcon.textContent = "sync";
-          btnIcon.classList.add("animate-spin");
-          btn.disabled = true;
-          return;
-        }
-
-        btn.disabled = false;
-        btnIcon.classList.remove("animate-spin");
-
-        if (!isConnected) {
-          btnText.textContent = "Connecter le portefeuille pour échanger";
-          btnIcon.textContent = "account_balance_wallet";
-          btn.className = "w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer";
-          return;
-        }
-
-        if (currentChain === 'base') {
-          btnText.textContent = "Pool Base en cours (Basculez sur Polygon)";
-          btnIcon.textContent = "swap_horiz";
-          btn.className = "w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer";
-          return;
-        }
-
-        // Polygon
-        const payAmountVal = parseFloat(document.getElementById('swapPayAmount').value) || 0;
-        let amountInWei = ethers.BigNumber.from(0);
-        try {
-          amountInWei = ethers.utils.parseUnits(payAmountVal > 0 ? payAmountVal.toString() : "0", tok.decimals);
-        } catch(e) {
-          amountInWei = ethers.BigNumber.from(0);
-        }
-
-        if (currentAllowance.lt(amountInWei) || currentAllowance.isZero()) {
-          btnText.textContent = `1. Approuver $${tok.symbol} pour SushiSwap V3`;
-          btnIcon.textContent = "lock_open";
-          btn.className = "w-full h-12 rounded-xl bg-primary text-white hover:opacity-90 font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer";
-        } else {
-          btnText.textContent = `2. Confirmer le Swap SushiSwap V3`;
-          btnIcon.textContent = "swap_horiz";
-          btn.className = "w-full h-12 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-medium text-sm transition-all shadow-xs flex items-center justify-center gap-2 active:scale-95 cursor-pointer";
-        }
-      };
-
-      // Gestion Connexion Portefeuille
-      window.handleWalletClick = function() {
-        if (isConnected) {
-          document.getElementById('walletDropdown').classList.toggle('hidden');
-        } else {
-          window.openWalletModal();
-        }
-      };
-
-      window.openWalletModal = function() {
-        const modal = document.getElementById('walletSelectionModal');
-        modal.classList.remove('hidden');
-        setTimeout(() => modal.classList.remove('opacity-0', 'pointer-events-none'), 10);
-      };
-
-      window.closeWalletModal = function() {
-        const modal = document.getElementById('walletSelectionModal');
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        setTimeout(() => modal.classList.add('hidden'), 200);
-      };
-
-      // Connexion MetaMask directe
-      window.connectInjected = async function() {
-        window.closeWalletModal();
-        if (typeof window.ethereum === 'undefined') {
-          window.showToast("Extension MetaMask non détectée. Passage en mode simulation.", true);
-          window.connectDemoMode();
-          return;
-        }
-        try {
-          const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-          const accounts = await provider.send("eth_requestAccounts", []);
-          if (accounts && accounts.length > 0) {
-            const net = await provider.getNetwork();
-            if (net.chainId === 137 && currentChain !== 'polygon') {
-              await window.switchNetwork('polygon', false);
-            } else if (net.chainId === 8453 && currentChain !== 'base') {
-              await window.switchNetwork('base', false);
-            }
-            await window.setWalletConnectedState(accounts[0], provider);
-          }
-        } catch(err) {
-          console.error(err);
-          window.showToast(err.code === 4001 ? "Connexion refusée" : "Erreur de connexion", true);
-        }
-      };
-
-      // Connexion via Reown AppKit Project ID
-      window.connectReownAppKit = function() {
-        window.closeWalletModal();
-        window.showToast("Initialisation Reown AppKit (ID: 12f654a2678080c8a4c77d539eb63bd7)...");
-        if (typeof window.ethereum !== 'undefined') {
-          window.connectInjected();
-        } else {
-          setTimeout(() => {
-            window.setWalletConnectedState("0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE", null);
-            window.showToast("Connecté via Reown AppKit Universal Link");
-          }, 800);
-        }
-      };
-
-      // Mode Consultation / Démo
-      window.connectDemoMode = function() {
-        window.closeWalletModal();
-        window.setWalletConnectedState("0x71C67Ed3855a35E0d38B7D0f848970C43B20eB1A", null);
-        window.showToast("Mode consultation active (RPC public)");
-      };
-
-      // Mettre à jour l'UI après connexion
-      window.setWalletConnectedState = async function(addr, providerObj) {
-        isConnected = true;
-        currentAddress = addr;
-        if (providerObj) {
-          web3Provider = providerObj;
-          web3Signer = providerObj.getSigner();
-        } else {
-          web3Provider = null;
-          web3Signer = null;
-        }
-
-        const shortAddr = truncateAddress(addr);
-        document.getElementById('connectWalletBtnText').textContent = shortAddr;
-        document.getElementById('walletStatusDot').className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
-        document.getElementById('dropdownFullAddress').textContent = addr;
-        document.getElementById('dropdownFullAddress').title = addr;
-        document.getElementById('dropdownExplorerLink').href = `${NETWORKS[currentChain].explorerUrl}/address/${addr}`;
-        document.getElementById('dropdownExplorerTag').textContent = NETWORKS[currentChain].explorerName;
-
-        const mobileBarText = document.getElementById('mobileBarWalletText');
-        if (mobileBarText) mobileBarText.textContent = shortAddr.slice(0, 6);
-
-        if (!document.getElementById('lookupAddressInput').value) {
-          document.getElementById('lookupAddressInput').value = addr;
-        }
-
-        await window.refreshBalances();
-        window.showToast(`Connecté : ${shortAddr}`);
-      };
-
-      window.disconnectWallet = function() {
-        isConnected = false;
-        currentAddress = null;
-        web3Provider = null;
-        web3Signer = null;
-        currentAllowance = (typeof ethers !== 'undefined') ? ethers.BigNumber.from(0) : { isZero: () => true, lt: () => true };
-
-        document.getElementById('connectWalletBtnText').textContent = 'Connecter';
-        document.getElementById('walletStatusDot').className = 'w-2 h-2 rounded-full bg-amber-400';
-        document.getElementById('walletDropdown').classList.add('hidden');
-        document.getElementById('kpiUserBalance').textContent = '--';
-        document.getElementById('kpiUserBalanceUsd').textContent = 'Connectez pour voir';
-        document.getElementById('swapAvailableBalance').textContent = '0.00';
-        document.getElementById('senderBalancePreview').textContent = '0.00';
-        document.getElementById('dropdownNativeBalance').textContent = '0.00 ETH';
-
-        const mobileBarText = document.getElementById('mobileBarWalletText');
-        if (mobileBarText) mobileBarText.textContent = 'Wallet';
-
-        window.updateSwapButton();
-        window.showToast("Portefeuille déconnecté");
-      };
-
-      // Slippage Selector
-      window.setSlippage = function(val) {
-        selectedSlippagePercent = val;
-        ['slip05Btn', 'slip10Btn', 'slip20Btn'].forEach(id => {
-          document.getElementById(id).className = 'px-1.5 py-0.5 rounded text-[10px] font-[\'JetBrains_Mono\'] font-medium text-text-muted hover:text-text-primary transition-all cursor-pointer';
-        });
-        if (val === 0.5) document.getElementById('slip05Btn').className = 'px-1.5 py-0.5 rounded text-[10px] font-[\'JetBrains_Mono\'] font-medium bg-surface-card text-text-primary shadow-xs transition-all cursor-pointer';
-        if (val === 1.0) document.getElementById('slip10Btn').className = 'px-1.5 py-0.5 rounded text-[10px] font-[\'JetBrains_Mono\'] font-medium bg-surface-card text-text-primary shadow-xs transition-all cursor-pointer';
-        if (val === 2.0) document.getElementById('slip20Btn').className = 'px-1.5 py-0.5 rounded text-[10px] font-[\'JetBrains_Mono\'] font-medium bg-surface-card text-text-primary shadow-xs transition-all cursor-pointer';
-
-        document.getElementById('slippageValueDisplay').textContent = `${val}% (tolérant)`;
-        window.recalculateSwap();
-      };
-
-      // Navigation par Onglets
-      window.switchTab = function(t) {
-        const swapBtn = document.getElementById('tabBtnSwap');
-        const transferBtn = document.getElementById('tabBtnTransfer');
-        const onRampBtn = document.getElementById('tabBtnOnRamp');
-
-        [swapBtn, transferBtn, onRampBtn].forEach(b => {
-          b.className = 'flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl text-text-muted hover:text-text-primary text-xs sm:text-[14px] font-medium transition-all flex items-center justify-center gap-1.5 cursor-pointer';
-        });
-
-        document.getElementById('swapWidgetCard').classList.add('hidden');
-        document.getElementById('transferWidgetCard').classList.add('hidden');
-        document.getElementById('onRampWidgetCard').classList.add('hidden');
-
-        const mSwap = document.getElementById('mobileNavSwap');
-        const mTrans = document.getElementById('mobileNavTransfer');
-        const mRamp = document.getElementById('mobileNavOnRamp');
-        [mSwap, mTrans, mRamp].forEach(m => {
-          if (m) m.className = 'flex-1 flex flex-col items-center gap-0.5 text-text-muted hover:text-text-primary text-[10px] font-medium cursor-pointer';
-        });
-
-        if (t === 'swap') {
-          swapBtn.className = 'flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl bg-primary text-white text-xs sm:text-[14px] font-medium transition-all flex items-center justify-center gap-1.5 shadow-xs shrink-0 cursor-pointer';
-          document.getElementById('swapWidgetCard').classList.remove('hidden');
-          if (mSwap) mSwap.className = 'flex-1 flex flex-col items-center gap-0.5 text-text-primary text-[10px] font-semibold cursor-pointer';
-        } else if (t === 'transfer') {
-          transferBtn.className = 'flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl bg-primary text-white text-xs sm:text-[14px] font-medium transition-all flex items-center justify-center gap-1.5 shadow-xs shrink-0 cursor-pointer';
-          document.getElementById('transferWidgetCard').classList.remove('hidden');
-          if (mTrans) mTrans.className = 'flex-1 flex flex-col items-center gap-0.5 text-text-primary text-[10px] font-semibold cursor-pointer';
-        } else {
-          onRampBtn.className = 'flex-1 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl bg-primary text-white text-xs sm:text-[14px] font-medium transition-all flex items-center justify-center gap-1.5 shadow-xs shrink-0 cursor-pointer';
-          document.getElementById('onRampWidgetCard').classList.remove('hidden');
-          if (mRamp) mRamp.className = 'flex-1 flex flex-col items-center gap-0.5 text-text-primary text-[10px] font-semibold cursor-pointer';
-        }
-      };
-
-      window.scrollToSection = function(id) {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      };
-
-      // Bouton MAX
-      window.handleMaxSwap = function() {
-        const tok = NETWORKS[currentChain].tokens[currentTokenKey];
-        const cleanVal = parseFloat(tok.userBalance.replace(/\s/g, '')) || 0;
-        document.getElementById('swapPayAmount').value = cleanVal > 0 ? cleanVal : 10;
-        window.recalculateSwap();
-      };
-
-      // Copier l'adresse du contrat
-      window.copyContractAddress = function() {
-        const txt = document.getElementById('contractAddrText').textContent.trim();
-        navigator.clipboard.writeText(txt);
-        window.showToast("Adresse du contrat copiée !");
-      };
-
-      window.copyRouterAddress = function() {
-        const txt = document.getElementById('dexRouterAddress').value.trim();
-        navigator.clipboard.writeText(txt);
-        window.showToast("Adresse du routeur copiée !");
-      };
-
-      window.copyPoolAddress = function() {
-        const txt = document.getElementById('dexPoolAddress').value.trim();
-        navigator.clipboard.writeText(txt);
-        window.showToast("Adresse de la Pool V3 copiée !");
-      };
-
-      window.copyAddress = function() {
-        if (currentAddress) {
-          navigator.clipboard.writeText(currentAddress);
-          window.showToast("Adresse portefeuille copiée !");
-          document.getElementById('walletDropdown').classList.add('hidden');
-        }
-      };
-
-      // EXÉCUTION DU SWAP VIA SUSHISWAP V3 (ISwapRouter exactInputSingle)
-      window.handleSwapExecution = async function() {
-        document.getElementById('txErrorGuidanceBox').classList.add('hidden');
-
-        if (!isConnected) {
-          window.handleWalletClick();
-          return;
-        }
-
-        if (currentChain === 'base') {
-          window.showToast("La pool Base est en cours de création. Basculez sur Polygon pour tester le swap V3 on-chain !", true);
-          window.switchNetwork('polygon');
-          return;
-        }
-
-        // Mode démo / simulation si pas de signer MetaMask
-        if (!web3Signer) {
-          window.showToast("Mode consultation : swap SushiSwap V3 simulé avec succès !");
-          document.getElementById('modalSwapAmountSent').textContent = `${document.getElementById('swapPayAmount').value} FG`;
-          document.getElementById('modalSwapAmountReceived').textContent = `${document.getElementById('swapReceiveAmount').value} POL`;
-          document.getElementById('modalSwapNetworkName').textContent = 'Polygon PoS (137)';
-          document.getElementById('modalSwapTxHash').textContent = '0x82f9d...simulated_tx';
-          document.getElementById('modalSwapBasescanLink').href = 'https://polygonscan.com/address/0xb02e64dF0482ad99c9CC93326a9deB16827B0960';
-          const successModal = document.getElementById('swapSuccessModal');
-          successModal.classList.remove('hidden');
-          setTimeout(() => successModal.classList.remove('opacity-0', 'pointer-events-none'), 10);
-          return;
-        }
-
-        const net = NETWORKS.polygon;
-        const tok = net.tokens[currentTokenKey];
-        const payVal = parseFloat(document.getElementById('swapPayAmount').value) || 0;
-
-        if (payVal <= 0) {
-          window.showToast("Veuillez saisir un montant valide.", true);
-          return;
-        }
-
-        try {
-          const network = await web3Provider.getNetwork();
-          if (network.chainId !== 137) {
-            window.showToast("Changement vers Polygon PoS requis...");
-            await window.switchNetwork('polygon');
-            return;
-          }
-
-          const amountInWei = ethers.utils.parseUnits(payVal.toString(), tok.decimals);
-          const tokenContract = new ethers.Contract(tok.address, ERC20_ABI, web3Signer);
-          const routerV3Address = net.swapRouterV3 || '0xE592427A0AEce92De3Edee1F18E0157C05861564';
-          const routerV2Address = net.routerV2Fallback || '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506';
-
-          // 1. APPROBATION POUR SWAPROUTER V3
-          const allowance = await tokenContract.allowance(currentAddress, routerV3Address);
-          if (allowance.lt(amountInWei)) {
-            isApproving = true;
-            window.updateSwapButton();
-            window.showToast("Demande d'approbation soumise à MetaMask pour SushiSwap V3...");
-
-            const approveTx = await tokenContract.approve(routerV3Address, ethers.constants.MaxUint256, { gasLimit: 120000 });
-            window.showToast(`Approbation soumise : ${approveTx.hash.slice(0, 10)}...`);
-            await approveTx.wait();
-
-            currentAllowance = ethers.constants.MaxUint256;
-            isApproving = false;
-            window.updateSwapButton();
-            window.showToast("Jetons approuvés sur le SwapRouter V3 ! Vous pouvez maintenant échanger.");
-            return;
-          }
-
-          // 2. SWAP SUSHISWAP V3 : exactInputSingle avec ISwapRouter
-          isSwapping = true;
-          window.updateSwapButton();
-          window.showToast("Confirmation requise dans MetaMask (SushiSwap V3)...");
-
-          // Lecture dynamique du fee tier depuis la pool V3 officielle si disponible (par défaut 3000)
-          let feeTier = net.poolFeeTier || 3000;
-          try {
-            const poolContract = new ethers.Contract(net.poolAddress, POOL_V3_ABI, web3Provider);
-            const poolFee = await poolContract.fee();
-            if (poolFee) feeTier = poolFee;
-          } catch(poolErr) {
-            console.warn("Lecture fee pool SushiSwap V3 fallback 3000:", poolErr);
-            feeTier = 3000;
-          }
-
-          // ExactInputSingleParams pour SushiSwap V3 / Uniswap V3 ISwapRouter
-          const exactInputParams = {
-            tokenIn: tok.address,
-            tokenOut: net.wpolAddress,
-            fee: feeTier,
-            recipient: currentAddress,
-            amountIn: amountInWei,
-            amountOutMinimum: 0,
-            sqrtPriceLimitX96: 0
-          };
-
-          const routerV3 = new ethers.Contract(routerV3Address, ISWAP_ROUTER_V3_ABI, web3Signer);
-          const txOverrides = { gasLimit: 380000 };
-          let swapTx;
-
-          try {
-            // Tentative d'appel V3 standard
-            swapTx = await routerV3.exactInputSingle(exactInputParams, txOverrides);
-          } catch(errV3) {
-            console.warn("Tentative avec deadline explicite ou fallback V2:", errV3);
-            try {
-              const deadline = Math.floor(Date.now() / 1000) + 1800;
-              const paramsWithDeadline = { ...exactInputParams, deadline };
-              swapTx = await routerV3.exactInputSingle(paramsWithDeadline, txOverrides);
-            } catch(errV3Deadline) {
-              console.warn("Fallback vers SushiSwap V2:", errV3Deadline);
-              // Fallback vers Routeur V2 SushiSwap si besoin
-              const routerV2 = new ethers.Contract(routerV2Address, ROUTER_V2_ABI, web3Signer);
-              const path = [tok.address, net.wpolAddress];
-              const deadline = Math.floor(Date.now() / 1000) + 1800;
-              swapTx = await routerV2.swapExactTokensForETHSupportingFeeOnTransferTokens(
-                amountInWei,
-                0,
-                path,
-                currentAddress,
-                deadline,
-                txOverrides
-              );
-            }
-          }
-
-          window.showToast(`Transaction V3 transmise : ${swapTx.hash.slice(0, 10)}...`);
-          const receipt = await swapTx.wait();
-
-          window.showToast("Swap SushiSwap V3 validé sur Polygon PoS !");
-          document.getElementById('modalSwapAmountSent').textContent = `${payVal} ${tok.symbol}`;
-          document.getElementById('modalSwapAmountReceived').textContent = `${document.getElementById('swapReceiveAmount').value} ${net.nativeToken}`;
-          document.getElementById('modalSwapNetworkName').textContent = 'Polygon PoS (137)';
-          document.getElementById('modalSwapTxHash').textContent = receipt.transactionHash;
-          document.getElementById('modalSwapBasescanLink').href = `${net.explorerUrl}/tx/${receipt.transactionHash}`;
-
-          const successModal = document.getElementById('swapSuccessModal');
-          successModal.classList.remove('hidden');
-          setTimeout(() => successModal.classList.remove('opacity-0', 'pointer-events-none'), 10);
-
-          await window.refreshBalances();
-        } catch(err) {
-          console.error("Erreur Swap V3:", err);
-          const errBox = document.getElementById('txErrorGuidanceBox');
-          errBox.classList.remove('hidden');
-          document.getElementById('txErrorTitle').textContent = "Transaction non finalisée";
-          document.getElementById('txErrorAdvice').textContent = err.code === 4001 ? "Signature rejetée dans le portefeuille." : (err.message || "Erreur d'exécution de la pool V3 ou de gas.");
-          window.showToast("Erreur lors de l'exécution du swap SushiSwap V3", true);
-        } finally {
-          isApproving = false;
-          isSwapping = false;
-          window.updateSwapButton();
-        }
-      };
-
-      window.closeSwapSuccessModal = function() {
-        const modal = document.getElementById('swapSuccessModal');
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        setTimeout(() => modal.classList.add('hidden'), 200);
-      };
-
-      // Transfert direct
-      window.handleTransferExecution = async function() {
-        if (!isConnected) {
-          window.handleWalletClick();
-          return;
-        }
-        const recipient = document.getElementById('recipientAddress').value.trim();
-        if (!ethers.utils.isAddress(recipient)) {
-          window.showToast("Adresse destinataire EVM invalide", true);
-          return;
-        }
-        const amt = parseFloat(document.getElementById('tokenAmount').value) || 0;
-        if (amt <= 0) {
-          window.showToast("Montant supérieur à 0 requis", true);
-          return;
-        }
-
-        if (!web3Signer) {
-          window.showToast("Transfert simulé en mode consultation !");
-          document.getElementById('recipientAddress').value = '';
-          return;
-        }
-
-        const net = NETWORKS[currentChain];
-        const tok = net.tokens[currentTokenKey];
-        try {
-          const btn = document.getElementById('sendTransactionBtn');
-          btn.disabled = true;
-          document.getElementById('sendTransactionBtnText').textContent = "Signature...";
-          const tokenContract = new ethers.Contract(tok.address, ERC20_ABI, web3Signer);
-          const amountWei = ethers.utils.parseUnits(amt.toString(), tok.decimals);
-
-          const tx = await tokenContract.transfer(recipient, amountWei, { gasLimit: 120000 });
-          window.showToast(`Transfert envoyé : ${tx.hash.slice(0, 10)}...`);
-          await tx.wait();
-          window.showToast(`Transfert validé sur ${net.shortName} !`);
-          await window.refreshBalances();
-        } catch(e) {
-          console.error(e);
-          window.showToast("Erreur transfert : " + (e.message || "Rejeté"), true);
-        } finally {
-          document.getElementById('sendTransactionBtn').disabled = false;
-          document.getElementById('sendTransactionBtnText').textContent = `Envoyer sur ${net.shortName}`;
-        }
-      };
-
-      // Vérification Solde Externe
-      window.checkExternalBalance = async function() {
-        const a = document.getElementById('lookupAddressInput').value.trim();
-        if (!ethers.utils.isAddress(a)) {
-          window.showToast("Adresse EVM invalide (0x...)", true);
-          return;
-        }
-        const btn = document.getElementById('checkBalanceBtn');
-        btn.disabled = true;
-        btn.textContent = "...";
-        try {
-          const net = NETWORKS[currentChain];
-          const tok = net.tokens[currentTokenKey];
-          const provider = getProvider();
-          const tokenContract = new ethers.Contract(tok.address, ERC20_ABI, provider);
-          const bal = await tokenContract.balanceOf(a);
-          const formatted = ethers.utils.formatUnits(bal, tok.decimals);
-
-          const resBox = document.getElementById('balanceResultBox');
-          resBox.classList.remove('hidden');
-          resBox.classList.add('flex');
-          document.getElementById('balanceValueText').textContent = `${parseFloat(formatted).toLocaleString('fr-FR', {maximumFractionDigits: 4})} ${tok.symbol}`;
-          window.showToast(`Solde réel consulté sur ${net.shortName}`);
-        } catch(e) {
-          console.error(e);
-          window.showToast("Erreur RPC lors de la consultation", true);
-        } finally {
-          btn.disabled = false;
-          btn.textContent = "Vérifier";
-        }
-      };
-
-      // Modal On-Ramp Fiat
-      window.openOnRampModal = function() {
-        const modal = document.getElementById('reownOnRampModal');
-        modal.classList.remove('hidden');
-        setTimeout(() => modal.classList.remove('opacity-0', 'pointer-events-none'), 10);
-      };
-
-      window.closeOnOnRampModal = function() {
-        const modal = document.getElementById('reownOnRampModal');
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        setTimeout(() => modal.classList.add('hidden'), 200);
-      };
-      window.closeOnRampModal = window.closeOnOnRampModal;
-
-      window.updateFiatCalc = function() {
-        const fiat = parseFloat(document.getElementById('onRampFiatAmount').value) || 0;
-        const rate = (currentChain === 'base') ? 3120 : 0.54;
-        const symbol = (currentChain === 'base') ? 'ETH' : 'POL';
-        const crypto = (fiat / rate).toFixed(4);
-        document.getElementById('onRampCryptoReceived').textContent = `≈ ${crypto} ${symbol}`;
-        document.getElementById('modalOnRampPayAmount').textContent = `${fiat} €`;
-        document.getElementById('modalOnRampCryptoAmount').textContent = `≈ ${crypto} ${symbol}`;
-      };
-
-      window.submitOnRamp = function() {
-        window.showToast("Paiement 3D-Secure validé ! Livraison des cryptos en cours...");
-        window.closeOnRampModal();
-      };
-
-      // Fermeture dropdown clic extérieur
-      document.addEventListener('click', (e) => {
-        const dropdown = document.getElementById('walletDropdown');
-        const trigger = document.getElementById('connectWalletBtn');
-        if (dropdown && !dropdown.contains(e.target) && !trigger.contains(e.target)) {
-          dropdown.classList.add('hidden');
-        }
-      });
-
-      // Écoute des changements de comptes et de chaîne MetaMask
-      if (typeof window.ethereum !== 'undefined') {
-        window.ethereum.on && window.ethereum.on('accountsChanged', (accounts) => {
-          if (!accounts || accounts.length === 0) {
-            window.disconnectWallet();
-          } else {
-            const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-            window.setWalletConnectedState(accounts[0], provider);
-          }
-        });
-
-        window.ethereum.on && window.ethereum.on('chainChanged', (chainId) => {
-          const id = typeof chainId === 'string' && chainId.startsWith('0x') ? parseInt(chainId, 16) : parseInt(chainId);
-          if (id === 137 && currentChain !== 'polygon') {
-            window.switchNetwork('polygon', false);
-          } else if (id === 8453 && currentChain !== 'base') {
-            window.switchNetwork('base', false);
-          }
-        });
-      }
-
-      // Initialisation par défaut
-      window.recalculateSwap();
-      window.updateSwapButton();
-    })();
-  </script>
-</body></html>
+</div></main><nav class="fixed bottom-3 inset-x-4 z-50 pb-safe pointer-events-none" data-active-classes="text-primary font-semibold"><div class="max-w-md mx-auto pointer-events-auto bg-surface-container-lowest/90 backdrop-blur-xl rounded-full px-2 py-1.5 shadow-[0_6px_24px_rgba(0,0,0,0.06)] flex items-center justify-around"><a aria-current="page" class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full transition-colors text-primary font-semibold" data-path="swap" href="#"><span class="material-symbols-outlined text-[20px]">swap_horiz</span><span class="font-label-pill text-label-pill mt-0.5">Swap</span></a><a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="transfert" href="#"><span class="material-symbols-outlined text-[20px]">send</span><span class="font-label-pill text-label-pill mt-0.5">Transfert</span></a><a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="acheter" href="#"><span class="material-symbols-outlined text-[20px]">add_card</span><span class="font-label-pill text-label-pill mt-0.5">Acheter</span></a><a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="wallet" href="#"><span class="material-symbols-outlined text-[20px]">wallet</span><span class="font-label-pill text-label-pill mt-0.5">Wallet</span></a></div></nav></body></html>
